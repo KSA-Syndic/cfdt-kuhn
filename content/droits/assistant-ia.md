@@ -53,10 +53,10 @@ Cet onglet affiche **la convention collective de la métallurgie**, le seul docu
 C'est votre **espace de conversation** avec l'assistant :
 - Posez vos questions en langage courant
 - Exemples : 
-  - *"Quelle est ma classification si je suis **cariste** / **soudeur** / **technicien qualité** ?"* 
-  - *"Quel est mon salaire minimum si je suis **technicien maintenance** de nuit ?"* 
-  - *"Quel est mon salaire minimum si je suis **ingénieur test** au forfait jour, avec 4 ans d'ancienneté ?"*
-  - *"Quels sont mes droits si je suis **analyste développeur** avec 7 ans d'ancienneté ?"*
+  - *"Quelle est ma classification si je suis cariste / soudeur / technicien qualité ?"* 
+  - *"Quel est mon salaire minimum si je suis technicien maintenance de nuit ?"* 
+  - *"Quel est mon salaire minimum si je suis ingénieur test au forfait jour, avec 4 ans d'ancienneté ?"*
+  - *"Quels sont mes droits si je suis analyste développeur avec 7 ans d'ancienneté ?"*
 - L'assistant répond immédiatement en citant la convention
 - Posez des questions complémentaires pour mieux comprendre
 
