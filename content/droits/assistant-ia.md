@@ -17,7 +17,7 @@ weight: 1
 
 ## Présentation
 
-Cet assistant IA utilise Google NotebookLM pour vous aider à comprendre la convention collective de la métallurgie. Il a été configuré avec le texte officiel de la convention pour répondre à vos questions de façon précise, claire et accessible.
+Cet assistant IA (Intelligence Artificielle) utilise Google NotebookLM pour vous aider à comprendre la convention collective de la métallurgie. Il a été configuré avec le texte officiel de la convention pour répondre à vos questions de façon précise, claire et accessible.
 
 {{% hint warning %}}
 **⚠️ Mise en garde**
@@ -52,7 +52,10 @@ Cet onglet affiche **la convention collective de la métallurgie**, le seul docu
 
 C'est votre **espace de conversation** avec l'assistant :
 - Posez vos questions en langage courant
-- Exemple : *"Quelle est ma classification si je suis technicien niveau 2 ?"*
+- Exemples : 
+  - *"Quelle est ma classification si je suis cariste / soudeur / technicien qualité ?"* 
+  - *"Quel est mon salaire minimum si je suis ingénieur test avec 4 ans d'ancienneté ?"*
+  - *"Quels sont mes droits si je suis analyste développeur avec 5 ans d'ancienneté ?"*
 - L'assistant répond immédiatement en citant la convention
 - Posez des questions complémentaires pour mieux comprendre
 
