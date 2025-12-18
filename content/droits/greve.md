@@ -14,11 +14,11 @@ Ce guide explique simplement le droit de grève et comment se déclarer à KUHN.
 
 ## Quand et comment faire grève ?
 
-La grève est un **droit constitutionnel** : elle suspend simplement le contrat de travail pendant la durée de la grève.
+La grève est un **droit constitutionnel** : elle suspend simplement ton contrat de travail pendant la durée de la grève.
 
 {{% hint success %}}
 Dans le secteur privé, **aucun préavis n'est nécessaire** !
-Vous pouvez vous déclarer en grève à tout moment, même à la dernière minute (mais prévenir à l'avance reste préférable).
+Tu peux te déclarer en grève à tout moment, même à la dernière minute (mais prévenir à l'avance reste préférable).
 {{% /hint %}}
 
 Pour qu'une grève soit valable, il faut :
@@ -47,16 +47,16 @@ L'employeur doit cependant avoir connaissance des revendications au moment de l'
 
 En cas de grève nationale et interprofessionnelle, les revendications collectives de l'appel national suffisent.
 
-Pour la bonne organisation, prévenir sa direction ou son manager (par mail ou oralement) la veille ou le matin de la grève est recommandé, mais non obligatoire.
+Pour la bonne organisation, prévenir ta direction ou ton manager (par mail ou oralement) la veille ou le matin de la grève est recommandé, mais non obligatoire.
 
-Une fois déclaré en grève, le salarié du privé choisit la durée, peut manifester, rester chez lui, ou faire grève sur son lieu de travail (sans empêcher les non-grévistes de travailler).
+Une fois déclaré en grève, tu choisis la durée, tu peux manifester, rester chez toi, ou faire grève sur ton lieu de travail (sans empêcher les non-grévistes de travailler).
 {{% /details %}}
 
 ## Durée de la grève
 
-La grève peut durer **le temps que vous souhaitez** : une journée, une heure, ou même 23 minutes !
+La grève peut durer **le temps que tu souhaites** : une journée, une heure, ou même 23 minutes !
 
-L’employeur déduit le temps de grève du salaire, même pour les forfaits jours. Exemple : 1h de grève = 1/7e d’une journée (base 35h/semaine).
+L'employeur déduit le temps de grève du salaire, même pour les forfaits jours. Exemple : 1h de grève = 1/7e d'une journée (base 35h/semaine).
 
 ## Comment se déclarer en grève à KUHN ?
 

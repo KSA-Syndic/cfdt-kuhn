@@ -15,20 +15,20 @@ tags:
 weight: 1
 ---
 
-## Un assistant pour comprendre vos droits
+## Un assistant pour comprendre tes droits
 
-Cet assistant IA utilise la convention collective de la métallurgie pour répondre à vos questions simplement et rapidement.
+Cet assistant IA utilise la convention collective de la métallurgie pour répondre à tes questions simplement et rapidement.
 
 {{% hint warning %}}
 **⚠️ Important**
 
-Cet outil donne des informations sur vos droits minimaux (convention nationale). Il ne remplace pas un conseil juridique. Pour toute question complexe, contactez votre délégué syndical.
+Cet outil donne des informations sur tes droits minimaux (convention nationale). Il ne remplace pas un conseil juridique. Pour toute question complexe, contacte ton délégué syndical.
 {{% /hint %}}
 
 {{% hint info %}}
 **📌 Compte Google nécessaire**
 
-Vous devez avoir un compte Google (gratuit) pour accéder à l'assistant.
+Tu dois avoir un compte Google (gratuit) pour accéder à l'assistant.
 {{% /hint %}}
 
 {{< button href="https://notebooklm.google.com/notebook/bbac285e-4d34-467d-81fb-c2b482f0ad3a" >}}
@@ -47,7 +47,7 @@ L'interface comporte **3 onglets** :
 La convention collective de référence.
 
 **2️⃣ Discussion (milieu)**  
-Posez vos questions en langage simple :
+Pose tes questions ici, avec le plus de détails possible, par exemple :
 - *"Quelle est ma classification si je suis cariste ?"*
 - *"Quel est mon salaire si je suis technicien maintenance de nuit à 38h par semaine, avec 10 ans d'ancienneté ?"*
 - *"Quel est mon salaire si je suis ingénieur test au forfait jour, avec 4 ans d'ancienneté ?"*
@@ -65,10 +65,10 @@ Outils pratiques :
 
 ## Conseils
 
-✅ Soyez précis (fonction, ancienneté...)  
-✅ Explorez les outils du Studio  
-✅ Posez des questions de suivi  
-✅ Utilisez la carte mentale pour naviguer
+✅ Sois précis (fonction, ancienneté...)  
+✅ Explore les outils du Studio  
+✅ Pose des questions de suivi  
+✅ Utilise la carte mentale pour naviguer
 
 {{% hint success %}}
 N'hésite pas à contacter ton syndicat pour toute question ou accompagnement !

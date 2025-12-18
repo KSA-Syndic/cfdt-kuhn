@@ -23,7 +23,7 @@ Ouvrir la convention
 # Vos droits en détail
 
 {{% hint warning %}}
-Les droits nationaux incluent des minimas garantis, complétés par des accords locaux spécifiques. Cette page sera mise à jour régulièrement pour refléter les spécifications et évolutions.
+Voici tes droits nationaux, soit les minimas garantis. Ce à quoi ont été ajoutées des spécifications de l'accord d'entreprise Kuhn. D'autres détails vont cependant encore être apportés prochainement.
 {{% /hint %}}
 
 {{% details "Classification" %}}
@@ -99,12 +99,12 @@ Salarié en classe 1 (A1), valeur du point = 5,90 €, 10 ans d’ancienneté:\
 
 #### Et pour les cadres ? (Classes 11 à 18)
 
-Pas de prime d’ancienneté automatique comme pour les classes 1-10.
+Pas de prime d'ancienneté automatique comme pour les classes 1-10.
 
 À la place :
 * **Majorations pour expérience** intégrées au salaire minimum : +5 % après 2 ans ; +8 % après 4 ans.
-* **Indemnité de licenciement majorée** : +20 % si ≥50 ans et ≥5 ans d’ancienneté ; +30 % si ≥55 ans.
-* **Autres avantages** : Possibilité de prime via accord d’entreprise, mais pas de socle national. Vérifiez votre contrat ou contactez votre syndicat pour une simulation personnalisée.
+* **Indemnité de licenciement majorée** : +20 % si ≥50 ans et ≥5 ans d'ancienneté ; +30 % si ≥55 ans.
+* **Autres avantages** : Possibilité de prime via accord d'entreprise, mais pas de socle national. Vérifie ton contrat ou contacte ton syndicat pour une simulation personnalisée.
 
 {{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Taux d'ancienneté" page="162" as="link" />}} <br>
 {{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Majorations cadre" page="161" as="link" />}} <br>
@@ -147,11 +147,11 @@ flowchart TD
     C --> D["Je trouve ma classe"]:::step
     D --> E["Je regarde le salaire minimum de ma classe"]:::step
     E --> F{"J'ai au moins 2 ans d'ancienneté ?"}:::question
-    F -- "Oui" --> G["Ajoute la prime d'ancienneté"]:::bonus
+    F -- "Oui" --> G["J'ajoute la prime d'ancienneté"]:::bonus
     F -- "Non" --> H["Pas de prime d'ancienneté"]:::neutral
-    G --> I["Je compare avec mon salaire reel"]:::step
+    G --> I["Je compare avec mon salaire réel"]:::step
     H --> I
-    I --> J{"Mon salaire reel est-il inferieur au minimum ?"}:::question
+    I --> J{"Mon salaire réel est-il inférieur au minimum ?"}:::question
     J -- "Oui" --> K["Rattrapage et arriérés"]:::alert
     J -- "Non" --> L["Tout est conforme"]:::success
 
