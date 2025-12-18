@@ -15,20 +15,20 @@ tags:
 weight: 1
 ---
 
-## Présentation
+## Un assistant pour comprendre vos droits
 
-Cet assistant IA (Intelligence Artificielle) utilise Google NotebookLM pour vous aider à comprendre la convention collective de la métallurgie. Il a été configuré avec le texte officiel de la convention pour répondre à vos questions de façon précise, claire et accessible.
+Cet assistant IA utilise la convention collective de la métallurgie pour répondre à vos questions simplement et rapidement.
 
 {{% hint warning %}}
-**⚠️ Mise en garde**
+**⚠️ Important**
 
-Cet outil fournit des informations basées sur la convention collective, mais **il ne remplace pas un conseil juridique**. En cas de doute ou pour une situation complexe, consultez votre délégué syndical ou un représentant du personnel.
+Cet outil donne des informations sur vos droits minimaux (convention nationale). Il ne remplace pas un conseil juridique. Pour toute question complexe, contactez votre délégué syndical.
 {{% /hint %}}
 
 {{% hint info %}}
-**📌 Compte Google requis**
+**📌 Compte Google nécessaire**
 
-Pour accéder à l'assistant, vous devez disposer d'un compte Google (gratuit)
+Vous devez avoir un compte Google (gratuit) pour accéder à l'assistant.
 {{% /hint %}}
 
 {{< button href="https://notebooklm.google.com/notebook/bbac285e-4d34-467d-81fb-c2b482f0ad3a" >}}
@@ -37,48 +37,39 @@ Accéder à l'Assistant IA
 
 ---
 
-{{% details "Tutoriel d'utilisation" %}}
+## Comment ça marche ?
 
-## Comment utiliser l'Assistant IA
-L'interface de NotebookLM comporte **3 onglets** pour vous guider :
+{{< image src="/uploads/images/droits/assistant-ia-page.png" alt="Assistant IA - Interface" title="Assistant IA - Interface" loading="lazy" >}}
 
-{{< image src="/uploads/images/droits/assistant-ia-page.png" alt="Assistant IA - Aperçu page d'accueil" title="Assistant IA - Aperçu page d'accueil" loading="lazy" >}}
+L'interface comporte **3 onglets** :
 
-**1️⃣ Onglet des sources (gauche)**
+**1️⃣ Sources (gauche)**  
+La convention collective de référence.
 
-Cet onglet affiche **la convention collective de la métallurgie**, le seul document source qui fait foi. C'est le texte de référence officiel sur lequel se base l'assistant pour toutes ses réponses.
+**2️⃣ Discussion (milieu)**  
+Posez vos questions en langage simple :
+- *"Quelle est ma classification si je suis cariste ?"*
+- *"Quel est mon salaire si je suis technicien maintenance de nuit à 38h par semaine, avec 10 ans d'ancienneté ?"*
+- *"Quel est mon salaire si je suis ingénieur test au forfait jour, avec 4 ans d'ancienneté ?"*
+- *"Quels sont mes droits si je suis analyste développeur au forfait heure avec 7 ans d'ancienneté ?"*
 
-**2️⃣ Onglet de discussion (milieu)**
-
-C'est votre **espace de conversation** avec l'assistant :
-- Posez vos questions en langage courant
-- Exemples : 
-  - *"Quelle est ma classification si je suis cariste / soudeur / technicien qualité ?"* 
-  - *"Quel est mon salaire minimum si je suis technicien maintenance de nuit ?"* 
-  - *"Quel est mon salaire minimum si je suis ingénieur test au forfait jour, avec 4 ans d'ancienneté ?"*
-  - *"Quels sont mes droits si je suis analyste développeur avec 7 ans d'ancienneté ?"*
-- L'assistant répond immédiatement en citant la convention
-- Posez des questions complémentaires pour mieux comprendre
-
-**3️⃣ Onglet Studio (droite)**
-
-Cet onglet propose **plusieurs outils pratiques** :
-- **Vidéo explicative** : une courte présentation de l'outil
-- **Fiches découverte** : des cartes interactives pour explorer vos droits
-- **Rapports** :
-  - **L'essentiel de vos droits** : un rapport synthétique des points clés
-  - **Manuel opérationnel** : un rapport détaillé sur la classification des emplois
-- **Carte mentale** : un sommaire dynamique pour naviguer dans la convention
+**3️⃣ Studio (droite)**  
+Outils pratiques :
+- Vidéo de présentation
+- Fiches découverte ludiques
+- Rapport sur vos droits essentiels
+- Guide de classification des emplois
+- Carte mentale interactive
 
 ---
 
-{{% hint info %}}
-## Conseils pratiques
+## Conseils
 
-✅ **Soyez précis** dans vos questions (fonction, ancienneté, situation...)  
-✅ **Consultez les fiches** de l'onglet Studio pour découvrir vos droits  
-✅ **Posez des questions de suivi** pour approfondir un sujet  
-✅ **Utilisez la carte mentale** pour explorer la convention de façon interactive
+✅ Soyez précis (fonction, ancienneté...)  
+✅ Explorez les outils du Studio  
+✅ Posez des questions de suivi  
+✅ Utilisez la carte mentale pour naviguer
+
+{{% hint success %}}
+N'hésite pas à contacter ton syndicat pour toute question ou accompagnement !
 {{% /hint %}}
-
-{{% /details %}}

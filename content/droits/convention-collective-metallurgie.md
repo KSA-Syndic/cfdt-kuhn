@@ -13,7 +13,7 @@ tags:
 
 {{% hint info %}}
 **IDCC 3248** – Convention collective nationale de la métallurgie\
-Applicable à tous depuis le 1ᵉʳ janvier 2024.
+Applicable à tous depuis le 1ᵉʳ janvier 2024 et mise à jour le 10 juin 2024.
 {{% /hint %}}
 
 {{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" title="Convention collective nationale de la métallurgie" as="button" >}}
@@ -23,7 +23,7 @@ Ouvrir la convention
 # Vos droits en détail
 
 {{% hint warning %}}
-Voici tes droits nationaux, soit les minimas garantis. Ce à quoi ont été ajoutées les spécifications de l'accord d'entreprise Kuhn. Des détails vont cependant encore être apportés prochainement.
+Les droits nationaux incluent des minimas garantis, complétés par des accords locaux spécifiques. Cette page sera mise à jour régulièrement pour refléter les spécifications et évolutions.
 {{% /hint %}}
 
 {{% details "Classification" %}}
