@@ -28,7 +28,7 @@ Pour qu'une grève soit valable, il faut :
 
 Le plus souvent, ce sont les syndicats (d’entreprise, de branche ou nationaux) qui appellent à la grève.
 
-{{% details "Voir plus" %}}
+{{% details "Voir ce que dit la loi" %}}
 ### Que dit la loi ?
 
 Une grève correspond à une "cessation collective et concertée du travail dont l'objectif est d'appuyer des revendications professionnelles". Elle se caractérise par un arrêt total de travail sur une durée variable : d'une heure à plusieurs jours ou semaines.
