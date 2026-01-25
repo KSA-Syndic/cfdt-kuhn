@@ -8,27 +8,27 @@ tags: ["droits", "grève", "congés"]
 
 {{< image src="/uploads/images/droits/droit-greve.jpg" alt="Le droit de grève - manifestation de la CFDT Bretagne" title="Le droit de grève - manifestation de la CFDT Bretagne" loading="lazy" >}}
 
-{{% hint info %}}
+{{< hint type="info" >}}
 Ce guide explique simplement le droit de grève et comment se déclarer à KUHN.
-{{% /hint %}}
+{{< /hint >}}
 
 ## Quand et comment faire grève ?
 
 La grève est un **droit constitutionnel** : elle suspend simplement ton contrat de travail pendant la durée de la grève.
 
-{{% hint success %}}
+{{< hint type="success" >}}
 Dans le secteur privé, **aucun préavis n'est nécessaire** !
 Tu peux te déclarer en grève à tout moment, même à la dernière minute (mais prévenir à l'avance reste préférable).
-{{% /hint %}}
+{{< /hint >}}
 
 Pour qu'une grève soit valable, il faut :
 
 - Être au moins deux salariés
-- Avoir des revendications transmises à l’employeur
+- Avoir des revendications transmises à l'employeur
 
-Le plus souvent, ce sont les syndicats (d’entreprise, de branche ou nationaux) qui appellent à la grève.
+Le plus souvent, ce sont les syndicats (d'entreprise, de branche ou nationaux) qui appellent à la grève.
 
-{{% details "Voir ce que dit la loi" %}}
+{{< details title="Voir ce que dit la loi" >}}
 ### Que dit la loi ?
 
 Une grève correspond à une "cessation collective et concertée du travail dont l'objectif est d'appuyer des revendications professionnelles". Elle se caractérise par un arrêt total de travail sur une durée variable : d'une heure à plusieurs jours ou semaines.
@@ -50,7 +50,7 @@ En cas de grève nationale et interprofessionnelle, les revendications collectiv
 Pour la bonne organisation, prévenir ta direction ou ton manager (par mail ou oralement) la veille ou le matin de la grève est recommandé, mais non obligatoire.
 
 Une fois déclaré en grève, tu choisis la durée, tu peux manifester, rester chez toi, ou faire grève sur ton lieu de travail (sans empêcher les non-grévistes de travailler).
-{{% /details %}}
+{{< /details >}}
 
 ## Durée de la grève
 
@@ -65,15 +65,15 @@ L'employeur déduit le temps de grève du salaire, même pour les forfaits jours
 
 ### Pour une journée ou demi-journée
 
-Fais une demande d’absence sur Kelio en sélectionnant `Grève` et `Date à date` ou `Date à date avec demi-journée`.
+Fais une demande d'absence sur Kelio en sélectionnant `Grève` et `Date à date` ou `Date à date avec demi-journée`.
 
 {{<image src="/uploads/images/droits/demande-absence-greve.png" alt="Demande absence grève sur Kelio" title="Demande absence grève sur Kelio" loading="lazy" >}}
 
 ### Pour quelques heures
 
-Fais une demande d’absence sur Kelio en sélectionnant `Grève` et `Date à date heure à heure`.
+Fais une demande d'absence sur Kelio en sélectionnant `Grève` et `Date à date heure à heure`.
 
-{{% details "Voir schéma récapitulatif" %}}
+{{< details title="Voir schéma récapitulatif" >}}
 ## Schéma recapitulatif
 {{< mermaid >}}
 flowchart TD
@@ -141,8 +141,8 @@ classDef success fill:#E3F2FD,stroke:#1E88E5,stroke-width:2px,color:#000;
     class K success
 
 {{< /mermaid >}}
-{{% /details %}}
+{{< /details >}}
 
-{{% hint success %}}
-N’hésite pas à contacter ton syndicat pour toute question ou accompagnement !
-{{% /hint %}}
+{{< hint type="success" >}}
+N'hésite pas à contacter ton syndicat pour toute question ou accompagnement !
+{{< /hint >}}

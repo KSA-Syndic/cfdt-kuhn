@@ -11,10 +11,10 @@ tags:
   - salaire
 ---
 
-{{% hint info %}}
-**IDCC 3248** – Convention collective nationale de la métallurgie\
+{{< hint type="info" >}}
+**IDCC 3248** – Convention collective nationale de la métallurgie
 Applicable à tous depuis le 1ᵉʳ janvier 2024 et mise à jour le 10 juin 2024.
-{{% /hint %}}
+{{< /hint >}}
 
 {{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" title="Convention collective nationale de la métallurgie" as="button" >}}
 Ouvrir la convention
@@ -22,11 +22,11 @@ Ouvrir la convention
 
 # Vos droits en détail
 
-{{% hint warning %}}
+{{< hint type="warning" >}}
 Voici tes droits nationaux, soit les minimas garantis. Ce à quoi ont été ajoutées des spécifications de l'accord d'entreprise Kuhn. D'autres détails vont cependant encore être apportés prochainement.
-{{% /hint %}}
+{{< /hint >}}
 
-{{% details "Classification" %}}
+{{< details title="Classification" >}}
 
 ## Classification des emplois
 
@@ -37,7 +37,7 @@ Voici tes droits nationaux, soit les minimas garantis. Ce à quoi ont été ajou
 
 | Groupe | Classe | Total des degrés minimum | Exemples de postes                         |
 | ------ | ------ | ------------------------ | ------------------------------------------ |
-| A      | 1      | 6                        | Manœuvre, agent d’entretien                |
+| A      | 1      | 6                        | Manœuvre, agent d'entretien                |
 | B      | 3      | 13                       | Ouvrier spécialisé                         |
 | C      | 5      | 19                       | Ouvrier qualifié                           |
 | D      | 7      | 25                       | Technicien débutant                        |
@@ -47,11 +47,13 @@ Voici tes droits nationaux, soit les minimas garantis. Ce à quoi ont été ajou
 | H      | 15     | 49                       | Ingénieur expérimenté, chef de projet      |
 | I      | 17     | 55                       | Expert, cadre dirigeant                    |
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Référentiel de cotation des emplois (6 critères)" page="58" as="link" />}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="58" as="link" >}}
+→ Référentiel de cotation des emplois (6 critères)
+{{< /pdf-modal-btn >}}
 
-{{% /details %}}
+{{< /details >}}
 
-{{% details "Salaires minima" %}}
+{{< details title="Salaires minima" >}}
 
 ## Salaires minima garantis
 
@@ -69,33 +71,35 @@ Une fois ta **classe** connue, tu peux vérifier ton **salaire minima** garanti 
 | H      | 15     | 47 000 €            |
 | I      | 17     | 59 300 €            |
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Barème des salaires minima" page="161" as="link" />}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="161" as="link" >}}
+→ Barème des salaires minima
+{{< /pdf-modal-btn >}}
 
-{{% /details %}}
+{{< /details >}}
 
-{{% details "Prime d’ancienneté" %}}
+{{< details title="Prime d'ancienneté" >}}
 
-## Prime d’ancienneté
+## Prime d'ancienneté
 
-On l'obtient dès 3 ans (2 ans chez Kuhn) dans la même entreprise et elle plafonne à 15 ans d’ancienneté.
+On l'obtient dès 3 ans (2 ans chez Kuhn) dans la même entreprise et elle plafonne à 15 ans d'ancienneté.
 Au national elle ne s'applique qu'aux classes 1 à 10 (groupes A à E).
 Or dans l'accord d'entreprise Kuhn elle est étendue à toutes les classes, avec un barème spécifique (cf. [Chez kuhn](#chez-kuhn)).
 
 ### Au national
 
-Voici les taux applicables selon la classe d’emploi (de 1 à 10) :
+Voici les taux applicables selon la classe d'emploi (de 1 à 10) :
 
-| Classe d’emplois | 1     | 2    | 3     | 4     | 5    | 6     | 7    | 8    | 9    | 10   |
+| Classe d'emplois | 1     | 2    | 3     | 4     | 5    | 6     | 7    | 8    | 9    | 10   |
 | ---------------- | ----- | ---- | ----- | ----- | ---- | ----- | ---- | ---- | ---- | ---- |
 | Taux             | 1,45% | 1,6% | 1,75% | 1,95% | 2,2% | 2,45% | 2,6% | 2,9% | 3,3% | 3,8% |
 
-Prime mensuelle = \[\[valeur du point × taux] × 100] × nombre d’années d’ancienneté
+Prime mensuelle = ((valeur du point × taux) × 100) × nombre d'années d'ancienneté
 
 > Valeur du point = 5,90 € au Bas-Rhin en 2025
 
 **Exemple** :\
-Salarié en classe 1 (A1), valeur du point = 5,90 €, 10 ans d’ancienneté:\
-→  \[\[5,9 × 0,0145] × 100] × 10 = **85,5 € bruts par mois** (base 35 h).
+Salarié en classe 1 (A1), valeur du point = 5,90 €, 10 ans d'ancienneté:\
+→ ((5,9 × 0,0145) × 100) × 10 = **85,5 € bruts par mois** (base 35 h).
 
 #### Et pour les cadres ? (Classes 11 à 18)
 
@@ -106,23 +110,32 @@ Pas de prime d'ancienneté automatique comme pour les classes 1-10.
 * **Indemnité de licenciement majorée** : +20 % si ≥50 ans et ≥5 ans d'ancienneté ; +30 % si ≥55 ans.
 * **Autres avantages** : Possibilité de prime via accord d'entreprise, mais pas de socle national. Vérifie ton contrat ou contacte ton syndicat pour une simulation personnalisée.
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Taux d'ancienneté" page="162" as="link" />}} <br>
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Majorations cadre" page="161" as="link" />}} <br>
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Indemnités licenciement (bas de page)" page="75" as="link" />}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="162" as="link" >}}
+→ Taux d'ancienneté
+{{< /pdf-modal-btn >}}
+
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="161" as="link" >}}
+→ Majorations cadre
+{{< /pdf-modal-btn >}}
+
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="75" as="link" >}}
+→ Indemnités licenciement (bas de page)
+{{< /pdf-modal-btn >}}
 
 ### Chez Kuhn
 
-* prime d’ancienneté dès 2 ans,
+* prime d'ancienneté dès 2 ans,
 * prime applicable à toutes les classes (même les cadres),
 * taux appliqués sur le salaire brut de base (et non sur la valeur du point).
 * barème spécifique :
-  | Nombre d'années d'ancienneté | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  |10  |11  |12  |13  |14  |15  |25  |
-  |------------------------------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-  | Taux                         | 2% | 3% | 4% | 5% | 6% | 7% | 8% | 9% |10% |11% |12% |13% |14% |15% |16% |
 
-{{% /details %}}
+| Années | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  |10  |11  |12  |13  |14  |15  |25  |
+|--------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| Taux   | 2% | 3% | 4% | 5% | 6% | 7% | 8% | 9% |10% |11% |12% |13% |14% |15% |16% |
 
-{{% details "Temps de travail et congés" %}}
+{{< /details >}}
+
+{{< details title="Temps de travail et congés" >}}
 
 ## Temps de travail et congés
 
@@ -132,15 +145,17 @@ Pas de prime d'ancienneté automatique comme pour les classes 1-10.
 * 5 semaines de congés + **1 jour supplémentaire dès que tu as 45 ans**
 * Travail de nuit = −20 min par jour, soit +15 % minimum du salaire horaire
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" text="→ Glossaire relatif à la durée de travail" page="160" as="link" />}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="160" as="link" >}}
+→ Glossaire relatif à la durée de travail
+{{< /pdf-modal-btn >}}
 
-{{% /details %}}
+{{< /details >}}
 
-{{% details "Schéma récapitulatif" %}}
+{{< details title="Schéma récapitulatif" >}}
 
 ## Schéma récapitulatif estimation classification et salaires
 
-``` mermaid
+{{< mermaid >}}
 flowchart TD
     A["Commence ici"]:::start --> B["Je cote mon poste <br> (6 critères)"]:::step
     B --> C["Je calcule le total"]:::step
@@ -155,7 +170,6 @@ flowchart TD
     J -- "Oui" --> K["Rattrapage et arriérés"]:::alert
     J -- "Non" --> L["Tout est conforme"]:::success
 
-%% Styles Mermaid
 classDef start fill:#003087,stroke:#00205b,stroke-width:2px,color:#fff;
 classDef step fill:#e3eafc,stroke:#003087,stroke-width:1.5px,color:#003087;
 classDef question fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#856404;
@@ -171,12 +185,16 @@ class G bonus;
 class H neutral;
 class K alert;
 class L success;
-```
+{{< /mermaid >}}
 
-{{% /details %}}
+{{< /details >}}
 
-> Tu veux en savoir plus ? Le {{< pdf-modal-btn url="/uploads/documents/convention/Classification-Guide.pdf" title="Guide de classification" as="link" >}}guide complet avec exemples réels{{< /pdf-modal-btn >}} est là pour toi.
+Tu veux en savoir plus ? Consulte le guide complet avec exemples réels :
 
-{{% hint success %}}
+{{< pdf-modal-btn url="/uploads/documents/convention/Classification-Guide.pdf" title="Guide de classification" as="button" >}}
+Guide de classification
+{{< /pdf-modal-btn >}}
+
+{{< hint type="success" >}}
 N'hésite pas à contacter ton syndicat pour toute question ou accompagnement !
-{{% /hint %}}
+{{< /hint >}}

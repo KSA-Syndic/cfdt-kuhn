@@ -1,5 +1,5 @@
 ---
-title: Simulateur de Rémunération
+title: Simulateur de rémunération
 date: 2026-01-25T01:00:00.000Z
 draft: false
 bookToC: false
@@ -18,22 +18,14 @@ weight: 2
 
 Estime ta classification et ton salaire selon la convention collective de la métallurgie.
 
-{{% hint warning %}}
+{{< hint type="warning" >}}
 ⚠️ Cet outil calcule ton **salaire minimum**. Ton salaire réel peut être supérieur.
-{{% /hint %}}
+{{< /hint >}}
 
 {{< button href="https://simulateur.cfdt-kuhn.fr/" >}}
 Ouvrir en plein écran ↗
 {{< /button >}}
 
---- 
-{{< html >}}
-<iframe 
-  src="https://simulateur.cfdt-kuhn.fr/" 
-  style="width: 100%; height: 800px; border: 1px solid #ddd; border-radius: 8px;"
-  title="Simulateur de Classification et Rémunération"
-  loading="lazy">
-</iframe>
-{{< /html >}}
+---
 
-
+{{< iframe src="https://simulateur.cfdt-kuhn.fr/" height="800px" title="Simulateur de Classification et Rémunération" >}}

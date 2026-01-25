@@ -8,7 +8,8 @@
     <div class="pdf-modal-header">
       <div class="pdf-modal-title">
         <h3>{{ $title }}</h3>
-        <a href="{{ $url }}" target="_blank" rel="noopener" title="Ouvrir dans nouvel onglet">{{ path.Base $url }}</a>
+        {{- $linkUrl := cond (and $page (ne $page "1")) (printf "%s#page=%s" $url $page) $url -}}
+        <a href="{{ $linkUrl }}" target="_blank" rel="noopener" title="Ouvrir dans nouvel onglet">{{ path.Base $url }}{{ if and $page (ne $page "1") }} (p.{{ $page }}){{ end }}</a>
       </div>
       <span class="pdf-modal-close" onclick="closePdfModal('{{ $id }}')">&times;</span>
     </div>

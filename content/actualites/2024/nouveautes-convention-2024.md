@@ -10,9 +10,9 @@ tags:
   - prime
 ---
 
-{{% hint info %}}
+{{< hint type="info" >}}
 **Avenant du 10 juin 2024** – Les dernières améliorations concrètes de tes droits au quotidien.
-{{% /hint %}}
+{{< /hint >}}
 
 ### 1. Indemnisation maladie à 100 % plus longtemps
 
@@ -23,10 +23,10 @@ tags:
 
 (déduction des IJSS Sécurité sociale – article 91 modifié)
 
-### 2. Prime d’ancienneté simplifiée et revalorisée
+### 2. Prime d'ancienneté simplifiée et revalorisée
 
 Formule 2024 (Annexe 7) :\
-**Minima de la classe × taux (1 à 3 %) × années d’ancienneté** (dès 3 ans pour les groupes A à E)\
+**Minima de la classe × taux (1 à 3 %) × années d'ancienneté** (dès 3 ans pour les groupes A à E)\
 Exemple : technicien groupe E, 10 ans → +15 à 20 % sur son minima.
 
 ### 3. Majorations travail atypique
@@ -38,14 +38,14 @@ Exemple : technicien groupe E, 10 ans → +15 à 20 % sur son minima.
 | Dimanche                   | +100 %                  |
 | Jour férié                 | +50 %                   |
 
-### 4. Dispositif d’Épargne Santé solidaire (DES)
+### 4. Dispositif d'Épargne Santé solidaire (DES)
 
 ≥ 2 % des cotisations santé dédiées à la prévention (TMS, RPS, santé mentale).
 Priorité aux alternants, femmes et aidants.
 
-{{% hint warning %}}
+{{< hint type="warning" >}}
 Un régime frais de santé + prévoyance doit obligatoirement exister dans ton entreprise depuis le 1ᵉʳ janvier 2024. Sinon, alerte ton délégué syndical !
-{{% /hint %}}
+{{< /hint >}}
 
 {{< button href="https://uimm.lafabriquedelavenir.fr/wp-content/uploads/2022/02/CCN_metallurgie_consolidee-au-10-06-2024.pdf" >}}
 Texte consolidé officiel (10/06/2024)

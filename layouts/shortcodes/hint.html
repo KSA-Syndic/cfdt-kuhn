@@ -1,0 +1,12 @@
+{{- /* Supporte: {{% hint info %}}, {{< hint type="info" >}}, et {{< hint info >}} */ -}}
+{{- $type := or (.Get "type") (.Get 0) "default" -}}
+{{- $attributes := partial "docs/text/mapper" (dict
+  "attributes" (cond .IsNamedParams .Params dict)
+  "merge" (dict
+    "class" (slice "book-hint" $type)
+  )
+) -}}
+<blockquote {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
+{{ .Inner | .Page.RenderString -}}
+</blockquote>
+{{- /* remove whitespaces */ -}}

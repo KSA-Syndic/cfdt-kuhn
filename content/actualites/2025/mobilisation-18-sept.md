@@ -8,11 +8,11 @@ tags: ["grève", "budget", "austérité", "retraite", "salaire", "franchise", "f
 
 {{< image src="/uploads/images/actus/greve.jpg" alt="Grève !" title="Grève !" loading="lazy" >}}
 
-{{% hint info %}}
+{{< hint type="info" >}}
 **Journée nationale de mobilisation intersyndicale**
 
 Le 18 septembre 2025, l'intersyndicale (CFDT, CGT, FO, CFE-CGC, CFTC, UNSA, FSU, Solidaires) appelle à la grève et à manifester **contre un projet de budget jugé brutal et injuste**.
-{{% /hint %}}
+{{< /hint >}}
 
 ## Les revendications
 
@@ -30,6 +30,6 @@ L'intersyndicale exige un budget fondé sur la justice sociale et fiscale, la re
 
 ## Comment exercer son droit de grève ?
 
-{{% hint success %}}
+{{< hint type="success" >}}
 Pour tout savoir sur le droit de grève, consultez notre page dédiée : [Comment faire grève ?](/droits/greve)
-{{% /hint %}}
+{{< /hint >}}

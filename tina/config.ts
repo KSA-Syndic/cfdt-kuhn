@@ -2,6 +2,244 @@ import { defineConfig } from "tinacms";
 
 const branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "main";
 
+// === TEMPLATES POUR LES SHORTCODES HUGO ===
+
+// Template Hint (encarts colorés)
+const hintTemplate = {
+  name: "hint",
+  label: "Encart coloré (Hint)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "hint",
+  },
+  fields: [
+    {
+      name: "type",
+      label: "Type",
+      type: "string",
+      required: true,
+      options: [
+        { value: "info", label: "ℹ️ Info (bleu)" },
+        { value: "warning", label: "⚠️ Attention (jaune)" },
+        { value: "success", label: "💡 Succès/Astuce (vert)" },
+        { value: "danger", label: "🚨 Danger (rouge)" },
+      ],
+    },
+    {
+      name: "children",
+      label: "Contenu",
+      type: "rich-text",
+    },
+  ],
+};
+
+const buttonTemplate = {
+  name: "button",
+  label: "Bouton",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "button",
+  },
+  fields: [
+    {
+      name: "href",
+      label: "Lien (URL)",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "children",
+      label: "Texte du bouton",
+      type: "rich-text",
+    },
+  ],
+};
+
+const imageTemplate = {
+  name: "image",
+  label: "Image",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "image",
+  },
+  fields: [
+    {
+      name: "src",
+      label: "Image",
+      type: "image",
+      required: true,
+    },
+    {
+      name: "alt",
+      label: "Texte alternatif",
+      type: "string",
+    },
+    {
+      name: "title",
+      label: "Titre",
+      type: "string",
+    },
+  ],
+};
+
+const detailsTemplate = {
+  name: "details",
+  label: "Accordéon (Details)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "details",
+  },
+  fields: [
+    {
+      name: "title",
+      label: "Titre (visible)",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "children",
+      label: "Contenu (caché)",
+      type: "rich-text",
+    },
+  ],
+};
+
+const htmlTemplate = {
+  name: "html",
+  label: "HTML personnalisé",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "html",
+  },
+  fields: [
+    {
+      name: "children",
+      label: "Code HTML",
+      type: "string",
+      ui: {
+        component: "textarea",
+      },
+    },
+  ],
+};
+
+const iframeTemplate = {
+  name: "iframe",
+  label: "Iframe (site externe)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "iframe",
+  },
+  fields: [
+    {
+      name: "src",
+      label: "URL du site",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "height",
+      label: "Hauteur (ex: 600px)",
+      type: "string",
+    },
+    {
+      name: "title",
+      label: "Titre (accessibilité)",
+      type: "string",
+    },
+  ],
+};
+
+const pdfModalBtnTemplate = {
+  name: "pdf_modal_btn",
+  label: "Bouton PDF (modal)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "pdf-modal-btn",
+  },
+  fields: [
+    {
+      name: "url",
+      label: "URL du PDF",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "page",
+      label: "Page à afficher",
+      type: "string",
+    },
+    {
+      name: "as",
+      label: "Style",
+      type: "string",
+      options: [
+        { value: "link", label: "Lien" },
+        { value: "button", label: "Bouton" },
+      ],
+    },
+    {
+      name: "title",
+      label: "Titre de la modale (optionnel)",
+      type: "string",
+    },
+    {
+      name: "children",
+      label: "Texte affiché",
+      type: "rich-text",
+    },
+  ],
+};
+
+const mermaidTemplate = {
+  name: "mermaid",
+  label: "Diagramme Mermaid",
+  match: {
+    start: "```mermaid",
+    end: "```",
+  },
+  fields: [
+    {
+      name: "children",
+      label: "Code Mermaid",
+      type: "string",
+      ui: {
+        component: "textarea",
+      },
+    },
+  ],
+};
+
+// Liste des templates pour rich-text
+const shortcodeTemplates = [
+  // Shortcodes Hugo
+  hintTemplate,
+  buttonTemplate,
+  imageTemplate,
+  detailsTemplate,
+  htmlTemplate,
+  iframeTemplate,
+  pdfModalBtnTemplate,
+  mermaidTemplate,
+];
+
+// Champ body avec shortcodes
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const bodyFieldWithShortcodes: any = {
+  type: "rich-text",
+  name: "body",
+  label: "Contenu",
+  isBody: true,
+  templates: shortcodeTemplates,
+};
+
 export default defineConfig({
   branch,
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
@@ -52,7 +290,7 @@ export default defineConfig({
           { type: "boolean", name: "bookToC", label: "Afficher table des matières latérale" },
           { type: "string", name: "type", label: "Type", options: ["posts"], ui: { component: "hidden" } },
           { type: "string", name: "tags", label: "Tags", list: true, ui: { component: "tags" } },
-          { type: "rich-text", name: "body", label: "Contenu", isBody: true },
+          bodyFieldWithShortcodes,
         ],
       },
 
@@ -79,11 +317,39 @@ export default defineConfig({
           { type: "boolean", name: "bookToC", label: "Afficher table des matières latérale" },
           { type: "string", name: "type", label: "Type", options: ["docs"], ui: { component: "hidden" } },
           { type: "string", name: "tags", label: "Tags", list: true, ui: { component: "tags" } },
-          { type: "rich-text", name: "body", label: "Contenu", isBody: true },
+          bodyFieldWithShortcodes,
         ],
       },
 
-      // === 3. DOCUMENTS ===
+      // === 3. OUTILS ===
+      {
+        name: "mes_outils",
+        label: "Outils",
+        path: "content/outils",
+        format: "md",
+        match: {
+          include: "**/*",
+          exclude: "_*",
+        },
+        defaultItem: () => ({
+          date: new Date().toISOString(),
+          draft: true,
+          bookToC: false,
+          type: "docs",
+        }),
+        fields: [
+          { type: "string", name: "title", label: "Titre", isTitle: true, required: true },
+          { type: "datetime", name: "date", label: "Date" },
+          { type: "boolean", name: "draft", label: "Brouillon" },
+          { type: "boolean", name: "bookToC", label: "Afficher table des matières latérale" },
+          { type: "string", name: "type", label: "Type", options: ["docs"], ui: { component: "hidden" } },
+          { type: "string", name: "tags", label: "Tags", list: true, ui: { component: "tags" } },
+          { type: "number", name: "weight", label: "Ordre d'affichage" },
+          bodyFieldWithShortcodes,
+        ],
+      },
+
+      // === 4. DOCUMENTS ===
       {
         name: "page_documents",
         label: "Documents",
@@ -103,11 +369,11 @@ export default defineConfig({
           { type: "datetime", name: "date", label: "Date" },
           { type: "boolean", name: "bookToC", label: "Afficher table des matières latérale" },
           { type: "string", name: "type", label: "Type", options: ["posts"], ui: { component: "hidden" } },
-          { type: "rich-text", name: "body", label: "Contenu", isBody: true },
+          bodyFieldWithShortcodes,
         ],
       },
 
-      // === 4. CONTACT ===
+      // === 5. CONTACT ===
       {
         name: "page_contact",
         label: "Contact",
@@ -127,7 +393,7 @@ export default defineConfig({
           { type: "datetime", name: "date", label: "Date" },
           { type: "boolean", name: "bookToC", label: "Afficher table des matières latérale" },
           { type: "string", name: "type", label: "Type", options: ["posts"], ui: { component: "hidden" } },
-          { type: "rich-text", name: "body", label: "Contenu", isBody: true },
+          bodyFieldWithShortcodes,
         ],
       },
     ],
