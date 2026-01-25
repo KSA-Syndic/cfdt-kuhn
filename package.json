@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "tinacms dev -c \"hugo server -D \"",
-    "build": "tinacms build && hugo"
+    "dev:hugo": "hugo server -D",
+    "build": "tinacms build && hugo",
+    "build:hugo": "hugo"
   },
   "keywords": [],
   "author": "",
