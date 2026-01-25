@@ -18,12 +18,12 @@ weight: 2
 
 Estime ta classification et ton salaire selon la convention collective de la métallurgie.
 
-{{< hint type="warning" >}}
-⚠️ Cet outil calcule ton **salaire minimum**. Ton salaire réel peut être supérieur.
+{{< hint type="info" >}}
+💡Cet outil calcule ton **salaire minimum**. Ton salaire réel doit être égal ou supérieur.
 {{< /hint >}}
 
 {{< button href="https://simulateur.cfdt-kuhn.fr/" text="Ouvrir en plein écran ↗" >}}
 
----
+***
 
 {{< iframe src="https://simulateur.cfdt-kuhn.fr/" height="800px" title="Simulateur de Classification et Rémunération" >}}
