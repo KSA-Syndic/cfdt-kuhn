@@ -23,26 +23,17 @@ Estime ta classification et ton salaire selon la convention collective de la mé
 {{% /hint %}}
 
 {{< button href="https://simulateur.cfdt-kuhn.fr/" >}}
-Accéder au Simulateur
+Ouvrir en plein écran ↗
 {{< /button >}}
 
----
+--- 
+{{< html >}}
+<iframe 
+  src="https://simulateur.cfdt-kuhn.fr/" 
+  style="width: 100%; height: 800px; border: 1px solid #ddd; border-radius: 8px;"
+  title="Simulateur de Classification et Rémunération"
+  loading="lazy">
+</iframe>
+{{< /html >}}
 
-## 🔧 Comment ça marche ?
 
-**1. Classification**  
-Entre ta classification (sur ta fiche de paie) ou réponds aux 6 critères pour l'estimer.
-
-**2. Situation**  
-Renseigne ton ancienneté, ton forfait (35h, heures, jours) et tes conditions de travail.
-
-**3. Résultat**  
-Obtiens ton salaire minimum mensuel ou annuel, avec l'option accord Kuhn.
-
----
-
-## ✅ Ce que tu peux calculer
-
-- Ton salaire minimum selon ta classification
-- Les majorations (nuit, dimanche, équipes)
-- L'évolution de ton salaire sur plusieurs années
