@@ -4,7 +4,107 @@ const branch = process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF ||
 
 // === TEMPLATES POUR LES SHORTCODES HUGO ===
 
-// Template Hint (encarts colorés)
+// Templates simples (sans contenu rich-text imbriqué complexe)
+const imageTemplate = {
+  name: "image",
+  label: "Image",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "image",
+  },
+  fields: [
+    { name: "src", label: "Image", type: "image", required: true },
+    { name: "alt", label: "Texte alternatif", type: "string" },
+    { name: "title", label: "Titre", type: "string" },
+  ],
+};
+
+const iframeTemplate = {
+  name: "iframe",
+  label: "Iframe (site externe)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "iframe",
+  },
+  fields: [
+    { name: "src", label: "URL du site", type: "string", required: true },
+    { name: "height", label: "Hauteur (ex: 600px)", type: "string" },
+    { name: "title", label: "Titre (accessibilité)", type: "string" },
+  ],
+};
+
+const htmlTemplate = {
+  name: "html",
+  label: "HTML personnalisé",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "html",
+  },
+  fields: [
+    { name: "children", label: "Code HTML", type: "string", ui: { component: "textarea" } },
+  ],
+};
+
+const mermaidTemplate = {
+  name: "mermaid",
+  label: "Diagramme Mermaid",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "mermaid",
+  },
+  fields: [
+    { name: "children", label: "Code Mermaid", type: "string", ui: { component: "textarea" } },
+  ],
+};
+
+const pdfModalBtnTemplate = {
+  name: "pdf_modal_btn",
+  label: "Bouton PDF (modal)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "pdf-modal-btn",
+  },
+  fields: [
+    { name: "url", label: "URL du PDF", type: "string", required: true },
+    { name: "text", label: "Texte affiché", type: "string", required: true },
+    { name: "page", label: "Page à afficher", type: "string" },
+    { name: "as", label: "Style", type: "string", options: [{ value: "link", label: "Lien" }, { value: "button", label: "Bouton" }] },
+    { name: "title", label: "Titre de la modale (optionnel)", type: "string" },
+  ],
+};
+
+const buttonTemplate = {
+  name: "button",
+  label: "Bouton",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "button",
+  },
+  fields: [
+    { name: "href", label: "Lien (URL)", type: "string", required: true },
+    { name: "text", label: "Texte du bouton", type: "string", required: true },
+  ],
+};
+
+// Templates utilisables à l'intérieur des conteneurs (details, hint)
+// Maintenant que pdf-modal-btn et button utilisent le paramètre "text" au lieu de "children",
+// ils peuvent être inclus sans conflit de parsing
+const innerTemplates = [
+  imageTemplate,
+  iframeTemplate,
+  htmlTemplate,
+  mermaidTemplate,
+  pdfModalBtnTemplate,
+  buttonTemplate,
+];
+
+// Template Hint (encarts colorés) - peut contenir des shortcodes
 const hintTemplate = {
   name: "hint",
   label: "Encart coloré (Hint)",
@@ -30,61 +130,12 @@ const hintTemplate = {
       name: "children",
       label: "Contenu",
       type: "rich-text",
+      templates: innerTemplates,
     },
   ],
 };
 
-const buttonTemplate = {
-  name: "button",
-  label: "Bouton",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "button",
-  },
-  fields: [
-    {
-      name: "href",
-      label: "Lien (URL)",
-      type: "string",
-      required: true,
-    },
-    {
-      name: "children",
-      label: "Texte du bouton",
-      type: "rich-text",
-    },
-  ],
-};
-
-const imageTemplate = {
-  name: "image",
-  label: "Image",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "image",
-  },
-  fields: [
-    {
-      name: "src",
-      label: "Image",
-      type: "image",
-      required: true,
-    },
-    {
-      name: "alt",
-      label: "Texte alternatif",
-      type: "string",
-    },
-    {
-      name: "title",
-      label: "Titre",
-      type: "string",
-    },
-  ],
-};
-
+// Template Details (accordéon) - peut contenir des shortcodes
 const detailsTemplate = {
   name: "details",
   label: "Accordéon (Details)",
@@ -94,140 +145,22 @@ const detailsTemplate = {
     name: "details",
   },
   fields: [
-    {
-      name: "title",
-      label: "Titre (visible)",
-      type: "string",
-      required: true,
-    },
+    { name: "title", label: "Titre (visible)", type: "string", required: true },
     {
       name: "children",
       label: "Contenu (caché)",
       type: "rich-text",
+      templates: innerTemplates,
     },
   ],
 };
 
-const htmlTemplate = {
-  name: "html",
-  label: "HTML personnalisé",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "html",
-  },
-  fields: [
-    {
-      name: "children",
-      label: "Code HTML",
-      type: "string",
-      ui: {
-        component: "textarea",
-      },
-    },
-  ],
-};
-
-const iframeTemplate = {
-  name: "iframe",
-  label: "Iframe (site externe)",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "iframe",
-  },
-  fields: [
-    {
-      name: "src",
-      label: "URL du site",
-      type: "string",
-      required: true,
-    },
-    {
-      name: "height",
-      label: "Hauteur (ex: 600px)",
-      type: "string",
-    },
-    {
-      name: "title",
-      label: "Titre (accessibilité)",
-      type: "string",
-    },
-  ],
-};
-
-const pdfModalBtnTemplate = {
-  name: "pdf_modal_btn",
-  label: "Bouton PDF (modal)",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "pdf-modal-btn",
-  },
-  fields: [
-    {
-      name: "url",
-      label: "URL du PDF",
-      type: "string",
-      required: true,
-    },
-    {
-      name: "page",
-      label: "Page à afficher",
-      type: "string",
-    },
-    {
-      name: "as",
-      label: "Style",
-      type: "string",
-      options: [
-        { value: "link", label: "Lien" },
-        { value: "button", label: "Bouton" },
-      ],
-    },
-    {
-      name: "title",
-      label: "Titre de la modale (optionnel)",
-      type: "string",
-    },
-    {
-      name: "children",
-      label: "Texte affiché",
-      type: "rich-text",
-    },
-  ],
-};
-
-const mermaidTemplate = {
-  name: "mermaid",
-  label: "Diagramme Mermaid",
-  match: {
-    start: "```mermaid",
-    end: "```",
-  },
-  fields: [
-    {
-      name: "children",
-      label: "Code Mermaid",
-      type: "string",
-      ui: {
-        component: "textarea",
-      },
-    },
-  ],
-};
-
-// Liste des templates pour rich-text
+// Liste complète des templates pour le body
+// pdfModalBtnTemplate et buttonTemplate sont déjà dans innerTemplates
 const shortcodeTemplates = [
-  // Shortcodes Hugo
   hintTemplate,
-  buttonTemplate,
-  imageTemplate,
   detailsTemplate,
-  htmlTemplate,
-  iframeTemplate,
-  pdfModalBtnTemplate,
-  mermaidTemplate,
+  ...innerTemplates,
 ];
 
 // Champ body avec shortcodes

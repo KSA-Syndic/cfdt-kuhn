@@ -1,5 +1,7 @@
+{{- /* Format: {{< button href="..." text="Texte" >}} */ -}}
 {{- $href := partial "docs/links/portable-link" (dict "Page" .Page "Destination" (.Get "href")) -}}
 {{- $isRemote := (urls.Parse $href).IsAbs -}}
+{{- $text := .Get "text" -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (cond .IsNamedParams .Params dict)
   "set" (dict
@@ -13,6 +15,6 @@
   "delete" (cond $isRemote (slice) (slice "target" "rel"))
 ) -}}
 <a {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
-  {{- .InnerDeindent -}}
+  {{- $text -}}
 </a>
 {{- /* remove whitespaces */ -}}

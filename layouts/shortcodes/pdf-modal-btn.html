@@ -1,6 +1,7 @@
+{{- /* Format: {{< pdf-modal-btn url="..." text="..." >}} */ -}}
 {{- $url := .Get "url" -}}
-{{- $text := .Get "text" | default (.Inner | markdownify | plainify | chomp) -}}
-{{- $title := .Get "title" | default (.Get "text") | default (.Inner | markdownify | plainify | chomp) | default (path.Base $url) -}}
+{{- $text := .Get "text" | default (path.Base $url) -}}
+{{- $title := .Get "title" | default $text -}}
 {{- $page := .Get "page" | default "1" -}}
 {{- $id := printf "pdf-modal-%s-%s" (substr ($url | md5) 0 8) $page -}}
 {{- $as := .Get "as" | default "link" -}}

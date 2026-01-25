@@ -26,9 +26,7 @@ L'assistant IA répond à tes questions sur la convention collective de la méta
 📌 **Compte Google nécessaire** (gratuit) pour accéder à l'assistant.
 {{< /hint >}}
 
-{{< button href="https://notebooklm.google.com/notebook/bbac285e-4d34-467d-81fb-c2b482f0ad3a" >}}
-Accéder à l'Assistant IA
-{{< /button >}}
+{{< button href="https://notebooklm.google.com/notebook/bbac285e-4d34-467d-81fb-c2b482f0ad3a" text="Accéder à l'Assistant IA" >}}
 
 ---
 

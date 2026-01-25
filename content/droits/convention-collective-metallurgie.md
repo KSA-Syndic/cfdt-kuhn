@@ -16,9 +16,7 @@ tags:
 Applicable à tous depuis le 1ᵉʳ janvier 2024 et mise à jour le 10 juin 2024.
 {{< /hint >}}
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" title="Convention collective nationale de la métallurgie" as="button" >}}
-Ouvrir la convention
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" title="Convention collective nationale de la métallurgie" as="button" text="Ouvrir la convention" >}}
 
 # Vos droits en détail
 
@@ -47,9 +45,7 @@ Voici tes droits nationaux, soit les minimas garantis. Ce à quoi ont été ajou
 | H      | 15     | 49                       | Ingénieur expérimenté, chef de projet      |
 | I      | 17     | 55                       | Expert, cadre dirigeant                    |
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="58" as="link" >}}
-→ Référentiel de cotation des emplois (6 critères)
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="58" as="link" text="→ Référentiel de cotation des emplois (6 critères)" >}}
 
 {{< /details >}}
 
@@ -71,9 +67,7 @@ Une fois ta **classe** connue, tu peux vérifier ton **salaire minima** garanti 
 | H      | 15     | 47 000 €            |
 | I      | 17     | 59 300 €            |
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="161" as="link" >}}
-→ Barème des salaires minima
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="161" as="link" text="→ Barème des salaires minima" >}}
 
 {{< /details >}}
 
@@ -110,17 +104,11 @@ Pas de prime d'ancienneté automatique comme pour les classes 1-10.
 * **Indemnité de licenciement majorée** : +20 % si ≥50 ans et ≥5 ans d'ancienneté ; +30 % si ≥55 ans.
 * **Autres avantages** : Possibilité de prime via accord d'entreprise, mais pas de socle national. Vérifie ton contrat ou contacte ton syndicat pour une simulation personnalisée.
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="162" as="link" >}}
-→ Taux d'ancienneté
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="162" as="link" text="→ Taux d'ancienneté" >}}
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="161" as="link" >}}
-→ Majorations cadre
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="161" as="link" text="→ Majorations cadre" >}}
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="75" as="link" >}}
-→ Indemnités licenciement (bas de page)
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="75" as="link" text="→ Indemnités licenciement (bas de page)" >}}
 
 ### Chez Kuhn
 
@@ -145,9 +133,7 @@ Pas de prime d'ancienneté automatique comme pour les classes 1-10.
 * 5 semaines de congés + **1 jour supplémentaire dès que tu as 45 ans**
 * Travail de nuit = −20 min par jour, soit +15 % minimum du salaire horaire
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="160" as="link" >}}
-→ Glossaire relatif à la durée de travail
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="160" as="link" text="→ Glossaire relatif à la durée de travail" >}}
 
 {{< /details >}}
 
@@ -191,9 +177,7 @@ class L success;
 
 Tu veux en savoir plus ? Consulte le guide complet avec exemples réels :
 
-{{< pdf-modal-btn url="/uploads/documents/convention/Classification-Guide.pdf" title="Guide de classification" as="button" >}}
-Guide de classification
-{{< /pdf-modal-btn >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/Classification-Guide.pdf" title="Guide de classification" as="button" text="Guide de classification" >}}
 
 {{< hint type="success" >}}
 N'hésite pas à contacter ton syndicat pour toute question ou accompagnement !

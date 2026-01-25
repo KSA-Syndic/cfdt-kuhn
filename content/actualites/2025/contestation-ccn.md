@@ -27,8 +27,6 @@ L'organisation patronale soutient que les primes d'ancienneté prévues par acco
 
 La FGMM-CFDT dénonce l'absurdité de cette interprétation.
 
-{{< button href="https://cfdt-fgmm.fr/wp-content/uploads/AFFICHE-ARTCLE-140.pdf" >}}
-Voir l'affiche CFDT sur l'article 140
-{{< /button >}}
+{{< button href="https://cfdt-fgmm.fr/wp-content/uploads/AFFICHE-ARTCLE-140.pdf" text="Voir l'affiche CFDT sur l'article 140" >}}
 
 ![Logo CFDT Kuhn](/uploads/images/logos/cfdt-kuhn.png)
