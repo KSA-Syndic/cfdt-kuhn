@@ -92,19 +92,7 @@ const buttonTemplate = {
   ],
 };
 
-// Templates utilisables à l'intérieur des conteneurs (details, hint)
-// Maintenant que pdf-modal-btn et button utilisent le paramètre "text" au lieu de "children",
-// ils peuvent être inclus sans conflit de parsing
-const innerTemplates = [
-  imageTemplate,
-  iframeTemplate,
-  htmlTemplate,
-  mermaidTemplate,
-  pdfModalBtnTemplate,
-  buttonTemplate,
-];
-
-// Template Hint (encarts colorés) - peut contenir des shortcodes
+// Template Hint (encarts colorés) - peut contenir des shortcodes (ou pas)
 const hintTemplate = {
   name: "hint",
   label: "Encart coloré (Hint)",
@@ -130,12 +118,11 @@ const hintTemplate = {
       name: "children",
       label: "Contenu",
       type: "rich-text",
-      templates: innerTemplates,
     },
   ],
 };
 
-// Template Details (accordéon) - peut contenir des shortcodes
+// Template Details (accordéon) - peut contenir des shortcodes (ou pas)
 const detailsTemplate = {
   name: "details",
   label: "Accordéon (Details)",
@@ -150,7 +137,6 @@ const detailsTemplate = {
       name: "children",
       label: "Contenu (caché)",
       type: "rich-text",
-      templates: innerTemplates,
     },
   ],
 };
@@ -160,7 +146,12 @@ const detailsTemplate = {
 const shortcodeTemplates = [
   hintTemplate,
   detailsTemplate,
-  ...innerTemplates,
+  imageTemplate,
+  iframeTemplate,
+  htmlTemplate,
+  mermaidTemplate,
+  pdfModalBtnTemplate,
+  buttonTemplate,
 ];
 
 // Champ body avec shortcodes
