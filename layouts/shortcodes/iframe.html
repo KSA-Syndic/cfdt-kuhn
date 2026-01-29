@@ -3,7 +3,7 @@
 {{- $title := .Get "title" | default "Contenu intégré" -}}
 <iframe 
   src="{{ $src }}" 
-  style="width: 100%; height: {{ $height }}; border: 1px solid #ddd; border-radius: 8px;"
+  style="width: 100%; height: {{ $height }}; border: none;"
   title="{{ $title }}"
   loading="lazy">
 </iframe>

@@ -26,4 +26,4 @@ Estime ta classification et ton salaire selon la convention collective de la mé
 
 ***
 
-{{< iframe src="https://simulateur.cfdt-kuhn.fr/" height="800px" title="Simulateur de Classification et Rémunération" >}}
+{{< iframe src="https://simulateur.cfdt-kuhn.fr?accord=kuhn&iframe=true&bgcolor=white" height="800px" title="Simulateur de Classification et Rémunération" >}}
