@@ -22,7 +22,7 @@ Estime ta classification et ton salaire selon la convention collective de la mé
 💡Cet outil calcule ton **salaire minimum**. Ton salaire réel doit être égal ou supérieur.
 {{< /hint >}}
 
-{{< button href="https://simulateur.cfdt-kuhn.fr/" text="Ouvrir en plein écran ↗" >}}
+{{< button href="https://simulateur.cfdt-kuhn.fr?accord=kuhn" text="Ouvrir en plein écran ↗" >}}
 
 ***
 
