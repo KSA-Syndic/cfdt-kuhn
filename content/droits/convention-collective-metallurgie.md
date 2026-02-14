@@ -105,9 +105,9 @@ Pas de prime d'ancienneté automatique comme pour les classes 1-10.
 * **Autres avantages** : Possibilité de prime via accord d'entreprise, mais pas de socle national. Vérifie ton contrat ou contacte ton syndicat pour une simulation personnalisée.
 
 {{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="162" as="link" text="→ Taux d'ancienneté" >}}
-
+<br>
 {{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="161" as="link" text="→ Majorations cadre" >}}
-
+<br>
 {{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="75" as="link" text="→ Indemnités licenciement (bas de page)" >}}
 
 ### Chez Kuhn
