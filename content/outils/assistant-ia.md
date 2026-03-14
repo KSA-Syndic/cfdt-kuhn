@@ -19,14 +19,14 @@ weight: 1
 L'assistant IA répond à tes questions sur la convention collective de la métallurgie.
 
 {{< hint type="warning" >}}
-⚠️ Cet outil donne des infos sur tes droits minimaux. Pour toute question complexe, contacte ton délégué syndical.
+⚠️ Cet outil donne des infos sur tes droits minima. Pour toute question complexe, contacte ton délégué syndical.
 {{< /hint >}}
 
 {{< hint type="info" >}}
 📌 **Compte Google nécessaire** (gratuit) pour accéder à l'assistant.
 {{< /hint >}}
 
-{{< button href="https://notebooklm.google.com/notebook/bbac285e-4d34-467d-81fb-c2b482f0ad3a" text="Accéder à l'Assistant IA" >}}
+{{< button href="https://notebooklm.google.com/notebook/bbac285e-4d34-467d-81fb-c2b482f0ad3a" text="Accéder à l'Assistant IA ↗" >}}
 
 ---
 

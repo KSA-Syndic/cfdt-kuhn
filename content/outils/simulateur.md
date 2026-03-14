@@ -22,6 +22,11 @@ Estime ta classification et ton salaire selon la convention collective de la mé
 💡Cet outil calcule ton **salaire minimum**. Ton salaire réel doit être égal ou supérieur.
 {{< /hint >}}
 
+{{< hint type="warning" >}}
+Vigilance méthode : le minimum conventionnel se vérifie sur une **base annuelle** et en tenant compte de ton **temps de travail** (35 h, horaire supérieur/inférieur, forfait avec majoration éventuelle).  
+Le résultat mensuel est un repère, mais la comparaison juridique se fait sur le **cumul de l'année civile**.
+{{< /hint >}}
+
 {{< button href="https://simulateur.cfdt-kuhn.fr?accord=kuhn" text="Ouvrir en plein écran ↗" >}}
 
 ***
