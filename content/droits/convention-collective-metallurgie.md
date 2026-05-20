@@ -1,5 +1,5 @@
 ---
-title: Convention collective métallurgie
+title: CCNM - Convention collective métallurgie
 date: 2026-03-14T00:00:00.000Z
 draft: false
 bookToC: true
@@ -10,6 +10,8 @@ tags:
   - classification
   - salaire
 ---
+
+{{< image src="/uploads/images/droits/Nouvelle-convention-vous-etes-ici.webp" alt="Schéma : nouvelle convention métallurgie — vous êtes ici" title="Nouvelle convention métallurgie" loading="lazy" class="book-image--narrow" >}}
 
 {{< hint type="info" >}}
 **IDCC 3248** – Convention collective nationale de la métallurgie (CCNM). \

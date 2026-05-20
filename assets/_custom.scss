@@ -1,0 +1,12 @@
+// Images d'articles (droits) : largeur réduite (CCNM, CET, etc.) ; zoom plein écran inchangé (état :checked)
+.book-image input:not(:checked) + img.book-image--narrow {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  margin-inline: auto;
+}
+
+.book-image input:checked + img.book-image--narrow {
+  max-width: none;
+}
