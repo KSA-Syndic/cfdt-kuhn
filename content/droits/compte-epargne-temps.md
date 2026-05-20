@@ -1,5 +1,5 @@
 ---
-title: "CET - Compte épargne-temps"
+title: "Compte épargne-temps (CET)"
 date: "2026-05-20T12:00:00+02:00"
 draft: false
 type: "docs"
@@ -8,10 +8,6 @@ bookToC: true
 ---
 
 {{< image src="/uploads/images/droits/visuel_cet.webp" alt="Visuel Compte épargne-temps (CET)" title="Compte épargne-temps" loading="lazy" class="book-image--narrow" >}}
-
-{{< hint type="info" >}}
-National (métallurgie, CCNM IDCC 3248 depuis le 1ᵉʳ janvier 2024) : [Convention collective métallurgie](/droits/convention-collective-metallurgie/). À Saverne, ton quotidien dépend aussi de l’accord d’entreprise (calendrier, intranet, cas particuliers).
-{{< /hint >}}
 
 ## Le CET, c’est quoi au juste ?
 
@@ -36,11 +32,7 @@ Depuis le 1ᵉʳ janvier 2024, la CCNM encadre le CET pour toute la métallurgie
 
 ### Qui peut ouvrir un compte ?
 
-L’accord d’entreprise lie en pratique l’ouverture du CET aux salariés en CDI ayant au moins 6 mois d’ancienneté. Pour ouvrir un compte, tu dois faire une demande écrite : le formulaire est en principe publié sur l’intranet d’entreprise (tu ne le récupères pas forcément au guichet RH). Si tu ne le trouves pas, RH ou délégation peuvent t’indiquer où il se trouve.
-
-{{< hint type="warning" >}}
-Garde une trace de ton envoi (copie, accusé de réception, mail de confirmation). Pour toute question de statut (intérimaire, contrat court, etc.), va directement aux RH : c’est le texte applicable et la jurisprudence qui tranchent, pas les rumeurs.
-{{< /hint >}}
+En théorie, l’ouverture du CET est éligible aux salariés en CDI ayant au moins 6 mois d’ancienneté. Et pour ouvrir un compte, il faudrait faire une demande écrite. En pratique il est acté automatiquement lors de l'embauche chez KUHN.
 
 ### L’« automatisme » des dates de fin de période
 
@@ -68,13 +60,13 @@ Monétisation : tu peux viser un complément de salaire, mais seuls les droits a
 
 ### Texte de l’accord : historique et accès
 
-Les accords ont été signés puis mis à jour ; les dates ci-dessous servent surtout si tu veux le contexte ou savoir où récupérer le texte officiel et les formulaires.
+Les accords ont été signés puis mis à jour ; les dates ci-dessous servent surtout si tu veux le contexte ou savoir où consulter le texte officiel et les modalités de demande.
 
-{{< details title="Signatures, dates clés et intranet" >}}
+{{< details title="Signatures, dates clés et où lire le texte" >}}
 - Origine : accord du 20 décembre 2005, après la loi du 31 mars 2005 sur le temps de travail.  
 - Maintien 2024 : accord du 6 mars 2024 pour garder l’esprit du dispositif tout en l’alignant sur la convention de branche en vigueur.  
 - Signataires : direction KUHN S.A. et délégations CFDT et FO ; dépôt légal et affichage en entreprise.  
-  Pour le texte à jour et les formulaires, l’intranet d’entreprise fait office de référence ; si tu ne vois pas où cliquer, les élus CFDT peuvent t’aiguiller.
+  Pour le texte à jour et toute pièce ou formulaire prévu par la loi ou l’accord, les RH font référence ; la délégation peut t’aiguiller si besoin.
 {{< /details >}}
 
 ## Sur ton bulletin de paie
