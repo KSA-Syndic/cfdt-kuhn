@@ -10,7 +10,7 @@ bookToC: true
 {{< image src="/uploads/images/droits/visuel_cet.webp" alt="Visuel Compte épargne-temps (CET)" title="Compte épargne-temps" loading="lazy" class="book-image--narrow" >}}
 
 {{< hint type="info" >}}
-Branche métallurgie (CCNM IDCC 3248) depuis le 1ᵉʳ janvier 2024 : [Convention collective métallurgie](/droits/convention-collective-metallurgie/). Chez KUHN, l'accord d'entreprise et les RH complètent ce cadre.
+Branche métallurgie (CCNM IDCC 3248) depuis le 1ᵉʳ janvier 2024 : [Convention collective métallurgie](/droits/convention-collective-metallurgie/). L'accord d'entreprise KUHN et les RH complètent ce cadre.
 {{< /hint >}}
 
 ## Le CET, c'est quoi ?
@@ -40,13 +40,9 @@ Garde une trace de tes échanges avec les RH. Pour toute question de statut part
 | Forfait jours | Repos pour rester sous le plafond de 218 jours / an |
 | Heures sup' | Parfois converties en temps si les textes le prévoient |
 
-La contre-valeur du temps épargné suit l'évolution de ton salaire (un jour posé après une promotion vaut au niveau de ta nouvelle rémunération).
+La contre-valeur du temps épargné suit l'évolution du salaire : un jour posé après une promotion se calcule au nouveau niveau de rémunération. Seuls les droits au-delà des 5 semaines légales de congés payés peuvent être convertis en argent — la 5ᵉ semaine doit rester du repos.
 
-Complément de salaire : uniquement les droits au-delà des 5 semaines légales de CP ; la 5ᵉ semaine doit rester du repos.
-
-### Versements automatiques en fin de période
-
-Si des droits non pris restent à la clôture, ils sont orientés vers le CET selon ce calendrier :
+À la clôture de période, les droits non pris sont automatiquement orientés vers le CET :
 
 | Date | Compteurs |
 | :--- | :-------- |
@@ -57,13 +53,13 @@ Ces mouvements apparaissent sur la paie selon ce qui a été validé avec l'empl
 
 ## Utilisation
 
-- **Longs congés** : parental, sabbatique, création d'entreprise, congé CET classique.
+**Longs congés** — parental, sabbatique, création d'entreprise, congé CET classique.
 
-- **Retraite** : rachat de trimestres ou versements vers un PER ou dispositif d'épargne retraite d'entreprise (selon l'offre disponible chez KUHN).
+**Retraite** — rachat de trimestres ou versements vers un PER ou dispositif d'épargne retraite d'entreprise (selon l'offre disponible chez KUHN).
 
-- **Fin de carrière** : cessation progressive ou temps partiel fin de carrière si ouvert.
+**Fin de carrière** — cessation progressive ou temps partiel si ouvert.
 
-- **Complément de salaire** : dans les limites légales et conventionnelles.
+**Complément de salaire** — dans les limites légales et conventionnelles.
 
 ## Poser un congé CET
 
@@ -88,13 +84,13 @@ Charges fortes ou pics de production : négocie tôt avec ton responsable et les
 | Transfert | Vers un nouvel employeur avec CET, par accord tripartite. |
 | Décès | Versement aux ayants droit. |
 
-Clôture volontaire en détail : l'accord du 20 décembre 2005 prévoyait 12 mois d'attente avant de rouvrir un compte ; vérifie si l'accord du 6 mars 2024 reprend cette clause telle quelle auprès des RH.
+Sur la clôture volontaire : l'accord de 2005 prévoyait 12 mois avant de rouvrir un CET — vérifie avec les RH si l'accord du 6 mars 2024 reprend cette clause.
 
 {{< hint type="warning" >}}
 Doute sur la clôture ou les 12 mois : le texte signé chez KUHN et les RH font foi.
 {{< /hint >}}
 
-## Sur la paie et garantie des droits
+## Paie et garantie des droits
 
 Tu vois ton CET en heures, jours ou montant sur ta fiche de paie. En cas d'écart avec ce que tu as demandé ou signé, les RH sont l'interlocuteur.
 
@@ -114,9 +110,7 @@ Référence : [AGS — plafonds 2026](https://www.ags-garantie-salaires.org/avan
 Point de vigilance SMH : l'arrêt du 2 décembre 2025 rappelle qu'une liquidation de CET ne peut pas servir à atteindre artificiellement le salaire minimum hiérarchique annuel — le CET reste un report ou complément différé.
 {{< /details >}}
 
-## Accords et références
-
-{{< details title="Historique, signataires, où lire le texte" >}}
+{{< details title="Accords, signataires et où lire le texte" >}}
 - Accord d'origine : 20 décembre 2005, issu de la loi du 31 mars 2005 sur le temps de travail.
 - Accord de maintien : 6 mars 2024, alignement sur la CCNM en gardant l'esprit du dispositif.
 - Signataires : direction KUHN S.A. et délégations CFDT et FO ; dépôt légal et affichage en entreprise.

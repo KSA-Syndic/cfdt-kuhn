@@ -10,180 +10,128 @@ bookToC: true
 {{< image src="/uploads/images/droits/télétravail-productif.jpg" alt="Télétravail productif" title="Télétravail" loading="lazy" class="book-image--narrow" >}}
 
 {{< hint type="info" >}}
-La loi encadre le télétravail aux articles L. 1222-9 et suivants du Code du travail (ordonnance de 2017). Chez KUHN, c'est la charte du télétravail — signée le 1ᵉʳ juin 2022, en vigueur depuis le 1ᵉʳ octobre 2022 — qui fixe les règles du télétravail occasionnel pour l'UES KUHN / KUHN MGM. La charte et ses annexes sont accessibles via l'intranet (rubrique RH).
+Encadré par les articles L. 1222-9 et suivants du Code du travail. Chez KUHN, la charte du télétravail occasionnel (UES KUHN / KUHN MGM) est en vigueur depuis le 1ᵉʳ octobre 2022 — disponible sur l'intranet, rubrique RH.
 {{< /hint >}}
 
-## Définition
+## C'est quoi ?
 
-Le télétravail, c'est toute forme d'organisation du travail dans laquelle un travail, qui aurait pu être fait dans les locaux de l'entreprise, est effectué hors de ces locaux, de façon volontaire, avec les outils numériques.
+Travailler depuis chez soi sur des tâches qu'on aurait pu faire au bureau, avec les outils numériques. La charte parle de télétravail **occasionnel** : ce n'est ni un droit automatique ni une obligation. Ça se fait à ta demande, avec l'accord de ton responsable, et ça repose sur la confiance mutuelle.
 
-La charte traite uniquement du télétravail occasionnel. Ce n'est ni un droit automatique ni une obligation : tout repose sur le volontariat du salarié et l'accord de son responsable hiérarchique.
+## Suis-je éligible ?
 
-## Éligibilité
+Quelques postes sont exclus d'office : présence physique permanente, matériel uniquement sur site, ou besoin d'encadrement très proche. Les apprentis, stagiaires et salariés en professionnalisation non plus.
 
-### Postes non compatibles
+Pour les autres, il faut remplir toutes ces conditions :
 
-Sont exclus du télétravail les postes qui :
+- Au moins un an dans le poste (autonomie suffisante)
+- Travailler à 80 % ou plus
+- Maîtriser ses outils informatiques et les règles de cybersécurité
+- Avoir un poste compatible à distance, sans reporter du travail sur ses collègues
+- Disposer d'un espace à domicile adapté (voir Annexe 1a)
 
-- exigent une présence physique permanente dans les locaux ;
-- font appel à des ressources ou équipements uniquement disponibles sur site ;
-- nécessitent un encadrement rapproché, la présence physique étant indispensable à la formation ou à l'insertion.
-
-### Critères cumulatifs pour le salarié (article 2)
-
-- Ne pas être apprenti, stagiaire, en contrat ou période de professionnalisation.
-- Avoir une ancienneté suffisante dans le poste pour travailler de façon autonome, en général au moins un an.
-- Travailler à 80 % ou plus (référence 35 h / semaine).
-- Occuper un poste dont l'activité est compatible avec le télétravail (outils informatisés, communications à distance).
-- Maîtriser les applications nécessaires à son activité et les règles de cybersécurité.
-- Exercer une fonction dont l'exécution en télétravail est compatible avec le bon fonctionnement du service, sans reporter des tâches sur les collègues.
-- Disposer d'un lieu de télétravail conforme (hygiène, sécurité, connexion suffisante — voir Annexe 1a de la charte).
-
-### Cas particuliers
-
-**Salariées enceintes** : des aménagements spécifiques peuvent être mis en place pour celles qui sont éligibles au télétravail occasionnel. La demande se fait auprès du responsable hiérarchique, qui l'examine conjointement avec les RH.
-
-**Travailleur handicapé / proche aidant** : la compatibilité avec le télétravail est examinée attentivement pour ne pas exclure à tort. Ce statut ne peut pas servir seul de motif de refus ou d'acceptation.
+Situation de handicap ou proche aidant : examiné attentivement au cas par cas, ce statut ne justifie ni un refus ni une acceptation automatique. Les salariées enceintes éligibles peuvent bénéficier d'aménagements spécifiques — à voir avec le responsable et les RH.
 
 {{< hint type="warning" >}}
-Si ton poste ou ton service ne remplit pas les critères, c'est le cadre fixé par l'employeur après analyse — pas une sanction personnelle.
+Si ton poste ou ton service n'est pas compatible, ce n'est pas une sanction, c'est le cadre fixé par l'employeur.
 {{< /hint >}}
 
-## Demande d'accès
+## Comment faire la demande ?
 
-**Étape 1 — Demande initiale**
+1. Tu remets à ton responsable l'attestation sur l'honneur **(Annexe 1a)** : espace adapté, électricité aux normes, réseau suffisant, assurance habitation couvrant l'usage professionnel.
+2. Entretien avec le responsable sur ton éligibilité.
+3. Si accord : il complète la demande **(Annexe 1b)** et transmet les deux documents aux RH.
+4. Ensuite, pour chaque jour ou demi-journée : demande dans **Suivi d'activité** sur l'intranet, au moins une semaine avant. Sans validation du responsable, pas de télétravail.
 
-Tu remets à ton responsable l'attestation sur l'honneur (Annexe 1a de la charte) : espace de travail conforme, installations électriques aux normes, réseau suffisant, assurance habitation couvrant l'usage professionnel occasionnel.
-
-**Étape 2 — Entretien**
-
-Ton responsable examine si les critères d'éligibilité sont remplis.
-
-**Étape 3 — Accord de principe**
-
-En cas d'accord, ton responsable complète le formulaire de demande (Annexe 1b) et transmet les deux documents (1a + 1b) aux RH.
-
-**Étape 4 — Chaque jour de télétravail**
-
-Une fois l'accord obtenu, chaque journée ou demi-journée se demande dans l'application « Suivi d'activité » de l'intranet, au minimum une semaine avant. Sans validation du responsable, le télétravail n'est pas autorisé.
-
-En cas de refus de la demande initiale, une réponse écrite doit intervenir au plus tard dans le mois suivant. En cas de désaccord, les RH jouent un rôle de médiateur, mais la décision finale appartient au responsable hiérarchique.
+Refus : réponse écrite dans le mois. Désaccord : les RH peuvent jouer un rôle de médiateur, mais la décision finale revient au responsable.
 
 {{< hint type="warning" >}}
-Garde une trace de tes demandes dans Suivi d'activité et de tes échanges avec ton responsable.
+Garde une trace de tes demandes et échanges — mails, captures, accusés de réception.
 {{< /hint >}}
 
-## Quotas et organisation
+## Quotas et rythme
 
-La période de référence va du 1ᵉʳ octobre au 30 septembre. Le quota est proratisé en cas d'entrée ou de changement de temps de travail en cours de période. Le solde est visible dans Suivi d'activité.
+Période : du 1ᵉʳ octobre au 30 septembre (proratisée si ton temps de travail change). Solde visible dans Suivi d'activité.
 
-| Temps de travail | Jours de télétravail / an |
-| :---------------- | ------------------------: |
-| Temps plein | 40 jours |
-| 80 % ou plus | 30 jours |
+| Temps de travail | Jours / an |
+| :---------------- | ---------: |
+| Temps plein | 40 |
+| 80 % ou plus | 30 |
 
-- En principe : 1 jour par semaine (ou 2 demi-journées). Le jour ou la demi-journée non utilisé ne se reporte pas et n'est pas cumulable.
-- Présence attendue sur site : 4 jours / semaine (3 jours pour les personnes à 80 % ou plus).
-- Plus d'un jour la même semaine : possible en cas de circonstances particulières avec accord du responsable — ces jours supplémentaires s'imputent sur le quota annuel.
-- Au 30 septembre : remise à zéro du compteur, sans report possible.
-- Certaines périodes peuvent être exclues (forte activité, sous-effectif) ; le télétravail ne prime jamais sur les réunions ou la présence physique requise.
+- 1 jour max par semaine (ou 2 demi-journées) — le non-pris ne se reporte pas.
+- Présence sur site : 4 j / semaine en temps plein, 3 j à 80 %.
+- Plus d'un jour dans la semaine : possible sur accord du responsable, déduit du quota.
+- Au 30 septembre, le compteur repart à zéro.
+- Certaines périodes (forte activité, sous-effectif) peuvent exclure le télétravail — il ne prime jamais sur une réunion ou une présence requise.
 
-## Le jour de télétravail
+## Le jour J
 
-- Joignable sur les horaires habituels de l'équipe (Teams activé, visioconférence, téléphone) ; les plages apparaissent dans Outlook.
-- Ne pas quitter son lieu de télétravail pendant les heures de travail sans motif valable et sans prévenir son responsable.
-- Heures supplémentaires et travail les jours fériés ou le week-end : interdits sans autorisation écrite préalable du responsable.
-- Garde d'enfants : à organiser par tes propres moyens.
-- Respecter l'accord d'entreprise sur le droit à la déconnexion en dehors des horaires habituels.
-- Charge de travail : équivalente à celle attendue en présentiel. En cas de difficulté, contacter sa hiérarchie rapidement.
-- L'entretien annuel est l'occasion de faire le point sur les conditions d'activité en télétravail et la charge de travail.
+- Joignable pendant tes horaires habituels : Teams activé, téléphone, visio. Plages visibles dans Outlook.
+- Pas d'absence du lieu de télétravail sans motif valable et sans prévenir ton responsable.
+- Heures sup ou travail le week-end / férié : interdits sans autorisation écrite préalable.
+- Garde d'enfants : à organiser de ton côté.
+- Charge de travail identique au présentiel. En cas de difficulté, prévenir sa hiérarchie rapidement.
+- L'entretien annuel est l'occasion de faire le bilan sur le télétravail et la charge.
 
-Sur le trombinoscope, le télétravail est matérialisé par le logo « TT ».
+Le trombinoscope affiche un logo « TT » pour identifier les télétravailleurs du jour.
 
 ## Lieu et matériel
 
-Le télétravail se pratique au domicile habituel du salarié. À titre exceptionnel, un autre lieu est possible avec accord du responsable, à condition de pouvoir rejoindre les locaux rapidement si besoin.
+Le télétravail se fait à ton domicile habituel. Un autre lieu est possible exceptionnellement avec accord du responsable, à condition de pouvoir rejoindre les locaux rapidement. Tout changement d'adresse doit être déclaré — les conditions sont réexaminées.
 
-Tout changement d'adresse de télétravail doit être déclaré à l'entreprise ; les conditions d'éligibilité sont alors réexaminées.
+L'entreprise peut prêter du matériel : usage strictement professionnel, restitution à sa demande, pas de déplacement à une autre adresse sans accord. En cas de panne, contacter le service informatique (formulaire « ask » ou téléphone) — si le problème ne se règle pas à distance, retour sur site.
 
-L'entreprise peut prêter le matériel nécessaire ; il reste sa propriété, est réservé à un usage strictement professionnel et doit être restitué en bon état à sa demande. Le matériel ne peut pas être déplacé dans un autre lieu sans accord préalable de l'employeur.
-
-En cas de panne : contacter le service informatique via le formulaire « ask » ou par téléphone. Si le problème ne peut pas être résolu à distance, retour sur site.
-
-L'utilisation des moyens informatiques (connexions, messagerie, flux de données) est tracée et peut être contrôlée dans le respect de la législation.
-
-Pas de prise en charge de frais liés au télétravail, ce dispositif étant mis en place à la demande et sur la base du volontariat.
+Aucun remboursement de frais n'est prévu pour ce télétravail occasionnel à ta demande.
 
 {{< details title="Annexe 1a — ce que tu certifies" >}}
-- Disposer d'un espace dédié adapté au travail.
-- Installations électriques conformes aux normes (prise de terre, disjoncteur).
-- Connexion réseau sécurisée et suffisante :
-  - Bureautique (Teams, messagerie, outils Office, ERP) : minimum 2 Mbit/s en montant et en descendant.
-  - CAO : minimum 5 Mbit/s en montant et en descendant.
+- Espace dédié adapté au travail.
+- Installations électriques conformes : prise de terre, disjoncteur.
+- Connexion réseau sécurisée et suffisante : 2 Mbit/s min. (bureautique), 5 Mbit/s min. (CAO) en montant et descendant.
 - Assurance habitation couvrant l'usage professionnel occasionnel.
 
-Test de débit possible depuis le domicile : [speedtest.kuhngroup.net](http://speedtest.kuhngroup.net/). Un test réseau peut aussi être réalisé par le service informatique avant validation.
+Test de débit depuis le domicile : [speedtest.kuhngroup.net](http://speedtest.kuhngroup.net/). Le service informatique peut aussi effectuer le test avant validation.
 {{< /details >}}
 
-## Droits du salarié
+## Tes droits
 
-Le salarié en télétravail bénéficie des mêmes droits et avantages légaux et conventionnels que les autres salariés. Le télétravail n'a aucune incidence sur l'évolution professionnelle ni sur l'accès à la formation.
+Tu gardes exactement les mêmes droits et avantages que tes collègues sur site. Le télétravail n'a aucun impact sur ton évolution de carrière ni sur ton accès à la formation.
 
-## Santé et sécurité
+## Santé et accidents
 
-Les règles de prévention des risques et la politique santé-sécurité de l'entreprise s'appliquent au télétravail comme sur site.
+Même politique santé-sécurité qu'au bureau. Si tu tombes malade un jour de télétravail, préviens l'entreprise dans les délais habituels du règlement intérieur.
 
-Maladie pendant un jour de télétravail : informer l'entreprise dans le délai applicable à tous les salariés (voir le règlement intérieur).
+Un accident survenu chez toi pendant tes heures de travail est présumé accident du travail (art. L. 411-1 CSS) :
 
-Accident survenu au lieu de télétravail pendant les heures de travail : présumé accident du travail (article L. 411-1 du Code de la sécurité sociale).
+- Déclaration au responsable : le jour même ou dans les 24 heures.
+- Justificatifs aux RH : dans les 48 heures.
 
-- Déclaration au responsable direct : le jour même, ou au plus tard dans les 24 heures (sauf force majeure ou motif légitime).
-- Documents justificatifs aux RH : dans les 48 heures.
+## Confidentialité
 
-## Confidentialité et sécurité informatique
+Comme au bureau : secret professionnel, données protégées, ordinateur verrouillé dès que tu t'éloignes. Tes conversations professionnelles ne doivent pas être entendues par des tiers chez toi. Les manquements graves peuvent aller jusqu'au licenciement.
 
-Les obligations de discrétion et de secret professionnel s'appliquent comme sur site :
+## Fin ou suspension
 
-- Ne pas laisser de documents ou d'outils professionnels accessibles à des tiers.
-- Ne pas communiquer ses codes d'accès.
-- Verrouiller l'ordinateur dès qu'on quitte le bureau.
-- Échanges oraux confidentiels : s'assurer que personne à proximité ne peut entendre.
-- Respecter la charte informatique de l'entreprise.
+**Suspension ponctuelle** — le responsable peut imposer un retour sur site (clôtures, sous-effectif, avant-saison). Les jours non pris ne sont pas récupérés.
 
-Le non-respect de ces règles peut entraîner des sanctions disciplinaires, pouvant aller jusqu'au licenciement.
+**Arrêt par le responsable** — si le dispositif est inadapté ou les règles non respectées, décision notifiée par écrit avec date de fin.
 
-## Fin ou suspension du télétravail
+**Arrêt de ta propre initiative** — sans préavis si ce mode d'organisation impacte ton travail, ta santé ou ta vie personnelle.
 
-Les impératifs de l'entreprise priment en toutes circonstances.
+**Changement de poste** — fin automatique du télétravail ; nouvelle demande à instruire avec le nouveau responsable.
 
-**Suspension temporaire** : le responsable peut imposer un retour sur site sur certaines périodes (clôtures, avant-saison, sous-effectif…). Les jours non télétravaillés ne sont pas reportés.
+{{< details title="Recommandations groupe KUHN (Annexe 2)" >}}
+Règles d'or : télétravail uniquement au domicile, horaires habituels, joignabilité assurée, charge de travail inchangée, charte informatique respectée, image du groupe préservée.
 
-**Arrêt définitif par le responsable** : si le dispositif est inadapté ou si les règles ne sont pas respectées, la décision est notifiée par écrit avec la date de fin.
+Réflexes : se préparer comme pour aller au bureau, travailler au calme, prendre ses pauses.
 
-**Arrêt à l'initiative du salarié** : possible sans préavis si ce mode d'organisation impacte négativement le travail, la santé ou la vie personnelle.
+Réseau : rester connecté via la connexion sécurisée de KUHN hors site. Éviter pièces jointes et fichiers lourds (> 2 Mo à l'envoi, > 5 Mo en téléchargement), ne pas imprimer à distance, activer la caméra en réunion si le réseau le permet.
 
-**Changement de poste** : le télétravail cesse de plein droit. La situation est réexaminée avec le nouveau responsable au regard des critères d'éligibilité.
+Sécurité : séparer le matériel pro du personnel, appliquer les mises à jour, sauvegarder sur le réseau de l'entreprise, se méfier des messages inattendus (hameçonnage), n'installer aucune application sans accord du service informatique.
 
-## Recommandations (Annexe 2)
-
-{{< details title="Résumé des recommandations groupe KUHN" >}}
-Règles d'or : télétravail uniquement au domicile, horaires habituels respectés, joignabilité assurée (Teams activé), charge de travail inchangée, espace conforme, charte informatique et alertes de sécurité respectées, image du groupe préservée.
-
-Réflexes : se préparer comme pour aller sur site, s'installer au calme, prendre ses pauses.
-
-Technique : prévenir immédiatement le responsable en cas de problème ; en cas de dysfonctionnement de la connexion internet personnelle, contacter son fournisseur. Si équipé d'un ordinateur portable KUHN avec connexion sécurisée (VPN) : toujours rester connecté via ce canal hors des sites KUHN. Bonnes pratiques : ne pas joindre de fichiers lourds (au-delà de 2 Mo), ne pas télécharger de fichiers volumineux (au-delà de 5 Mo), ne pas imprimer à distance, activer la caméra en réunion à distance sauf lenteur réseau.
-
-Sécurité : séparer le matériel professionnel du matériel personnel, appliquer les mises à jour de sécurité, sauvegarder régulièrement sur le réseau de l'entreprise, se méfier des messages inattendus ou alarmistes (hameçonnage, virus), ne pas installer d'applications sans accord du service informatique.
-
-Espace dédié : pièce fermée si possible, mobilier adapté, confidentialité assurée (échanges oraux hors de portée des tiers, documents confidentiels rangés sous clé).
+Espace : pièce fermée si possible, échanges confidentiels hors de portée des tiers, documents sensibles rangés sous clé.
 {{< /details >}}
 
 {{< details title="Historique de la charte" >}}
-- Consultation du CSE : 11 mai 2022.
-- Signature à Saverne : 1ᵉʳ juin 2022 (Thierry Krier, Président ; Marc Diebolt, Responsable RH).
-- Entrée en vigueur : 1ᵉʳ octobre 2022, durée indéterminée.
-- Les annexes 1a, 1b et 2 font partie intégrante de la charte.
-- La charte remplace toutes les pratiques antérieures sur le même sujet.
+CSE consulté le 11 mai 2022. Signée à Saverne le 1ᵉʳ juin 2022 (Thierry Krier, Président ; Marc Diebolt, Responsable RH). En vigueur depuis le 1ᵉʳ octobre 2022, pour une durée indéterminée. Annexes 1a, 1b et 2 font partie intégrante de la charte.
 {{< /details >}}
 
 {{< hint type="success" >}}
