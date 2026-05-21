@@ -11,7 +11,7 @@ tags:
   - salaire
 ---
 
-{{< image src="/uploads/images/droits/Nouvelle-convention-vous-etes-ici.webp" alt="Schéma : nouvelle convention métallurgie — vous êtes ici" title="Nouvelle convention métallurgie" loading="lazy" class="book-image--narrow" >}}
+{{< image src="/uploads/images/droits/nouvelle-convention-vous-etes-ici.webp" alt="Schéma : nouvelle convention métallurgie — vous êtes ici" title="Nouvelle convention métallurgie" loading="lazy" class="book-image--narrow" >}}
 
 {{< hint type="info" >}}
 **IDCC 3248** – Convention collective nationale de la métallurgie (CCNM). \
