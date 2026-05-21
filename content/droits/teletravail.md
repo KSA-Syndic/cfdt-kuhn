@@ -13,7 +13,7 @@ bookToC: true
 Encadré par les articles L. 1222-9 et suivants du Code du travail. Chez KUHN, la charte du télétravail occasionnel (UES KUHN / KUHN MGM) est en vigueur depuis le 1ᵉʳ octobre 2022 — disponible sur l'intranet, rubrique RH.
 {{< /hint >}}
 
-## C'est quoi ?
+## C'est quoi le télétravail ?
 
 Travailler depuis chez soi sur des tâches qu'on aurait pu faire au bureau, avec les outils numériques. La charte parle de télétravail **occasionnel** : ce n'est ni un droit automatique ni une obligation. Ça se fait à ta demande, avec l'accord de ton responsable, et ça repose sur la confiance mutuelle.
 
