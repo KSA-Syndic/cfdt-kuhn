@@ -1,5 +1,5 @@
 ---
-title: Nouvelle CCN 2024
+title: Nouvelle CCNM 2024
 date: 2024-02-07T00:00:00.000Z
 draft: false
 type: posts

@@ -1,5 +1,5 @@
 ---
-title: Contestation CCN (brouillon)
+title: Contestation CCNM (brouillon)
 date: 2025-11-12T23:10:03.515Z
 draft: true
 bookToC: true
@@ -12,7 +12,7 @@ tags:
 ---
 
 {{< hint type="info" >}}
-Contestation de l'interprétation de la CCN au tribunal.
+Contestation de l'interprétation de la CCNM au tribunal.
 {{< /hint >}}
 
 ## La FGMM-CFDT affirme
