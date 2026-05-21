@@ -9,147 +9,119 @@ bookToC: true
 
 {{< image src="/uploads/images/droits/visuel_cet.webp" alt="Visuel Compte épargne-temps (CET)" title="Compte épargne-temps" loading="lazy" class="book-image--narrow" >}}
 
-## Le CET, c’est quoi au juste ?
-
-Imagine une tirelire sociale : tu n’y mets pas que des euros — tu y verses surtout du temps (repos non pris, organisation du travail…) et, selon les cas, des éléments de rémunération prévus par la loi et les accords. Tu récupères plus tard ce « stock » pour un long congé, un projet, une étape de fin de carrière ou, dans les cas autorisés, un complément de salaire.
-
-C’est aussi ton sac à dos : ce que tu ne peux pas poser pendant la période d’ouverture des droits, tu peux le mettre de côté plutôt que de le laisser filer.
-
-{{< hint type="success" >}}
-Règle d’or : tout doit être écrit quelque part (loi, convention de branche, accord d’entreprise). Si ce n’est pas écrit, demande aux RH ou à la délégation avant de te projeter.
+{{< hint type="info" >}}
+Branche métallurgie (CCNM IDCC 3248) depuis le 1ᵉʳ janvier 2024 : [Convention collective métallurgie](/droits/convention-collective-metallurgie/). Chez KUHN, l'accord d'entreprise et les RH complètent ce cadre.
 {{< /hint >}}
 
-## Au niveau national (branche métallurgie)
+## Le CET, c'est quoi ?
 
-Depuis le 1ᵉʳ janvier 2024, la CCNM encadre le CET pour toute la métallurgie. En résumé :
+C'est un compte où tu verses du temps (repos non pris, RTT, ancienneté…) et parfois des éléments de rémunération, pour les utiliser plus tard : long congé, fin de carrière ou complément de salaire selon les cas autorisés.
 
-- **Alimentation** : notamment les congés payés au-delà de la partie obligatoire (24 jours ouvrables), des heures supplémentaires ou équivalents, et selon les textes des éléments liés à la participation ou à l’intéressement — dans les conditions prévues par la CCNM.  
-- **Valorisation** : si tu épargnes du temps, sa contre-valeur suit en principe l’évolution de ton salaire (un jour posé après une promotion se calcule avec ton nouveau niveau de rémunération, dans le cadre conventionnel).  
-- **Utilisation** : congés sans solde ou longs dispositifs (parental, sabbatique…), cessation progressive d’activité, orientation possible vers l’épargne retraite (PER, dispositifs d’entreprise type ancien PERCO, selon ce qui est ouvert chez l’employeur et la loi en vigueur).  
-- **En cas de départ** : indemnisation du solde et, si les conditions sont réunies, transfert vers un CET chez un nouvel employeur (mécanisme tripartite).
+{{< hint type="success" >}}
+Tout doit être écrit quelque part — loi, branche ou accord. En cas de doute, demande aux RH ou à la délégation avant de te projeter.
+{{< /hint >}}
 
-## Chez KUHN (entreprise)
+## Éligibilité et ouverture
 
-### Qui peut ouvrir un compte ?
+CDI avec au moins 6 mois d'ancienneté. La CCNM et l'accord KUHN SAS du 20 décembre 2005 (article 1) prévoient une demande écrite de volonté pour ouvrir le compte. En pratique chez KUHN, le compte est souvent acté dès l'embauche. Si tu ne te souviens pas d'une telle démarche, tu peux demander aux RH l'écrit (courrier, mail ou document d'embauche) qui a servi à ouvrir ton compte.
 
-En théorie, l’ouverture du CET est éligible aux salariés en CDI ayant au moins 6 mois d’ancienneté. Et pour ouvrir un compte, il faudrait faire une demande écrite. En pratique il est acté automatiquement lors de l'embauche chez KUHN.
+{{< hint type="warning" >}}
+Garde une trace de tes échanges avec les RH. Pour toute question de statut particulier (intérimaire, CDD, etc.), seuls les textes applicables font foi.
+{{< /hint >}}
 
-### L’« automatisme » des dates de fin de période
-
-Si tout n’a pas été posé à la clôture, une partie des droits peut être orientée vers le CET selon le calendrier prévu chez KUHN :
-
-| Date | Compteurs concernés |
-| :--- | :------------------ |
-| 31 décembre | RTT (non-cadres et cadres). |
-| 31 mai | Solde des congés payés (au-delà des 4 premières semaines) et congés d’ancienneté. |
-
-Les mouvements apparaissent sur le bulletin de paie selon les choix d’affectation validés avec l’employeur.
-
-### Qu’est-ce que tu peux épargner concrètement ? (détail)
+## Ce que tu peux épargner
 
 | Source | Précision |
 | :----- | :-------- |
-| Ancienneté | Jours d’ancienneté conventionnels (souvent 1 à 3 selon profil). |
-| Congés payés | La 5ᵉ semaine (au-delà de 24 jours ouvrables / 20 jours ouvrés). |
-| Repos compensateur | Heures liées aux heures supplémentaires (dont RCR selon le cas). |
-| RTT | Jours issus de l’organisation du temps de travail (JRTT). |
-| Forfait jours | Repos pour rester sous le plafond 218 jours / an. |
-| Heures sup’ | Rémunération au-delà de la durée collective parfois convertie en temps, si les textes le prévoient. |
+| Congés payés | 5ᵉ semaine (au-delà de 24 jours ouvrables / 20 jours ouvrés) |
+| Ancienneté | Jours d'ancienneté conventionnels (1 à 3 selon profil) |
+| RTT | Jours issus de l'organisation du temps de travail (JRTT) |
+| Repos compensateur | Heures liées aux heures supplémentaires, dont RCR |
+| Forfait jours | Repos pour rester sous le plafond de 218 jours / an |
+| Heures sup' | Parfois converties en temps si les textes le prévoient |
 
-Monétisation : tu peux viser un complément de salaire, mais seuls les droits au-delà des 5 semaines de congés payés légaux peuvent être payés en argent ; la 5ᵉ semaine doit rester du repos.
+La contre-valeur du temps épargné suit l'évolution de ton salaire (un jour posé après une promotion vaut au niveau de ta nouvelle rémunération).
 
-### Texte de l’accord : historique et accès
+Complément de salaire : uniquement les droits au-delà des 5 semaines légales de CP ; la 5ᵉ semaine doit rester du repos.
 
-Les accords ont été signés puis mis à jour ; les dates ci-dessous servent surtout si tu veux le contexte ou savoir où consulter le texte officiel et les modalités de demande.
+### Versements automatiques en fin de période
 
-{{< details title="Signatures, dates clés et où lire le texte" >}}
-- Origine : accord du 20 décembre 2005, après la loi du 31 mars 2005 sur le temps de travail.  
-- Maintien 2024 : accord du 6 mars 2024 pour garder l’esprit du dispositif tout en l’alignant sur la convention de branche en vigueur.  
-- Signataires : direction KUHN S.A. et délégations CFDT et FO ; dépôt légal et affichage en entreprise.  
-  Pour le texte à jour et toute pièce ou formulaire prévu par la loi ou l’accord, les RH font référence ; la délégation peut t’aiguiller si besoin.
-{{< /details >}}
+Si des droits non pris restent à la clôture, ils sont orientés vers le CET selon ce calendrier :
 
-## Sur ton bulletin de paie
+| Date | Compteurs |
+| :--- | :-------- |
+| 31 décembre | RTT (non-cadres et cadres) |
+| 31 mai | Congés payés au-delà des 4 premières semaines et congés d'ancienneté |
 
-En pratique, ce qui compte au quotidien :
+Ces mouvements apparaissent sur la paie selon ce qui a été validé avec l'employeur.
 
-- Tu vois ton CET en heures ou jours (parfois en montant) sur ta fiche de paie, selon ce que l’entreprise enregistre.  
-- Les mouvements (épargne, utilisation) doivent être cohérents avec ce que tu as demandé ou signé ; en cas d’écart, les RH sont le bon interlocuteur.  
-- Tes droits en euros ont une protection si l’entreprise est en difficulté (mécanisme type AGS), dans des limites fixées par la loi — tu n’as en général pas à t’en occuper tant que tout va bien.  
-- Très gros solde ou départ (retraite, licenciement…) : anticipe avec les RH (fiscalité, calendrier des versements).
+## Utilisation
 
-{{< details title="Plafonds en euros, articles du Code et tableau AGS (pour aller plus loin)" >}}
+- **Longs congés** : parental, sabbatique, création d'entreprise, congé CET classique.
 
-Les droits en euros inscrits au CET sont garantis dans la limite des plafonds prévus pour l’assurance des créances salariales (article L. 3253-17 du Code du travail ; montants revalorisés au 1ᵉʳ janvier). Quand le solde converti dépasse le plafond applicable, le surplus doit être liquidé (article D. 3154-1 du Code du travail) : tu reçois une indemnité pour cette partie.
+- **Retraite** : rachat de trimestres ou versements vers un PER ou dispositif d'épargne retraite d'entreprise (selon l'offre disponible chez KUHN).
 
-Plafonds de garantie AGS en 2026 (toutes créances confondues, selon l’ancienneté au jour du jugement d’ouverture d’une procédure collective — référence habituelle pour le plafond maximal lié au CET) :
+- **Fin de carrière** : cessation progressive ou temps partiel fin de carrière si ouvert.
 
-| Ancienneté au jour du jugement | Plafond (2026) |
-| :----------------------------- | -------------: |
-| Moins de 6 mois | 64 080 € |
-| De 6 mois à 2 ans | 80 100 € |
-| Plus de 2 ans | 96 120 € |
+- **Complément de salaire** : dans les limites légales et conventionnelles.
 
-Au-delà du plafond qui te concerne, l’employeur doit assurer ou régulariser le surplus (assurance dédiée ou versement, selon les textes). Les RH confirment les montants sur ton relevé et ta paie.
+## Poser un congé CET
 
-Référence publique : [AGS — plafonds 2026](https://www.ags-garantie-salaires.org/avances.html). À titre historique, l’accord KUHN de 2005 citait un plafond lié au maximum AGS de l’époque : 60 384 €.
+Accord du responsable sur les dates, puis :
 
-{{< /details >}}
-
-## À quoi tu peux les utiliser ?
-
-- Complément de salaire (dans les limites légales et conventionnelles).  
-- Longs congés : parental, sabbatique, création d’entreprise, congé CET classique.  
-- Retraite : rachat de trimestres ou versements vers un PER ou un dispositif d’épargne retraite d’entreprise (selon ce qui est ouvert chez KUHN à ta date).  
-- Fin de carrière : cessation progressive d’activité ou temps partiel de fin de carrière, quand c’est possible.
-
-{{< hint type="success" >}}
-Astuce : pense au CET comme un livret qui se revalorise avec ta carrière — l’intérêt, c’est souvent de bloquer du temps quand tu es disponible pour le dépenser quand tu as un vrai projet (ou un besoin de trésorerie), pas l’inverse.
-{{< /hint >}}
-
-## Poser un congé « CET »
-
-- Accord hiérarchique sur les dates.  
-- Plus de 15 jours ouvrés : demande écrite 6 mois avant (délai fixé par la CCNM pour la branche) ; l’employeur peut repousser le départ de 3 mois au plus.  
-- 15 jours ouvrés ou moins : mêmes habitudes que pour les congés payés (prévenance, affichage service).
+- Plus de 15 jours ouvrés : demande écrite 6 mois avant (CCNM) ; l'employeur peut repousser le départ de 3 mois au plus.
+- 15 jours ouvrés ou moins : même logique que pour les congés payés (prévenir le service).
 
 Au retour : même emploi ou emploi équivalent, salaire au moins égal.
 
 {{< hint type="warning" >}}
-Charge forte ou pics de production : même avec la loi, la réalité du terrain impose de négocier tôt avec ton responsable et les RH.
+Charges fortes ou pics de production : négocie tôt avec ton responsable et les RH.
 {{< /hint >}}
 
-## Partir ou clôturer : que devient ton solde ?
+## Que devient ton solde ?
 
-Cas les plus fréquents :
+| Situation | Effet |
+| :--- | :---- |
+| Clôture volontaire | Indemnité égale à la valeur monétaire du solde ; pas de nouveau CET avant 12 mois. |
+| Autre liquidation | Après le préavis fixé par l'employeur (cadre légal et conventionnel). |
+| Fin de contrat | Versement intégral du solde. |
+| Transfert | Vers un nouvel employeur avec CET, par accord tripartite. |
+| Décès | Versement aux ayants droit. |
 
-| Cas | Résultat |
-| :--- | :------- |
-| Clôture volontaire | Voir la section « Clôture volontaire » sous le tableau (indemnité en euros + 12 mois avant réouverture). |
-| Demande de liquidation (autres cas) | Liquidation possible après le préavis fixé par l’employeur (cadre légal et conventionnel : participation, plafonds, etc.). |
-| Fin de contrat | Versement intégral du solde (indemnité compensatrice en euros). |
-| Transfert | Vers un nouvel employeur avec CET, via accord tripartite. |
-| Décès | Versement aux ayants droits. |
-
-### Clôture volontaire
-
-Si tu renonces au CET et le clôtures volontairement :
-
-1. Paiement : tu reçois une indemnité en euros égale à la conversion monétaire de tous les droits CET acquis (selon les règles de valorisation de l’accord d’entreprise).  
-2. 12 mois avant de rouvrir un CET : l’accord du 20 décembre 2005 prévoyait d’attendre 12 mois après cette clôture avant d’ouvrir un nouveau compte — c’est une clause d’entreprise ; vérifie si l’accord du 6 mars 2024 la reprend telle quelle.
+Clôture volontaire en détail : l'accord du 20 décembre 2005 prévoyait 12 mois d'attente avant de rouvrir un compte ; vérifie si l'accord du 6 mars 2024 reprend cette clause telle quelle auprès des RH.
 
 {{< hint type="warning" >}}
-En cas de doute sur la clôture ou ce délai de 12 mois, le texte signé à Kuhn et les RH font foi — ce n’est pas la même chose que les règles « générales » qu’on lit au hasard sur le web.
+Doute sur la clôture ou les 12 mois : le texte signé chez KUHN et les RH font foi.
 {{< /hint >}}
 
-{{< details title="Points de vigilance (plafonds chiffrés, SMH)" >}}
-- Plafonds : au-delà du plafond L. 3253-17 applicable (voir tableau 64 080 € / 80 100 € / 96 120 € pour 2026), l’entreprise doit sécuriser ou liquider le surplus. À titre historique, l’accord KUHN de 2005 mentionnait 60 384 € comme plafond de référence lié à l’AGS de l’époque.  
-- SMH : le jugement du 2 décembre 2025 rappelle que les compléments issus d’une liquidation de CET ne doivent pas servir à dire que tu atteins ton salaire minimum hiérarchique annuel. Le CET reste un report / bonus différé, pas un levier pour « gonfler » le SMH.
+## Sur la paie et garantie des droits
+
+Tu vois ton CET en heures, jours ou montant sur ta fiche de paie. En cas d'écart avec ce que tu as demandé ou signé, les RH sont l'interlocuteur.
+
+En cas de difficulté financière de l'entreprise, tes droits en euros sont garantis jusqu'à certains plafonds légaux. Si le solde les dépasse, le surplus doit être liquidé et tu reçois une indemnité pour cette partie.
+
+{{< details title="Plafonds AGS 2026 et articles du Code" >}}
+Base légale : article L. 3253-17 du Code du travail (montants revalorisés au 1ᵉʳ janvier) ; liquidation du surplus : article D. 3154-1.
+
+| Ancienneté au jour du jugement d'ouverture | Plafond (2026) |
+| :----------------------------------------- | -------------: |
+| Moins de 6 mois | 64 080 € |
+| De 6 mois à 2 ans | 80 100 € |
+| Plus de 2 ans | 96 120 € |
+
+Référence : [AGS — plafonds 2026](https://www.ags-garantie-salaires.org/avances.html). L'accord KUHN de 2005 citait historiquement 60 384 € (plafond AGS de l'époque).
+
+Point de vigilance SMH : l'arrêt du 2 décembre 2025 rappelle qu'une liquidation de CET ne peut pas servir à atteindre artificiellement le salaire minimum hiérarchique annuel — le CET reste un report ou complément différé.
 {{< /details >}}
 
-{{< hint type="success" >}}
-En bref : le CET, c’est du temps et parfois de l’argent que tu stockes pour des projets ou des étapes de vie — encadré, avec une garantie plafonnée (jusqu’à 96 120 € en 2026 pour la tranche « plus de 2 ans » d’ancienneté au jugement d’ouverture, selon les plafonds AGS / L. 3253-17), et négocié en entreprise.
-{{< /hint >}}
+## Accords et références
+
+{{< details title="Historique, signataires, où lire le texte" >}}
+- Accord d'origine : 20 décembre 2005, issu de la loi du 31 mars 2005 sur le temps de travail.
+- Accord de maintien : 6 mars 2024, alignement sur la CCNM en gardant l'esprit du dispositif.
+- Signataires : direction KUHN S.A. et délégations CFDT et FO ; dépôt légal et affichage en entreprise.
+- Texte à jour, pièces ou formulaires prévus par la loi ou l'accord : les RH ; la délégation peut t'aiguiller.
+{{< /details >}}
 
 {{< hint type="success" >}}
 N'hésite pas à contacter ton syndicat pour toute question ou accompagnement !
