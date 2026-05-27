@@ -19,7 +19,7 @@ Applicable à tous depuis le 1ᵉʳ janvier 2024.\
 Cette page intègre le **barème SMH 2026** (avenant du 20 février 2026).
 {{< /hint >}}
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" title="Convention collective nationale de la métallurgie" as="button" text="Voir la convention" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" title="Convention collective nationale de la métallurgie" as="button" text="Voir la convention" >}}
 
 # L'essentiel en clair
 
@@ -36,7 +36,7 @@ Cette page donne les **minima nationaux** + les points **accord KUHN** utiles au
 3. Tu additionnes les 6 degrés.
 4. Tu obtiens ta **classe** (1 à 18) et ton groupe (A à I).
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="58" as="link" text="→ Référentiel cotation" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="59" as="link" text="→ Référentiel cotation" >}}
 <br>
 {{< pdf-modal-btn url="/uploads/documents/convention/Classification-Guide.pdf" title="Guide de classification" as="link" text="→ Guide pédagogique (avec exemples)" >}}
 
@@ -65,9 +65,9 @@ Points à ne pas oublier :
 * en forfait annuel, la CCNM prévoit : **+15 % en forfait heures** et **+30 % en forfait jours**,
 * pour le groupe F (classes 11-12), il existe un barème spécifique pendant les 6 premières années d'expérience.
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCNM-Avenant-accord-SMH-2026.pdf" page="2" as="link" text="→ Barème salaires" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="162" as="link" text="→ Barème salaires" >}}
 <br>
-{{< pdf-modal-btn url="/uploads/documents/convention/CCNM-Avenant-accord-SMH-2026.pdf" page="3" as="link" text="→ Barème spécifique débutants" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="163" as="link" text="→ Barème spécifique débutants" >}}
 
 {{< /details >}}
 
@@ -92,11 +92,11 @@ Exemple : classe 1, 10 ans d'ancienneté \
 Pas de prime d'ancienneté automatique comme en classes 1 à 10. \
 La CCNM prévoit surtout des majorations d'expérience dans le minimum conventionnel.
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="162" as="link" text="→ Taux d'ancienneté national" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="164" as="link" text="→ Taux d'ancienneté national" >}}
 <br>
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="125" as="link" text="→ Majorations cadre (haut de page)" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="125" as="link" text="→ Majorations cadre (haut de page)" >}}
 <br>
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="75" as="link" text="→ Indemnités licenciement (bas de page)" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="75" as="link" text="→ Indemnités licenciement (bas de page)" >}}
 
 ### Chez Kuhn
 
@@ -123,7 +123,7 @@ La CCNM prévoit surtout des majorations d'expérience dans le minimum conventio
   * poste de nuit : **+20 %** entre 20h et 6h (si au moins 2 h) + repos compensateur sous conditions
   * poste matin/après-midi : **+15 %** entre 20h et 6h
 
-{{< pdf-modal-btn url="/uploads/documents/convention/CCN_metallurgie_consolidee-au-10-06-2024.pdf" page="160" as="link" text="→ Glossaire" >}}
+{{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="160" as="link" text="→ Glossaire" >}}
 
 {{< /details >}}
 
