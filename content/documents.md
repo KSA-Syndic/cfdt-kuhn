@@ -20,9 +20,6 @@ type: posts
   - {{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="162" as="link" text="Annexe: Barème des salaires minima" >}}
   - {{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="191" as="link" text="Annexe: Grille de remboursements et cotisations" >}}
 
-- Mises à jours / avenants de la convention :
-  - {{< pdf-modal-btn url="/uploads/documents/convention/CCNM-Avenant-accord-SMH-2026.pdf" page="2" as="link" text="Annexe: Barème des salaires minima - 2026" >}}
-
 ### Outils
 
 - {{< pdf-modal-btn url="/uploads/documents/convention/Classification-Guide.pdf" as="link" text="Guide classification" >}}
