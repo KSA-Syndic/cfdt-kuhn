@@ -2,7 +2,7 @@
 draft: false
 weight: 4
 title: Documents
-date: 2026-03-14T00:00:00.000Z
+date: 2026-05-30T00:00:00.000Z
 bookToC: true
 type: posts
 ---
@@ -14,7 +14,7 @@ type: posts
    class="book-btn">
   Télécharger (PDF)
 </a>
-- {{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="1" as="link" text="Convention Collective Nationale de la Métallurgie - 2024" >}}
+- {{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="1" as="link" text="Convention Collective Nationale de la Métallurgie - 2026" >}}
   - {{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="59" as="link" text="Article: Référentiel de cotations des emplois" >}}
   - {{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="61" as="link" text="Article: Grille de classement des emplois" >}}
   - {{< pdf-modal-btn url="/uploads/documents/convention/CNN_metallurgie_consolidee-au-20-02-2026.pdf" page="162" as="link" text="Annexe: Barème des salaires minima" >}}
