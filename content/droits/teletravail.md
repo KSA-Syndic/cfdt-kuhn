@@ -13,23 +13,27 @@ bookToC: true
 Encadré par les articles L. 1222-9 et suivants du Code du travail. Chez KUHN, la charte du télétravail occasionnel (UES KUHN / KUHN MGM) est en vigueur depuis le 1ᵉʳ octobre 2022 — disponible sur l'intranet, rubrique RH.
 {{< /hint >}}
 
+## En gros
+
+Ce n'est pas un droit automatique : tu fais la demande, ton responsable valide. Si ton poste le permet et que tu coches les critères, tu as droit à **40 jours par an** (30 à 80 %), dans la limite d'**1 jour par semaine**. Même salaire, mêmes droits, même charge de travail qu'au bureau. Pas de remboursement de frais.
+
 ## C'est quoi le télétravail ?
 
-Travailler depuis chez soi sur des tâches qu'on aurait pu faire au bureau, avec les outils numériques. La charte parle de télétravail **occasionnel** : ce n'est ni un droit automatique ni une obligation. Ça se fait à ta demande, avec l'accord de ton responsable, et ça repose sur la confiance mutuelle.
+Travailler depuis chez soi sur des tâches qu'on aurait pu faire au bureau, avec les outils numériques. La charte parle de télétravail **occasionnel** : ça se fait à ta demande, avec l'accord de ton responsable, et ça repose sur la confiance mutuelle.
 
 ## Suis-je éligible ?
 
-Quelques postes sont exclus d'office : présence physique permanente, matériel uniquement sur site, ou besoin d'encadrement très proche. Les apprentis, stagiaires et salariés en professionnalisation non plus.
+Certains postes sont exclus d'office : présence physique permanente, matériel uniquement sur site, ou besoin d'encadrement très rapproché. Les apprentis, stagiaires et salariés en professionnalisation sont aussi exclus.
 
-Pour les autres, il faut remplir toutes ces conditions :
+Pour les autres, toutes ces conditions doivent être remplies :
 
-- Au moins un an dans le poste (autonomie suffisante)
+- Au moins un an dans le poste
 - Travailler à 80 % ou plus
 - Maîtriser ses outils informatiques et les règles de cybersécurité
-- Avoir un poste compatible à distance, sans reporter du travail sur ses collègues
-- Disposer d'un espace à domicile adapté (voir Annexe 1a)
+- Avoir un poste compatible à distance, sans reporter de travail sur ses collègues
+- Disposer d'un espace adapté à domicile (voir Annexe 1a)
 
-Situation de handicap ou proche aidant : examiné attentivement au cas par cas, ce statut ne justifie ni un refus ni une acceptation automatique. Les salariées enceintes éligibles peuvent bénéficier d'aménagements spécifiques — à voir avec le responsable et les RH.
+Situation de handicap ou proche aidant : examiné au cas par cas — ce statut ne justifie ni refus ni acceptation automatique. Les salariées enceintes éligibles peuvent bénéficier d'aménagements spécifiques — à voir avec le responsable et les RH.
 
 {{< hint type="warning" >}}
 Si ton poste ou ton service n'est pas compatible, ce n'est pas une sanction, c'est le cadre fixé par l'employeur.
@@ -37,12 +41,12 @@ Si ton poste ou ton service n'est pas compatible, ce n'est pas une sanction, c'e
 
 ## Comment faire la demande ?
 
-1. Tu remets à ton responsable l'attestation sur l'honneur **(Annexe 1a)** : espace adapté, électricité aux normes, réseau suffisant, assurance habitation couvrant l'usage professionnel.
+1. Remettre à ton responsable l'attestation sur l'honneur **(Annexe 1a)** : espace adapté, électricité aux normes, réseau suffisant, assurance habitation couvrant l'usage professionnel.
 2. Entretien avec le responsable sur ton éligibilité.
 3. Si accord : il complète la demande **(Annexe 1b)** et transmet les deux documents aux RH.
 4. Ensuite, pour chaque jour ou demi-journée : demande dans **Suivi d'activité** sur l'intranet, au moins une semaine avant. Sans validation du responsable, pas de télétravail.
 
-Refus : réponse écrite dans le mois. Désaccord : les RH peuvent jouer un rôle de médiateur, mais la décision finale revient au responsable.
+En cas de refus, réponse écrite dans le mois. En cas de désaccord, les RH peuvent jouer un rôle de médiateur, mais la décision finale revient au responsable.
 
 {{< hint type="warning" >}}
 Garde une trace de tes demandes et échanges — mails, captures, accusés de réception.
@@ -57,7 +61,7 @@ Période : du 1ᵉʳ octobre au 30 septembre (proratisée si ton temps de travai
 | Temps plein | 40 |
 | 80 % ou plus | 30 |
 
-- 1 jour max par semaine (ou 2 demi-journées) — le non-pris ne se reporte pas.
+- 1 jour max par semaine (ou 2 demi-journées) — les jours non pris ne se reportent pas.
 - Présence sur site : 4 j / semaine en temps plein, 3 j à 80 %.
 - Plus d'un jour dans la semaine : possible sur accord du responsable, déduit du quota.
 - Au 30 septembre, le compteur repart à zéro.
@@ -66,21 +70,20 @@ Période : du 1ᵉʳ octobre au 30 septembre (proratisée si ton temps de travai
 ## Le jour J
 
 - Joignable pendant tes horaires habituels : Teams activé, téléphone, visio. Plages visibles dans Outlook.
-- Pas d'absence du lieu de télétravail sans motif valable et sans prévenir ton responsable.
-- Heures sup ou travail le week-end / férié : interdits sans autorisation écrite préalable.
+- Heures sup ou travail le week-end / un jour férié : interdit sans autorisation écrite préalable.
 - Garde d'enfants : à organiser de ton côté.
 - Charge de travail identique au présentiel. En cas de difficulté, prévenir sa hiérarchie rapidement.
-- L'entretien annuel est l'occasion de faire le bilan sur le télétravail et la charge.
+- En cas de panne : contacter le service informatique (formulaire « ask » ou téléphone) — si le problème ne se règle pas à distance, retour sur site.
 
 Le trombinoscope affiche un logo « TT » pour identifier les télétravailleurs du jour.
 
 ## Lieu et matériel
 
-Le télétravail se fait à ton domicile habituel. Un autre lieu est possible exceptionnellement avec accord du responsable, à condition de pouvoir rejoindre les locaux rapidement. Tout changement d'adresse doit être déclaré — les conditions sont réexaminées.
+Le télétravail se fait à ton domicile habituel. Un autre lieu est possible exceptionnellement avec l'accord du responsable, à condition de pouvoir rejoindre les locaux rapidement. Tout changement d'adresse doit être déclaré.
 
-L'entreprise peut prêter du matériel : usage strictement professionnel, restitution à sa demande, pas de déplacement à une autre adresse sans accord. En cas de panne, contacter le service informatique (formulaire « ask » ou téléphone) — si le problème ne se règle pas à distance, retour sur site.
+L'entreprise peut prêter du matériel : usage strictement professionnel, restitution à sa demande, pas de déplacement à une autre adresse sans accord.
 
-Aucun remboursement de frais n'est prévu pour ce télétravail occasionnel à ta demande.
+Aucun remboursement de frais n'est prévu pour ce télétravail occasionnel.
 
 {{< details title="Annexe 1a — ce que tu certifies" >}}
 - Espace dédié adapté au travail.
@@ -93,7 +96,7 @@ Test de débit depuis le domicile : [speedtest.kuhngroup.net](http://speedtest.k
 
 ## Tes droits
 
-Tu gardes exactement les mêmes droits et avantages que tes collègues sur site. Le télétravail n'a aucun impact sur ton évolution de carrière ni sur ton accès à la formation.
+Mêmes droits et avantages que les collègues sur site. Le télétravail n'a aucun impact sur l'évolution de carrière ni sur l'accès à la formation.
 
 ## Santé et accidents
 
@@ -106,7 +109,7 @@ Un accident survenu chez toi pendant tes heures de travail est présumé acciden
 
 ## Confidentialité
 
-Comme au bureau : secret professionnel, données protégées, ordinateur verrouillé dès que tu t'éloignes. Tes conversations professionnelles ne doivent pas être entendues par des tiers chez toi. Les manquements graves peuvent aller jusqu'au licenciement.
+Comme au bureau : secret professionnel, données protégées, ordinateur verrouillé dès que tu t'éloignes. Les conversations professionnelles ne doivent pas être entendues par des tiers. Les manquements graves peuvent aller jusqu'au licenciement.
 
 ## Fin ou suspension
 
