@@ -15,7 +15,7 @@ Encadré par les articles L. 1222-9 et suivants du Code du travail. Chez KUHN, l
 
 ## En gros
 
-Ce n'est pas un droit automatique : tu fais la demande, ton responsable valide. Si ton poste le permet et que tu coches les critères, tu as droit à **40 jours par an** (30 à 80 %), dans la limite d'**1 jour par semaine**. Même salaire, mêmes droits, même charge de travail qu'au bureau. Pas de remboursement de frais.
+Ce n'est pas un droit automatique : tu fais la demande, ton responsable valide. Si ton poste le permet et que tu coches les critères, tu as droit à **40 jours par an** (ou 30 si tu es à 80 %), dans la limite d'**1 jour par semaine**. Même salaire, mêmes droits, même charge de travail qu'au bureau. Pas de remboursement de frais.
 
 ## C'est quoi le télétravail ?
 
