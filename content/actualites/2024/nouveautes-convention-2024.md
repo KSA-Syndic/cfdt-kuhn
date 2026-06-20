@@ -1,7 +1,7 @@
 ---
 title: Avenants CCNM 2024
 date: 2024-06-10T00:00:00.000Z
-draft: false
+draft: true
 type: posts
 tags:
   - métallurgie

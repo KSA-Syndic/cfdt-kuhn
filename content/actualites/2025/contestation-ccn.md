@@ -1,8 +1,7 @@
 ---
-title: Contestation CCNM (brouillon)
+title: Contestation CCNM
 date: 2025-11-12T23:10:03.515Z
-draft: true
-bookToC: true
+draft: false
 type: posts
 tags:
   - métallurgie
@@ -28,5 +27,3 @@ L'organisation patronale soutient que les primes d'ancienneté prévues par acco
 La FGMM-CFDT dénonce l'absurdité de cette interprétation.
 
 {{< button href="https://cfdt-fgmm.fr/wp-content/uploads/AFFICHE-ARTCLE-140.pdf" text="Voir l'affiche CFDT sur l'article 140" >}}
-
-![Logo CFDT Kuhn](/uploads/images/logos/cfdt-kuhn.png)
