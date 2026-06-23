@@ -115,8 +115,10 @@ body.show-analysis .mobstep,body.experience-hidden .mobstep{display:none}
 .eyebrow{font-family:var(--ui);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
 .scene-step{display:none}
 .lead{font-size:18px;line-height:1.5;color:var(--muted);max-width:52ch}
-.perim{display:inline-flex;align-items:center;gap:7px;font-family:var(--ui);font-size:12.5px;color:var(--muted);
+.perim{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.3em .55em;max-width:100%;
+  font-family:var(--ui);font-size:12.5px;color:var(--muted);
   border:1px solid rgba(232,178,58,.32);border-radius:20px;padding:5px 13px;align-self:flex-start;margin:2px 0}
+.perim-chunk--head{white-space:nowrap}
 .perim b{color:var(--gold);font-weight:600}
 .lead b{color:var(--text);font-weight:600}
 .huge{font-size:clamp(40px,9vw,104px);line-height:.92;color:var(--text)}
@@ -254,7 +256,7 @@ body.show-analysis #experience,body.show-analysis .rail{display:none}
 .callout.pinned strong{display:block;margin-bottom:4px;font-size:1.05em}
 .three-perim{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
 .three-perim .pc{background:#fff;border:1px solid var(--l-line);border-radius:13px;padding:16px}
-.three-perim .pc h4{font-family:var(--disp);margin:0 0 6px;font-size:17px}
+.three-perim .pc h4{font-family:var(--disp);margin:0 0 6px;font-size:17px;display:flex;flex-wrap:wrap;align-items:baseline;gap:.25em .4em}
 .three-perim .pc .big{font-family:var(--disp);font-size:30px;color:var(--l-kuhn)}
 .three-perim .pc .big.nd{color:var(--l-muted);font-size:18px}
 .three-perim .pc p{font-size:13px;color:var(--l-muted);margin:6px 0 0;line-height:1.45}
@@ -434,9 +436,13 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
 .gx-c::before{content:"€"}
 .gx-ico{position:absolute;font-size:24px;line-height:1}
 .gx-jar{position:absolute;bottom:24px;width:54px;height:36px;border:2.5px solid #7E6BA8;border-top:0;
-  border-radius:0 0 13px 13px;background:linear-gradient(180deg,rgba(126,107,168,.06),rgba(126,107,168,.24))}
+  border-radius:0 0 13px 13px;background:linear-gradient(180deg,rgba(126,107,168,.06),rgba(126,107,168,.24));z-index:0}
 .gx-jar::after{content:"réserve";position:absolute;left:50%;bottom:-15px;transform:translateX(-50%);
   font:600 9.5px var(--ui);color:#7E6BA8;white-space:nowrap}
+/* pièce dans le pot : même ancrage bas pour dotation (entrée) et reprise (sortie) */
+.gx-c--in-jar{left:50%;margin-left:-10px;bottom:29px;z-index:1}
+.gx-c--in-jar.drop{animation:gxDropJar 2s ease-in infinite}
+.gx-c--in-jar.rise{animation:gxRise 2.1s ease-in infinite}
 .gx-bar{position:absolute;bottom:10px;width:24px;border-radius:4px 4px 0 0}
 .gx-blk{position:absolute;width:64px;left:50%;margin-left:-32px;border-radius:4px;background:linear-gradient(180deg,#6f86a0,#4a6b8a)}
 .gx-op{position:absolute;bottom:24px;font:700 18px var(--disp);color:#9a927d}
@@ -445,6 +451,7 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
 .gx-tag.pos{background:rgba(94,138,40,.15);color:#5E8A28}
 .gx-tag.neg{background:rgba(231,106,75,.17);color:#c0432a}
 .gx-grow{animation:gxGrow .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes gxDropJar{0%{transform:translateY(-48px);opacity:0}18%{opacity:1}72%,100%{transform:translateY(0);opacity:1}}
 @keyframes gxDrop{0%{transform:translateY(-42px);opacity:0}22%{opacity:1}66%,100%{transform:translateY(0);opacity:1}}
 @keyframes gxRise{0%{transform:translateY(0);opacity:0}18%{opacity:1}78%{opacity:1}100%{transform:translateY(-48px);opacity:0}}
 @keyframes gxOutR{0%{transform:translateX(0);opacity:0}16%{opacity:1}82%{opacity:1}100%{transform:translateX(80px);opacity:0}}
@@ -515,7 +522,7 @@ html.kuhn-resultats-dark-chrome .book-menu,html.kuhn-resultats-dark-chrome .book
       <div class="copy">
         <div class="scene-step rv">ÉTAPE 01 · L'usine</div>
         <h2 class="rv d1" style="font-size:clamp(30px,5vw,52px)">L'activité réelle :<br>là où la valeur naît</h2>
-        <span class="perim rv d1">Périmètre&nbsp;: <b>KUHN SAS</b> · la maison-mère de Saverne (comptes sociaux)</span>
+        <span class="perim rv d1"><span class="perim-chunk perim-chunk--head">Périmètre&nbsp;: <b>KUHN&nbsp;SAS</b></span><span class="perim-chunk">· la maison-mère de Saverne (comptes sociaux)</span></span>
         <p class="lead rv d2">On observe d'abord <b>KUHN SAS</b>, la maison-mère installée à Saverne. Des <b>fournisseurs</b> livrent l'acier (ils repartent avec de l'argent), des <b>ouvriers</b> assemblent charrues, semoirs et broyeurs, et des <b>clients</b> agriculteurs repartent avec une machine en laissant leur argent. Ce qui reste après avoir payé matières et fournisseurs, c'est la <button class="gloss" data-g="valeur-ajoutee" aria-expanded="false">valeur ajoutée</button> : le carburant de l'entreprise. <span style="color:var(--steel)">Le chiffre d'affaires ci-dessous est celui de la <b>seule société KUHN SAS</b> (pas du groupe entier). Comme elle vend aussi à ses propres filiales, une partie de ce montant correspond à des ventes internes au groupe.</span></p>
         <div class="chips rv d3">
           <div class="chip"><div class="k">Argent des clients (CA)</div><div class="v gold" data-stat="ca">— M€</div><div class="d">chiffre d'affaires net</div></div>
@@ -599,7 +606,7 @@ html.kuhn-resultats-dark-chrome .book-menu,html.kuhn-resultats-dark-chrome .book
       <div class="copy" style="max-width:60ch;margin-bottom:18px">
         <div class="scene-step rv">ÉTAPE 02 · Le groupe France</div>
         <h2 class="rv d1" style="font-size:clamp(28px,5vw,48px)">Une galaxie d'usines<br>autour de <span style="color:var(--gold)">Saverne</span></h2>
-        <span class="perim rv d1">Périmètre&nbsp;: <b>les filiales</b> · chacune ses propres comptes</span>
+        <span class="perim rv d1"><span class="perim-chunk perim-chunk--head">Périmètre&nbsp;: <b>les filiales</b></span><span class="perim-chunk">· chacune ses propres comptes</span></span>
         <p class="lead rv d2">Saverne n'est pas seule : Huard (charrues), Audureau (pulvérisation), MGM, Parts, Artec, Blanchard… <b>chaque filiale est une société à part</b>, avec sa propre usine, son CA et son résultat. Le total ci-dessous additionne <b>leurs</b> chiffres d'affaires, à distinguer des 799 M€ de KUHN SAS vus juste avant.</p>
       </div>
       <div class="fil-grid rv d2" id="filGrid"></div>
@@ -769,9 +776,9 @@ html.kuhn-resultats-dark-chrome .book-menu,html.kuhn-resultats-dark-chrome .book
   <div class="orgchart">
     <div class="orgnode bucher"><b>BUCHER INDUSTRIES</b><small>Suisse · coté en bourse</small></div>
     <div class="orgconn">▲ dividendes</div>
-    <div class="orgnode group"><b>KUHN GROUP SAS</b><small>Strasbourg · tête d'intégration fiscale</small></div>
+    <div class="orgnode group"><b>KUHN&nbsp;GROUP&nbsp;SAS</b><small>Strasbourg · tête d'intégration fiscale</small></div>
     <div class="orgconn">│</div>
-    <div class="orgnode sas"><b>KUHN SAS</b><small>Saverne · centre industriel + banque interne</small></div>
+    <div class="orgnode sas"><b>KUHN&nbsp;SAS</b><small>Saverne · centre industriel + banque interne</small></div>
     <div class="orgconn">prêts ↓ &nbsp; dividendes ↑</div>
     <div class="fil-row">
       <div class="orgnode">Huard</div><div class="orgnode">Audureau</div><div class="orgnode">MGM</div>
@@ -782,8 +789,8 @@ html.kuhn-resultats-dark-chrome .book-menu,html.kuhn-resultats-dark-chrome .book
   <h3>Le piège des trois périmètres</h3>
   <p>Le « chiffre d'affaires de KUHN » désigne trois choses différentes. La plupart des malentendus viennent de là : chaque chiffre de ce dossier est donc étiqueté avec son périmètre.</p>
   <div class="three-perim">
-    <div class="pc"><h4>KUHN Group</h4><div class="big" id="periGroup">—</div><p>Groupe mondial consolidé, toutes filiales (exercice <span data-stat="year">2024</span>).</p></div>
-    <div class="pc"><h4>KUHN SAS · comptes sociaux</h4><div class="big" id="periSas">—</div><p>L'entité de Saverne, ventes intra-groupe incluses (comptes déposés, exercice <span data-stat="year">2024</span>). C'est la source principale de ce dossier.</p></div>
+    <div class="pc"><h4><span class="perim-chunk perim-chunk--head">KUHN&nbsp;Group</span></h4><div class="big" id="periGroup">—</div><p>Groupe mondial consolidé, toutes filiales (exercice <span data-stat="year">2024</span>).</p></div>
+    <div class="pc"><h4><span class="perim-chunk perim-chunk--head">KUHN&nbsp;SAS</span><span class="perim-chunk">· comptes sociaux</span></h4><div class="big" id="periSas">—</div><p>L'entité de Saverne, ventes intra-groupe incluses (comptes déposés, exercice <span data-stat="year">2024</span>). C'est la source principale de ce dossier.</p></div>
     <div class="pc"><h4>KSA-MGM opérationnel</h4><div class="big" id="periKsa">—</div><p>Activité réelle des sites Saverne + MGM, nette de la facturation interne (exercice <span data-stat="year">2024</span>).</p></div>
   </div>
   <p class="src">Méthode dividende : la liasse fiscale ne le publie pas directement ; on le reconstitue par différence : <b>bénéfice de l'année moins la hausse des capitaux propres</b> (ce qui n'est pas resté dans l'entreprise en est sorti sous forme de dividende, versé l'année suivante). Concorde avec les flux « entreprises liées » de l'annexe.</p>
