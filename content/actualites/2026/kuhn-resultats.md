@@ -139,13 +139,13 @@ kuhnResultats: true
         <div class="scene-step rv">ÉTAPE 02 · Le groupe France</div>
         <h2 class="rv d1" style="font-size:clamp(28px,5vw,48px)">Une galaxie d'usines<br>autour de <span style="color:var(--gold)">Saverne</span></h2>
         <span class="perim rv d1"><span class="perim-chunk perim-chunk--head">Périmètre&nbsp;: <b>les filiales</b></span><span class="perim-chunk">· chacune ses propres comptes</span></span>
-        <p class="lead rv d2">Saverne n'est pas seule : Huard (charrues), Audureau (pulvérisation), MGM, Parts, Artec, Blanchard… <b>chaque filiale est une société à part</b>, avec sa propre usine, son CA et son résultat. Le total ci-dessous additionne <b>leurs</b> chiffres d'affaires, à distinguer des 799 M€ de KUHN SAS vus juste avant.</p>
+        <p class="lead rv d2">Saverne n'est pas seule : Huard (charrues), Audureau (pulvérisation), MGM, Parts, Artec, Blanchard… <b>chaque filiale est une société à part</b>, avec sa propre usine, son CA et son résultat. Le total ci-dessous additionne <b>leurs</b> chiffres d'affaires, à distinguer des <span data-stat="caProse">— M€</span> de KUHN SAS vus juste avant.</p>
       </div>
       <div class="fil-grid rv d2" id="filGrid"></div>
       <div class="cumul rv d3">
         <div class="lab">Chiffre d'affaires cumulé des filiales (exercice <span data-stat="year">—</span>)</div>
         <div class="v" data-stat="filca">— M€</div>
-        <div class="caveat">⚠️ Somme « brute » des filiales, à ne pas confondre avec deux autres chiffres : ce n'est <b>ni</b> le CA de KUHN SAS (799 M€, l'entité de Saverne), <b>ni</b> le CA consolidé du groupe mondial. Elle additionne des ventes en partie internes (une filiale facture parfois une autre), donc on ne peut pas simplement l'ajouter à KUHN SAS. Détail dans l'analyse.</div>
+        <div class="caveat">⚠️ Somme « brute » des filiales, à ne pas confondre avec deux autres chiffres : ce n'est <b>ni</b> le CA de KUHN SAS (<span data-stat="caProse">— M€</span>, l'entité de Saverne), <b>ni</b> le CA consolidé du groupe mondial. Elle additionne des ventes en partie internes (une filiale facture parfois une autre), donc on ne peut pas simplement l'ajouter à KUHN SAS. Détail dans l'analyse.</div>
       </div>
     </div>
   </section>

@@ -420,6 +420,12 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
   display:grid;place-items:center;font:700 11px/1 var(--disp);color:#5a3c05}
 .gx-c::before{content:"€"}
 .gx-ico{position:absolute;font-size:24px;line-height:1}
+.gx--charges .gx-c--out{left:58px;bottom:34px;animation:gxOutR 2.1s ease-in infinite}
+.gx--treso{--gx-coin-gap:36px}
+.gx--treso .gx-c--pulse{bottom:14px;animation:gxPulse 1.5s ease-in-out infinite}
+.gx--treso .gx-c--pulse:nth-child(3){left:calc(50% - var(--gx-coin-gap) - 10px)}
+.gx--treso .gx-c--pulse:nth-child(4){left:calc(50% - 10px);animation-delay:.3s}
+.gx--treso .gx-c--pulse:nth-child(5){left:calc(50% + var(--gx-coin-gap) - 10px);animation-delay:.6s}
 .gx-jar{position:absolute;bottom:24px;width:54px;height:36px;border:2.5px solid #7E6BA8;border-top:0;
   border-radius:0 0 13px 13px;background:linear-gradient(180deg,rgba(126,107,168,.06),rgba(126,107,168,.24));z-index:0}
 .gx-jar::after{content:"réserve";position:absolute;left:50%;bottom:-15px;transform:translateX(-50%);
@@ -439,7 +445,7 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
 @keyframes gxDropJar{0%{transform:translateY(-48px);opacity:0}18%{opacity:1}72%,100%{transform:translateY(0);opacity:1}}
 @keyframes gxDrop{0%{transform:translateY(-42px);opacity:0}22%{opacity:1}66%,100%{transform:translateY(0);opacity:1}}
 @keyframes gxRise{0%{transform:translateY(0);opacity:0}18%{opacity:1}78%{opacity:1}100%{transform:translateY(-48px);opacity:0}}
-@keyframes gxOutR{0%{transform:translateX(0);opacity:0}16%{opacity:1}82%{opacity:1}100%{transform:translateX(80px);opacity:0}}
+@keyframes gxOutR{0%{left:58px;opacity:0}16%{opacity:1}82%{opacity:1}100%{left:calc(100% - 38px);opacity:0}}
 @keyframes gxUp{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-54px);opacity:0}}
 @keyframes gxGrow{0%{height:0}100%{height:var(--h,30px)}}
 @keyframes gxPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}

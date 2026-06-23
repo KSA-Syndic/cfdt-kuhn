@@ -41,6 +41,7 @@ function renderExperience(y){
   const set=(sel,to,fmt)=>{$$('[data-stat="'+sel+'"]').forEach(el=>animNum(el,to,fmt));};
   $$('[data-stat="year"]').forEach(el=>el.textContent=y);
   set('ca',SAS.ca[y],v=>fmtM(v));
+  set('caProse',SAS.ca[y],v=>fmtM(v,0));
   set('fournDisp',SAS.ca[y]-va(y),v=>fmtM(v));
   set('va',va(y),v=>fmtM(v));
   set('perso',SAS.sal[y]+SAS.cs[y],v=>fmtM(v));
@@ -562,7 +563,7 @@ const GLOSS={
   scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:12px">🏭</div><span class="gx-c" style="left:50%;margin-left:-10px;bottom:36px;animation:gxRise 2s ease-in infinite"></span><span class="gx-c" style="left:40%;bottom:36px;animation:gxRise 2s ease-in .6s infinite"></span><span class="gx-c" style="left:60%;bottom:36px;animation:gxRise 2s ease-in 1.2s infinite"></span></div>`},
  'charges':{t:'Charges',
   d:"Tout ce que l'entreprise dépense pour fonctionner : matières, salaires, énergie, amortissements… Les charges se soustraient des ventes pour donner le résultat.",
-  scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:16px;bottom:12px">🏭</div><span class="gx-c" style="left:58px;bottom:34px;animation:gxOutR 2.1s ease-in infinite"></span><span class="gx-c" style="left:58px;bottom:34px;animation:gxOutR 2.1s ease-in .7s infinite"></span><span class="gx-c" style="left:58px;bottom:34px;animation:gxOutR 2.1s ease-in 1.4s infinite"></span><div class="gx-ico" style="right:16px;bottom:12px">🧾</div></div>`},
+  scene:`<div class="gx gx--charges"><div class="base"></div><div class="gx-ico" style="left:16px;bottom:12px">🏭</div><span class="gx-c gx-c--out"></span><span class="gx-c gx-c--out" style="animation-delay:.7s"></span><span class="gx-c gx-c--out" style="animation-delay:1.4s"></span><div class="gx-ico" style="right:16px;bottom:12px">🧾</div></div>`},
  'provision':{t:'Provision',
   d:"Une somme mise de côté pour un risque <b>futur</b> (un litige, des stocks invendables, une garantie client). Le bénéfice de l'année baisse, mais l'argent, lui, reste en caisse.",
   scene:`<div class="gx"><div class="gx-jar" style="left:50%;margin-left:-27px"></div><span class="gx-c gx-c--in-jar drop"></span></div>`},
@@ -577,7 +578,7 @@ const GLOSS={
   scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:16px;bottom:12px">⚙️</div><div class="gx-bar gx-grow" style="left:96px;--h:18px;background:#5C6B7A;animation-delay:.05s"></div><div class="gx-bar gx-grow" style="left:128px;--h:18px;background:#5C6B7A;animation-delay:.35s"></div><div class="gx-bar gx-grow" style="left:160px;--h:18px;background:#5C6B7A;animation-delay:.65s"></div><div class="gx-bar gx-grow" style="left:192px;--h:18px;background:#5C6B7A;animation-delay:.95s"></div><div class="gx-tag" style="right:16px;top:13px;background:#eef0f2;color:#5C6B7A">étalé sur N ans</div></div>`},
  'tresorerie':{t:'Trésorerie',
   d:"L'argent <b>réellement disponible</b> : liquidités en banque et placements. C'est ce qui permet de payer, d'investir et de verser les dividendes.",
-  scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:34px">🏦</div><span class="gx-c" style="left:38%;bottom:14px;animation:gxPulse 1.5s ease-in-out infinite"></span><span class="gx-c" style="left:50%;margin-left:-10px;bottom:14px;animation:gxPulse 1.5s ease-in-out .3s infinite"></span><span class="gx-c" style="left:62%;bottom:14px;animation:gxPulse 1.5s ease-in-out .6s infinite"></span></div>`},
+  scene:`<div class="gx gx--treso"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:34px">🏦</div><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span></div>`},
  'fonds-propres':{t:'Fonds propres',
   d:"Ce que les actionnaires possèdent vraiment dans l'entreprise : le capital de départ plus les bénéfices accumulés et non distribués. C'est une <b>mesure de propriété</b>, pas un tas d'argent disponible (à ne pas confondre avec la trésorerie).",
   scene:`<div class="gx"><div class="gx-blk gx-grow" style="left:46px;margin-left:0;width:56px;--h:18px;bottom:18px;background:linear-gradient(180deg,#ffe1a0,#e0a92f);animation-delay:.05s"></div><div class="gx-blk gx-grow" style="left:46px;margin-left:0;width:56px;--h:14px;bottom:36px;background:linear-gradient(180deg,#fff0c8,#ecc15a);animation-delay:.5s"></div><div class="gx-lab" style="left:74px;transform:translateX(-50%);bottom:2px">capital + bénéfices gardés</div><div class="gx-tag" style="left:155px;transform:translateX(-50%);bottom:24px;background:#efe7d3;color:#7c745f">détenu par ▸</div><div class="gx-ico" style="left:236px;transform:translateX(-50%);bottom:20px;font-size:24px">👤</div><div class="gx-lab" style="left:236px;transform:translateX(-50%);bottom:2px">actionnaires</div></div>`},
