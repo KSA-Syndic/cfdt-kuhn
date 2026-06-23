@@ -84,7 +84,7 @@ function renderBenefit(y){
   const retained=rn-d;const po=d/rn*100;
   $$('[data-stat="payout"]').forEach(e=>e.textContent=fmtPct(po,0));
   wrap.innerHTML=`
-    <div class="dest div"><div class="ic">🇨🇭</div><div class="v num">${fmtM(d,1)}</div><div class="nm">Dividende → KUHN Group / Bucher<br>(versé en ${payYear}${est?' · estimé':''})</div></div>
+    <div class="dest div"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" style="vertical-align:middle" aria-hidden="true"><rect width="24" height="24" rx="3" fill="#E10E2B"/><rect x="10" y="4" width="4" height="16" fill="#fff"/><rect x="4" y="10" width="16" height="4" fill="#fff"/></svg></div><div class="v num">${fmtM(d,1)}</div><div class="nm">Dividende → KUHN Group / Bucher<br>(versé en ${payYear}${est?' · estimé':''})</div></div>
     <div class="dest"><div class="ic">🏦</div><div class="v num" style="color:var(--text)">${fmtM(Math.max(retained,0),1)}</div><div class="nm">Conservé dans l'entreprise<br>(réserves / trésorerie)</div></div>
     <div class="dest"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" style="vertical-align:middle" aria-hidden="true"><path d="M6 11h12v6a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z" fill="rgba(126,107,168,.22)" stroke="#7E6BA8" stroke-width="1.6"/><line x1="5" y1="11" x2="19" y2="11" stroke="#7E6BA8" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15.6" r="2.3" fill="#E8B23A"/></svg></div><div class="v num" style="color:var(--kuhn-soft)">${fmtM(SAS.provRC[y],0)}</div><div class="nm">Provisions au bilan<br>(coussin de sécurité)</div></div>`;
 }
