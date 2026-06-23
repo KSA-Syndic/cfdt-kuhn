@@ -11,7 +11,7 @@ tags:
 ---
 
 {{< hint type="info" >}}
-Contestation de l'interprétation de la CCNM au tribunal.
+Contestation de l'interprétation de la CCNM (Convention Collective Nationale de la Métallurgie) au tribunal.
 {{< /hint >}}
 
 ## La FGMM-CFDT affirme

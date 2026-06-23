@@ -1,7 +1,7 @@
 ---
 date: "2026-06-20T00:00:00+02:00"
 draft: false
-title: "Salaires 2026"
+title: "Salaires barème 2026"
 type: "posts"
 tags: ["salaire", "métallurgie", "convention", "avenant"]
 ---
