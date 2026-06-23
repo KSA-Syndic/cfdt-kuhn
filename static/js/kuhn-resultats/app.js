@@ -1,78 +1,18 @@
-/* ============================ DONNÉES ============================ */
-const YEARS=[2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-function S(arr){const o={};YEARS.forEach((y,i)=>o[y]=arr[i]);return o;}
-const SAS={
- ca:S([681865153,626916275,596732996,670721196,738553182,739312337,688740751,823954577,941819766,979086556,799216263]),
- prod:S([731947466,681875892,641584720,735494832,792419333,801707366,752974035,906301748,1031273774,1059509056,878856348]),
- rexpl:S([44971553,42524011,35228746,48598447,40197385,41521154,44775744,52099054,66824743,71471331,57406504]),
- rfin:S([17994404,21204488,18195489,10537169,10968027,12366028,7047057,10871179,10128713,15307796,12111615]),
- rnet:S([41745953,46225473,41660526,43249191,39177097,39407984,42837064,44287086,59212585,65365379,55250485]),
- amort:S([6406237,7109501,7641095,7683700,9269467,9858562,10095887,9516321,9081058,9051759,9839946]),
- reprises:S([52586502,50334368,45397485,49800912,48944010,55442737,55212846,60304766,65901518,73106735,77518471]),
- dotAct:S([10249366,9646050,10040475,9427728,11420944,10941337,11852448,19075323,19999642,17594097,19243619]),
- dotRC:S([13883293,9953038,9953366,9202983,10537432,10923765,13971584,20528457,17372272,16110076,11584808]),
- sal:S([50518127,50776403,50104391,51361105,54208613,56576715,52157603,60028215,62989725,66840680,67288809]),
- cs:S([20144169,19783801,19891253,20723285,21758884,21839220,22532588,24834337,27017753,29374254,28264396]),
- cp:S([126324507,135668869,133523197,136520372,134311998,136191776,138399790,141594726,159803207,167775330,160506338]),
- provRC:S([26680303,20305931,18739232,21449829,21469815,20495858,29132963,33335522,36559928,39613927,35775820]),
- dispo:S([136072583,121111321,118530374,114669346,105561645,86413210,176180039,175350275,181819188,138765663,67233975]),
- vmp:S([44904136,65498779,43243107,40590452,10557004,10557004,10554994,30587228,40493592,10450373,68063044]),
- fourn:S([73589631,71012600,72593494,73078256,74897156,74997758,75566868,95547714,130249161,111285619,84389080]),
- ebeEst:S([23199632,18991532,17739550,18912910,24704838,19600687,26958286,42302274,42774223,40059927,18581672]),
- ebePct:S([3.4,3.0,3.0,2.8,3.3,2.7,3.9,5.1,4.5,4.1,2.3])
-};
-const DIV={2015:36881111,2016:43806198,2017:40252016,2018:41385471,2019:37528206,2020:40629050,2021:41092150,2022:41004104,2023:57393256,2024:62519477};
-const EBITDA_PCT={2021:9.3,2022:9.0,2023:4.2,2024:2.6};
-const MARGE_OP_PCT={2021:6.3,2022:7.1,2023:7.3,2024:7.2};
-// KSA-MGM opérationnel (net de la facturation interne) — seul l'exercice 2024 est publié par le groupe
-const KSA_MGM={2024:441};
-
-// filiales : [entite, year, ca, rn, fp, dette, pret, div]
-const FIL_RAW=[
- ["Huard",2016,101550619,7697848,null,null,0,7497760],["Huard",2017,110734998,5819868,null,null,0,7049977],["Huard",2018,115299591,6494421,null,null,0,5059993],["Huard",2019,111162207,5631737,null,null,0,4799984],["Huard",2020,100896483,2312925,null,null,6249705,5100000],["Huard",2021,123000000,6710000,46700000,10500000,null,null],["Huard",2022,137000000,5650000,46200000,20800000,19750266,6210000],["Huard",2023,165000000,7950000,48800000,21400000,20247442,5190000],["Huard",2024,130000000,599000,44200000,21800000,20370667,7350000],
- ["Audureau",2016,48057951,2348037,null,null,2142462,1868470],["Audureau",2017,60355950,2370665,null,null,2139995,1979992],["Audureau",2018,72313421,2711140,null,null,4586424,1869993],["Audureau",2019,76872694,2857672,null,null,6609323,2309979],["Audureau",2020,69455807,3833224,null,null,2601336,2430000],["Audureau",2021,75500000,3930000,19500000,677000,null,null],["Audureau",2022,84273158,2548175,18500000,22600000,21937892,3740000],["Audureau",2023,94831804,4822859,20900000,25300000,24440451,2420000],["Audureau",2024,96279397,5620000,22200000,14300000,13283683,4400000],
- ["MGM",2016,17226888,874163,null,null,4824297,0],["MGM",2017,21184164,915642,null,null,3110135,0],["MGM",2018,22753049,742644,null,null,3650469,0],["MGM",2019,23236082,254494,null,null,5848593,0],["MGM",2020,20009137,-1546597,null,null,18976387,0],["MGM",2022,31521377,692712,7800000,15000000,15026739,500000],["MGM",2023,32206920,679580,7880000,16100000,16074115,250000],["MGM",2024,27834213,626822,8060000,11600000,11611861,250000],
- ["Parts",2016,15000076,453294,null,null,6225777,0],["Parts",2017,16940403,95226,null,null,4339357,0],["Parts",2018,16258642,457931,null,null,1194192,0],["Parts",2019,17416908,692691,null,null,3859343,0],["Parts",2020,17633920,1176888,null,null,0,490000],["Parts",2022,19736919,1156312,9550000,66000,0,800000],["Parts",2023,19862453,1272365,9560000,14000,0,1000000],["Parts",2024,19471316,1674309,10000000,12000,0,1000000],
- ["Artec",2018,6893885,183674,null,null,381824,109820],["Artec",2019,22073943,697712,null,null,2254221,99900],["Artec",2020,70412160,209197,null,null,1062431,300000],["Artec",2021,16800000,-1530000,3740000,4970000,null,0],["Artec",2022,21853912,-622545,3120000,10500000,10543058,0],["Artec",2023,29345359,390677,3510000,11200000,11155052,0],["Artec",2024,26549924,-1839655,1670000,11000000,11040651,0],
- ["Blanchard",2016,20477867,414694,null,null,4670847,0],["Blanchard",2017,16947503,-767144,null,null,0,0],["Blanchard",2018,21500855,1448220,null,null,5174856,0],["Blanchard",2019,20682595,-751009,null,null,6516115,0],["Blanchard",2020,18560271,-520682,null,null,3701932,0],["Blanchard",2022,21896843,841836,null,4857207,4857207,0],["Blanchard",2023,21836857,1114061,1830000,4860000,2968861,0],["Blanchard",2024,20267423,1423227,3040000,2970000,655205,0],
- ["Contifonte",2019,7920174,252286,null,null,null,180000],["Contifonte",2020,5454288,175511,null,null,null,240000],
- ["Contifonte",2022,10300000,343000,2270000,0,null,null],["Contifonte",2023,10100000,369000,2310000,1090,null,null],["Contifonte",2024,7790000,224000,2200000,0,null,null],
- ["Maszyny (PL)",2016,24619845,-967329,null,null,0,179917],["Maszyny (PL)",2017,33183935,315368,null,null,1914,0],["Maszyny (PL)",2018,41653267,262442,null,null,0,0],["Maszyny (PL)",2019,42731213,271672,null,null,867551,0],["Maszyny (PL)",2020,42115311,520222,null,null,375,0],["Maszyny (PL)",2022,59687562,1013365,null,null,2203419,815910],["Maszyny (PL)",2023,56905980,1109991,null,null,0,588293],["Maszyny (PL)",2024,43025360,1644401,null,null,170031,0],
- ["Mezo Gep (HU)",2023,5368596,121109,null,null,3048626,0],["Mezo Gep (HU)",2024,5083462,-382632,null,null,4407125,0],
- ["Tianjin (CN)",2022,6669877,347056,null,null,0,0],["Tianjin (CN)",2023,6856599,-197164,null,null,0,0],["Tianjin (CN)",2024,7092841,-567658,null,null,0,0],
- ["MGM",2021,28105217,1016185,null,null,null,0],["Parts",2021,17850434,990974,null,null,null,1000000],
- ["Blanchard",2021,20451584,-355785,null,null,null,0],["Contifonte",2021,7770292,253076,null,null,null,165000]
-];
-const FILIALES={};FIL_RAW.forEach(r=>{(FILIALES[r[1]]=FILIALES[r[1]]||[]).push({ent:r[0],ca:r[2],rn:r[3],fp:r[4],dette:r[5],pret:r[6],div:r[7]});});
-const ENT_LIST=[...new Set(FIL_RAW.map(r=>r[0]))];
-
-// flux groupe : year -> {...}
-const GROUPE={
- 2016:{creances:40053495,dettesCC:36947067,empruntLT:15024706,prets:26548921,divRecus:11004758,divVerses:38976000},
- 2017:{creances:34181574,dettesCC:35730639,empruntLT:14318713,prets:14082331,divRecus:9839642,divVerses:38976000},
- 2018:{creances:38954283,dettesCC:27282561,empruntLT:13564896,prets:14987765,divRecus:8703342,divVerses:40194000},
- 2019:{creances:46535917,dettesCC:18324599,empruntLT:12324077,prets:25954146,divRecus:9186935,divVerses:36540000},
- 2020:{creances:43172902,dettesCC:39973867,empruntLT:13130063,prets:32591836,divRecus:9688505,divVerses:41412000},
- 2021:{creances:76668055,dettesCC:21476776,empruntLT:12366724,prets:null,divRecus:null,divVerses:42630000},
- 2022:{creances:110648627,dettesCC:11291223,empruntLT:13083369,prets:75616176,divRecus:13841260,divVerses:57246000},
- 2023:{creances:118916631,dettesCC:15903997,empruntLT:14091083,prets:96040717,divRecus:12087450,divVerses:57246000},
- 2024:{creances:93966643,dettesCC:26988844,empruntLT:16567904,prets:74818281,divRecus:15015029,divVerses:63336000}
-};
-
-// concurrents : CA par exercice + marge ; KUHN Group en M€, autres en Md$
-const COMPET={
- years:[2021,2022,2023,2024,2025],
- series:[
-  {name:"KUHN Group",unit:"M€",color:"#C20A2A",ca:{2021:1220,2022:1507,2023:1465,2024:1217,2025:1123},marg:{2021:12.2,2022:11.7,2023:11.4,2024:8.0,2025:7.1}},
-  {name:"John Deere",unit:"Md$",color:"#367C2B",ca:{2021:44.0,2022:52.6,2023:61.3,2024:51.7,2025:45.7},marg:{2023:22.7,2024:18.9,2025:12.6}},
-  {name:"AGCO",unit:"Md$",color:"#E8B23A",ca:{2021:11.1,2022:12.7,2023:14.4,2024:11.7,2025:9.6},marg:{2022:10.3,2023:12.0,2024:8.9,2025:7.2}},
-  {name:"CNH (agri+constr.)",unit:"Md$",color:"#1f6fb2",ca:{2022:23.6,2023:24.7,2024:19.8,2025:18.1},marg:{2023:13.5,2024:6.2,2025:5.0}}
- ]
-};
+/* Application interactive — article kuhn-resultats (nécessite data.js) */
+(function (D) {
+  'use strict';
+  if (!D) {
+    console.error('[kuhn-resultats] KuhnResultatsData absent — charger data.js avant app.js');
+    return;
+  }
+  const {
+    YEARS, SAS, DIV, EBITDA_PCT, MARGE_OP_PCT, KSA_MGM,
+    FIL_RAW, FILIALES, ENT_LIST, GROUPE, COMPET
+  } = D;
 
 /* ============================ HELPERS ============================ */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const EXP_YEARS=[2016,2017,2018,2019,2020,2021,2022,2023,2024];
 let curYear=2024;
 const M=v=>v/1e6;
@@ -86,12 +26,9 @@ function treso(y){return SAS.dispo[y]+SAS.vmp[y];}
 function ebitdaPct(y){return EBITDA_PCT[y]!=null?EBITDA_PCT[y]:SAS.ebePct[y];}
 function netPct(y){return SAS.rnet[y]/SAS.ca[y]*100;}
 function filSum(y){const rows=FILIALES[y]||[];return rows.reduce((s,r)=>s+(r.ca||0),0);}
-function divFor(y){return DIV[y]!=null?DIV[y]:null;} // versé en y (sur résultat y-1)
-function payout(y){const d=DIV[y];const base=SAS.rnet[y-1];return d&&base?d/base*100:null;}
-
 /* ============================ COUNTERS ============================ */
 function animNum(el,to,fmt){
-  if(reduce){el.textContent=fmt(to);return;}
+  if(reducedMotion){el.textContent=fmt(to);return;}
   const from=parseFloat(el.dataset._cur||"0")||0;el.dataset._cur=to;
   const t0=performance.now(),dur=900;
   function tick(t){const k=Math.min(1,(t-t0)/dur);const e=1-Math.pow(1-k,3);
@@ -314,7 +251,6 @@ function drawSankey(y){
   if(!g){svg.appendChild(el('text',{x:W/2,y:H/2,'text-anchor':'middle',fill:'#8a8472'},'Données de flux indisponibles pour cet exercice.'));return;}
   const filDiv=(FILIALES[y]||[]).reduce((s,r)=>s+(r.div||0),0);
   const filPret=(FILIALES[y]||[]).reduce((s,r)=>s+(r.pret||0),0);
-  const nodes={bucher:[150,'BUCHER / KUHN Group'],sas:[480,'KUHN SAS'],fil:[810,'Filiales']};
   const cx={bucher:175,sas:520,fil:865};
   // node boxes
   function box(x,label,col){svg.appendChild(el('rect',{x:x-95,y:120,width:190,height:60,rx:10,fill:col,stroke:'#d9d3c4'}));svg.appendChild(el('text',{x:x,y:155,'text-anchor':'middle','font-family':'Bahnschrift','font-size':15,fill:'#1A1E24'},label));}
@@ -343,13 +279,25 @@ function drawSankey(y){
   svg.appendChild(el('text',{x:cx.bucher,y:204,'text-anchor':'middle','font-size':12,fill:'#8a8472'},'reçoit '+fmtM(g.divVerses,0)));
 }
 
+
+function drawAnalysisCharts() {
+  drawCaRn();
+  drawMargins();
+  drawProv();
+  drawProvStock();
+  drawTreso();
+  drawDiv();
+  drawCompo();
+  fillCompTable();
+}
+
 /* euro decomposition + provisions tool */
 function renderTools(y){
   const de=$('#decompYear'),pr=$('#provYear'),ed=$('#euroDecomp'),el=$('#euroLegend');
   if(!de||!pr||!ed||!el)return;
   de.textContent=y;pr.textContent=y;
   const prod=SAS.prod[y];const cn=conso(y),perso=SAS.sal[y]+SAS.cs[y],amo=SAS.amort[y];
-  const ebe=SAS.ebeEst[y];const rest=Math.max(0,prod-cn-perso-amo);
+const rest=Math.max(0,prod-cn-perso-amo);
   const segs=[
    {l:'Achats & charges externes',v:cn,c:'#5C6B7A'},
    {l:'Salaires & charges',v:perso,c:'#C20A2A'},
@@ -413,7 +361,7 @@ function scrollToFilTable(){
     const stick=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fil-table-scroll-margin'))||72;
     const target=docTop(wrap)-stick;
     const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);
-    window.scrollTo({top:Math.min(Math.max(0,target),max),behavior:reduce?'auto':'smooth'});
+    window.scrollTo({top:Math.min(Math.max(0,target),max),behavior:reducedMotion?'auto':'smooth'});
   }));
 }
 function applyFilFilter(ent,year){
@@ -423,6 +371,28 @@ function applyFilFilter(ent,year){
 }
 
 /* ============================ UI WIRING ============================ */
+function refreshChrome() {
+  syncBarH();
+  layoutChrome();
+  fitHeader();
+}
+
+function mountChipButtons(container, items, initial, onSelect) {
+  if (!container) return;
+  items.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'chipbtn';
+    btn.textContent = item.label;
+    btn.setAttribute('aria-pressed', item.value === initial);
+    btn.onclick = () => {
+      container.querySelectorAll('.chipbtn').forEach(b => b.setAttribute('aria-pressed', b === btn));
+      onSelect(item.value);
+    };
+    container.appendChild(btn);
+  });
+}
+
+
 // Calibre le chrome fixe sur la colonne .book-page (hugo-book) ; sans effet hors intégration.
 function layoutChrome(){
   const page=document.querySelector('.book-page');
@@ -456,7 +426,6 @@ function syncBarH(){
   if(b)document.documentElement.style.setProperty('--bar-h',b.offsetHeight+'px');
   syncFilScrollMargin();
 }
-function placeMob(){syncBarH();}
 function buildYearControls(){
   const box=$('#years'),sel=$('#yearsel');
   if(!box||!sel)return;
@@ -466,11 +435,9 @@ function buildYearControls(){
     const o=document.createElement('option');o.value=y;o.textContent='Exercice '+y;if(y===curYear)o.selected=true;sel.appendChild(o);
   });
   sel.onchange=e=>setYear(+e.target.value);
-  const ae=$('#anaEnt');
-  if(ae)['Toutes',...ENT_LIST].forEach((e,i)=>{const b=document.createElement('button');b.className='chipbtn';b.textContent=e;b.setAttribute('aria-pressed',i===0);b.onclick=()=>{tblEnt=e;$$('#anaEnt .chipbtn').forEach(x=>x.setAttribute('aria-pressed',x===b));applyFilFilter(tblEnt,tblYear);};ae.appendChild(b);});
-  const ty=$('#anaTableYears');
-  if(ty){const FIL_YEARS=[...new Set(FIL_RAW.map(r=>r[1]))].sort((a,b)=>a-b);
-  [['Toutes','Toutes'],...FIL_YEARS.map(y=>[y,y])].forEach((p,i)=>{const b=document.createElement('button');b.className='chipbtn';b.textContent=p[0];b.setAttribute('aria-pressed',i===0);b.onclick=()=>{tblYear=p[1];$$('#anaTableYears .chipbtn').forEach(x=>x.setAttribute('aria-pressed',x===b));applyFilFilter(tblEnt,tblYear);};ty.appendChild(b);});}
+  mountChipButtons($('#anaEnt'), ['Toutes', ...ENT_LIST].map(e => ({ value: e, label: e })), tblEnt, ent => applyFilFilter(ent, tblYear));
+  const filYears = [...new Set(FIL_RAW.map(r => r[1]))].sort((a, b) => a - b);
+  mountChipButtons($('#anaTableYears'), [{ value: 'Toutes', label: 'Toutes' }, ...filYears.map(y => ({ value: y, label: y }))], tblYear, year => applyFilFilter(tblEnt, year));
 }
 function setYear(y){
   curYear=y;
@@ -487,10 +454,12 @@ function showAnalysis(on){
   document.documentElement.classList.toggle('kuhn-resultats-dark-chrome',!on&&document.documentElement.classList.contains('full-width-post-expanded'));
   $('#btnExp').setAttribute('aria-pressed',!on);
   $('#btnAna').setAttribute('aria-pressed',on);
-  if(on){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
+  if(on){window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'});}
 }
 
 /* scroll engine: reveals + parallax + rail */
+let scrollRailRefresh = null;
+
 function initScroll(){
   const scenes=$$('.scene');
   // hero visible immediately (it's above the fold)
@@ -541,7 +510,7 @@ function initScroll(){
   }
   function onScroll(){
     const vh=innerHeight;
-    if(!reduce){layers.forEach(l=>{const r=l.getBoundingClientRect();const c=(r.top+r.height/2-vh/2)/vh;
+    if(!reducedMotion){layers.forEach(l=>{const r=l.getBoundingClientRect();const c=(r.top+r.height/2-vh/2)/vh;
       l.style.transform='translateY('+(c*(parseFloat(l.dataset.depth)||0)*-120)+'px)';});}
     const er=exp.getBoundingClientRect();
     const prog=Math.min(1,Math.max(0,(-er.top)/(er.height-vh)));
@@ -573,14 +542,13 @@ function initScroll(){
     if(e.key==='ArrowDown'||e.key==='PageDown'||e.key===' '){window.scrollTo({top:scrollY+d,behavior:'instant'});e.preventDefault();}
     if(e.key==='ArrowUp'||e.key==='PageUp'){window.scrollTo({top:scrollY-d,behavior:'instant'});e.preventDefault();}});
   // place le bandeau mobile sous la hauteur réelle de l'en-tête (qui peut passer sur 2 lignes)
-  function placeMobLocal(){placeMob();}
-  function railReady(){layoutChrome();fitHeader();placeMobLocal();layoutRail();buildMarks();chooseMode();onScroll();}
-  fitHeader();placeMobLocal();layoutRail();buildMarks();onScroll();
+  scrollRailRefresh = function refreshRail() { refreshChrome(); layoutRail(); buildMarks(); chooseMode(); onScroll(); };
+  scrollRailRefresh();
   const raw=getComputedStyle(document.documentElement).getPropertyValue('--full-width-post-dur').trim();
-  const ms=reduce?0:(raw.endsWith('ms')?parseFloat(raw):(parseFloat(raw)||0.65)*1000);
-  if(ms)setTimeout(railReady,ms+60);else railReady();
+  const ms=reducedMotion?0:(raw.endsWith('ms')?parseFloat(raw):(parseFloat(raw)||0.65)*1000);
+  if (ms) setTimeout(scrollRailRefresh, ms + 60);
   addEventListener('scroll',()=>requestAnimationFrame(onScroll),{passive:true});
-  addEventListener('resize',()=>{layoutChrome();fitHeader();placeMobLocal();layoutRail();buildMarks();chooseMode();requestAnimationFrame(onScroll);},{passive:true});
+  addEventListener('resize', () => { scrollRailRefresh(); }, { passive: true });
 }
 
 /* ============================ GLOSSAIRE INTERACTIF ============================ */
@@ -651,7 +619,8 @@ buildYearControls();
 renderExperience(curYear);
 renderTools(curYear);
 renderFilTable();
-drawCaRn();drawMargins();drawProv();drawProvStock();drawTreso();drawDiv();drawCompo();fillCompTable();drawSankey(curYear);
+drawAnalysisCharts();
+drawSankey(curYear);
 syncBarH();
 initScroll();
 const bE=$('#btnExp'),bA=$('#btnAna'),gA=$('#goAnalysis'),bB=$('#backToExp');
@@ -659,22 +628,23 @@ if(bE)bE.onclick=()=>showAnalysis(false);
 if(bA)bA.onclick=()=>showAnalysis(true);
 if(gA)gA.onclick=()=>showAnalysis(true);
 if(bB)bB.onclick=()=>showAnalysis(false);
-syncBarH();fitHeader();
+refreshChrome();
 handleHash();
 }catch(err){console.error('[kuhn-resultats]',err);}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',kuhnResultatsInit,{once:true});
 else kuhnResultatsInit();
-addEventListener('load',()=>{syncBarH();layoutChrome();fitHeader();});
-addEventListener('resize',()=>{syncBarH();layoutChrome();fitHeader();},{passive:true});
-addEventListener('full-width-post-menu-context',()=>{layoutChrome();fitHeader();placeMob();});
+addEventListener('load', () => { if (scrollRailRefresh) scrollRailRefresh(); else refreshChrome(); });
+addEventListener('resize', refreshChrome, { passive: true });
+addEventListener('full-width-post-menu-context', refreshChrome);
 // deep-link: #analyse (ou #sec-*) ouvre le dossier détaillé et défile vers la section
 function handleHash(){
   const h=location.hash;
   if(h==='#analyse'){showAnalysis(true);return;}
   if(h.startsWith('#sec-')){const t=document.getElementById(h.slice(1));showAnalysis(true);
-    if(t)requestAnimationFrame(()=>t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}));}
+    if(t)requestAnimationFrame(()=>t.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'}));}
 }
 // kuhn-resultats-dark-chrome : géré par full-width-post.js (entrée) et showAnalysis() (bascule Expérience/Analyse)
-addEventListener('pagehide',()=>document.documentElement.classList.remove('kuhn-resultats-dark-chrome','full-width-post-expanded'));
 addEventListener('hashchange',handleHash);
+
+})(window.KuhnResultatsData);
