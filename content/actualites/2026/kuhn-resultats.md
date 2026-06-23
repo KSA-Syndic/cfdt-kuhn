@@ -154,7 +154,7 @@ kuhnResultats: true
   <section class="scene" id="s3" data-step="3" style="background:linear-gradient(180deg,#10171f,#161019)">
     <div class="inner split rev">
       <div class="stagebox">
-        <div class="tip rv d2">Reprendre une provision passée <b>ajoute au résultat</b> de l'année, mais aucun euro n'entre réellement en caisse.</div>
+        <div class="tip rv d2">Reprendre une provision passée <b>ajoute au résultat</b> de l'année, mais aucun euro n'entre réellement en trésorerie.</div>
         <div class="stage" id="stageDir" aria-hidden="true">
         <svg viewBox="180 110 420 350" preserveAspectRatio="xMidYMid meet">
           <rect x="0" y="392" width="760" height="83" fill="#120b15"/>
@@ -296,106 +296,106 @@ kuhnResultats: true
 
 <!-- ============ ANALYSIS ============ -->
 <div id="analysis">
-<div class="wrap">
-<section>
-  <h2>Lire les résultats de KUHN dans leur contexte</h2>
-  <p class="intro">L'indicateur le plus souvent mis en avant, la <strong>marge brute (EBITDA)</strong>, a reculé de 9 % à 2,6 % du chiffre d'affaires entre 2021 et 2024. C'est exact. Mais cet indicateur, seul, n'éclaire qu'une partie du tableau : un <strong>super-cycle agricole</strong> exceptionnel s'est achevé (comme pour l'ensemble du secteur), tandis que le résultat net et les dividendes sont restés élevés. Ce dossier reconstitue les flux de valeur de bout en bout, chiffres déposés à l'appui.</p>
-  <div class="callout pinned"><span class="pin" aria-hidden="true">📌</span> <strong>La phrase à retenir.</strong> KUHN reste financièrement très saine (trésorerie abondante, quasi pas de dette bancaire, R&D maintenue) et sa marge <em>opérationnelle</em> tient (~7 %). Sa marge <em>brute (EBITDA)</em> a bien chuté, signe que l'activité génère moins de trésorerie, mais le résultat net affiché reste en partie soutenu par des <strong>reprises&nbsp;de&nbsp;provisions</strong> (un effet comptable, pas une entrée d'argent), et le dividende n'a jamais faibli.</div>
-</section>
-<section>
-  <div class="sec-eyebrow"><span class="n">01</span> Qui est KUHN, et de quoi parle-t-on</div>
-  <p><strong>KUHN SAS</strong> (Saverne, SIREN 675 580 542) est le cœur industriel et la « banque interne » d'un groupe de machinisme agricole. Elle est détenue par <strong>KUHN Group SAS</strong> (Strasbourg), elle-même filiale du groupe suisse coté <strong>Bucher Industries</strong>. Autour de KUHN SAS gravitent des filiales spécialisées (Huard, Audureau, MGM, Parts, Artec, Blanchard, Contifonte) et des filiales étrangères.</p>
-  <div class="orgchart">
-    <div class="orgnode bucher"><b>BUCHER INDUSTRIES</b><small>Suisse · coté en bourse</small></div>
-    <div class="orgconn">▲ dividendes</div>
+  <div class="wrap">
+    <section>
+      <h2>Lire les résultats de KUHN dans leur contexte</h2>
+      <p class="intro">L'indicateur le plus souvent mis en avant, la <strong>marge brute (EBITDA)</strong>, a reculé de 9 % à 2,6 % du chiffre d'affaires entre 2021 et 2024. C'est exact. Mais cet indicateur, seul, n'éclaire qu'une partie du tableau : un <strong>super-cycle agricole</strong> exceptionnel s'est achevé (comme pour l'ensemble du secteur), tandis que le résultat net et les dividendes sont restés élevés. Ce dossier reconstitue les flux de valeur de bout en bout, chiffres déposés à l'appui.</p>
+      <div class="callout pinned"><span class="pin" aria-hidden="true">📌</span> <strong>La phrase à retenir.</strong> KUHN reste financièrement très saine (trésorerie abondante, quasi pas de dette bancaire, R&D maintenue) et sa marge <em>opérationnelle</em> tient (~7 %). Sa marge <em>brute (EBITDA)</em> a bien chuté, signe que l'activité génère moins de trésorerie, mais le résultat net affiché reste en partie soutenu par des <strong>reprises&nbsp;de&nbsp;provisions</strong> (un effet comptable, pas une entrée d'argent), et le dividende n'a jamais faibli.</div>
+    </section>
+    <section>
+      <div class="sec-eyebrow"><span class="n">01</span> Qui est KUHN, et de quoi parle-t-on</div>
+      <p><strong>KUHN SAS</strong> (Saverne, SIREN 675 580 542) est le cœur industriel et la « banque interne » d'un groupe de machinisme agricole. Elle est détenue par <strong>KUHN Group SAS</strong> (Strasbourg), elle-même filiale du groupe suisse coté <strong>Bucher Industries</strong>. Autour de KUHN SAS gravitent des filiales spécialisées (Huard, Audureau, MGM, Parts, Artec, Blanchard, Contifonte) et des filiales étrangères.</p>
+      <div class="orgchart">
+        <div class="orgnode bucher"><b>BUCHER INDUSTRIES</b><small>Suisse · coté en bourse</small></div>
+        <div class="orgconn">▲ dividendes</div>
     <div class="orgnode group"><b>KUHN&nbsp;GROUP&nbsp;SAS</b><small>Strasbourg · tête d'intégration fiscale</small></div>
-    <div class="orgconn">│</div>
+        <div class="orgconn">│</div>
     <div class="orgnode sas"><b>KUHN&nbsp;SAS</b><small>Saverne · centre industriel + banque interne</small></div>
-    <div class="orgconn">prêts ↓ &nbsp; dividendes ↑</div>
-    <div class="fil-row">
-      <div class="orgnode">Huard</div><div class="orgnode">Audureau</div><div class="orgnode">MGM</div>
-      <div class="orgnode">Parts</div><div class="orgnode">Artec</div><div class="orgnode">Blanchard</div>
-      <div class="orgnode">Contifonte</div><div class="orgnode">+ étrangères (PL · HU · CN)</div>
-    </div>
-  </div>
-  <h3>Le piège des trois périmètres</h3>
-  <p>Le « chiffre d'affaires de KUHN » désigne trois choses différentes. La plupart des malentendus viennent de là : chaque chiffre de ce dossier est donc étiqueté avec son périmètre.</p>
-  <div class="three-perim">
+        <div class="orgconn">prêts ↓ &nbsp; dividendes ↑</div>
+        <div class="fil-row">
+          <div class="orgnode">Huard</div><div class="orgnode">Audureau</div><div class="orgnode">MGM</div>
+          <div class="orgnode">Parts</div><div class="orgnode">Artec</div><div class="orgnode">Blanchard</div>
+          <div class="orgnode">Contifonte</div><div class="orgnode">+ étrangères (PL · HU · CN)</div>
+        </div>
+      </div>
+      <h3>Le piège des trois périmètres</h3>
+      <p>Le « chiffre d'affaires de KUHN » désigne trois choses différentes. La plupart des malentendus viennent de là : chaque chiffre de ce dossier est donc étiqueté avec son périmètre.</p>
+      <div class="three-perim">
     <div class="pc"><h4><span class="perim-chunk perim-chunk--head">KUHN&nbsp;Group</span></h4><div class="big" id="periGroup">—</div><p>Groupe mondial consolidé, toutes filiales (exercice <span data-stat="year">2024</span>).</p></div>
     <div class="pc"><h4><span class="perim-chunk perim-chunk--head">KUHN&nbsp;SAS</span><span class="perim-chunk">· comptes sociaux</span></h4><div class="big" id="periSas">—</div><p>L'entité de Saverne, ventes intra-groupe incluses (comptes déposés, exercice <span data-stat="year">2024</span>). C'est la source principale de ce dossier.</p></div>
-    <div class="pc"><h4>KSA-MGM opérationnel</h4><div class="big" id="periKsa">—</div><p>Activité réelle des sites Saverne + MGM, nette de la facturation interne (exercice <span data-stat="year">2024</span>).</p></div>
-  </div>
-  <p class="src">Méthode dividende : la liasse fiscale ne le publie pas directement ; on le reconstitue par différence : <b>bénéfice de l'année moins la hausse des capitaux propres</b> (ce qui n'est pas resté dans l'entreprise en est sorti sous forme de dividende, versé l'année suivante). Concorde avec les flux « entreprises liées » de l'annexe.</p>
-</section>
-<section>
-  <div class="sec-eyebrow"><span class="n">02</span> Tableau de bord · KUHN SAS, 2014–2024</div>
-  <p>Les séries ci-dessous couvrent 2014–2024 (comptes sociaux déposés de KUHN SAS). Survolez un point ou une barre pour la valeur exacte.</p>
-  <div class="chartgrid">
-    <div class="card"><h4>Chiffre d'affaires & résultat net</h4><p class="cap">Le CA suit le cycle (pic 2023) ; le résultat net reste remarquablement stable.</p><svg class="svgchart" id="chCaRn" viewBox="0 0 520 300"></svg><div class="legend"><span title="Total des ventes de l'exercice (avant toute charge)."><i style="background:var(--l-gold)"></i>CA net</span><span title="Bénéfice final de l'année, après toutes charges et impôts."><i style="background:var(--l-kuhn)"></i>Résultat net</span></div><p class="srcnote">En millions d'euros. <b>CA net</b> = ce que l'entreprise a facturé ; <b>résultat net</b> = ce qu'il en reste une fois tout payé. <b>Source :</b> comptes sociaux KUHN SAS déposés (Pappers).</p></div>
-    <div class="card"><h4>Trois mesures de rentabilité</h4><p class="cap">La marge opérationnelle tient ~7 % ; l'EBITDA (marge brute) s'effondre.</p><svg class="svgchart" id="chMargins" viewBox="0 0 520 300"></svg><div class="legend"><span title="Résultat d'exploitation ÷ CA : la rentabilité du métier, hors finance et impôts."><i style="background:var(--l-kuhn)"></i>Marge opérat.</span><span title="EBITDA ÷ CA : la trésorerie brute dégagée par l'activité, avant amortissements et provisions. C'est l'indicateur le plus proche de l'argent réellement gagné."><i style="background:var(--bad)"></i>EBITDA</span><span title="Excédent brut d'exploitation estimé à partir des comptes, recoupe la tendance de l'EBITDA."><i style="background:var(--steel)"></i>EBE estimé</span></div><p class="srcnote">En % du chiffre d'affaires. L'<b>EBITDA</b> mesure la trésorerie brute de l'activité ; la <b>marge opérationnelle</b> y ajoute provisions et transferts. <b>Sources :</b> marge opérat. & EBITDA = Pappers ; EBE = calcul sur comptes déposés.</p></div>
-    <div class="card"><h4>Provisions : dotations vs reprises</h4><p class="cap">Les reprises (vert) dépassent largement les dotations : c'est ce qui soutient le résultat.</p><svg class="svgchart" id="chProv" viewBox="0 0 520 300"></svg><div class="legend"><span title="Argent mis de côté les années passées que l'on relâche (+ transferts de charges) : ça remonte au résultat sans entrée de cash."><i style="background:var(--l-green)"></i>Reprises + transferts</span><span title="Nouvelles provisions de l'année : charges « au cas où » qui réduisent le résultat."><i style="background:var(--bad)"></i>Dotations</span></div><p class="srcnote">En millions d'euros. Une <b>reprise</b> relâche une provision passée (gain comptable, pas de cash) ; une <b>dotation</b> en constitue une nouvelle (charge). <b>Source :</b> comptes sociaux KUHN SAS (Pappers).</p></div>
-    <div class="card"><h4>Stock de provisions au bilan (le « réservoir »)</h4><p class="cap">Le matelas de provisions pour risques &amp; charges accumulé au passif. C'est lui que les reprises viennent puiser : il monte les bonnes années, et reflue dès 2024.</p><svg class="svgchart" id="chProvStock" viewBox="0 0 520 300"></svg><div class="legend"><span title="Provisions pour risques et charges inscrites au passif du bilan, à la clôture de l'exercice."><i style="background:#7E6BA8"></i>Provisions au bilan (risques &amp; charges)</span></div><p class="srcnote">En millions d'euros, à la clôture. La réserve passe de ~19 M€ (2016) à ~40 M€ (2023), puis amorce son premier reflux en 2024 (~36 M€). <b>Source :</b> bilans KUHN SAS déposés (Pappers).</p></div>
-    <div class="card"><h4>Trésorerie & capitaux propres</h4><p class="cap">Trésorerie élevée, capitaux propres stables : entreprise solide et peu endettée.</p><svg class="svgchart" id="chTreso" viewBox="0 0 520 300"></svg><div class="legend"><span title="Disponibilités en banque + valeurs mobilières de placement : l'argent immédiatement mobilisable."><i style="background:var(--l-gold)"></i>Trésorerie</span><span title="Capital + réserves + résultat : ce que les actionnaires possèdent réellement dans l'entreprise."><i style="background:#4a6b8a"></i>Capitaux propres</span></div><p class="srcnote">En millions d'euros. <b>Trésorerie</b> = liquidités + placements ; <b>capitaux propres</b> = la « richesse nette » de la société. <b>Source :</b> bilans KUHN SAS déposés (Pappers).</p></div>
-    <div class="card full"><h4>Dividendes & taux de distribution</h4><p class="cap">KUHN distribue quasiment tout son résultat chaque année (~90–96 %), en hausse comme en baisse.</p><svg class="svgchart" id="chDiv" viewBox="0 0 1040 300"></svg><div class="legend"><span title="Montant remonté à l'actionnaire (KUHN Group / Bucher) au cours de l'année."><i style="background:var(--l-gold)"></i>Dividende versé</span><span title="Bénéfice de l'année précédente, sur lequel le dividende est prélevé."><i style="background:var(--l-kuhn)"></i>Résultat net N-1</span><span title="Dividende ÷ résultat de l'année précédente : la part du bénéfice qui sort de l'entreprise."><i style="background:var(--l-ink)"></i>Taux de distribution</span></div><p class="srcnote">Barres en millions d'euros, courbe en %. Le dividende d'une année porte sur le <b>résultat de l'année précédente</b>. <b>Source :</b> reconstitué via la variation des capitaux propres (comptes déposés).</p></div>
-  </div>
-</section>
-<section>
-  <div class="sec-eyebrow"><span class="n">03</span> Manipulez les chiffres vous-même</div>
-  <div class="tool">
-    <h4>Décomposez un euro de chiffre d'affaires</h4>
-    <p class="cap">Où va chaque euro encaissé sur la production de l'exercice <b id="decompYear">2024</b> ? (estimation à partir des comptes sociaux)</p>
-    <div class="euro-decomp" id="euroDecomp"></div>
-    <div class="euro-legend" id="euroLegend"></div>
-  </div>
-  <h3>D'où vient cet argent ? Le mécanisme des provisions</h3>
-  <p>Une <strong>provision</strong>, c'est un montant mis de côté lors d'un exercice <em>passé</em> (et déduit du résultat de l'époque) pour couvrir un risque : un litige, des stocks qui pourraient perdre de la valeur, une garantie client. Quand le risque ne se matérialise pas, on <strong>reprend</strong> la provision : elle remonte dans le résultat de l'année en cours. Mais <strong>aucun euro n'entre en caisse</strong> : l'argent avait déjà été « gelé » comptablement les années précédentes. C'est, en quelque sorte, du bénéfice passé recyclé dans le présent.</p>
-  <div class="callout gold">Pourquoi cette ligne dépasse-t-elle <em>toujours</em> les dotations de l'année ? Deux raisons : <strong>(1)</strong> elle agrège les reprises <em>et</em> les <strong>transferts de charges</strong>, une écriture technique qui reclasse certaines dépenses (refacturées au groupe, immobilisées…), récurrente chaque année ; <strong>(2)</strong> KUHN avait accumulé d'<strong>importantes provisions</strong> les bonnes années, qu'elle relâche progressivement. Résultat : un coussin comptable qui soutient le résultat sans refléter la trésorerie réellement gagnée. Rien d'illégal, mais il faut le savoir pour lire le résultat net.</div>
-  <div class="tool">
-    <h4>L'effet « provisions » sur le résultat de l'exercice <b id="provYear">2024</b></h4>
-    <p class="cap">Si l'on neutralise les reprises nettes (reprises &amp; transferts − dotations), voici ce que deviendrait le résultat : l'écart mesure le coussin comptable.</p>
-    <div class="prov-out">
-      <div class="po"><div class="lab">Résultat net publié</div><div class="v" style="color:var(--l-ink)" id="provPublished">— M€</div></div>
-      <div class="po"><div class="lab">→ hors reprises nettes</div><div class="v" id="provAdjusted" style="color:var(--l-kuhn)">— M€</div></div>
-      <div class="po"><div class="lab">= effet des écritures</div><div class="v" id="provEffect" style="color:var(--l-gold)">— M€</div></div>
-    </div>
-    <p class="src">« Reprises nettes » = reprises &amp; transferts de charges − (dotations actif circulant + dotations risques &amp; charges). La ligne « reprises » incluant aussi les transferts de charges (non isolables dans les comptes publiés), ce calcul donne un <b>ordre de grandeur haut</b> du lissage (illustratif, brut d'impôt).</p>
-  </div>
-</section>
+        <div class="pc"><h4>KSA-MGM opérationnel</h4><div class="big" id="periKsa">—</div><p>Activité réelle des sites Saverne + MGM, nette de la facturation interne (exercice <span data-stat="year">2024</span>).</p></div>
+      </div>
+      <p class="src">Méthode dividende : la liasse fiscale ne le publie pas directement ; on le reconstitue par différence : <b>bénéfice de l'année moins la hausse des capitaux propres</b> (ce qui n'est pas resté dans l'entreprise en est sorti sous forme de dividende, versé l'année suivante). Concorde avec les flux « entreprises liées » de l'annexe.</p>
+    </section>
+    <section>
+      <div class="sec-eyebrow"><span class="n">02</span> Tableau de bord · KUHN SAS, 2014–2024</div>
+      <p>Les séries ci-dessous couvrent 2014–2024 (comptes sociaux déposés de KUHN SAS). Survolez un point ou une barre pour la valeur exacte.</p>
+      <div class="chartgrid">
+        <div class="card"><h4>Chiffre d'affaires & résultat net</h4><p class="cap">Le CA suit le cycle (pic 2023) ; le résultat net reste remarquablement stable.</p><svg class="svgchart" id="chCaRn" viewBox="0 0 520 300"></svg><div class="legend"><span title="Total des ventes de l'exercice (avant toute charge)."><i style="background:var(--l-gold)"></i>CA net</span><span title="Bénéfice final de l'année, après toutes charges et impôts."><i style="background:var(--l-kuhn)"></i>Résultat net</span></div><p class="srcnote">En millions d'euros. <b>CA net</b> = ce que l'entreprise a facturé ; <b>résultat net</b> = ce qu'il en reste une fois tout payé. <b>Source :</b> comptes sociaux KUHN SAS déposés (Pappers).</p></div>
+        <div class="card"><h4>Trois mesures de rentabilité</h4><p class="cap">La marge opérationnelle tient ~7 % ; l'EBITDA (marge brute) s'effondre.</p><svg class="svgchart" id="chMargins" viewBox="0 0 520 300"></svg><div class="legend"><span title="Résultat d'exploitation ÷ CA : la rentabilité du métier, hors finance et impôts."><i style="background:var(--l-kuhn)"></i>Marge opérat.</span><span title="EBITDA ÷ CA : la trésorerie brute dégagée par l'activité, avant amortissements et provisions. C'est l'indicateur le plus proche de l'argent réellement gagné."><i style="background:var(--bad)"></i>EBITDA</span><span title="Excédent brut d'exploitation estimé à partir des comptes, recoupe la tendance de l'EBITDA."><i style="background:var(--steel)"></i>EBE estimé</span></div><p class="srcnote">En % du chiffre d'affaires. L'<b>EBITDA</b> mesure la trésorerie brute de l'activité ; la <b>marge opérationnelle</b> y ajoute provisions et transferts. <b>Sources :</b> marge opérat. & EBITDA = Pappers ; EBE = calcul sur comptes déposés.</p></div>
+        <div class="card"><h4>Provisions : dotations vs reprises</h4><p class="cap">Les reprises (vert) dépassent largement les dotations : c'est ce qui soutient le résultat.</p><svg class="svgchart" id="chProv" viewBox="0 0 520 300"></svg><div class="legend"><span title="Argent mis de côté les années passées que l'on relâche (+ transferts de charges) : ça remonte au résultat sans entrée de cash."><i style="background:var(--l-green)"></i>Reprises + transferts</span><span title="Nouvelles provisions de l'année : charges « au cas où » qui réduisent le résultat."><i style="background:var(--bad)"></i>Dotations</span></div><p class="srcnote">En millions d'euros. Une <b>reprise</b> relâche une provision passée (gain comptable, pas de cash) ; une <b>dotation</b> en constitue une nouvelle (charge). <b>Source :</b> comptes sociaux KUHN SAS (Pappers).</p></div>
+        <div class="card"><h4>Stock de provisions au bilan (le « réservoir »)</h4><p class="cap">Le matelas de provisions pour risques &amp; charges accumulé au passif. C'est lui que les reprises viennent puiser : il monte les bonnes années, et reflue dès 2024.</p><svg class="svgchart" id="chProvStock" viewBox="0 0 520 300"></svg><div class="legend"><span title="Provisions pour risques et charges inscrites au passif du bilan, à la clôture de l'exercice."><i style="background:#7E6BA8"></i>Provisions au bilan (risques &amp; charges)</span></div><p class="srcnote">En millions d'euros, à la clôture. La réserve passe de ~19 M€ (2016) à ~40 M€ (2023), puis amorce son premier reflux en 2024 (~36 M€). <b>Source :</b> bilans KUHN SAS déposés (Pappers).</p></div>
+        <div class="card"><h4>Trésorerie & capitaux propres</h4><p class="cap">Trésorerie élevée, capitaux propres stables : entreprise solide et peu endettée.</p><svg class="svgchart" id="chTreso" viewBox="0 0 520 300"></svg><div class="legend"><span title="Disponibilités en banque + valeurs mobilières de placement : l'argent immédiatement mobilisable."><i style="background:var(--l-gold)"></i>Trésorerie</span><span title="Capital + réserves + résultat : ce que les actionnaires possèdent réellement dans l'entreprise."><i style="background:#4a6b8a"></i>Capitaux propres</span></div><p class="srcnote">En millions d'euros. <b>Trésorerie</b> = liquidités + placements ; <b>capitaux propres</b> = la « richesse nette » de la société. <b>Source :</b> bilans KUHN SAS déposés (Pappers).</p></div>
+        <div class="card full"><h4>Dividendes & taux de distribution</h4><p class="cap">KUHN distribue quasiment tout son résultat chaque année (~90–96 %), en hausse comme en baisse.</p><svg class="svgchart" id="chDiv" viewBox="0 0 1040 300"></svg><div class="legend"><span title="Montant remonté à l'actionnaire (KUHN Group / Bucher) au cours de l'année."><i style="background:var(--l-gold)"></i>Dividende versé</span><span title="Bénéfice de l'année précédente, sur lequel le dividende est prélevé."><i style="background:var(--l-kuhn)"></i>Résultat net N-1</span><span title="Dividende ÷ résultat de l'année précédente : la part du bénéfice qui sort de l'entreprise."><i style="background:var(--l-ink)"></i>Taux de distribution</span></div><p class="srcnote">Barres en millions d'euros, courbe en %. Le dividende d'une année porte sur le <b>résultat de l'année précédente</b>. <b>Source :</b> reconstitué via la variation des capitaux propres (comptes déposés).</p></div>
+      </div>
+    </section>
+    <section>
+      <div class="sec-eyebrow"><span class="n">03</span> Manipulez les chiffres vous-même</div>
+      <div class="tool">
+        <h4>Décomposez un euro de chiffre d'affaires</h4>
+        <p class="cap">Où va chaque euro encaissé sur la production de l'exercice <b id="decompYear">2024</b> ? (estimation à partir des comptes sociaux)</p>
+        <div class="euro-decomp" id="euroDecomp"></div>
+        <div class="euro-legend" id="euroLegend"></div>
+      </div>
+      <h3>D'où vient cet argent ? Le mécanisme des provisions</h3>
+  <p>Une <strong>provision</strong>, c'est un montant mis de côté lors d'un exercice <em>passé</em> (et déduit du résultat de l'époque) pour couvrir un risque : un litige, des stocks qui pourraient perdre de la valeur, une garantie client. Quand le risque ne se matérialise pas, on <strong>reprend</strong> la provision : elle remonte dans le résultat de l'année en cours. Mais <strong>aucun euro n'entre en trésorerie</strong> : l'argent avait déjà été « gelé » comptablement les années précédentes. C'est, en quelque sorte, du bénéfice passé recyclé dans le présent.</p>
+      <div class="callout gold">Pourquoi cette ligne dépasse-t-elle <em>toujours</em> les dotations de l'année ? Deux raisons : <strong>(1)</strong> elle agrège les reprises <em>et</em> les <strong>transferts de charges</strong>, une écriture technique qui reclasse certaines dépenses (refacturées au groupe, immobilisées…), récurrente chaque année ; <strong>(2)</strong> KUHN avait accumulé d'<strong>importantes provisions</strong> les bonnes années, qu'elle relâche progressivement. Résultat : un coussin comptable qui soutient le résultat sans refléter la trésorerie réellement gagnée. Rien d'illégal, mais il faut le savoir pour lire le résultat net.</div>
+      <div class="tool">
+        <h4>L'effet « provisions » sur le résultat de l'exercice <b id="provYear">2024</b></h4>
+        <p class="cap">Si l'on neutralise les reprises nettes (reprises &amp; transferts − dotations), voici ce que deviendrait le résultat : l'écart mesure le coussin comptable.</p>
+        <div class="prov-out">
+          <div class="po"><div class="lab">Résultat net publié</div><div class="v" style="color:var(--l-ink)" id="provPublished">— M€</div></div>
+          <div class="po"><div class="lab">→ hors reprises nettes</div><div class="v" id="provAdjusted" style="color:var(--l-kuhn)">— M€</div></div>
+          <div class="po"><div class="lab">= effet des écritures</div><div class="v" id="provEffect" style="color:var(--l-gold)">— M€</div></div>
+        </div>
+        <p class="src">« Reprises nettes » = reprises &amp; transferts de charges − (dotations actif circulant + dotations risques &amp; charges). La ligne « reprises » incluant aussi les transferts de charges (non isolables dans les comptes publiés), ce calcul donne un <b>ordre de grandeur haut</b> du lissage (illustratif, brut d'impôt).</p>
+      </div>
+    </section>
 <section id="sec-filiales">
-  <div class="sec-eyebrow"><span class="n">04</span> Le groupe France, filiale par filiale</div>
-  <p>Chaque filiale est détenue à ~100 % et financée par KUHN SAS, qui mutualise la trésorerie du groupe (le « cash pooling »). Deux filiales portent le groupe, <strong>Huard</strong> et <strong>Audureau</strong>, et remontent l'essentiel des dividendes.</p>
-  <div class="filterbar">
-    <div class="grp"><span class="glab">Filiale</span><div id="anaEnt"></div></div>
-    <div class="grp"><span class="glab">Exercice</span><div id="anaTableYears"></div></div>
-  </div>
-  <div class="callout">Pourquoi certaines filiales ne remontent <strong>aucun</strong> dividende ? Ce n'est pas un choix, c'est une règle : on ne peut distribuer que s'il existe un <strong>bénéfice distribuable</strong> (un résultat positif <em>et</em> des réserves suffisantes). <strong>Blanchard</strong> et <strong>Artec</strong> n'en versent jamais : résultats trop faibles ou négatifs, réserves longtemps négatives à reconstituer d'abord. <strong>MGM</strong> n'en verse qu'un filet (résultat proche de zéro). <strong>Parts</strong>, redevenu nettement bénéficiaire, a recommencé à en remonter (0,5 → 1,0 M€). Et ces petites filiales <strong>consomment de la trésorerie</strong> (couverte par les prêts de KUHN SAS) au lieu d'en dégager : difficile, alors, de faire remonter de l'argent qu'elles n'ont pas.</div>
+      <div class="sec-eyebrow"><span class="n">04</span> Le groupe France, filiale par filiale</div>
+      <p>Chaque filiale est détenue à ~100 % et financée par KUHN SAS, qui mutualise la trésorerie du groupe (le « cash pooling »). Deux filiales portent le groupe, <strong>Huard</strong> et <strong>Audureau</strong>, et remontent l'essentiel des dividendes.</p>
+      <div class="filterbar">
+        <div class="grp"><span class="glab">Filiale</span><div id="anaEnt"></div></div>
+        <div class="grp"><span class="glab">Exercice</span><div id="anaTableYears"></div></div>
+      </div>
+      <div class="callout">Pourquoi certaines filiales ne remontent <strong>aucun</strong> dividende ? Ce n'est pas un choix, c'est une règle : on ne peut distribuer que s'il existe un <strong>bénéfice distribuable</strong> (un résultat positif <em>et</em> des réserves suffisantes). <strong>Blanchard</strong> et <strong>Artec</strong> n'en versent jamais : résultats trop faibles ou négatifs, réserves longtemps négatives à reconstituer d'abord. <strong>MGM</strong> n'en verse qu'un filet (résultat proche de zéro). <strong>Parts</strong>, redevenu nettement bénéficiaire, a recommencé à en remonter (0,5 → 1,0 M€). Et ces petites filiales <strong>consomment de la trésorerie</strong> (couverte par les prêts de KUHN SAS) au lieu d'en dégager : difficile, alors, de faire remonter de l'argent qu'elles n'ont pas.</div>
   <div class="tablewrap" id="filTableWrap"><table class="data" id="filTable"></table></div>
-  <p class="src"><b>Lire la colonne dividende.</b> Le dividende d'une année est <b>versé sur le résultat de l'année précédente</b>. En 2021, sur des résultats 2020 frappés par le Covid, plusieurs filiales (MGM, Blanchard) n'ont rien distribué, tandis que Parts (1,0 M€) et Contifonte (0,17 M€) ont versé, d'où l'impression d'un « trou » 2021 vite nuancée. Les distributions 2021 de Huard et Audureau ne sont pas encore reconstituées (cases vides = donnée non établie, ≠ zéro).</p>
-  <p class="src">Sources : comptes sociaux déposés de chaque filiale (procès-verbaux d'affectation 2021 pour MGM, Parts, Blanchard, Contifonte) + pages publiques Pappers + annexe « Filiales &amp; participations » de KUHN SAS. Les fonds propres / dettes / prêts 2016–2020 ne sont pas publiés filiale par filiale dans l'annexe : ces cases restent vides. « Prêt reçu » = avance consentie par KUHN SAS ; « Div. → SAS » = dividende remonté à la mère.</p>
-</section>
-<section id="sec-flux">
-  <div class="sec-eyebrow"><span class="n">05</span> Le circuit de la trésorerie : groupe ↔ SAS ↔ filiales</div>
-  <p>Le sens dominant de l'argent est <strong>ascendant</strong> : KUHN SAS encaisse 10–15 M€/an de dividendes de ses filiales, mais en reverse 40–63 M€/an vers KUHN Group (et in fine Bucher). Les filiales empruntent à KUHN SAS plutôt qu'à une banque.</p>
-  <div class="card full" style="background:#fff"><h4>Flux annuels (exercice <span id="sankeyYear">2024</span>)</h4><p class="cap">Chaque flèche est orientée dans le sens où circule l'argent ; sa largeur est proportionnelle au montant. Survolez une flèche pour le détail.</p><svg class="svgchart" id="sankey" viewBox="0 0 1040 300"></svg></div>
-</section>
-<section id="sec-concurrents">
-  <div class="sec-eyebrow"><span class="n">06</span> Tout le secteur a vécu le même cycle</div>
-  <p>KUHN ne sous-performe pas : John Deere, AGCO et CNH ont connu le <strong>même sommet</strong> (2021–2023) puis le <strong>même atterrissage</strong>. En indexant le chiffre d'affaires de chacun à 100 sur son année record, les quatre trajectoires se rejoignent vers ~73–75 en 2025.</p>
-  <div class="chartgrid">
-    <div class="card full"><h4>Chiffre d'affaires indexé (base 100 = année record de chaque groupe)</h4><p class="cap">Le retournement est synchronisé : un super-cycle partagé, pas une faiblesse propre à KUHN.</p><svg class="svgchart" id="chCompo" viewBox="0 0 1040 340"></svg><div class="legend" id="compoLegend"></div></div>
-  </div>
-  <div class="tablewrap" style="margin-top:18px"><table class="data" id="compTable"></table></div>
-  <p class="src">CA : communiqués annuels (exercices fiscaux). John Deere : ventes &amp; revenus monde (FY oct.). CNH : pur-play agri+construction depuis le spin-off d'Iveco (2022). Marges 2023→2025 : marge opérationnelle/EBIT publiée et estimations sectorielles ; ordres de grandeur. KUHN Group : données de communication du groupe.</p>
-</section>
-<section>
-  <div class="sec-eyebrow"><span class="n">07</span> Conclusion &amp; points de vigilance</div>
-  <p>L'entreprise est solide et le « creux » est cyclique. Reste à nommer, en toute transparence, les trois vrais points de vigilance, au-delà du seul EBITDA :</p>
-  <div class="callout gold">1. <strong>La rentabilité brute (EBITDA) s'est réellement effondrée :</strong> le métier génère beaucoup moins de trésorerie qu'avant, même si le résultat comptable le masque.</div>
-  <div class="callout gold">2. <strong>Le coût du travail</strong> grimpe à ~26 % du CA opérationnel (un seuil souvent considéré comme critique au-delà de 24 %) : la part des salaires monte quand le CA baisse.</div>
-  <div class="callout gold">3. <strong>La distribution quasi-intégrale du résultat</strong> en dividendes (~90–96 %) laisse peu de coussin pour absorber un retournement durable.</div>
-  <p class="src">Périmètres : KUHN SAS = comptes sociaux déposés (2014–2024, source <strong>Pappers.fr</strong>). KUHN Group / KSA-MGM = données de communication du groupe. Dividendes reconstitués via la variation des capitaux propres. EBITDA = source Pappers, confirmé en tendance par un calcul indépendant de l'EBE.</p>
-  <button class="backtop" id="backToExp">↑ Revenir à l'expérience animée</button>
-</section>
+      <p class="src"><b>Lire la colonne dividende.</b> Le dividende d'une année est <b>versé sur le résultat de l'année précédente</b>. En 2021, sur des résultats 2020 frappés par le Covid, plusieurs filiales (MGM, Blanchard) n'ont rien distribué, tandis que Parts (1,0 M€) et Contifonte (0,17 M€) ont versé, d'où l'impression d'un « trou » 2021 vite nuancée. Les distributions 2021 de Huard et Audureau ne sont pas encore reconstituées (cases vides = donnée non établie, ≠ zéro).</p>
+      <p class="src">Sources : comptes sociaux déposés de chaque filiale (procès-verbaux d'affectation 2021 pour MGM, Parts, Blanchard, Contifonte) + pages publiques Pappers + annexe « Filiales &amp; participations » de KUHN SAS. Les fonds propres / dettes / prêts 2016–2020 ne sont pas publiés filiale par filiale dans l'annexe : ces cases restent vides. « Prêt reçu » = avance consentie par KUHN SAS ; « Div. → SAS » = dividende remonté à la mère.</p>
+    </section>
+    <section id="sec-flux">
+      <div class="sec-eyebrow"><span class="n">05</span> Le circuit de la trésorerie : groupe ↔ SAS ↔ filiales</div>
+      <p>Le sens dominant de l'argent est <strong>ascendant</strong> : KUHN SAS encaisse 10–15 M€/an de dividendes de ses filiales, mais en reverse 40–63 M€/an vers KUHN Group (et in fine Bucher). Les filiales empruntent à KUHN SAS plutôt qu'à une banque.</p>
+      <div class="card full" style="background:#fff"><h4>Flux annuels (exercice <span id="sankeyYear">2024</span>)</h4><p class="cap">Chaque flèche est orientée dans le sens où circule l'argent ; sa largeur est proportionnelle au montant. Survolez une flèche pour le détail.</p><svg class="svgchart" id="sankey" viewBox="0 0 1040 300"></svg></div>
+    </section>
+    <section id="sec-concurrents">
+      <div class="sec-eyebrow"><span class="n">06</span> Tout le secteur a vécu le même cycle</div>
+      <p>KUHN ne sous-performe pas : John Deere, AGCO et CNH ont connu le <strong>même sommet</strong> (2021–2023) puis le <strong>même atterrissage</strong>. En indexant le chiffre d'affaires de chacun à 100 sur son année record, les quatre trajectoires se rejoignent vers ~73–75 en 2025.</p>
+      <div class="chartgrid">
+        <div class="card full"><h4>Chiffre d'affaires indexé (base 100 = année record de chaque groupe)</h4><p class="cap">Le retournement est synchronisé : un super-cycle partagé, pas une faiblesse propre à KUHN.</p><svg class="svgchart" id="chCompo" viewBox="0 0 1040 340"></svg><div class="legend" id="compoLegend"></div></div>
+      </div>
+      <div class="tablewrap" style="margin-top:18px"><table class="data" id="compTable"></table></div>
+      <p class="src">CA : communiqués annuels (exercices fiscaux). John Deere : ventes &amp; revenus monde (FY oct.). CNH : pur-play agri+construction depuis le spin-off d'Iveco (2022). Marges 2023→2025 : marge opérationnelle/EBIT publiée et estimations sectorielles ; ordres de grandeur. KUHN Group : données de communication du groupe.</p>
+    </section>
+    <section>
+      <div class="sec-eyebrow"><span class="n">07</span> Conclusion &amp; points de vigilance</div>
+      <p>L'entreprise est solide et le « creux » est cyclique. Reste à nommer, en toute transparence, les trois vrais points de vigilance, au-delà du seul EBITDA :</p>
+      <div class="callout gold">1. <strong>La rentabilité brute (EBITDA) s'est réellement effondrée :</strong> le métier génère beaucoup moins de trésorerie qu'avant, même si le résultat comptable le masque.</div>
+      <div class="callout gold">2. <strong>Le coût du travail</strong> grimpe à ~26 % du CA opérationnel (un seuil souvent considéré comme critique au-delà de 24 %) : la part des salaires monte quand le CA baisse.</div>
+      <div class="callout gold">3. <strong>La distribution quasi-intégrale du résultat</strong> en dividendes (~90–96 %) laisse peu de coussin pour absorber un retournement durable.</div>
+      <p class="src">Périmètres : KUHN SAS = comptes sociaux déposés (2014–2024, source <strong>Pappers.fr</strong>). KUHN Group / KSA-MGM = données de communication du groupe. Dividendes reconstitués via la variation des capitaux propres. EBITDA = source Pappers, confirmé en tendance par un calcul indépendant de l'EBE.</p>
+      <button class="backtop" id="backToExp">↑ Revenir à l'expérience animée</button>
+    </section>
   </div>
 </div>
 
