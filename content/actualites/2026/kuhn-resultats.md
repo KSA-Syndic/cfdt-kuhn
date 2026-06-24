@@ -97,10 +97,10 @@ kuhnResultats: true
               <rect x="10" y="2" width="30" height="16" rx="3" fill="#b80a22"/>
               <rect x="52" y="0" width="26" height="20" rx="3" fill="#c20a26"/>
               <animateTransform attributeName="transform" type="translate"
-                keyTimes="0;0.18;0.71;1" values="180,290;180,290;504,290;504,290"
+                keyTimes="0;0.14;0.71;1" values="180,290;180,290;504,290;504,290"
                 dur="12s" repeatCount="indefinite" calcMode="linear"/>
               <animate attributeName="opacity"
-                keyTimes="0;0.17;0.18;0.70;0.71;1" values="0;0;1;1;0;0"
+                keyTimes="0;0.14;0.70;0.71;1" values="0;1;1;0;0"
                 dur="12s" repeatCount="indefinite"/>
             </g>
           </g>
