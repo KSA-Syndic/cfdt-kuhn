@@ -508,12 +508,34 @@ function initScroll(){
     const st=act&&act.querySelector('.scene-step');
     return st&&st.textContent.trim()?st.textContent.trim():DEFAULT_STEP;
   }
+  function measureRailLabel(){
+    if(!railLabel)return 220;
+    const prev=railLabel.style.cssText;
+    railLabel.style.cssText='position:absolute;visibility:hidden;display:block;white-space:nowrap';
+    const w=railLabel.offsetWidth||220;
+    railLabel.style.cssText=prev;
+    return w;
+  }
+  function menuRightEdge(){
+    const menu=document.querySelector('.book-menu');
+    if(!menu)return 0;
+    const cs=getComputedStyle(menu);
+    if(cs.visibility==='hidden'||cs.display==='none')return 0;
+    const r=menu.getBoundingClientRect();
+    return r.width>8?r.right:0;
+  }
   function chooseMode(){
-    // label dans la marge uniquement s'il y a la place À GAUCHE du rail ; sinon barre d'étape en haut
+    // libellé dans la marge à gauche du rail uniquement si viewport > 2000px et place suffisante ;
+    // sinon barre d'étape sticky en haut (évite le chevauchement menu ou article)
+    const RAIL_LABEL_MIN_VW=2000;
     const page=document.querySelector('.book-page');
     const cw=page?page.clientWidth:innerWidth;
     const railLeft=rail.getBoundingClientRect().left;
-    const useRail=cw>860 && railLeft>=210;
+    const menuR=menuRightEdge();
+    const labelW=measureRailLabel();
+    const gap=20;
+    const canLeft=railLeft-menuR-gap>=labelW;
+    const useRail=cw>860&&innerWidth>RAIL_LABEL_MIN_VW&&canLeft;
     document.body.classList.toggle('railmode',useRail);
     document.body.classList.toggle('topbarmode',!useRail);
   }
@@ -559,6 +581,7 @@ function initScroll(){
   if (ms) setTimeout(scrollRailRefresh, ms + 60);
   addEventListener('scroll',()=>requestAnimationFrame(onScroll),{passive:true});
   addEventListener('resize', () => { scrollRailRefresh(); }, { passive: true });
+  window.addEventListener('full-width-post-menu-context', () => { scrollRailRefresh(); });
 }
 
 /* ============================ GLOSSAIRE INTERACTIF ============================ */
@@ -566,7 +589,7 @@ function initScroll(){
 const GLOSS={
  'valeur-ajoutee':{t:'Valeur ajoutée',
   d:"Ce qui reste des ventes une fois payés les <b>achats</b> (acier, pièces, énergie, sous-traitance) : la richesse réellement créée par l'entreprise, avant même de payer les salariés.",
-  scene:`<div class="gx"><div class="gx-ico" style="left:55px;transform:translateX(-50%);top:6px;font-size:16px">💰</div><div class="gx-bar" style="left:42px;width:26px;height:40px;bottom:18px;background:#E8B23A"></div><div class="gx-lab" style="left:55px;transform:translateX(-50%)">Ventes</div><div class="gx-op" style="left:87px;transform:translateX(-50%);bottom:34px">−</div><div class="gx-ico" style="left:119px;transform:translateX(-50%);top:22px;font-size:16px">🚚</div><div class="gx-bar" style="left:106px;width:26px;height:24px;bottom:18px;background:#E76A4B"></div><div class="gx-lab" style="left:119px;transform:translateX(-50%)">Achats</div><div class="gx-op" style="left:151px;transform:translateX(-50%);bottom:34px">=</div><div class="gx-ico" style="left:183px;transform:translateX(-50%);top:16px;font-size:16px">✨</div><div class="gx-bar gx-grow" style="left:170px;width:26px;--h:30px;bottom:18px;background:#5E8A28"></div><div class="gx-lab" style="left:183px;transform:translateX(-50%);color:#5E8A28">Valeur ajoutée</div></div>`},
+  scene:`<div class="gx gx--va"><div class="gx-va-stage"><div class="gx-ico gx-va-ico gx-va-ico--ventes">💰</div><div class="gx-bar" style="left:42px;width:26px;height:50px;bottom:18px;background:#E8B23A"></div><div class="gx-lab" style="left:55px;transform:translateX(-50%)">Ventes</div><div class="gx-op" style="left:87px;transform:translateX(-50%);bottom:38px">−</div><div class="gx-ico gx-va-ico gx-va-ico--achats">🚚</div><div class="gx-bar" style="left:106px;width:26px;height:30px;bottom:18px;background:#E76A4B"></div><div class="gx-lab" style="left:119px;transform:translateX(-50%)">Achats</div><div class="gx-op" style="left:151px;transform:translateX(-50%);bottom:38px">=</div><div class="gx-ico gx-va-ico gx-va-ico--va">✨</div><div class="gx-bar gx-grow" style="left:170px;width:26px;--h:20px;bottom:18px;background:#5E8A28"></div><div class="gx-lab" style="left:183px;transform:translateX(-50%);color:#5E8A28">Valeur ajoutée</div></div></div>`},
  'ebitda':{t:'EBITDA',
   d:"L'argent <b>brut</b> que dégage l'activité, avant amortissements, provisions et impôts. C'est l'indicateur le plus proche de l'argent réellement gagné dans l'année.",
   scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:12px">🏭</div><span class="gx-c" style="left:50%;margin-left:-10px;bottom:36px;animation:gxRise 2s ease-in infinite"></span><span class="gx-c" style="left:40%;bottom:36px;animation:gxRise 2s ease-in .6s infinite"></span><span class="gx-c" style="left:60%;bottom:36px;animation:gxRise 2s ease-in 1.2s infinite"></span></div>`},
@@ -584,7 +607,7 @@ const GLOSS={
   scene:`<div class="gx"><div class="gx-jar" style="left:50%;margin-left:-27px"></div><span class="gx-c gx-c--in-jar rise"></span><div class="gx-tag pos" style="right:13px;top:13px">résultat ↑</div></div>`},
  'amortissement':{t:'Amortissement',
   d:"La répartition du coût d'un <b>outil de l'atelier</b> (robot de soudure, ligne de peinture, centre d'usinage…) sur ses années d'usure. <b>Exemple :</b> un robot de soudure payé 500&nbsp;000&nbsp;€ et utilisé 5&nbsp;ans n'est pas une charge unique de 500&nbsp;000&nbsp;€, mais <b>100&nbsp;000&nbsp;€ par an pendant 5&nbsp;ans</b>. L'argent est sorti en une fois à l'achat ; les années suivantes, la charge est « sur le papier », sans nouvelle sortie d'argent.",
-  scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:16px;bottom:28px;font-size:22px">🤖</div><div class="gx-lab" style="left:31px;transform:translateX(-50%);bottom:2px;color:#5C6B7A">achat 500&nbsp;k€</div><div class="gx-op" style="left:84px;bottom:30px">÷</div><div class="gx-bar gx-grow" style="left:116px;--h:30px;background:#5C6B7A;animation-delay:.05s"></div><div class="gx-bar gx-grow" style="left:148px;--h:30px;background:#5C6B7A;animation-delay:.25s"></div><div class="gx-bar gx-grow" style="left:180px;--h:30px;background:#5C6B7A;animation-delay:.45s"></div><div class="gx-bar gx-grow" style="left:212px;--h:30px;background:#5C6B7A;animation-delay:.65s"></div><div class="gx-bar gx-grow" style="left:244px;--h:30px;background:#5C6B7A;animation-delay:.85s"></div><div class="gx-lab" style="left:128px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:160px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:192px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:224px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:256px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:192px;transform:translateX(-50%);bottom:2px">sur 5 ans</div></div>`},
+  scene:`<div class="gx gx--amort"><div class="base"></div><div class="gx-ico gx-amort-ico">🤖</div><div class="gx-lab gx-lab--cap gx-amort-buy">achat 500&nbsp;k€</div><div class="gx-op gx-amort-op">÷</div><div class="gx-bar gx-grow" style="left:116px;--h:30px;background:#5C6B7A;animation-delay:.05s"></div><div class="gx-bar gx-grow" style="left:148px;--h:30px;background:#5C6B7A;animation-delay:.25s"></div><div class="gx-bar gx-grow" style="left:180px;--h:30px;background:#5C6B7A;animation-delay:.45s"></div><div class="gx-bar gx-grow" style="left:212px;--h:30px;background:#5C6B7A;animation-delay:.65s"></div><div class="gx-bar gx-grow" style="left:244px;--h:30px;background:#5C6B7A;animation-delay:.85s"></div><div class="gx-lab gx-lab--bar" style="left:128px">100k</div><div class="gx-lab gx-lab--bar" style="left:160px">100k</div><div class="gx-lab gx-lab--bar" style="left:192px">100k</div><div class="gx-lab gx-lab--bar" style="left:224px">100k</div><div class="gx-lab gx-lab--bar" style="left:256px">100k</div><div class="gx-lab gx-lab--cap gx-amort-span">sur 5 ans</div></div>`},
  'tresorerie':{t:'Trésorerie',
   d:"L'argent <b>réellement disponible</b> : liquidités en banque et placements. C'est ce qui permet de payer, d'investir et de verser les dividendes.",
   scene:`<div class="gx gx--treso"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:34px">🏦</div><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span></div>`},

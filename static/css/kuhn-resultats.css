@@ -467,6 +467,26 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
 .gx-tag.pos{background:rgba(94,138,40,.15);color:#5E8A28}
 .gx-tag.neg{background:rgba(231,106,75,.17);color:#c0432a}
 .gx-grow{animation:gxGrow .8s cubic-bezier(.2,.7,.2,1) both}
+/* valeur ajoutée : scène centrée optiquement (le libellé droit est plus large que « Ventes ») */
+.gx--va{height:88px;display:flex;justify-content:center;align-items:stretch;overflow:visible;
+  --va-bar-base:18px;--va-ventes:50px;--va-achats:30px;--va-va:20px;--va-ico-gap:4px}
+.gx--va .gx-va-stage{position:relative;width:220px;height:88px;flex:none;transform:translateX(-18px)}
+.gx--va .gx-va-ico{font-size:16px;transform:translateX(-50%)}
+.gx--va .gx-va-ico--ventes{left:55px;bottom:calc(var(--va-bar-base) + var(--va-ventes) + var(--va-ico-gap))}
+.gx--va .gx-va-ico--achats{left:119px;bottom:calc(var(--va-bar-base) + var(--va-achats) + var(--va-ico-gap))}
+.gx--va .gx-va-ico--va{left:183px;bottom:calc(var(--va-bar-base) + var(--va-va) + var(--va-ico-gap))}
+/* amortissement : axe du graphique au-dessus d'une ligne de légendes (évite le chevauchement) */
+.gx--amort{height:96px;padding-bottom:2px}
+.gx--amort .base{bottom:24px;z-index:0}
+.gx--amort .gx-bar{bottom:24px;z-index:1}
+.gx--amort .gx-amort-ico{left:16px;bottom:38px;font-size:22px;z-index:2}
+.gx--amort .gx-amort-op{left:84px;bottom:36px;z-index:2}
+.gx--amort .gx-lab--bar{transform:translateX(-50%);bottom:58px;color:#4a5560;z-index:3;
+  padding:1px 3px;border-radius:3px;background:rgba(251,249,242,.94)}
+.gx--amort .gx-lab--cap{bottom:5px;color:#4a5560;z-index:3;
+  padding:1px 5px;border-radius:3px;background:rgba(251,249,242,.94)}
+.gx--amort .gx-amort-buy{left:31px;transform:translateX(-50%)}
+.gx--amort .gx-amort-span{left:192px;transform:translateX(-50%)}
 @keyframes gxDropJar{0%{transform:translateY(-48px);opacity:0}18%{opacity:1}72%,100%{transform:translateY(0);opacity:1}}
 @keyframes gxDrop{0%{transform:translateY(-42px);opacity:0}22%{opacity:1}66%,100%{transform:translateY(0);opacity:1}}
 @keyframes gxRise{0%{transform:translateY(0);opacity:0}18%{opacity:1}78%{opacity:1}100%{transform:translateY(-48px);opacity:0}}
@@ -492,4 +512,6 @@ html.kuhn-resultats-dark-chrome{
 html.kuhn-resultats-dark-chrome body{background:#11171E;color:#F2ECDD}
 html.kuhn-resultats-dark-chrome .book-menu,html.kuhn-resultats-dark-chrome .book-page,html.kuhn-resultats-dark-chrome .book-header{
   background:transparent;color:#F2ECDD}
+/* menu latéral au-dessus du rail (z-index 90) si chevauchement transitoire au resize */
+html.kuhn-resultats-dark-chrome.full-width-post-menu-in-flow .book-menu .book-menu-content{z-index:95}
 /* kuhn-resultats-dark-chrome : posée par full-width-post.js (entrée) et showAnalysis() (bascule Expérience/Analyse) */
