@@ -1,0 +1,6 @@
+{{- /* Extrait pour listes d'articles (actualités, tags, etc.) */ -}}
+{{- if .Params.kuhnResultats -}}
+  {{- with .Description -}}<p>{{ . }}</p>{{- end -}}
+{{- else -}}
+  {{- .Summary | truncate 256 -}}
+{{- end -}}

@@ -1,2 +1,16 @@
 <script src="/js/pdf-js/build/pdf.js"></script>
 <script src="/js/pdf-modal.js"></script>
+<script>
+(function () {
+  if (document.querySelector('.full-width-post')) return;
+  var root = document.documentElement;
+  root.classList.remove(
+    'full-width-post',
+    'full-width-post-expanded',
+    'full-width-post-menu-in-flow',
+    'full-width-post-menu-drawer',
+    'kuhn-resultats-dark-chrome'
+  );
+  root.style.removeProperty('--full-width-post-menu-w');
+})();
+</script>

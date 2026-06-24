@@ -9,6 +9,8 @@ bookToc: false
 kuhnResultats: true
 ---
 
+<!--more-->
+
 <!-- Article immersif : kuhnResultats: true → CSS (head) + JS (content-after) via layouts/partials/kuhn-resultats/ -->
 
 <div class="kuhn-resultats full-width-post experience" id="kuhn-resultats">
