@@ -1,129 +1,164 @@
-// Articles pleine largeur dans hugo-book (ex. kuhn-resultats)
-:root {
-  --full-width-post-dur: 0.65s;
-  --full-width-post-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --full-width-post-menu-w: 0px; // posé par full-width-post.js : 16rem si menu visible, 0 sinon
-}
-
-@view-transition {
-  navigation: auto;
-}
-
-main.container.flex {
-  transition:
-    max-width var(--full-width-post-dur) var(--full-width-post-ease),
-    margin var(--full-width-post-dur) var(--full-width-post-ease),
-    width var(--full-width-post-dur) var(--full-width-post-ease);
-}
-
-.book-page {
-  transition:
-    padding var(--full-width-post-dur) var(--full-width-post-ease),
-    background-color var(--full-width-post-dur) var(--full-width-post-ease),
-    color var(--full-width-post-dur) var(--full-width-post-ease);
-}
-
-// Container queries : breakpoints internes = largeur réelle de la colonne contenu
-html.full-width-post .book-page:has(.full-width-post) {
-  container-type: inline-size;
-  container-name: full-width-post;
-}
-
-html.full-width-post {
-  transition: background-color var(--full-width-post-dur) var(--full-width-post-ease);
-
-  body,
-  .book-menu,
-  .book-menu .book-menu-content,
-  .book-header {
-    transition:
-      background-color var(--full-width-post-dur) var(--full-width-post-ease),
-      color var(--full-width-post-dur) var(--full-width-post-ease);
-  }
-}
-
-// Menu latéral visible (desktop)
-html.full-width-post.full-width-post-menu-in-flow {
-  --full-width-post-menu-w: 16rem;
-}
-
-// État élargi : conteneur hugo-book en pleine largeur viewport
-html.full-width-post-expanded {
-  main.container.flex {
-    max-width: none;
-    margin: 0;
-    width: 100%;
-  }
-
-  .book-page:has(.full-width-post) {
-    position: relative;
-    flex: 1 1 auto;
-    min-width: 0;
-    width: 100%;
-    max-width: none;
-    padding: 0;
-
-    .book-article {
-      max-width: none;
-    }
-
-    .book-footer {
-      opacity: 0;
-      visibility: hidden;
-      max-height: 0;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      pointer-events: none;
-      transition:
-        opacity var(--full-width-post-dur) var(--full-width-post-ease),
-        visibility var(--full-width-post-dur) var(--full-width-post-ease),
-        max-height var(--full-width-post-dur) var(--full-width-post-ease);
-    }
-
-    .full-width-post {
-      overflow-x: clip;
-    }
-  }
-}
-
-// Mobile : tiroir menu ouvert — le contenu reste pleine largeur (menu en overlay)
-html.full-width-post.full-width-post-menu-drawer .book-page:has(.full-width-post) {
-  z-index: 0;
-}
-
-.book-page:has(.full-width-post) .book-footer {
-  transition:
-    opacity var(--full-width-post-dur) var(--full-width-post-ease),
-    visibility var(--full-width-post-dur) var(--full-width-post-ease),
-    max-height var(--full-width-post-dur) var(--full-width-post-ease);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --full-width-post-dur: 0.01ms;
-  }
-
-  main.container.flex,
-  .book-page,
-  html.full-width-post,
-  html.full-width-post body,
-  html.full-width-post .book-menu,
-  html.full-width-post .book-menu .book-menu-content,
-  html.full-width-post .book-header {
-    transition: none !important;
-  }
-}
-
-// Images d'articles (droits) : largeur réduite (CCNM, CET, etc.) ; zoom plein écran inchangé (état :checked)
-.book-image input:not(:checked) + img.book-image--narrow {
-  display: block;
-  height: 100%;
-  max-height: 22rem;
-  width: auto;
-  margin-inline: auto;
-}
-
-.book-image input:checked + img.book-image--narrow {
-  max-width: none;
-}
+// Articles pleine largeur dans hugo-book (ex. kuhn-resultats)
+
+:root {
+  --full-width-post-dur: 0.65s;
+  --full-width-post-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --full-width-post-menu-w: 0px; // posé par full-width-post.js : 16rem si menu visible, 0 sinon
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+main.container.flex {
+  transition:
+    max-width var(--full-width-post-dur) var(--full-width-post-ease),
+    margin var(--full-width-post-dur) var(--full-width-post-ease),
+    width var(--full-width-post-dur) var(--full-width-post-ease);
+}
+
+.book-page {
+  transition:
+    padding var(--full-width-post-dur) var(--full-width-post-ease),
+    background-color var(--full-width-post-dur) var(--full-width-post-ease),
+    color var(--full-width-post-dur) var(--full-width-post-ease);
+}
+
+// Container queries : breakpoints internes = largeur réelle de la colonne contenu
+html.full-width-post .book-page:has(.full-width-post) {
+  container-type: inline-size;
+  container-name: full-width-post;
+}
+
+html.full-width-post {
+  transition: background-color var(--full-width-post-dur) var(--full-width-post-ease);
+
+  body,
+  .book-menu,
+  .book-menu .book-menu-content,
+  .book-header {
+    transition:
+      background-color var(--full-width-post-dur) var(--full-width-post-ease),
+      color var(--full-width-post-dur) var(--full-width-post-ease);
+  }
+}
+
+// Menu latéral visible (desktop)
+html.full-width-post.full-width-post-menu-in-flow {
+  --full-width-post-menu-w: 16rem;
+}
+
+// État élargi : conteneur hugo-book en pleine largeur viewport (article immersif uniquement)
+html.full-width-post-expanded:has(.full-width-post) {
+  main.container.flex {
+    max-width: none;
+    margin: 0;
+    width: 100%;
+  }
+
+  .book-page:has(.full-width-post) {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+
+    .book-article {
+      max-width: none;
+    }
+
+    .book-footer {
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition:
+        opacity var(--full-width-post-dur) var(--full-width-post-ease),
+        visibility var(--full-width-post-dur) var(--full-width-post-ease),
+        max-height var(--full-width-post-dur) var(--full-width-post-ease);
+    }
+
+    .full-width-post {
+      overflow-x: clip;
+    }
+  }
+}
+
+// Mobile : tiroir menu ouvert — le contenu reste pleine largeur (menu en overlay)
+html.full-width-post.full-width-post-menu-drawer .book-page:has(.full-width-post) {
+  z-index: 0;
+}
+
+.book-page:has(.full-width-post) .book-footer {
+  transition:
+    opacity var(--full-width-post-dur) var(--full-width-post-ease),
+    visibility var(--full-width-post-dur) var(--full-width-post-ease),
+    max-height var(--full-width-post-dur) var(--full-width-post-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --full-width-post-dur: 0.01ms;
+  }
+
+  main.container.flex,
+  .book-page,
+  html.full-width-post,
+  html.full-width-post body,
+  html.full-width-post .book-menu,
+  html.full-width-post .book-menu .book-menu-content,
+  html.full-width-post .book-header {
+    transition: none !important;
+  }
+}
+
+// Images d'articles (droits) : largeur réduite (CCNM, CET, etc.) ; zoom plein écran inchangé (état :checked)
+.book-image input:not(:checked) + img.book-image--narrow {
+  display: block;
+  height: 100%;
+  max-height: 22rem;
+  width: auto;
+  margin-inline: auto;
+}
+
+.book-image input:checked + img.book-image--narrow {
+  max-width: none;
+}
+
+// Aligné sur $mobile-breakpoint du thème hugo-book (56rem)
+$book-chrome-padding: 1rem;
+$book-mobile-breakpoint: 56rem;
+
+// Liste actualités : plus de colonne ToC → conserver des marges latérales confortables
+.book-kind-section.book-type-posts .book-page:not(:has(.full-width-post)) {
+  @media screen and (min-width: $book-mobile-breakpoint) {
+    padding-inline: 1.5rem;
+  }
+}
+
+// En-tête mobile hugo-book : marges indépendantes quand .book-page n'a plus de padding
+@media screen and (max-width: $book-mobile-breakpoint) {
+  .book-page:not(:has(.full-width-post)) > .book-header {
+    box-sizing: border-box;
+    margin-inline: calc(-1 * #{$book-chrome-padding});
+    margin-top: calc(-1 * #{$book-chrome-padding});
+    padding-inline: $book-chrome-padding;
+    padding-top: #{"max(#{$book-chrome-padding}, env(safe-area-inset-top, 0px))"};
+    padding-bottom: 0.75rem;
+    margin-bottom: calc(#{$book-chrome-padding} - 0.75rem);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  html.full-width-post-expanded .book-page:has(.full-width-post) > .book-header {
+    box-sizing: border-box;
+    margin: 0;
+    padding: #{"max(#{$book-chrome-padding}, env(safe-area-inset-top, 0px))"} $book-chrome-padding 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 130;
+  }
+}
