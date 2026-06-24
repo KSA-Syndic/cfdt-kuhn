@@ -22,7 +22,17 @@
   {{ end }}
 {{ end }}
 
-{{ define "toc-container" }}{{ end }}
+{{ define "toc-container" }}
+<aside class="book-toc">
+  <div class="book-toc-content">
+    {{ template "toc" . }}
+  </div>
+</aside>
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/taxonomy" . }}
+{{ end }}
 
 {{ define "footer" }}
   {{ partial "docs/pagination.html" . }}

@@ -1,0 +1,17 @@
+<nav>
+  <ul>
+    {{ with site.GetPage "/tags" }}
+    <li class="book-section-flat">
+      <a>{{ partial "docs/text/i18n" .Title }}</a>
+      <ul>
+        {{ range .Pages.ByTitle }}
+        <li class="flex align-center">
+          <a href="{{ .RelPermalink }}"{{ if eq $.RelPermalink .RelPermalink }} class="active"{{ end }}>{{ .Title }}</a>
+          <span>{{ len .Pages }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </li>
+    {{ end }}
+  </ul>
+</nav>
