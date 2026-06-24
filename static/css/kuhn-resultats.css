@@ -92,11 +92,11 @@ body.show-analysis .mobstep,body.experience-hidden .mobstep{display:none}
 .scene{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
   padding:90px 20px 60px;overflow:hidden}
 .scene .inner{position:relative;width:100%;max-width:var(--maxw);z-index:5}
-.stage{position:relative;width:100%;max-width:760px;margin:0 auto;aspect-ratio:16/10}
-.stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.stage{position:relative;width:100%;max-width:760px;margin:0 auto;aspect-ratio:16/10;
+  overflow:hidden;border-radius:14px}
+.stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
 /* scène "exercice comptable" : viewBox recadré sur le contenu -> dessin plus grand, sans marges vides */
 #stageDir{aspect-ratio:6/5;max-width:620px}
-#stageDir svg{overflow:hidden;border-radius:14px}
 .eyebrow{font-family:var(--ui);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
 .scene-step{display:none}
 .lead{font-size:18px;line-height:1.5;color:var(--muted);max-width:52ch}
@@ -385,10 +385,22 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
   .huge{font-size:clamp(38px,15vw,70px)}
 }
 /* ============ SCENE MOTION ============ */
-.truck-in{animation:truckIn 8s ease-in-out infinite}
-@keyframes truckIn{0%{transform:translate(-130px,332px)}16%,80%{transform:translate(0,332px)}100%{transform:translate(-130px,332px)}}
-.tractor-out{animation:tractorOut 6s ease-in-out infinite}
-@keyframes tractorOut{0%,30%{transform:translate(640px,330px);opacity:1}75%,100%{transform:translate(760px,330px);opacity:0}}
+/* cycle usine 12s : camion (entre, stop) → chariot sur tapis (gauche→droite) → machine finale à droite */
+.truck-in{animation:truckIn 12s ease-in-out infinite}
+@keyframes truckIn{
+  0%{transform:translate(-130px,332px)}
+  14%{transform:translate(0,332px)}
+  70%{transform:translate(0,332px)}
+  85%{transform:translate(-130px,332px)}
+  100%{transform:translate(-130px,332px)}}
+/* seeder-flow : <animateTransform> dans le SVG */
+.tractor-out{animation:tractorOut 12s ease-in-out infinite}
+@keyframes tractorOut{
+  0%,70%{transform:translate(640px,330px);opacity:0}
+  73%{transform:translate(640px,330px);opacity:1}
+  79%{transform:translate(640px,330px);opacity:1}
+  96%{transform:translate(760px,330px);opacity:0}
+  100%{transform:translate(760px,330px);opacity:0}}
 .coinflow,.coinrise,.coinup{animation:floatUp 3s ease-in infinite}
 .coinrise{animation-duration:2.6s}.coinup{animation-duration:2.2s}
 @keyframes floatUp{0%{transform:translateY(14px);opacity:0}25%{opacity:1}100%{transform:translateY(-46px);opacity:0}}
@@ -405,7 +417,8 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto}
   .rv{opacity:1;transform:none}
-  .truck-in{transform:translate(0,332px)}.tractor-out{transform:translate(640px,330px);opacity:1}
+  .truck-in{transform:translate(0,332px)}.seeder-flow{transform:translate(340px,290px);opacity:1}.tractor-out{transform:translate(640px,330px);opacity:1}
+  #stageFactory .seeder-flow animateTransform,#stageFactory .seeder-flow animate{display:none}
   .coinflow,.coinrise,.coinup{opacity:1}
   .divflow circle{opacity:.45;transform:translateY(-95px)}
 }

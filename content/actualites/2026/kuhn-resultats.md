@@ -69,6 +69,7 @@ kuhnResultats: true
         <div class="tip rv d2">L'<button class="gloss" data-g="ebitda" aria-expanded="false">EBITDA</button> mesure la trésorerie (l'argent réellement disponible) que dégage cet atelier ; c'est elle que la direction regarde en premier.</div>
         <div class="stage" id="stageFactory" aria-hidden="true">
         <svg viewBox="0 0 760 475" preserveAspectRatio="xMidYMid meet">
+          <defs><clipPath id="factory-clip"><rect x="150" y="195" width="470" height="197"/></clipPath></defs>
           <!-- ground -->
           <rect x="0" y="392" width="760" height="83" fill="#0b1014"/>
           <rect x="0" y="388" width="760" height="6" fill="#2a3744"/>
@@ -89,13 +90,19 @@ kuhnResultats: true
             <circle cx="480" cy="350" r="11" fill="#1b2632" stroke="#4a627a" stroke-width="3"/>
             <circle cx="560" cy="350" r="11" fill="#1b2632" stroke="#4a627a" stroke-width="3"/>
           </g>
-          <!-- machine being built (KUHN red seeder) -->
-          <g transform="translate(360,288)">
-            <rect x="0" y="14" width="86" height="26" rx="4" fill="#E10E2B"/>
-            <rect x="10" y="2" width="30" height="16" rx="3" fill="#b80a22"/>
-            <rect x="52" y="0" width="26" height="20" rx="3" fill="#c20a26"/>
-            <circle cx="18" cy="46" r="9" fill="#0e141a" stroke="#444" stroke-width="2"/>
-            <circle cx="68" cy="46" r="9" fill="#0e141a" stroke="#444" stroke-width="2"/>
+          <!-- machine on conveyor (inside factory only — exit = tractor-out) -->
+          <g clip-path="url(#factory-clip)">
+            <g class="seeder-flow">
+              <rect x="0" y="14" width="86" height="26" rx="4" fill="#E10E2B"/>
+              <rect x="10" y="2" width="30" height="16" rx="3" fill="#b80a22"/>
+              <rect x="52" y="0" width="26" height="20" rx="3" fill="#c20a26"/>
+              <animateTransform attributeName="transform" type="translate"
+                keyTimes="0;0.18;0.71;1" values="180,290;180,290;504,290;504,290"
+                dur="12s" repeatCount="indefinite" calcMode="linear"/>
+              <animate attributeName="opacity"
+                keyTimes="0;0.17;0.18;0.70;0.71;1" values="0;0;1;1;0;0"
+                dur="12s" repeatCount="indefinite"/>
+            </g>
           </g>
           <!-- workers -->
           <g class="worker w1" transform="translate(250,300)">
@@ -115,8 +122,8 @@ kuhnResultats: true
             <text x="37" y="-9" text-anchor="middle" fill="#cdd6df" font-family="Bahnschrift" font-size="9">ACIER</text>
           </g>
           <text x="62" y="270" text-anchor="middle" fill="#9aa6b2" font-family="Segoe UI" font-size="14">Fournisseurs →</text>
-          <!-- client + tractor (right, out) -->
-          <g class="tractor-out" transform="translate(640,330)">
+          <!-- machine aboutie (2 blocs + roues) — apparaît à droite de l'usine quand le chariot a fini le tapis -->
+          <g class="tractor-out">
             <rect x="0" y="-22" width="40" height="22" rx="4" fill="#E10E2B"/>
             <rect x="30" y="-34" width="20" height="16" rx="3" fill="#c20a26"/>
             <circle cx="12" cy="6" r="11" fill="#0e141a" stroke="#777" stroke-width="3"/>
