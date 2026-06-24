@@ -121,7 +121,7 @@ kuhnResultats: true
             <circle cx="72" cy="8" r="8" fill="#0e141a" stroke="#888" stroke-width="2"/>
             <text x="37" y="-9" text-anchor="middle" fill="#cdd6df" font-family="Bahnschrift" font-size="9">ACIER</text>
           </g>
-          <text x="62" y="270" text-anchor="middle" fill="#9aa6b2" font-family="Segoe UI" font-size="14">Fournisseurs →</text>
+          <text x="62" y="270" text-anchor="middle" fill="#9aa6b2" font-family="Segoe UI" font-size="17">Fournisseurs →</text>
           <!-- machine aboutie (2 blocs + roues) — apparaît à droite de l'usine quand le chariot a fini le tapis -->
           <g class="tractor-out">
             <rect x="0" y="-22" width="40" height="22" rx="4" fill="#E10E2B"/>
@@ -129,7 +129,7 @@ kuhnResultats: true
             <circle cx="12" cy="6" r="11" fill="#0e141a" stroke="#777" stroke-width="3"/>
             <circle cx="44" cy="8" r="7" fill="#0e141a" stroke="#777" stroke-width="2"/>
           </g>
-          <text x="688" y="270" text-anchor="middle" fill="#9aa6b2" font-family="Segoe UI" font-size="14">→ Clients</text>
+          <text x="688" y="270" text-anchor="middle" fill="#9aa6b2" font-family="Segoe UI" font-size="17">→ Clients</text>
           <!-- coins floating in from clients -->
           <g class="coinflow">
             <circle cx="690" cy="205" r="9" fill="#E8B23A"/><circle cx="660" cy="182" r="7" fill="#E8B23A" opacity=".8"/>
