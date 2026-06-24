@@ -97,11 +97,11 @@ kuhnResultats: true
               <rect x="10" y="2" width="30" height="16" rx="3" fill="#b80a22"/>
               <rect x="52" y="0" width="26" height="20" rx="3" fill="#c20a26"/>
               <animateTransform attributeName="transform" type="translate"
-                keyTimes="0;0.14;0.71;1" values="180,290;180,290;504,290;504,290"
+                keyTimes="0;0.14;0.48;1" values="180,290;180,290;504,290;504,290"
                 dur="12s" repeatCount="indefinite" calcMode="linear"/>
               <animate attributeName="opacity"
-                keyTimes="0;0.14;0.70;0.71;1" values="0;1;1;0;0"
-                dur="12s" repeatCount="indefinite"/>
+                keyTimes="0;0.14;0.48;1" values="0;1;0;0"
+                dur="12s" repeatCount="indefinite" calcMode="discrete"/>
             </g>
           </g>
           <!-- workers -->
@@ -114,7 +114,7 @@ kuhnResultats: true
             <rect class="arm" x="-12" y="13" width="6" height="22" rx="3" fill="#c44"/>
           </g>
           <!-- supplier truck (left, in) -->
-          <g class="truck-in" transform="translate(0,332)">
+          <g class="truck-in">
             <rect x="14" y="-26" width="46" height="30" rx="3" fill="#5C6B7A"/>
             <rect x="60" y="-16" width="26" height="20" rx="3" fill="#46566a"/>
             <circle cx="30" cy="8" r="8" fill="#0e141a" stroke="#888" stroke-width="2"/>

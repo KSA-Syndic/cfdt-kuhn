@@ -385,22 +385,20 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
   .huge{font-size:clamp(38px,15vw,70px)}
 }
 /* ============ SCENE MOTION ============ */
-/* cycle usine 12s : camion (entre, stop) → chariot sur tapis (gauche→droite) → machine finale à droite */
+/* cycle usine 12s — camion hors cadre → quai ; boucle 0%=100% hors cadre */
 .truck-in{animation:truckIn 12s ease-in-out infinite}
 @keyframes truckIn{
-  0%{transform:translate(-130px,332px)}
-  14%{transform:translate(0,332px)}
-  70%{transform:translate(0,332px)}
-  85%{transform:translate(-130px,332px)}
-  100%{transform:translate(-130px,332px)}}
+  0%,100%{transform:translate(-130px,332px)}
+  14%,82%{transform:translate(0,332px)}
+  90%{transform:translate(-130px,332px)}}
 /* seeder-flow : <animateTransform> dans le SVG */
-.tractor-out{animation:tractorOut 12s ease-in-out infinite}
+.tractor-out{animation:tractorOut 12s ease-in-out infinite;visibility:hidden}
 @keyframes tractorOut{
-  0%,70%{transform:translate(640px,330px);opacity:0}
-  73%{transform:translate(640px,330px);opacity:1}
-  79%{transform:translate(640px,330px);opacity:1}
-  96%{transform:translate(760px,330px);opacity:0}
-  100%{transform:translate(760px,330px);opacity:0}}
+  0%,48%{transform:translate(640px,330px);visibility:hidden;opacity:0}
+  50%,62%{transform:translate(640px,330px);visibility:visible;opacity:1}
+  63%{transform:translate(640px,330px);visibility:visible;opacity:1}
+  88%{transform:translate(710px,330px);opacity:.5}
+  97%,100%{transform:translate(760px,330px);visibility:hidden;opacity:0}}
 .coinflow,.coinrise,.coinup{animation:floatUp 3s ease-in infinite}
 .coinrise{animation-duration:2.6s}.coinup{animation-duration:2.2s}
 @keyframes floatUp{0%{transform:translateY(14px);opacity:0}25%{opacity:1}100%{transform:translateY(-46px);opacity:0}}
@@ -417,7 +415,7 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto}
   .rv{opacity:1;transform:none}
-  .truck-in{transform:translate(0,332px)}.seeder-flow{transform:translate(340px,290px);opacity:1}.tractor-out{transform:translate(640px,330px);opacity:1}
+  .truck-in{transform:translate(0,332px)}.seeder-flow{transform:translate(340px,290px);opacity:1}.tractor-out{transform:translate(640px,330px);visibility:visible;opacity:1}
   #stageFactory .seeder-flow animateTransform,#stageFactory .seeder-flow animate{display:none}
   .coinflow,.coinrise,.coinup{opacity:1}
   .divflow circle{opacity:.45;transform:translateY(-95px)}
