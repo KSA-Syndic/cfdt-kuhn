@@ -628,17 +628,38 @@ function initTapTips(){
   document.body.appendChild(tip);
   let cur=null;
   const close=()=>{tip.classList.remove('show');cur=null;};
-  function open(elm){
-    const txt=elm.getAttribute('title')||elm.getAttribute('data-tip');if(!txt)return;
+  function openAt(txt,r,key){
+    if(!txt)return;
     tip.textContent=txt;tip.style.visibility='hidden';tip.classList.add('show');
-    const r=elm.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
+    const tw=tip.offsetWidth,th=tip.offsetHeight;
     const left=Math.min(Math.max(8,r.left+r.width/2-tw/2),innerWidth-tw-8);
     let top=r.top-th-10;if(top<8)top=r.bottom+10;
-    tip.style.left=left+'px';tip.style.top=top+'px';tip.style.visibility='';cur=elm;
+    tip.style.left=left+'px';tip.style.top=top+'px';tip.style.visibility='';cur=key;
   }
   document.addEventListener('click',e=>{
+    // 1) libellés HTML annotés (légendes soulignées, segments de l'euro…) : attribut title=/data-tip
     const t=e.target.closest('#analysis [title],#analysis [data-tip]');
-    if(t){e.preventDefault();(cur===t)?close():open(t);return;}
+    if(t){e.preventDefault();const txt=t.getAttribute('title')||t.getAttribute('data-tip');
+      (cur===t)?close():openAt(txt,t.getBoundingClientRect(),t);return;}
+    // 2) formes des graphiques SVG : le détail vit dans un <title> enfant, invisible au tactile
+    const chart=e.target.closest('.svgchart');
+    if(chart){
+      let shape=e.target.closest('path,polygon,rect,circle,line');
+      let ttl=shape&&shape.querySelector(':scope>title');
+      // cibles minuscules (points de courbe r=4) : on retient le <title> le plus proche du tap
+      if(!ttl||!ttl.textContent.trim()){
+        let best=null,bestD=22;
+        chart.querySelectorAll('circle>title,rect>title,polygon>title,path>title').forEach(tt=>{
+          if(!tt.textContent.trim())return;
+          const s=tt.parentNode,r=s.getBoundingClientRect();
+          const d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height/2));
+          if(d<bestD){bestD=d;best=s;}
+        });
+        if(best){shape=best;ttl=best.querySelector(':scope>title');}
+      }
+      if(ttl&&ttl.textContent.trim()){e.preventDefault();
+        (cur===shape)?close():openAt(ttl.textContent,shape.getBoundingClientRect(),shape);return;}
+    }
     if(!e.target.closest('#anaTip'))close();
   });
   addEventListener('scroll',()=>{if(cur)close();},{passive:true});
