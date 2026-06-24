@@ -185,9 +185,11 @@ body.show-analysis .mobstep,body.experience-hidden .mobstep{display:none}
 .lever .val{font-family:var(--disp);font-size:21px;text-align:right;white-space:nowrap}
 .val.gold{color:var(--gold)}.val.red{color:var(--kuhn-soft)}.val.green{color:var(--green)}.val.steel{color:var(--muted)}
 
-/* divergence bars */
-.diverge{display:flex;gap:30px;justify-content:center;align-items:flex-end;margin-top:34px;min-height:248px;padding-top:8px}
-.dbar{display:flex;flex-direction:column;align-items:center;gap:8px;width:110px}
+/* divergence bars : les deux barres partagent une base commune (bas de .col, hauteur fixe),
+   indépendante du nombre de lignes du libellé .nm → plus de décalage entre EBITDA et résultat net */
+.diverge{display:flex;gap:30px;justify-content:center;align-items:flex-start;margin-top:34px;padding-top:8px}
+.dbar{display:flex;flex-direction:column;align-items:center;gap:8px;width:120px}
+.dbar .col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;height:206px}
 .dbar .bar{width:58px;border-radius:7px 7px 0 0;transition:height .9s cubic-bezier(.2,.7,.2,1);background:var(--steel)}
 .dbar.ebitda .bar{background:linear-gradient(180deg,var(--bad),#9c3b27)}
 .dbar.net .bar{background:linear-gradient(180deg,var(--green),#3e6018)}
@@ -278,14 +280,23 @@ body.show-analysis #experience,body.show-analysis .rail{display:none}
 .card.full{grid-column:1/-1}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--l-muted);margin-top:8px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
-.legend span[title]{cursor:help;border-bottom:1px dotted #c9c2b0}
+.legend span[title]{cursor:help;border-bottom:1px dotted #c9c2b0;-webkit-tap-highlight-color:transparent}
 .legend i{width:13px;height:13px;border-radius:3px;display:inline-block}
+/* bulle tactile : affiche le title= au clic (légendes, segments…) là où le survol n'existe pas */
+#anaTip{position:fixed;z-index:210;max-width:min(300px,90vw);background:var(--l-ink);color:#fff;
+  font-family:var(--ui);font-size:13px;line-height:1.45;padding:10px 13px;border-radius:10px;
+  box-shadow:0 12px 30px rgba(20,25,32,.32);opacity:0;transform:translateY(6px);pointer-events:none;
+  transition:opacity .18s ease,transform .2s cubic-bezier(.2,.7,.2,1)}
+#anaTip.show{opacity:1;transform:none}
 /* ligne discrète "définition · source" commune sous chaque graphe */
 .srcnote{font-family:var(--ui);font-size:11px;color:#a39a85;line-height:1.45;margin-top:9px;
   border-top:1px dotted var(--l-line);padding-top:7px}
 .srcnote b{color:#7c745f;font-weight:600}
 .svgchart{width:100%;height:auto;display:block;font-family:var(--ui)}
 .svgchart text{font-family:var(--ui)}
+/* graphes larges (flux annuels, CA indexé) : sur petit écran, on défile horizontalement
+   plutôt que d'écraser le dessin → libellés et flèches restent lisibles */
+.chart-scroll{width:100%}
 
 /* interactive tools */
 .tool{background:#fff;border:1px solid var(--l-line);border-radius:15px;padding:20px;margin:16px 0;font-family:var(--ui)}
@@ -319,8 +330,8 @@ body.show-analysis #experience,body.show-analysis .rail{display:none}
 table.data{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:13.5px;min-width:560px}
 table.data th,table.data td{padding:9px 13px;text-align:right;border-bottom:1px solid var(--l-line);white-space:nowrap}
 table.data th:first-child,table.data td:first-child{text-align:left;position:sticky;left:0;background:#fff}
-table.data thead th{background:#f1eee5;font-family:var(--disp);font-weight:700;font-size:13px;color:var(--l-ink);text-align:right}
-table.data thead th:first-child{text-align:left}
+table.data thead th{background:#f1eee5;font-family:var(--disp);font-weight:700;font-size:13px;color:var(--l-ink);text-align:center}
+table.data thead th:first-child{text-align:center}
 table.data tbody tr:hover td{background:#faf7ef}
 table.data .pos{color:var(--l-green);font-weight:600}.table .neg,table.data .neg{color:#b23a1f;font-weight:600}
 table.data tfoot td{font-family:var(--disp);font-weight:700;border-top:2px solid var(--l-ink);background:#f7f4ec}
@@ -352,7 +363,21 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
   .split,.split.rev{grid-template-columns:1fr;gap:22px}
   .stage{max-width:none}
   .rail .rail-label{display:none!important}
-  .diverge{min-height:230px;gap:18px}
+  .diverge{gap:18px}
+  .dbar{width:108px}
+  .dbar .col{height:188px}
+}
+/* Mobile : 1re page (hero) et en-tête du mode analyse trop aérés → resserrer le haut, sans toucher
+   aux autres scènes (espacements jugés corrects) */
+@container full-width-post (max-width: 760px) {
+  .chart-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--l-line);border-radius:10px;background:#fcfbf7}
+  .chart-scroll .svgchart{min-width:680px;padding:4px}
+}
+@container full-width-post (max-width: 700px) {
+  #s0{min-height:auto;padding-top:calc(var(--bar-h,53px) + 48px);padding-bottom:46px}
+  #s0 .inner{gap:14px}
+  #analysis .wrap{padding-top:calc(var(--bar-h,53px) + 30px)}
 }
 @container full-width-post (max-width: 640px) { .brand small{display:none} }
 @container full-width-post (max-width: 560px) {

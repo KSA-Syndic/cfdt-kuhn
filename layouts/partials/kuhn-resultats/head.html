@@ -1,1 +1,4 @@
-<link rel="stylesheet" href="{{ "css/kuhn-resultats.css" | relURL }}">
+{{- /* CSS de l'article kuhn-resultats, avec cache-busting par hash du contenu :
+       l'URL change dès que le fichier change → fini le CSS périmé servi par le cache. */ -}}
+{{- $p := "css/kuhn-resultats.css" -}}
+<link rel="stylesheet" href="{{ $p | relURL }}?v={{ readFile (printf "static/%s" $p) | hash.FNV32a }}">

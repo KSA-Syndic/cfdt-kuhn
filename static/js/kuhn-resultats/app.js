@@ -334,15 +334,17 @@ let tblEnt='Toutes',tblYear='Toutes';
 function renderFilTable(){
   const t=$('#filTable');
   const rows=FIL_RAW.filter(r=>(tblEnt==='Toutes'||r[0]===tblEnt)&&(tblYear==='Toutes'||r[1]===tblYear));
-  let head='<thead><tr><th>Filiale</th><th>Exercice</th><th>CA</th><th>Rés. net</th><th>Fonds propres</th><th>Prêt reçu SAS</th><th>Div. → SAS</th></tr></thead>';
+  // colonne « Dividende → SAS » remontée juste après le résultat net : c'est la donnée commentée
+  // sous le tableau, on la veut visible sans avoir à faire défiler le tableau horizontalement
+  let head='<thead><tr><th>Filiale</th><th>Exercice</th><th>CA</th><th>Rés. net</th><th>Dividende → SAS</th><th>Fonds propres</th><th>Prêt reçu SAS</th></tr></thead>';
   let body='<tbody>';
   rows.sort((a,b)=>a[0]===b[0]?a[1]-b[1]:a[0].localeCompare(b[0]));
   rows.forEach(r=>{const neg=r[3]<0;body+=`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${fmtM(r[2],1)}</td>
-    <td class="${neg?'neg':'pos'}">${fmtM(r[3],1)}</td><td>${r[4]!=null?fmtM(r[4],1):'—'}</td>
-    <td>${r[6]!=null?fmtM(r[6],1):'—'}</td><td>${r[7]!=null?fmtM(r[7],1):'—'}</td></tr>`;});
+    <td class="${neg?'neg':'pos'}">${fmtM(r[3],1)}</td><td>${r[7]!=null?fmtM(r[7],1):'—'}</td>
+    <td>${r[4]!=null?fmtM(r[4],1):'—'}</td><td>${r[6]!=null?fmtM(r[6],1):'—'}</td></tr>`;});
   // totals
   const sum=k=>rows.reduce((s,r)=>s+(r[k]||0),0);
-  let foot=`<tfoot><tr><td>Total filtré</td><td></td><td>${fmtM(sum(2),0)}</td><td>${fmtM(sum(3),0)}</td><td></td><td>${fmtM(sum(6),0)}</td><td>${fmtM(sum(7),0)}</td></tr></tfoot>`;
+  let foot=`<tfoot><tr><td>Total filtré</td><td></td><td>${fmtM(sum(2),0)}</td><td>${fmtM(sum(3),0)}</td><td>${fmtM(sum(7),0)}</td><td></td><td>${fmtM(sum(6),0)}</td></tr></tfoot>`;
   t.innerHTML=head+body+'</tbody>'+foot;
 }
 // Après filtrage : recaler la vue sur le tableau (sous l'en-tête + filterbar sticky).
@@ -481,12 +483,18 @@ function initScroll(){
   if(!rail||!grain||!railLabel||!exp||!hit)return;
   rail.classList.add('live');
   const DEFAULT_STEP='Le voyage d\'un euro';
-  // géométrie du rail : démarre sous l'en-tête (+ bandeau d'étape) pour ne jamais passer derrière, sur mobile comme desktop
+  const COIN_R=11; // rayon de la pièce € : la piste utile est rétrécie d'autant pour aligner pièce et jalons
+  // géométrie du rail : démarre sous le bas RÉEL de l'en-tête (+ bandeau d'étape), mesuré à l'écran.
+  // getBoundingClientRect() tient compte du book-header hugo (mobile) qui pousse l'en-tête vers le bas à scroll 0,
+  // puis se rétracte au défilement → la piste ne passe jamais par-dessus le bandeau d'étape.
   function railGeom(){const vh=innerHeight;const hdr=document.querySelector('header.bar'),ms=$('#mobStep');
-    const hb=(hdr?hdr.offsetHeight:0)+((ms&&getComputedStyle(ms).display!=='none')?ms.offsetHeight:0)+12;
-    const top=Math.max(vh*0.14,hb),bot=vh*0.14;return{top,h:vh-top-bot};}
-  function layoutRail(){const g=railGeom(),tr=rail.querySelector('.track'),hit=$('#railHit');
-    [tr,hit].forEach(e=>{if(e){e.style.top=g.top+'px';e.style.bottom='auto';e.style.height=g.h+'px';}});}
+    let chromeBottom=0;
+    if(hdr)chromeBottom=Math.max(chromeBottom,hdr.getBoundingClientRect().bottom);
+    if(ms&&getComputedStyle(ms).display!=='none')chromeBottom=Math.max(chromeBottom,ms.getBoundingClientRect().bottom);
+    const top=Math.max(vh*0.14,chromeBottom+12),bot=vh*0.14;return{top,h:Math.max(60,vh-top-bot)};}
+  function placeRail(g){const tr=rail.querySelector('.track'),hh=$('#railHit');
+    [tr,hh].forEach(e=>{if(e){e.style.top=g.top+'px';e.style.bottom='auto';e.style.height=g.h+'px';}});}
+  function layoutRail(){placeRail(railGeom());}
   let marks=[];
   function buildMarks(){
     marks.forEach(m=>m.el.remove());marks=[];
@@ -515,23 +523,24 @@ function initScroll(){
       l.style.transform='translateY('+(c*(parseFloat(l.dataset.depth)||0)*-120)+'px)';});}
     const er=exp.getBoundingClientRect();
     const prog=Math.min(1,Math.max(0,(-er.top)/(er.height-vh)));
-    const {top:trackTop,h:trackH}=railGeom();
-    let gCenter=trackTop+prog*trackH;
-    gCenter=Math.max(trackTop+11,Math.min(trackTop+trackH-11,gCenter)); // la pièce reste dans la piste
-    grain.style.top=(gCenter-11)+'px';
+    const g=railGeom();const trackTop=g.top,trackH=g.h;
+    placeRail(g); // garde la piste/zone-cliquable collées sous le chrome qui se rétracte au scroll
+    const travel=Math.max(1,trackH-2*COIN_R); // course du centre de la pièce, jalons calés sur la même base
+    const gCenter=trackTop+COIN_R+prog*travel;
+    grain.style.top=(gCenter-COIN_R)+'px';
     const hh=document.getElementById('railHit');if(hh)hh.setAttribute('aria-valuenow',Math.round(prog*100));
     railLabel.style.top=gCenter+'px';
-    marks.forEach(m=>{m.el.style.top=(trackTop+m.f*trackH)+'px';m.el.classList.toggle('passed',prog>=m.f-0.004);});
+    marks.forEach(m=>{m.el.style.top=(trackTop+COIN_R+m.f*travel)+'px';m.el.classList.toggle('passed',prog>=m.f-0.004);});
     const lab=activeStepLabel(vh);railLabel.textContent=lab;mobTxt.textContent=lab;
     mobProg.textContent=Math.round(prog*100)+' %';
   }
   // clic n'importe où sur la barre + glissement immédiat (la pièce suit la souris)
   let dragging=false;
   const bounds=()=>{const g=railGeom();return{vh:innerHeight,top:g.top,h:g.h};};
-  function jumpTo(cy){const {vh,top,h}=bounds();const f=Math.min(1,Math.max(0,(cy-top)/h));
+  function jumpTo(cy){const {vh,top,h}=bounds();const f=Math.min(1,Math.max(0,(cy-top-COIN_R)/Math.max(1,h-2*COIN_R)));
     window.scrollTo({top:f*(exp.offsetHeight-vh),behavior:'instant'});}
-  function followGrain(cy){const {top,h}=bounds();const c=Math.max(top+11,Math.min(top+h-11,cy));
-    grain.style.top=(c-11)+'px';railLabel.style.top=c+'px';}
+  function followGrain(cy){const {top,h}=bounds();const c=Math.max(top+COIN_R,Math.min(top+h-COIN_R,cy));
+    grain.style.top=(c-COIN_R)+'px';railLabel.style.top=c+'px';}
   hit.addEventListener('pointerdown',e=>{dragging=true;rail.classList.add('dragging');
     try{hit.setPointerCapture(e.pointerId);}catch(_){}
     followGrain(e.clientY);jumpTo(e.clientY);e.preventDefault();});
@@ -565,7 +574,7 @@ const GLOSS={
   d:"Tout ce que l'entreprise dépense pour fonctionner : matières, salaires, énergie, amortissements… Les charges se soustraient des ventes pour donner le résultat.",
   scene:`<div class="gx gx--charges"><div class="base"></div><div class="gx-ico" style="left:16px;bottom:12px">🏭</div><span class="gx-c gx-c--out"></span><span class="gx-c gx-c--out" style="animation-delay:.7s"></span><span class="gx-c gx-c--out" style="animation-delay:1.4s"></span><div class="gx-ico" style="right:16px;bottom:12px">🧾</div></div>`},
  'provision':{t:'Provision',
-  d:"Une somme mise de côté pour un risque <b>futur</b> (un litige, des stocks invendables, une garantie client). Le bénéfice de l'année baisse, mais l'argent, lui, reste en trésorerie.",
+  d:"Une somme mise de côté « sur le papier » pour un risque <b>futur</b> (un litige, des stocks invendables, une garantie client). C'est une écriture comptable : elle diminue le bénéfice de l'année, mais <b>aucun euro ne sort vraiment</b>. L'argent ne bouge pas.",
   scene:`<div class="gx"><div class="gx-jar" style="left:50%;margin-left:-27px"></div><span class="gx-c gx-c--in-jar drop"></span></div>`},
  'dotation':{t:'Dotation',
   d:"L'écriture qui <b>crée ou augmente</b> une provision. C'est une charge : elle réduit le résultat de l'année où on la passe.",
@@ -574,13 +583,13 @@ const GLOSS={
   d:"L'inverse de la dotation : on <b>annule</b> une provision devenue inutile. Ça remonte dans le résultat de l'année, sans qu'aucun euro n'entre réellement en trésorerie.",
   scene:`<div class="gx"><div class="gx-jar" style="left:50%;margin-left:-27px"></div><span class="gx-c gx-c--in-jar rise"></span><div class="gx-tag pos" style="right:13px;top:13px">résultat ↑</div></div>`},
  'amortissement':{t:'Amortissement',
-  d:"La répartition du coût d'un <b>équipement de production</b> (machine-outil, presse, robot de soudure…) sur ses années d'usure. Une charge étalée dans le temps, qui ne correspond à aucune sortie d'argent de l'année.",
-  scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:16px;bottom:12px">⚙️</div><div class="gx-bar gx-grow" style="left:96px;--h:18px;background:#5C6B7A;animation-delay:.05s"></div><div class="gx-bar gx-grow" style="left:128px;--h:18px;background:#5C6B7A;animation-delay:.35s"></div><div class="gx-bar gx-grow" style="left:160px;--h:18px;background:#5C6B7A;animation-delay:.65s"></div><div class="gx-bar gx-grow" style="left:192px;--h:18px;background:#5C6B7A;animation-delay:.95s"></div><div class="gx-tag" style="right:16px;top:13px;background:#eef0f2;color:#5C6B7A">étalé sur N ans</div></div>`},
+  d:"La répartition du coût d'un <b>outil de l'atelier</b> (robot de soudure, ligne de peinture, centre d'usinage…) sur ses années d'usure. <b>Exemple :</b> un robot de soudure payé 500&nbsp;000&nbsp;€ et utilisé 5&nbsp;ans n'est pas une charge unique de 500&nbsp;000&nbsp;€, mais <b>100&nbsp;000&nbsp;€ par an pendant 5&nbsp;ans</b>. L'argent est sorti en une fois à l'achat ; les années suivantes, la charge est « sur le papier », sans nouvelle sortie d'argent.",
+  scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:16px;bottom:28px;font-size:22px">🤖</div><div class="gx-lab" style="left:31px;transform:translateX(-50%);bottom:2px;color:#5C6B7A">achat 500&nbsp;k€</div><div class="gx-op" style="left:84px;bottom:30px">÷</div><div class="gx-bar gx-grow" style="left:116px;--h:30px;background:#5C6B7A;animation-delay:.05s"></div><div class="gx-bar gx-grow" style="left:148px;--h:30px;background:#5C6B7A;animation-delay:.25s"></div><div class="gx-bar gx-grow" style="left:180px;--h:30px;background:#5C6B7A;animation-delay:.45s"></div><div class="gx-bar gx-grow" style="left:212px;--h:30px;background:#5C6B7A;animation-delay:.65s"></div><div class="gx-bar gx-grow" style="left:244px;--h:30px;background:#5C6B7A;animation-delay:.85s"></div><div class="gx-lab" style="left:128px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:160px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:192px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:224px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:256px;transform:translateX(-50%);bottom:44px;color:#5C6B7A">100k</div><div class="gx-lab" style="left:192px;transform:translateX(-50%);bottom:2px">sur 5 ans</div></div>`},
  'tresorerie':{t:'Trésorerie',
   d:"L'argent <b>réellement disponible</b> : liquidités en banque et placements. C'est ce qui permet de payer, d'investir et de verser les dividendes.",
   scene:`<div class="gx gx--treso"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:34px">🏦</div><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span></div>`},
  'fonds-propres':{t:'Fonds propres',
-  d:"Ce que les actionnaires possèdent vraiment dans l'entreprise : le capital de départ plus les bénéfices accumulés et non distribués. C'est une <b>mesure de propriété</b>, pas un tas d'argent disponible (à ne pas confondre avec la trésorerie).",
+  d:"Ce que les actionnaires possèdent vraiment dans l'entreprise : le capital de départ, plus les bénéfices gardés au fil des ans. Ces bénéfices accumulés sont inscrits <b>au passif du bilan</b>, dans les lignes « réserves » et « report à nouveau ». Ce n'est pas un coffre d'argent qui s'ajoute à la trésorerie, mais une <b>mesure de propriété</b>. L'argent correspondant est en fait réparti dans l'actif, comme l'outil de production, les stocks, les créances et la trésorerie.",
   scene:`<div class="gx"><div class="gx-blk gx-grow" style="left:46px;margin-left:0;width:56px;--h:18px;bottom:18px;background:linear-gradient(180deg,#ffe1a0,#e0a92f);animation-delay:.05s"></div><div class="gx-blk gx-grow" style="left:46px;margin-left:0;width:56px;--h:14px;bottom:36px;background:linear-gradient(180deg,#fff0c8,#ecc15a);animation-delay:.5s"></div><div class="gx-lab" style="left:74px;transform:translateX(-50%);bottom:2px">capital + bénéfices gardés</div><div class="gx-tag" style="left:155px;transform:translateX(-50%);bottom:24px;background:#efe7d3;color:#7c745f">détenu par ▸</div><div class="gx-ico" style="left:236px;transform:translateX(-50%);bottom:20px;font-size:24px">👤</div><div class="gx-lab" style="left:236px;transform:translateX(-50%);bottom:2px">actionnaires</div></div>`},
  'dividende':{t:'Dividende',
   d:"La part du bénéfice qui <b>sort</b> de l'entreprise pour rémunérer l'actionnaire (ici KUHN Group, puis Bucher en Suisse).",
@@ -611,6 +620,31 @@ document.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeGloss();});
 addEventListener('scroll',()=>{if(curGloss)closeGloss();},{passive:true});
 
+/* ============================ TOOLTIPS CLIQUABLES (mode Analyse, mobile) ============================ */
+/* les libellés annotés (légendes soulignées, segments de l'euro…) portent un title= : illisible au tactile.
+   On affiche son texte dans une bulle au clic/tap, tout en gardant le survol natif sur desktop. */
+function initTapTips(){
+  const tip=document.createElement('div');tip.id='anaTip';tip.setAttribute('role','status');
+  document.body.appendChild(tip);
+  let cur=null;
+  const close=()=>{tip.classList.remove('show');cur=null;};
+  function open(elm){
+    const txt=elm.getAttribute('title')||elm.getAttribute('data-tip');if(!txt)return;
+    tip.textContent=txt;tip.style.visibility='hidden';tip.classList.add('show');
+    const r=elm.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
+    const left=Math.min(Math.max(8,r.left+r.width/2-tw/2),innerWidth-tw-8);
+    let top=r.top-th-10;if(top<8)top=r.bottom+10;
+    tip.style.left=left+'px';tip.style.top=top+'px';tip.style.visibility='';cur=elm;
+  }
+  document.addEventListener('click',e=>{
+    const t=e.target.closest('#analysis [title],#analysis [data-tip]');
+    if(t){e.preventDefault();(cur===t)?close():open(t);return;}
+    if(!e.target.closest('#anaTip'))close();
+  });
+  addEventListener('scroll',()=>{if(cur)close();},{passive:true});
+  addEventListener('resize',close,{passive:true});
+}
+
 /* init */
 function kuhnResultatsInit(){
 try{
@@ -624,6 +658,7 @@ drawAnalysisCharts();
 drawSankey(curYear);
 syncBarH();
 initScroll();
+initTapTips();
 const bE=$('#btnExp'),bA=$('#btnAna'),gA=$('#goAnalysis'),bB=$('#backToExp');
 if(bE)bE.onclick=()=>showAnalysis(false);
 if(bA)bA.onclick=()=>showAnalysis(true);

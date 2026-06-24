@@ -1,4 +1,6 @@
-{{- /* Article kuhn-resultats : full-width-post + données + app (kuhnResultats: true). */ -}}
-<script src="{{ "js/full-width-post.js" | relURL }}"></script>
-<script src="{{ "js/kuhn-resultats/data.js" | relURL }}"></script>
-<script src="{{ "js/kuhn-resultats/app.js" | relURL }}"></script>
+{{- /* Article kuhn-resultats : full-width-post + données + app (kuhnResultats: true).
+       Cache-busting par hash du contenu : l'URL change dès que le fichier change
+       → fini le JS périmé servi par le cache. L'ordre est conservé (data avant app). */ -}}
+{{- range slice "js/full-width-post.js" "js/kuhn-resultats/data.js" "js/kuhn-resultats/app.js" -}}
+<script src="{{ . | relURL }}?v={{ readFile (printf "static/%s" .) | hash.FNV32a }}"></script>
+{{ end -}}
