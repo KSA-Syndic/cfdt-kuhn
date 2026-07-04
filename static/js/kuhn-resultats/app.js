@@ -62,9 +62,9 @@ function renderExperience(y){
   // commentaire dynamique selon l'année : qui dépasse qui, et pourquoi
   const note=$('[data-stat="divergeNote"]');
   if(note){const ebt=fmtPct(eb),npt=fmtPct(np);
-    if(np-eb>0.4)note.innerHTML=`Cette année, le <b style="color:var(--green)">résultat net (${npt})</b> dépasse même la <b style="color:var(--bad)">marge brute (${ebt})</b> : l'EBITDA ne mesure que la trésorerie de l'exploitation, alors que le résultat net est <b>rehaussé</b> par les reprises de provisions et le résultat financier. Le bénéfice « tient » donc mieux que l'activité réelle.`;
-    else if(eb-np>0.4)note.innerHTML=`Cette année, la <b style="color:var(--bad)">marge brute (${ebt})</b> dépasse le <b style="color:var(--green)">résultat net (${npt})</b> : l'exploitation dégageait alors plus de trésorerie que le bénéfice final, une fois retranchés amortissements, dotations et impôts. C'est la lecture « normale » d'un exercice classique.`;
-    else note.innerHTML=`Cette année, marge brute (${ebt}) et résultat net (${npt}) sont très proches : les écritures comptables jouent peu, le bénéfice reflète assez fidèlement la trésorerie de l'activité.`;}
+    if(np-eb>0.4)note.innerHTML=`Cette année, le <b style="color:var(--green)">résultat net (${npt})</b> dépasse même la <b style="color:var(--bad)">marge d'EBITDA (${ebt})</b> : l'EBITDA ne mesure que l'argent dégagé par l'exploitation, alors que le résultat net est <b>rehaussé</b> par les reprises de provisions et le résultat financier. Le bénéfice « tient » donc mieux que l'activité réelle.`;
+    else if(eb-np>0.4)note.innerHTML=`Cette année, la <b style="color:var(--bad)">marge d'EBITDA (${ebt})</b> dépasse le <b style="color:var(--green)">résultat net (${npt})</b> : l'exploitation dégageait alors plus d'argent que le bénéfice final, une fois retranchés amortissements, dotations et impôts. C'est la lecture « normale » d'un exercice classique.`;
+    else note.innerHTML=`Cette année, marge d'EBITDA (${ebt}) et résultat net (${npt}) sont très proches : les écritures comptables jouent peu, le bénéfice reflète assez fidèlement l'argent dégagé par l'activité.`;}
   renderFilGrid(y);
   renderBenefit(y);
 }
@@ -336,7 +336,7 @@ function renderFilTable(){
   const rows=FIL_RAW.filter(r=>(tblEnt==='Toutes'||r[0]===tblEnt)&&(tblYear==='Toutes'||r[1]===tblYear));
   // colonne « Dividende → SAS » remontée juste après le résultat net : c'est la donnée commentée
   // sous le tableau, on la veut visible sans avoir à faire défiler le tableau horizontalement
-  let head='<thead><tr><th>Filiale</th><th>Exercice</th><th>CA</th><th>Rés. net</th><th>Dividende → SAS</th><th>Fonds propres</th><th>Prêt reçu SAS</th></tr></thead>';
+  let head='<thead><tr><th>Filiale</th><th>Exercice</th><th>CA</th><th>Rés. net</th><th>Dividende → SAS</th><th>Capitaux propres</th><th>Prêt reçu SAS</th></tr></thead>';
   let body='<tbody>';
   rows.sort((a,b)=>a[0]===b[0]?a[1]-b[1]:a[0].localeCompare(b[0]));
   rows.forEach(r=>{const neg=r[3]<0;body+=`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${fmtM(r[2],1)}</td>
@@ -591,7 +591,7 @@ const GLOSS={
   d:"Ce qui reste des ventes une fois payés les <b>achats</b> (acier, pièces, énergie, sous-traitance) : la richesse réellement créée par l'entreprise, avant même de payer les salariés.",
   scene:`<div class="gx gx--va"><div class="gx-va-stage"><div class="gx-ico gx-va-ico gx-va-ico--ventes">💰</div><div class="gx-bar" style="left:42px;width:26px;height:50px;bottom:18px;background:#E8B23A"></div><div class="gx-lab" style="left:55px;transform:translateX(-50%)">Ventes</div><div class="gx-op" style="left:87px;transform:translateX(-50%);bottom:38px">−</div><div class="gx-ico gx-va-ico gx-va-ico--achats">🚚</div><div class="gx-bar" style="left:106px;width:26px;height:30px;bottom:18px;background:#E76A4B"></div><div class="gx-lab" style="left:119px;transform:translateX(-50%)">Achats</div><div class="gx-op" style="left:151px;transform:translateX(-50%);bottom:38px">=</div><div class="gx-ico gx-va-ico gx-va-ico--va">✨</div><div class="gx-bar gx-grow" style="left:170px;width:26px;--h:20px;bottom:18px;background:#5E8A28"></div><div class="gx-lab" style="left:183px;transform:translateX(-50%);color:#5E8A28">Valeur ajoutée</div></div></div>`},
  'ebitda':{t:'EBITDA',
-  d:"L'argent <b>brut</b> que dégage l'activité, avant amortissements, provisions et impôts. C'est l'indicateur le plus proche de l'argent réellement gagné dans l'année.",
+  d:"L'argent <b>brut</b> que dégage l'activité, avant amortissements, provisions, intérêts et impôts. C'est l'indicateur le plus proche de l'argent réellement gagné dans l'année.",
   scene:`<div class="gx"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:12px">🏭</div><span class="gx-c" style="left:50%;margin-left:-10px;bottom:36px;animation:gxRise 2s ease-in infinite"></span><span class="gx-c" style="left:40%;bottom:36px;animation:gxRise 2s ease-in .6s infinite"></span><span class="gx-c" style="left:60%;bottom:36px;animation:gxRise 2s ease-in 1.2s infinite"></span></div>`},
  'charges':{t:'Charges',
   d:"Tout ce que l'entreprise dépense pour fonctionner : matières, salaires, énergie, amortissements… Les charges se soustraient des ventes pour donner le résultat.",
@@ -611,7 +611,7 @@ const GLOSS={
  'tresorerie':{t:'Trésorerie',
   d:"L'argent <b>réellement disponible</b> : liquidités en banque et placements. C'est ce qui permet de payer, d'investir et de verser les dividendes.",
   scene:`<div class="gx gx--treso"><div class="base"></div><div class="gx-ico" style="left:50%;transform:translateX(-50%);bottom:34px">🏦</div><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span><span class="gx-c gx-c--pulse"></span></div>`},
- 'fonds-propres':{t:'Fonds propres',
+ 'fonds-propres':{t:'Capitaux propres',
   d:"Ce que les actionnaires possèdent vraiment dans l'entreprise : le capital de départ, plus les bénéfices gardés au fil des ans. Ces bénéfices accumulés sont inscrits <b>au passif du bilan</b>, dans les lignes « réserves » et « report à nouveau ». Ce n'est pas un coffre d'argent qui s'ajoute à la trésorerie, mais une <b>mesure de propriété</b>. L'argent correspondant est en fait réparti dans l'actif, comme l'outil de production, les stocks, les créances et la trésorerie.",
   scene:`<div class="gx"><div class="gx-blk gx-grow" style="left:46px;margin-left:0;width:56px;--h:18px;bottom:18px;background:linear-gradient(180deg,#ffe1a0,#e0a92f);animation-delay:.05s"></div><div class="gx-blk gx-grow" style="left:46px;margin-left:0;width:56px;--h:14px;bottom:36px;background:linear-gradient(180deg,#fff0c8,#ecc15a);animation-delay:.5s"></div><div class="gx-lab" style="left:74px;transform:translateX(-50%);bottom:2px">capital + bénéfices gardés</div><div class="gx-tag" style="left:155px;transform:translateX(-50%);bottom:24px;background:#efe7d3;color:#7c745f">détenu par ▸</div><div class="gx-ico" style="left:236px;transform:translateX(-50%);bottom:20px;font-size:24px">👤</div><div class="gx-lab" style="left:236px;transform:translateX(-50%);bottom:2px">actionnaires</div></div>`},
  'dividende':{t:'Dividende',

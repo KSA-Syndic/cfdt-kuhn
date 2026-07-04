@@ -8,7 +8,7 @@ bookToC: true
 
 Excellente double question. Je vais séparer les deux, avec un vocabulaire simple mais exact, et des diagrammes.
 
-## 1. Le circuit de l'argent : du CA aux fonds propres
+## 1. Le circuit de l'argent : du CA aux capitaux propres
 
 D'abord, il faut distinguer **trois mondes comptables** qui ne se mélangent pas :
 
@@ -24,7 +24,7 @@ D'abord, il faut distinguer **trois mondes comptables** qui ne se mélangent pas
 flowchart TD
   CA["CHIFFRE D'AFFAIRES<br>ce que les clients ont payé"]
   CA -->|"− achats matières,<br>énergie, sous-traitance"| VA["VALEUR AJOUTÉE<br>richesse réellement créée"]
-  VA -->|"− salaires & charges sociales"| EBE["EBE / EBITDA<br>trésorerie brute de l'activité"]
+  VA -->|"− salaires & charges sociales"| EBE["EBE / EBITDA<br>argent brut dégagé par l'activité"]
   EBE -->|"− amortissements<br>(usure des machines)"| REXPL1[" "]
   EBE -->|"− dotations aux provisions"| REXPL1
   EBE -->|"+ reprises de provisions"| REXPL1
@@ -59,18 +59,18 @@ flowchart LR
   RNET["RÉSULTAT NET<br>de l'année"]
   RNET -->|"distribué"| DIV["DIVIDENDE<br>part vers l'actionnaire<br>(sort de l'entreprise)"]
   RNET -->|"conservé"| RES["MISE EN RÉSERVE<br>reste dans l'entreprise"]
-  RES --> CP["FONDS PROPRES<br>(passif du bilan)"]
+  RES --> CP["CAPITAUX PROPRES<br>(passif du bilan)"]
   DIV -->|"sortie de cash"| TRESO["TRÉSORERIE<br>(actif du bilan)"]
 ```
 
-### Le piège classique : fonds propres ≠ trésorerie
+### Le piège classique : capitaux propres ≠ trésorerie
 
 C'est le malentendu le plus fréquent, et l'article le souligne dans le glossaire :
 
-- **Fonds propres** = une mesure de **propriété** (capital + bénéfices accumulés non distribués). C'est inscrit au **passif** : ça dit *« voilà ce qui appartient aux actionnaires »*. **Ce n'est pas un tas d'argent.**
+- **Capitaux propres** = une mesure de **propriété** (capital + bénéfices accumulés non distribués). C'est inscrit au **passif** : ça dit *« voilà ce qui appartient aux actionnaires »*. **Ce n'est pas un tas d'argent.**
 - **Trésorerie** = l'argent **réellement disponible** (banque + placements). C'est à l'**actif**.
 
-Une entreprise peut avoir d'énormes fonds propres et peu de trésorerie (tout est investi en machines, stocks…), ou l'inverse.
+Une entreprise peut avoir d'énormes capitaux propres et peu de trésorerie (tout est investi en machines, stocks…), ou l'inverse.
 
 ### Diagramme de synthèse : les 3 mondes reliés
 
@@ -91,7 +91,7 @@ flowchart TB
 
   subgraph PASSIF["BILAN — PASSIF (à qui ça appartient)"]
     direction TB
-    FP["Fonds propres<br>(+ résultat conservé)"]
+    FP["Capitaux propres<br>(+ résultat conservé)"]
     PRC["Provisions risques<br>& charges"]
     DET["Dettes"]
   end
@@ -168,7 +168,7 @@ C'est précisément pourquoi l'article reconstitue les dividendes via la variati
 
 ### En une phrase pour chaque question
 
-1. **Circuit de l'argent** : le CA se transforme en valeur ajoutée puis en résultat net, mais entre les deux, des écritures *sans cash* (amortissements, dotations/reprises de provisions) « habillent » le bénéfice ; ce qui reste va soit en dividende (sortie de trésorerie), soit en réserves (qui gonflent les fonds propres — une mesure de propriété, **pas** un tas d'argent).
+1. **Circuit de l'argent** : le CA se transforme en valeur ajoutée puis en résultat net, mais entre les deux, des écritures *sans cash* (amortissements, dotations/reprises de provisions) « habillent » le bénéfice ; ce qui reste va soit en dividende (sortie de trésorerie), soit en réserves (qui gonflent les capitaux propres — une mesure de propriété, **pas** un tas d'argent).
 
 2. **Addition des CA** : c'est normal de ne pas retomber sur le CA du groupe, parce que la **consolidation élimine les ventes internes** entre sociétés ; additionner les CA revient à compter plusieurs fois la même machine.
 

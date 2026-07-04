@@ -95,6 +95,8 @@ body.show-analysis .mobstep,body.experience-hidden .mobstep{display:none}
 .stage{position:relative;width:100%;max-width:760px;margin:0 auto;aspect-ratio:16/10;
   overflow:hidden;border-radius:14px}
 .stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+/* usine : viewBox recadré (toit ~y120, sol ~y475) — moins de vide sous le tip */
+#stageFactory{aspect-ratio:760/363;max-width:760px}
 /* scène "exercice comptable" : viewBox recadré sur le contenu -> dessin plus grand, sans marges vides */
 #stageDir{aspect-ratio:6/5;max-width:620px}
 .eyebrow{font-family:var(--ui);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
@@ -151,8 +153,9 @@ body.show-analysis .mobstep,body.experience-hidden .mobstep{display:none}
 .chip .d{font-size:11px;color:var(--steel);margin-top:2px}
 
 /* bulles : posées AU-DESSUS du SVG (jamais par-dessus les formes), via un conteneur flex */
-.stagebox{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:760px;margin:0 auto}
+.stagebox{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;max-width:760px;margin:0 auto}
 .stagebox .stage{margin:0}
+.stagebox>.tip{margin-top:1em;margin-bottom:.5em}
 .tip{position:relative;background:#fff;color:#1a1e24;border-radius:12px;padding:9px 14px;
   font-family:var(--ui);font-size:14px;line-height:1.45;max-width:min(560px,94%);text-align:center;
   box-shadow:0 8px 22px rgba(0,0,0,.4)}
@@ -361,6 +364,9 @@ body.show-analysis footer.foot{background:#f1eee5;color:var(--l-muted);border-to
 }
 @container full-width-post (max-width: 860px) {
   .split,.split.rev{grid-template-columns:1fr;gap:22px}
+  /* en pile mono-colonne, le texte doit précéder l'animation même quand l'ordre DOM est inversé pour le bureau */
+  .split.rev .copy{order:1}
+  .split.rev .stagebox{order:2}
   .stage{max-width:none}
   .rail .rail-label{display:none!important}
   .diverge{gap:18px}
