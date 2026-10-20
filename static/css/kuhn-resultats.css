@@ -338,6 +338,14 @@ table.data thead th:first-child{text-align:center}
 table.data tbody tr:hover td{background:#faf7ef}
 table.data .pos{color:var(--l-green);font-weight:600}.table .neg,table.data .neg{color:#b23a1f;font-weight:600}
 table.data tfoot td{font-family:var(--disp);font-weight:700;border-top:2px solid var(--l-ink);background:#f7f4ec}
+/* tableau « fiabilité des chiffres » : texte libre, retour à la ligne */
+table.data.fiab td{white-space:normal;text-align:left;vertical-align:top;line-height:1.45}
+table.data.fiab td:first-child{position:static;min-width:190px;font-weight:600;color:var(--l-ink)}
+table.data.fiab td:nth-child(2){white-space:nowrap}
+.st{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.02em}
+.st.off{background:#e3eed6;color:#3f6619}
+.st.calc{background:#e6e2f0;color:#55457a}
+.st.est{background:#fbe9c9;color:#8a5a0c}
 
 /* competitor index chart legend reuse */
 #analysis .src{font-size:11px;color:var(--l-muted);line-height:1.55;margin-top:16px;font-family:var(--ui);

@@ -6,8 +6,7 @@
     return;
   }
   const {
-    YEARS, SAS, DIV, EBITDA_PCT, MARGE_OP_PCT, KSA_MGM,
-    FIL_RAW, FILIALES, ENT_LIST, GROUPE, COMPET
+    YEARS, SAS, DIV, FIL_RAW, FILIALES, ENT_LIST, COMPET
   } = D;
 
 /* ============================ HELPERS ============================ */
@@ -19,12 +18,21 @@ const M=v=>v/1e6;
 function fmtM(v,dec=1){if(v==null||isNaN(v))return "—";return (M(v)).toLocaleString('fr-FR',{minimumFractionDigits:dec,maximumFractionDigits:dec})+" M€";}
 function fmtMd(v){if(v==null)return "—";return v.toLocaleString('fr-FR',{minimumFractionDigits:1,maximumFractionDigits:1});}
 function fmtPct(v,dec=1){if(v==null||isNaN(v))return "—";return v.toLocaleString('fr-FR',{minimumFractionDigits:dec,maximumFractionDigits:dec})+" %";}
-// value added & purchases (estimés)
-function va(y){return SAS.ebeEst[y]+SAS.sal[y]+SAS.cs[y];}
-function conso(y){return SAS.prod[y]-va(y);}
+// indicateurs calculés à méthode constante sur la liasse
+function va(y){return SAS.va[y];}
 function treso(y){return SAS.dispo[y]+SAS.vmp[y];}
-function ebitdaPct(y){return EBITDA_PCT[y]!=null?EBITDA_PCT[y]:SAS.ebePct[y];}
+function dot(y){return SAS.dotAct[y]+SAS.dotRC[y];}
+// effet net des provisions d'exploitation sur le résultat (>0 : les reprises dépassent les dotations)
+function provNet(y){return SAS.repProv[y]==null?null:SAS.repProv[y]-dot(y);}
+// EBITDA = résultat d'exploitation + amortissements + dotations nettes des reprises de provisions
+// (les transferts de charges restent dans l'EBITDA : ce ne sont pas des provisions)
+function ebitda(y){return SAS.repProv[y]==null?null:SAS.rexpl[y]+SAS.amort[y]+dot(y)-SAS.repProv[y];}
+function ebitdaPct(y){const e=ebitda(y);return e==null?null:e/SAS.ca[y]*100;}
+function ebePct(y){return SAS.ebe[y]/SAS.ca[y]*100;}
 function netPct(y){return SAS.rnet[y]/SAS.ca[y]*100;}
+// taux de distribution moyen des 4 derniers dividendes connus (sert à estimer le dividende non encore publié)
+function avgPayout(){const ys=Object.keys(DIV).map(Number).sort((a,b)=>a-b).slice(-4);
+  return ys.reduce((s,y)=>s+DIV[y]/SAS.rnet[y-1],0)/ys.length;}
 function filSum(y){const rows=FILIALES[y]||[];return rows.reduce((s,r)=>s+(r.ca||0),0);}
 /* ============================ COUNTERS ============================ */
 function animNum(el,to,fmt){
@@ -45,8 +53,9 @@ function renderExperience(y){
   set('fournDisp',SAS.ca[y]-va(y),v=>fmtM(v));
   set('va',va(y),v=>fmtM(v));
   set('perso',SAS.sal[y]+SAS.cs[y],v=>fmtM(v));
-  set('reprises',SAS.reprises[y],v=>fmtM(v));
-  set('dot',SAS.dotAct[y]+SAS.dotRC[y],v=>fmtM(v));
+  set('reprises',SAS.repProv[y],v=>fmtM(v));
+  set('transf',SAS.transf[y],v=>fmtM(v));
+  set('dot',dot(y),v=>fmtM(v));
   set('amort',SAS.amort[y],v=>fmtM(v));
   set('treso',treso(y),v=>fmtM(v));
   set('rnet',SAS.rnet[y],v=>fmtM(v));
@@ -61,10 +70,18 @@ function renderExperience(y){
   if(bn)bn.style.height=(np/mx*BARMAX)+'px';
   // commentaire dynamique selon l'année : qui dépasse qui, et pourquoi
   const note=$('[data-stat="divergeNote"]');
-  if(note){const ebt=fmtPct(eb),npt=fmtPct(np);
-    if(np-eb>0.4)note.innerHTML=`Cette année, le <b style="color:var(--green)">résultat net (${npt})</b> dépasse même la <b style="color:var(--bad)">marge d'EBITDA (${ebt})</b> : l'EBITDA ne mesure que l'argent dégagé par l'exploitation, alors que le résultat net est <b>rehaussé</b> par les reprises de provisions et le résultat financier. Le bénéfice « tient » donc mieux que l'activité réelle.`;
-    else if(eb-np>0.4)note.innerHTML=`Cette année, la <b style="color:var(--bad)">marge d'EBITDA (${ebt})</b> dépasse le <b style="color:var(--green)">résultat net (${npt})</b> : l'exploitation dégageait alors plus d'argent que le bénéfice final, une fois retranchés amortissements, dotations et impôts. C'est la lecture « normale » d'un exercice classique.`;
-    else note.innerHTML=`Cette année, marge d'EBITDA (${ebt}) et résultat net (${npt}) sont très proches : les écritures comptables jouent peu, le bénéfice reflète assez fidèlement l'argent dégagé par l'activité.`;}
+  if(note){const ebt=fmtPct(eb),npt=fmtPct(np);let txt;
+    if(np-eb>0.4)txt=`Cette année, le <b style="color:var(--green)">résultat net (${npt})</b> dépasse même la <b style="color:var(--bad)">marge d'EBITDA (${ebt})</b> : le résultat net est <b>rehaussé</b> par le résultat financier et les reprises de provisions. Le bénéfice « tient » donc mieux que l'activité réelle.`;
+    else if(eb-np>0.4)txt=`Cette année, la <b style="color:var(--bad)">marge d'EBITDA (${ebt})</b> dépasse le <b style="color:var(--green)">résultat net (${npt})</b> : l'exploitation dégage plus d'argent que le bénéfice final, une fois retranchés amortissements, provisions et impôts. C'est la lecture « normale » d'un exercice classique.`;
+    else txt=`Cette année, marge d'EBITDA (${ebt}) et résultat net (${npt}) sont très proches : le bénéfice reflète assez fidèlement l'argent dégagé par l'activité.`;
+    // effet net des provisions de l'exercice : le vrai « coup de pouce » (ou frein) comptable
+    const pn=provNet(y);
+    if(pn!=null){
+      if(pn>0.5e6)txt+=` Les provisions ont <b>soutenu</b> le résultat de <b>${fmtM(pn)}</b> : on a repris plus de provisions qu'on n'en a constitué.`;
+      else if(pn<-0.5e6)txt+=` Les provisions ont au contraire <b>pesé</b> sur le résultat (<b>${fmtM(-pn)}</b> de dotations nettes) : l'entreprise a mis de côté pour plus tard.`;
+      else txt+=` Les provisions ont été quasi neutres (reprises ≈ dotations).`;
+    }
+    note.innerHTML=txt;}
   renderFilGrid(y);
   renderBenefit(y);
 }
@@ -80,9 +97,10 @@ function renderBenefit(y){
   const wrap=$('#benefitFlow');if(!wrap)return;const rn=SAS.rnet[y];
   // dividende versé l'année SUIVANTE, sur le résultat de l'exercice y
   let d=DIV[y+1],est=false;const payYear=y+1;
-  if(d==null){d=Math.round(rn*0.94);est=true;} // dernier exercice : estimation (comptes N+1 pas encore disponibles)
+  // dernier exercice : dividende pas encore connu (comptes N+1 non collectés) → estimation au taux moyen récent
+  if(d==null){d=Math.round(rn*avgPayout());est=true;}
   const retained=rn-d;const po=d/rn*100;
-  $$('[data-stat="payout"]').forEach(e=>e.textContent=fmtPct(po,0));
+  $$('[data-stat="payout"]').forEach(e=>e.textContent=fmtPct(po,0)+(est?' (estimation)':''));
   wrap.innerHTML=`
     <div class="dest div"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" style="vertical-align:middle" aria-hidden="true"><rect width="24" height="24" rx="3" fill="#E10E2B"/><rect x="10" y="4" width="4" height="16" fill="#fff"/><rect x="4" y="10" width="16" height="4" fill="#fff"/></svg></div><div class="v num">${fmtM(d,1)}</div><div class="nm">Dividende → KUHN Group / Bucher<br>(versé en ${payYear}${est?' · estimé':''})</div></div>
     <div class="dest"><div class="ic">🏦</div><div class="v num" style="color:var(--text)">${fmtM(Math.max(retained,0),1)}</div><div class="nm">Conservé dans l'entreprise<br>(réserves / trésorerie)</div></div>
@@ -110,7 +128,7 @@ function drawCycle(){
     (last?`<text x="${x}" y="${yy+24}" text-anchor="middle" fill="#E76A4B" font-size="12" font-family="Segoe UI" font-weight="700">CREUX</text>`:'');});
   svg.innerHTML=`<defs><linearGradient id="wg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#E10E2B" stop-opacity=".34"/><stop offset="1" stop-color="#E10E2B" stop-opacity="0"/></linearGradient></defs>
    <text x="${padL}" y="20" fill="#F2ECDD" font-family="Bahnschrift,sans-serif" font-size="15">Chiffre d'affaires du KUHN Group · en millions d'euros</text>
-   <text x="${padL}" y="36" fill="#8b97a3" font-family="Segoe UI" font-size="11.5">Groupe mondial consolidé (toutes filiales). Chaque point = le CA d'une année.</text>
+   <text x="${padL}" y="36" fill="#8b97a3" font-family="Segoe UI" font-size="11.5">Groupe mondial consolidé (toutes filiales). Source : Bucher Industries, converti en €.</text>
    ${grid}<path d="${area}" fill="url(#wg)"/><path d="${path}" fill="none" stroke="#E10E2B" stroke-width="3"/>${dots}`;
 }
 
@@ -169,26 +187,25 @@ function drawCaRn(){
     bars:[{label:'CA',color:'#E8B23A',data:mapM(SAS.ca),fmt:v=>v.toFixed(0)+' M€'},
           {label:'Rés. net',color:'#C20A2A',data:mapM(SAS.rnet),fmt:v=>v.toFixed(0)+' M€'}]});
 }
-function mapM(o){const r={};YEARS.forEach(y=>r[y]=M(o[y]));return r;}
+function mapM(o){const r={};YEARS.forEach(y=>r[y]=o[y]==null?null:M(o[y]));return r;}
 function drawMargins(){
-  const ys=[2018,2019,2020,2021,2022,2023,2024];
+  const ys=YEARS.filter(y=>ebitdaPct(y)!=null);
   const op={},eb={},ee={};
-  ys.forEach(y=>{op[y]=MARGE_OP_PCT[y]!=null?MARGE_OP_PCT[y]:(SAS.rexpl[y]/SAS.ca[y]*100);
-    eb[y]=EBITDA_PCT[y]!=null?EBITDA_PCT[y]:null;ee[y]=SAS.ebePct[y];});
+  ys.forEach(y=>{op[y]=SAS.rexpl[y]/SAS.ca[y]*100;eb[y]=ebitdaPct(y);ee[y]=ebePct(y);});
   const svg=$('#chMargins');clearSvg(svg);const W=520,H=300,pad={l:40,r:16,t:18,b:34};
   const maxL=14;const n=ys.length;const innerW=W-pad.l-pad.r;
   const px=i=>pad.l+innerW*i/(n-1);const py=v=>H-pad.b-(v/maxL)*(H-pad.t-pad.b);
   axes(svg,W,H,pad);const ticks=[0,3.5,7,10.5,14];gridY(svg,W,pad,ticks,py,v=>v+'%');
-  const lines=[{d:op,c:'#C20A2A',l:'Marge opérationnelle'},{d:eb,c:'#E76A4B',l:'EBITDA Pappers'},{d:ee,c:'#5C6B7A',l:'EBE estimé'}];
+  const lines=[{d:op,c:'#C20A2A',l:'Marge opérationnelle'},{d:eb,c:'#E76A4B',l:'EBITDA'},{d:ee,c:'#5C6B7A',l:'EBE comptable strict'}];
   ys.forEach((y,i)=>svg.appendChild(el('text',{x:px(i),y:H-pad.b+16,'text-anchor':'middle','font-size':11,fill:'#8a8472'},(""+y).slice(2))));
   lines.forEach(L=>{let d='';let first=true;ys.forEach((y,i)=>{const v=L.d[y];if(v==null)return;const x=px(i),yy=py(v);d+=(first?'M':'L')+x+' '+yy+' ';first=false;const c=el('circle',{cx:x,cy:yy,r:4,fill:L.c});c.appendChild(el('title',{},L.l+' '+y+' : '+v.toFixed(1)+'%'));svg.appendChild(c);});
     svg.insertBefore(el('path',{d:d,fill:'none',stroke:L.c,'stroke-width':2.5}),svg.firstChild);});
 }
 function drawProv(){
   const ys=YEARS;
-  barLineChart('#chProv',{years:ys,maxBar:90,
-    bars:[{label:'Reprises+transferts',color:'#5E8A28',data:mapM(SAS.reprises),fmt:v=>v.toFixed(0)+' M€'},
-          {label:'Dotations',color:'#E76A4B',data:mapM(addO(SAS.dotAct,SAS.dotRC)),fmt:v=>v.toFixed(0)+' M€'}]});
+  barLineChart('#chProv',{years:ys,maxBar:40,
+    bars:[{label:'Reprises de provisions',color:'#5E8A28',data:mapM(SAS.repProv),fmt:v=>v.toFixed(1)+' M€'},
+          {label:'Dotations',color:'#E76A4B',data:mapM(addO(SAS.dotAct,SAS.dotRC)),fmt:v=>v.toFixed(1)+' M€'}]});
 }
 function addO(a,b){const r={};YEARS.forEach(y=>r[y]=a[y]+b[y]);return r;}
 function drawTreso(){
@@ -239,8 +256,8 @@ function fillCompTable(){
   let head='<thead><tr><th>Groupe</th>'+ys.map(y=>'<th>'+y+'</th>').join('')+'</tr></thead>';
   let body='<tbody>';
   COMPET.series.forEach(s=>{
-    body+='<tr><td>'+s.name+' · CA ('+s.unit+')</td>'+ys.map(y=>'<td>'+(s.ca[y]!=null?(s.unit==='M€'?s.ca[y]:fmtMd(s.ca[y])):'—')+'</td>').join('')+'</tr>';
-    body+='<tr><td style="color:#8a8472">↳ marge op./EBIT</td>'+ys.map(y=>'<td style="color:#8a8472">'+(s.marg[y]!=null?s.marg[y].toFixed(1)+' %':'—')+'</td>').join('')+'</tr>';
+    body+='<tr><td>'+s.name+' · CA ('+s.unit+')</td>'+ys.map(y=>'<td>'+(s.ca[y]!=null?(s.unit==='M€'?s.ca[y].toLocaleString('fr-FR'):fmtMd(s.ca[y])):'—')+'</td>').join('')+'</tr>';
+    body+='<tr><td style="color:#8a8472">↳ marge op./EBIT</td>'+ys.map(y=>'<td style="color:#8a8472">'+(s.marg[y]!=null?fmtPct(s.marg[y]):'—')+'</td>').join('')+'</tr>';
   });
   t.innerHTML=head+body+'</tbody>';
 }
@@ -248,8 +265,8 @@ function fillCompTable(){
 /* sankey-ish flux */
 function drawSankey(y){
   const svg=$('#sankey');clearSvg(svg);const W=1040,H=300;
-  const g=GROUPE[y];$('#sankeyYear').textContent=y;
-  if(!g){svg.appendChild(el('text',{x:W/2,y:H/2,'text-anchor':'middle',fill:'#8a8472'},'Données de flux indisponibles pour cet exercice.'));return;}
+  const divSas=DIV[y];$('#sankeyYear').textContent=y;
+  if(divSas==null){svg.appendChild(el('text',{x:W/2,y:H/2,'text-anchor':'middle',fill:'#8a8472'},'Données de flux indisponibles pour cet exercice.'));return;}
   const filDiv=(FILIALES[y]||[]).reduce((s,r)=>s+(r.div||0),0);
   const filPret=(FILIALES[y]||[]).reduce((s,r)=>s+(r.pret||0),0);
   const cx={bucher:175,sas:520,fil:865};
@@ -266,18 +283,20 @@ function drawSankey(y){
     tri.appendChild(el('title',{},label+' : '+fmtM(val,1)));svg.appendChild(tri);
     svg.appendChild(el('text',{x:mid,y:grow==='down'?y+w/2+13:y-w/2-7,'text-anchor':'middle','font-size':12,fill:'#5c6470'},fmtM(val,0)));
   }
-  const maxV=Math.max(g.divVerses,filDiv,filPret||0,1);
-  flow(cx.sas-95,cx.bucher+95,g.divVerses,maxV,'#E8B23A','Dividendes SAS → Groupe/Bucher','center');
+  const maxV=Math.max(divSas,filDiv,filPret||0,1);
+  const PRET='Encours des prêts SAS → filiales au 31/12 (trésorerie mutualisée)';
+  flow(cx.sas-95,cx.bucher+95,divSas,maxV,'#E8B23A','Dividendes versés par KUHN SAS → KUHN Group / Bucher','center');
   if(filDiv&&filPret){
     flow(cx.fil-95,cx.sas+95,filDiv,maxV,'#5E8A28','Dividendes filiales → SAS','up');
-    flow(cx.sas+95,cx.fil-95,filPret,maxV,'#C20A2A','Prêts SAS → filiales (trésorerie mutualisée)','down');
+    flow(cx.sas+95,cx.fil-95,filPret,maxV,'#C20A2A',PRET,'down');
   }else if(filDiv){
     flow(cx.fil-95,cx.sas+95,filDiv,maxV,'#5E8A28','Dividendes filiales → SAS','center');
   }else if(filPret){
-    flow(cx.sas+95,cx.fil-95,filPret,maxV,'#C20A2A','Prêts SAS → filiales (trésorerie mutualisée)','center');
+    flow(cx.sas+95,cx.fil-95,filPret,maxV,'#C20A2A',PRET,'center');
   }
   box(cx.bucher,'BUCHER / Group','#fdf6e6');box(cx.sas,'KUHN SAS','#fff');box(cx.fil,'Filiales','#fff');
-  svg.appendChild(el('text',{x:cx.bucher,y:204,'text-anchor':'middle','font-size':12,fill:'#8a8472'},'reçoit '+fmtM(g.divVerses,0)));
+  svg.appendChild(el('text',{x:cx.bucher,y:204,'text-anchor':'middle','font-size':12,fill:'#8a8472'},'reçoit '+fmtM(divSas,0)));
+  if(filPret)svg.appendChild(el('text',{x:cx.fil,y:204,'text-anchor':'middle','font-size':12,fill:'#8a8472'},'prêts en cours : '+fmtM(filPret,0)));
 }
 
 
@@ -297,13 +316,16 @@ function renderTools(y){
   const de=$('#decompYear'),pr=$('#provYear'),ed=$('#euroDecomp'),el=$('#euroLegend');
   if(!de||!pr||!ed||!el)return;
   de.textContent=y;pr.textContent=y;
-  const prod=SAS.prod[y];const cn=conso(y),perso=SAS.sal[y]+SAS.cs[y],amo=SAS.amort[y];
-const rest=Math.max(0,prod-cn-perso-amo);
+  // recettes d'exploitation hors reprises de provisions : production + subventions + transferts de charges + autres produits
+  const base=SAS.prodEx[y]+SAS.fo[y]+SAS.transf[y]+SAS.fq[y];
+  const cn=SAS.conso[y],perso=SAS.sal[y]+SAS.cs[y],tax=SAS.fx[y]+SAS.ge[y],amo=SAS.amort[y];
+  const rest=Math.max(0,base-cn-perso-tax-amo); // = EBITDA - amortissements
   const segs=[
    {l:'Achats & charges externes',v:cn,c:'#5C6B7A'},
-   {l:'Salaires & charges',v:perso,c:'#C20A2A'},
+   {l:'Salaires & charges sociales',v:perso,c:'#C20A2A'},
+   {l:'Impôts, taxes & autres charges',v:tax,c:'#b9a27a'},
    {l:'Amortissements',v:amo,c:'#8a76a0'},
-   {l:'Reste (résultat, impôts, financier)',v:rest,c:'#E8B23A'}
+   {l:'Reste : résultat d\'exploitation avant provisions (puis financier, impôt, bénéfice)',v:rest,c:'#E8B23A'}
   ];
   const tot=segs.reduce((s,x)=>s+x.v,0);
   ed.innerHTML=segs.map(s=>{const p=s.v/tot*100;const lbl=p>=7?p.toFixed(0)+' %':'';
@@ -316,14 +338,14 @@ const rest=Math.max(0,prod-cn-perso-amo);
 // Les trois périmètres du CA, calés sur l'exercice sélectionné (n.d. quand la donnée publique n'existe pas)
 function renderPerimeters(y){
   const setBig=(el,txt,nd)=>{if(!el)return;el.textContent=txt;el.classList.toggle('nd',!!nd);};
-  const grp=COMPET.series[0].ca[y];        // KUHN Group consolidé (communication groupe, 2021→)
-  const ksa=KSA_MGM[y];                     // KSA-MGM opérationnel net de l'interne (2024 seul publié)
+  const grp=COMPET.series[0].ca[y];        // KUHN Group consolidé (Bucher Industries, 2021→)
+  const fil=filSum(y);                      // somme brute des filiales suivies
   setBig($('#periGroup'),grp!=null?grp.toLocaleString('fr-FR')+' M€':'n.d. pour cet exercice',grp==null);
   setBig($('#periSas'),SAS.ca[y]!=null?fmtM(SAS.ca[y],0):'n.d. pour cet exercice',SAS.ca[y]==null);
-  setBig($('#periKsa'),ksa!=null?ksa.toLocaleString('fr-FR')+' M€':'n.d. pour cet exercice',ksa==null);
+  setBig($('#periFil'),fil?fmtM(fil,0):'n.d. pour cet exercice',!fil);
 }
 function updateProv(y){
-  const rn=SAS.rnet[y];const net=SAS.reprises[y]-(SAS.dotAct[y]+SAS.dotRC[y]);
+  const rn=SAS.rnet[y];const net=provNet(y);
   $('#provPublished').textContent=fmtM(rn,1);
   $('#provAdjusted').textContent=fmtM(rn-net,1);
   $('#provEffect').textContent=(net>=0?'+':'')+fmtM(net,1);
@@ -344,7 +366,9 @@ function renderFilTable(){
     <td>${r[4]!=null?fmtM(r[4],1):'—'}</td><td>${r[6]!=null?fmtM(r[6],1):'—'}</td></tr>`;});
   // totals
   const sum=k=>rows.reduce((s,r)=>s+(r[k]||0),0);
-  let foot=`<tfoot><tr><td>Total filtré</td><td></td><td>${fmtM(sum(2),0)}</td><td>${fmtM(sum(3),0)}</td><td>${fmtM(sum(7),0)}</td><td></td><td>${fmtM(sum(6),0)}</td></tr></tfoot>`;
+  // les prêts sont un encours au 31/12 : on ne les additionne pas d'une année sur l'autre
+  const pretTot=tblYear==='Toutes'?'—':fmtM(sum(6),0);
+  let foot=`<tfoot><tr><td>Total filtré</td><td></td><td>${fmtM(sum(2),0)}</td><td>${fmtM(sum(3),0)}</td><td>${fmtM(sum(7),0)}</td><td></td><td>${pretTot}</td></tr></tfoot>`;
   t.innerHTML=head+body+'</tbody>'+foot;
 }
 // Après filtrage : recaler la vue sur le tableau (sous l'en-tête + filterbar sticky).
