@@ -1,0 +1,38 @@
+# Concurrents cotés de KUHN Group : chiffre d'affaires par exercice et marge publiée.
+# Source : communiqués annuels des groupes (exercices fiscaux). Les définitions de marge diffèrent :
+# John Deere = marge opérationnelle des activités équipement ; AGCO = marge opérationnelle ajustée ;
+# CNH = marge d'EBIT ajusté des activités industrielles.
+#   ca     chiffre d'affaires, dans l'unité du groupe
+#   marge  marge publiée, en % (absente = non publiée sur une base comparable)
+
+- nom: John Deere
+  unite: Md$
+  couleur: "#367C2B"
+  note: "Ventes et revenus monde, exercice clos fin octobre. Marge des activités équipement."
+  exercices:
+    2021: { ca: 44.0 }
+    2022: { ca: 52.6 }
+    2023: { ca: 61.3, marge: 21.9 }
+    2024: { ca: 51.7, marge: 18.2 }
+    2025: { ca: 45.7, marge: 12.6 }
+
+- nom: AGCO
+  unite: Md$
+  couleur: "#E8B23A"
+  note: "Ventes nettes. Marge opérationnelle ajustée."
+  exercices:
+    2021: { ca: 11.1, marge: 9.1 }
+    2022: { ca: 12.7, marge: 10.3 }
+    2023: { ca: 14.4, marge: 12 }
+    2024: { ca: 11.7, marge: 8.9 }
+    2025: { ca: 10.1, marge: 7.7 }
+
+- nom: CNH
+  unite: Md$
+  couleur: "#1f6fb2"
+  note: "Agriculture + construction depuis la séparation d’Iveco (2022). Marge d’EBIT ajusté des activités industrielles."
+  exercices:
+    2022: { ca: 23.6 }
+    2023: { ca: 24.7, marge: 12.4 }
+    2024: { ca: 19.8, marge: 8.2 }
+    2025: { ca: 18.1, marge: 4.3 }

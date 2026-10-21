@@ -1,0 +1,167 @@
+{{- /*
+  {{< tableau-kuhn "rentabilite" >}}   ou   {{< tableau-kuhn id="rentabilite" exercice="affaire" >}}
+  Tableau de chiffres KUHN produit à la compilation, décrit dans data/kuhn/tableaux.yaml (types series,
+  lignes, badges, cartes). HTML statique : indexable, lisible sans JS, défilant horizontalement sur mobile.
+    exercice  « dernier » (défaut), « affaire » (data/kuhn/affaire.yaml) ou une année
+              (2e paramètre en écriture courte : {{< tableau-kuhn "ebitda-mesures" "affaire" >}})
+*/ -}}
+{{- $id := "" -}}{{- $exo := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $id = or (.Get "id") (.Get "_value") -}}{{- $exo = .Get "exercice" -}}
+{{- else -}}
+  {{- $id = .Get 0 -}}{{- $exo = .Get 1 -}}
+{{- end -}}
+{{- $def := index site.Data.kuhn.tableaux $id -}}
+{{- if not $def -}}{{- errorf "tableau-kuhn : tableau « %s » inconnu dans data/kuhn/tableaux.yaml (%s)" $id .Position -}}{{- end -}}
+{{- $d := partialCached "kuhn/donnees.html" . "kuhn" -}}
+{{- $m := $d.meta -}}
+{{- .Page.Store.Set "tableau-kuhn" true -}}
+
+{{- /* exercice choisi */ -}}
+{{- $choix := string (or $exo $def.exercice "dernier") -}}
+{{- $annee := $m.dernierExercice -}}
+{{- if eq $choix "affaire" -}}{{- $annee = int $d.affaire.annee -}}{{- else if ne $choix "dernier" -}}{{- $annee = int $choix -}}{{- end -}}
+{{- $x := index $d.exercices (string $annee) -}}
+{{- if not $x -}}{{- errorf "tableau-kuhn « %s » : exercice %d absent des données (%s)" $id $annee .Position -}}{{- end -}}
+{{- $ctx := dict
+    "d" $d "m" $m "x" $x
+    "p" (index $d.exercices (string (sub $annee 1)))
+    "fx" (index $d.filiales (string $annee))
+    "fp" (index $d.filiales (string (sub $annee 1)))
+-}}
+
+{{- /* jetons propres aux tableaux, remplacés après le gabarit */ -}}
+{{- $statut := dict
+    "{statut:officiel}" `<span class="book-badge success"><span class="book-badge-title">Statut</span><span class="book-badge-value">Officiel</span></span>`
+    "{statut:calcule}" `<span class="book-badge important"><span class="book-badge-title">Statut</span><span class="book-badge-value">Calculé</span></span>`
+    "{statut:estime}" `<span class="book-badge warning"><span class="book-badge-title">Statut</span><span class="book-badge-value">Estimé</span></span>`
+    "{badge:estimation}" `<span class="badge-estimation">estimation</span>`
+-}}
+
+{{- $type := $def.type | default "lignes" -}}
+{{- $sortie := "" -}}
+
+{{- if eq $type "series" -}}
+  {{- /* ---------- une colonne par exercice ---------- */ -}}
+  {{- $annees := $m.annees -}}
+  {{- with $def.derniers -}}{{- $annees = last (int .) $annees -}}{{- end -}}
+  {{- $tete := `<th scope="col"><span class="visuellement-cache">Ligne</span></th>` -}}
+  {{- range $annees -}}{{- $tete = printf `%s<th scope="col" class="num">%d</th>` $tete . -}}{{- end -}}
+  {{- $corps := "" -}}
+  {{- range $l := $def.lignes -}}
+    {{- $tr := printf `<th scope="row">%s</th>` $l.libelle -}}
+    {{- range $y := $annees -}}
+      {{- $e := index $d.exercices (string $y) -}}
+      {{- $v := partial "kuhn/nombre.html" (dict "v" (index $e $l.valeur) "f" (string ($l.format | default "1"))) -}}
+      {{- with $l.unite -}}{{- $v = printf "%s %s" $v . -}}{{- end -}}
+      {{- if and (in (slice "dividende" "taux_distribution" "garde") $l.valeur) $e.dividende_estime -}}
+        {{- $v = printf `≈ %s %s` $v (index $statut "{badge:estimation}") -}}
+      {{- end -}}
+      {{- $tr = printf `%s<td class="num">%s</td>` $tr $v -}}
+    {{- end -}}
+    {{- $corps = printf "%s<tr>%s</tr>" $corps $tr -}}
+  {{- end -}}
+  {{- $sortie = printf `<table><thead><tr>%s</tr></thead><tbody>%s</tbody></table>` $tete $corps -}}
+
+{{- else if eq $type "lignes" -}}
+  {{- /* ---------- tableau classique ---------- */ -}}
+  {{- $rangs := slice -}}
+  {{- $source := $def.source | default "fixe" -}}
+  {{- if eq $source "exercices" -}}
+    {{- $annees := $m.annees -}}
+    {{- with $def.annees_de -}}
+      {{- $val := $ctx -}}
+      {{- range split . "." -}}{{- if reflect.IsMap $val -}}{{- $val = index $val . -}}{{- else -}}{{- $val = nil -}}{{- end -}}{{- end -}}
+      {{- $choisies := slice -}}
+      {{- range $k, $_ := $val -}}{{- if index $d.exercices $k -}}{{- $choisies = $choisies | append (int $k) -}}{{- end -}}{{- end -}}
+      {{- $annees = sort $choisies -}}
+    {{- end -}}
+    {{- with $def.derniers -}}{{- $annees = last (int .) $annees -}}{{- end -}}
+    {{- range $y := $annees -}}
+      {{- $e := index $d.exercices (string $y) -}}
+      {{- $rangs = $rangs | append (dict "l" $e "annee" $y "estime" $e.dividende_estime) -}}
+    {{- end -}}
+  {{- else if eq $source "filiales" -}}
+    {{- with $ctx.fx -}}
+      {{- range .liste -}}{{- $rangs = $rangs | append (dict "l" . "annee" $annee "estime" false) -}}{{- end -}}
+    {{- else -}}
+      {{- errorf "tableau-kuhn « %s » : pas de filiales pour l'exercice %d (%s)" $id $annee $.Position -}}
+    {{- end -}}
+  {{- else -}}
+    {{- range $def.lignes -}}
+      {{- if reflect.IsMap . -}}
+        {{- $ok := true -}}
+        {{- with .si -}}
+          {{- $val := $ctx -}}
+          {{- range split . "." -}}{{- if reflect.IsMap $val -}}{{- $val = index $val . -}}{{- else -}}{{- $val = nil -}}{{- end -}}{{- end -}}
+          {{- $ok = $val -}}
+        {{- end -}}
+        {{- if $ok -}}{{- $rangs = $rangs | append (dict "cellules" .cellules "annee" $annee "estime" false) -}}{{- end -}}
+      {{- else -}}
+        {{- $rangs = $rangs | append (dict "cellules" . "annee" $annee "estime" false) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $tete := "" -}}
+  {{- range $c := $def.colonnes -}}
+    {{- $t := partial "kuhn/gabarit.html" (dict "texte" $c.titre "ctx" $ctx "exercice" $annee) -}}
+    {{- $tete = printf `%s<th scope="col"%s>%s</th>` $tete (cond (eq $c.num true) ` class="num"` "") $t -}}
+  {{- end -}}
+  {{- $corps := "" -}}
+  {{- range $r := $rangs -}}
+    {{- $rc := dict "d" $ctx.d "m" $ctx.m "x" $ctx.x "p" $ctx.p "fx" $ctx.fx "fp" $ctx.fp "l" $r.l -}}
+    {{- $tr := "" -}}
+    {{- range $i, $c := $def.colonnes -}}
+      {{- $tpl := $c.cellule -}}
+      {{- if $r.cellules -}}{{- $tpl = index $r.cellules $i -}}{{- end -}}
+      {{- if and $r.estime $c.si_estime -}}{{- $tpl = $c.si_estime -}}{{- end -}}
+      {{- $v := partial "kuhn/gabarit.html" (dict "texte" $tpl "ctx" $rc "annee" $r.annee "exercice" $annee) -}}
+      {{- range $k, $h := $statut -}}{{- $v = replace $v $k $h -}}{{- end -}}
+      {{- $classes := slice -}}
+      {{- if eq $c.num true -}}{{- $classes = $classes | append "num" -}}{{- end -}}
+      {{- if eq $c.large true -}}{{- $classes = $classes | append "large" -}}{{- end -}}
+      {{- with $c.negatif -}}{{- with index $r.l . -}}{{- if lt (float .) 0.0 -}}{{- $classes = $classes | append "negatif" -}}{{- end -}}{{- end -}}{{- end -}}
+      {{- $balise := cond (and (eq $i 0) (not $c.num)) "th" "td" -}}
+      {{- $tr = printf `%s<%s%s%s>%s</%s>` $tr $balise (cond (eq $balise "th") ` scope="row"` "") (cond (gt (len $classes) 0) (printf ` class="%s"` (delimit $classes " ")) "") $v $balise -}}
+    {{- end -}}
+    {{- $corps = printf "%s<tr>%s</tr>" $corps $tr -}}
+  {{- end -}}
+  {{- $sortie = printf `<table><thead><tr>%s</tr></thead><tbody>%s</tbody></table>` $tete $corps -}}
+
+{{- else if eq $type "badges" -}}
+  {{- /* ---------- rangée de badges ---------- */ -}}
+  {{- $html := "" -}}
+  {{- range $b := $def.badges -}}
+    {{- $tpl := $b.valeur -}}{{- $style := $b.style | default "default" -}}
+    {{- if and $x.dividende_estime $b.si_estime -}}{{- $tpl = $b.si_estime -}}{{- $style = $b.style_estime | default $style -}}{{- end -}}
+    {{- $t := partial "kuhn/gabarit.html" (dict "texte" $b.titre "ctx" $ctx "exercice" $annee) -}}
+    {{- $v := partial "kuhn/gabarit.html" (dict "texte" $tpl "ctx" $ctx "exercice" $annee) -}}
+    {{- $html = printf `%s<span class="book-badge %s"><span class="book-badge-title">%s</span><span class="book-badge-value">%s</span></span>` $html $style $t $v -}}
+  {{- end -}}
+  {{- $sortie = printf `<div class="badges-kuhn">%s</div>` $html -}}
+
+{{- else if eq $type "cartes" -}}
+  {{- /* ---------- cartes chiffrées ---------- */ -}}
+  {{- $html := "" -}}
+  {{- range $c := $def.cartes -}}
+    {{- $t := partial "kuhn/gabarit.html" (dict "texte" $c.titre "ctx" $ctx "exercice" $annee) -}}
+    {{- $v := partial "kuhn/gabarit.html" (dict "texte" $c.valeur "ctx" $ctx "exercice" $annee) -}}
+    {{- $dt := partial "kuhn/gabarit.html" (dict "texte" ($c.detail | default "") "ctx" $ctx "exercice" $annee) -}}
+    {{- $html = printf `%s<div class="carte-kuhn"><div class="carte-kuhn__titre">%s</div><div class="carte-kuhn__valeur">%s</div><div class="carte-kuhn__detail">%s</div></div>` $html $t $v $dt -}}
+  {{- end -}}
+  {{- $sortie = printf `<div class="cartes-kuhn">%s</div>` $html -}}
+
+{{- else -}}
+  {{- errorf "tableau-kuhn « %s » : type « %s » inconnu (series, lignes, badges, cartes) (%s)" $id $type .Position -}}
+{{- end -}}
+
+{{- if in (slice "series" "lignes") $type -}}
+  {{- $titre := partial "kuhn/gabarit.html" (dict "texte" ($def.titre | default "Tableau de chiffres") "ctx" $ctx "exercice" $annee) -}}
+<div class="tableau-kuhn tableau-kuhn--{{ $type }}" role="region" aria-label="{{ $titre }}" tabindex="0">{{ $sortie | safeHTML }}</div>
+  {{- with $def.legende }}
+<p class="tableau-kuhn__source">{{ partial "kuhn/gabarit.html" (dict "texte" . "ctx" $ctx "exercice" $annee) | safeHTML }}</p>
+  {{- end -}}
+{{- else -}}
+{{ $sortie | safeHTML }}
+{{- end -}}

@@ -1,5 +1,15 @@
 <script src="/js/pdf-js/build/pdf.js"></script>
 <script src="/js/pdf-modal.js"></script>
+{{- /* Pages interactives : glossaire et integration.js, une seule fois par page, si elle contient
+       {{< interactif >}}, {{< tableau-kuhn >}} ou un lien [terme](#def-…) (docs/pages-interactives.md). */ -}}
+{{- if and .IsPage (or (.Store.Get "interactif") (.Store.Get "tableau-kuhn") (strings.Contains .RawContent "](#def-")) }}
+{{- $p := partialCached "kuhn/publier-donnees.html" . "publier" }}
+<script src="{{ $p.glossaire }}?v={{ $p.empreinte }}" defer></script>
+<script src="{{ "interactifs/_commun/integration.js" | relURL }}?v={{ readFile "static/interactifs/_commun/integration.js" | hash.FNV32a }}" defer></script>
+{{- end }}
+{{- if .Store.Get "interactif-pleine-largeur" }}
+<script src="{{ "interactifs/_commun/pleine-largeur.js" | relURL }}?v={{ readFile "static/interactifs/_commun/pleine-largeur.js" | hash.FNV32a }}"></script>
+{{- end }}
 <script>
 (function () {
   if (document.querySelector('.full-width-post')) return;

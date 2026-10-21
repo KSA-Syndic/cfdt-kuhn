@@ -1,0 +1,91 @@
+/* Socle commun des pages interactives (static/interactifs/<nom>/).
+   Polices auto-hébergées (licence OFL, voir polices/OFL.txt), couleurs, remise à zéro,
+   termes du glossaire, bulle, badge « estimation ». Chaque page ajoute son style.css. */
+
+@font-face { font-family: "Inter"; src: url("polices/inter.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter Tight"; src: url("polices/inter-tight.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Bricolage Grotesque"; src: url("polices/bricolage-grotesque.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("polices/ibm-plex-mono-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("polices/ibm-plex-mono-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+
+:root {
+  --encre: #14171C;
+  --encre-2: #2B313A;
+  --gris: #5B6370;
+  --gris-clair: #8C95A1;
+  --trait: #E3E6EB;
+  --trait-2: #EEF0F3;
+  --fond: #FFFFFF;
+  --fond-2: #F5F6F8;
+  --fond-3: #F2F4F7;
+  --rouge: #C8102E;
+  --bleu: #1F5FBF;
+  --lien: #1F4FB0;
+  --estimation-fond: #FDEBC8;
+  --estimation-texte: #7A4B00;
+  --police: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --police-titre: "Inter Tight", "Inter", system-ui, sans-serif;
+  --police-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --rayon: 10px;
+  --cible: 44px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--police);
+  color: var(--encre);
+  background: var(--fond);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--lien); }
+:where(a, button, select, summary, [tabindex]):focus-visible { outline: 2px solid var(--lien); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+/* Intégrée dans un article en hauteur automatique : jamais de barre de défilement interne
+   (integration.js ajoute ces classes ; l'iframe prend exactement la hauteur du contenu). */
+html.interactif-integre.interactif-auto, html.interactif-integre.interactif-auto body { overflow: hidden; }
+
+.visuellement-cache {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.chiffre { font-variant-numeric: tabular-nums; }
+
+/* ---------- Termes du glossaire : <button class="terme" data-def="ebitda">EBITDA</button> ---------- */
+.terme {
+  display: inline; margin: 0; padding: 0; border: 0; background: none; color: inherit;
+  font: inherit; font-weight: inherit; text-align: inherit;
+  border-bottom: 1px dotted currentColor; cursor: help;
+}
+.terme[aria-expanded="true"] { background: rgba(31, 79, 176, .1); }
+
+.bulle {
+  position: absolute; z-index: 1000; max-width: min(340px, calc(100vw - 24px));
+  padding: 10px 12px; border-radius: var(--rayon);
+  background: var(--encre); color: #FFFFFF;
+  font: 400 14px/1.5 var(--police); text-align: left;
+  box-shadow: 0 10px 24px rgba(20, 23, 28, .25);
+}
+.bulle b { font-weight: 700; }
+.bulle__fermer {
+  float: right; width: 28px; height: 28px; margin: -6px -6px 0 8px; padding: 0;
+  border: 0; border-radius: 6px; background: transparent; color: inherit; font-size: 18px; line-height: 1;
+}
+.bulle__fermer:focus-visible { outline-color: #FFFFFF; }
+
+/* ---------- Badge « estimation » (KuhnOutils.badgeEstimation) ---------- */
+.badge-estimation {
+  display: inline-block; padding: 2px 9px; border-radius: 999px;
+  background: var(--estimation-fond); color: var(--estimation-texte);
+  font: 600 12px/1.4 var(--police); white-space: nowrap; vertical-align: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}

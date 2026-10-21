@@ -1,0 +1,161 @@
+# Tableaux de chiffres KUHN des articles : {{< tableau-kuhn "<id>" >}} (layouts/shortcodes/tableau-kuhn.html).
+# HTML statique produit à la compilation (indexable, lisible sans JavaScript, défilant sur mobile).
+# Les colonnes et les lignes se décrivent ICI, jamais dans le gabarit ni dans le .md.
+#
+# Types :
+#   series   une colonne par exercice affiché (meta.annees ; « derniers: n » pour les n derniers) ;
+#            « lignes » : [{ libelle, valeur (champ de l'exercice), format, unite }] ; « legende » sous le tableau
+#   lignes   un tableau classique ; « colonnes » : [{ titre, cellule, num, si_estime }] ;
+#            les lignes viennent de « source » :
+#              exercices  une ligne par exercice (« derniers: n », ou « annees_de: <chemin> » : clés d'un dict)
+#              filiales   une ligne par filiale de l'exercice choisi (ventes décroissantes)
+#              fixe       lignes écrites dans « lignes » (une liste de cellules par ligne)
+#   badges   une rangée de badges hugo-book : [{ titre, valeur, style }]
+#   cartes   des cartes chiffrées : [{ titre, valeur, detail }]
+#
+# Textes à jetons (voir layouts/partials/kuhn/gabarit.html) : {chemin|format|défaut}
+#   x.CHAMP   exercice choisi (le dernier par défaut ; exercice="affaire" ou une année dans le shortcode)
+#   l.CHAMP   la ligne en cours (exercice ou filiale) ; « @ » = son année
+#   d.…       toutes les données ; « # » = l'année de l'exercice choisi ; m.… = d.meta
+#   formats   0, 1, 2 décimales ; s1 avec signe ; z1 « — » si nul ; suffixe m (M€) ou p (%) : 1m, z1m ;
+#             absent = valeur brute (années)
+#   si_estime texte de la cellule quand la ligne porte une estimation ({estimation} = badge)
+# Les champs disponibles sont ceux de window.KuhnDonnees (layouts/partials/kuhn/donnees.html).
+
+# ---------- Séries (une colonne par exercice) ----------
+
+rentabilite:
+  type: series
+  titre: "Rentabilité de KUHN SAS, en M€"
+  lignes:
+    - { libelle: "Ventes", valeur: ventes, format: "1" }
+    - { libelle: "Valeur ajoutée", valeur: valeur_ajoutee, format: "1" }
+    - { libelle: "EBITDA (méthode constante)", valeur: ebitda, format: "1" }
+    - { libelle: "Marge d'EBITDA", valeur: marge_ebitda, format: "1", unite: "%" }
+    - { libelle: "Résultat d'exploitation", valeur: resultat_exploitation, format: "1" }
+    - { libelle: "Marge d'exploitation", valeur: marge_exploitation, format: "1", unite: "%" }
+    - { libelle: "Résultat net", valeur: resultat_net, format: "1" }
+  legende: "Comptes sociaux déposés de KUHN SAS ; EBITDA recalculé chaque année de la même façon."
+
+# ---------- Analyse (article « Résultats ») ----------
+
+trois-perimetres:
+  type: lignes
+  titre: "Trois chiffres d'affaires à ne pas confondre ({#})"
+  source: fixe
+  colonnes:
+    - { titre: "Périmètre" }
+    - { titre: "{#}", num: true }
+    - { titre: "Ce que c'est" }
+  lignes:
+    - ["KUHN Group", "{d.groupe.exercices.#.ca_eur|0|n.c.} M€", "Groupe mondial consolidé, ventes internes éliminées (Bucher, {d.groupe.exercices.#.ca_chf|0|n.c.} M CHF convertis)."]
+    - ["KUHN SAS", "{x.ventes|0} M€", "Société de Saverne seule, ventes aux filiales comprises."]
+    - ["Filiales suivies", "{d.filiales.#.totaux.ventes|0|n.c.} M€", "Somme brute : on ne peut pas l'ajouter à KUHN SAS (doubles comptes)."]
+
+ebitda-mesures:
+  type: lignes
+  titre: "Trois mesures de l'EBITDA ({#})"
+  exercice: affaire   # le « 2,6 % » porte sur l'exercice de data/kuhn/affaire.yaml
+  source: fixe
+  colonnes:
+    - { titre: "Indicateur ({#})" }
+    - { titre: "Montant", num: true }
+    - { titre: "% des ventes", num: true }
+    - { titre: "Ce qu'il laisse de côté" }
+  lignes:
+    - ["EBE comptable strict", "{x.ebe|1} M€", "{x.marge_ebe|1} %", "Transferts de charges, autres produits et charges"]
+    - ["EBITDA « bas » (chiffres qui circulent, Pappers)", "{x.ebitda_sans_transferts|1} M€", "{x.marge_ebitda_sans_transferts|1} %", "Transferts de charges"]
+    - ["EBITDA à méthode constante", "{x.ebitda|1} M€", "{x.marge_ebitda|1} %", "Rien : seules les provisions sont neutralisées"]
+
+ebitda-par-annee:
+  type: lignes
+  titre: "Marges d'EBITDA : chiffres affichés par Pappers et méthode constante"
+  source: exercices
+  annees_de: d.affaire.pappers
+  colonnes:
+    - { titre: "Exercice", cellule: "{@}" }
+    - { titre: "Pappers", cellule: "{d.affaire.pappers.@.marge|1} %", num: true }
+    - { titre: "Méthode constante", cellule: "{l.marge_ebitda|1} %", num: true }
+    - { titre: "EBE strict", cellule: "{l.marge_ebe|1} %", num: true }
+
+dividendes:
+  type: lignes
+  titre: "Dividendes reconstitués de KUHN SAS"
+  source: exercices
+  derniers: 5
+  colonnes:
+    - { titre: "Versé en", cellule: "{l.dividende_verse_en}" }
+    - { titre: "Sur le bénéfice", cellule: "{@} ({l.resultat_net|1} M€)" }
+    - { titre: "Montant", cellule: "{l.dividende|1} M€", si_estime: "≈ {l.dividende|1} M€ {badge:estimation}", num: true }
+    - { titre: "Par action", cellule: "{l.dividende_par_action|0} €", si_estime: "—", num: true }
+    - { titre: "Taux", cellule: "{l.taux_distribution|1} %", si_estime: "estimé", num: true }
+
+filiales:
+  type: lignes
+  titre: "Filiales de KUHN SAS ({#})"
+  source: filiales
+  colonnes:
+    - { titre: "Filiale", cellule: "{l.nom}" }
+    - { titre: "CA", cellule: "{l.ventes|1} M€", num: true }
+    - { titre: "Résultat", cellule: "{l.resultat|1} M€", num: true, negatif: resultat }
+    - { titre: "Dividende → SAS", cellule: "{l.dividende|z1m|n.c.}", num: true }
+    - { titre: "Prêt en cours", cellule: "{l.pret|1m|n.c.}", num: true }
+
+fiabilite:
+  type: lignes
+  titre: "Fiabilité des chiffres"
+  source: fixe
+  colonnes:
+    - { titre: "Chiffre" }
+    - { titre: "Statut" }
+    - { titre: "Source ou méthode", large: true }
+  lignes:
+    - ["CA, résultats, bilan, provisions de KUHN SAS", "{statut:officiel}", "Comptes sociaux déposés au greffe (liasse fiscale, tableau des provisions)."]
+    - ["EBITDA, valeur ajoutée, effet des provisions", "{statut:calcule}", "Recalculés à méthode constante sur ces comptes."]
+    - ["Dividendes {m.dividendes.de}–{m.dividendes.a}", "{statut:calcule}", "Variation des réserves, exacte à l’euro, recoupée avec KUHN Group SAS."]
+    - { si: x.dividende_estime, cellules: ["Dividende versé en {x.dividende_verse_en}", "{statut:estime}", "Taux moyen des {x.dividende_methode.sur} années précédentes, en attendant les comptes {x.dividende_verse_en}."] }
+    - ["KUHN Group et concurrents", "{statut:officiel}", "Rapports de Bucher Industries et communiqués annuels des groupes."]
+
+# ---------- Badges et cartes de l'analyse ----------
+# style : un style de badge de hugo-book (default, note, tip, important, warning, caution) ou kuhn, estimation.
+# si_estime / style_estime : texte et style quand le dividende de l'exercice choisi est une estimation.
+
+badges-activite:
+  type: badges
+  badges:
+    - { titre: "CA {#}", valeur: "{x.ventes|1} M€", style: kuhn }
+    - { titre: "Sur un an", valeur: "{x.variation_ventes|s0} %", style: default }
+    - { titre: "Commandes groupe {m.commandes.de}→{m.commandes.a}", valeur: "{m.commandes.variation|s0} %", style: default }
+
+badges-rentabilite:
+  type: badges
+  badges:
+    - { titre: "EBITDA {#}", valeur: "{x.ebitda|1} M€", style: kuhn }
+    - { titre: "Marge", valeur: "{x.marge_ebitda|1} %", style: kuhn }
+    - { titre: "{m.extremes.ebitda.max.annee}→{#}", valeur: "{m.extremes.ebitda.max.ecart_dernier|s0} %", style: default }
+
+badges-provisions:
+  type: badges
+  badges:
+    - { titre: "Effet {#}", valeur: "{x.effet_provisions|s1} M€", style: note }
+    - { titre: "Stock au bilan", valeur: "{x.provisions|1} M€", style: default }
+
+badges-dividende:
+  type: badges
+  badges:
+    - { titre: "Versé en {p.dividende_verse_en}", valeur: "{p.dividende|1} M€", style: kuhn }
+    - { titre: "Taux", valeur: "{p.taux_distribution|1} %", style: kuhn }
+    - { titre: "{x.dividende_verse_en}", valeur: "{x.dividende|1} M€", si_estime: "≈ {x.dividende|1} M€ (estimé)", style: kuhn, style_estime: estimation }
+
+flux-filiales:
+  type: cartes
+  cartes:
+    - titre: "Dividendes reçus des filiales suivies"
+      valeur: "{fx.totaux.dividendes|1} M€"
+      detail: "Exercice {#} · {m.filialesDividendes.min|0} à {m.filialesDividendes.max|0} M€ par an depuis {m.filialesDividendes.de}"
+    - titre: "Dividendes versés à KUHN Group"
+      valeur: "{p.dividende|1} M€"
+      detail: "Exercice {#} · {m.dividendesVerses.min|0} à {m.dividendesVerses.max|0} M€ par an depuis {m.dividendesVerses.de}"
+    - titre: "Prêts en cours aux filiales suivies"
+      valeur: "{fx.totaux.prets|1} M€"
+      detail: "Au 31 décembre {#} ({fp.totaux.prets|1} M€ fin {p.annee})"

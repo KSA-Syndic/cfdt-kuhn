@@ -1,0 +1,17 @@
+{{- /*
+  kuhn/publier-donnees.html — publie les deux fichiers de données des pages interactives :
+    /interactifs/_donnees/kuhn.js       window.KuhnDonnees  (kuhn/donnees.html)
+    /interactifs/_donnees/glossaire.js  window.KuhnGlossaire (kuhn/glossaire.html)
+  Appeler .RelPermalink est ce qui les fait publier. Ils ne s'écrivent jamais à la main.
+  Appel : {{ $p := partialCached "kuhn/publier-donnees.html" . "publier" }} → dict kuhn, glossaire, empreinte
+*/ -}}
+{{- $entete := "/* Produit par Hugo à partir de data/ (layouts/partials/kuhn/) : ne pas modifier à la main. */" -}}
+{{- $d := partialCached "kuhn/donnees.html" . "kuhn" -}}
+{{- $g := partialCached "kuhn/glossaire.html" . "glossaire" -}}
+{{- $kuhn := resources.FromString "interactifs/_donnees/kuhn.js" (printf "%s\nwindow.KuhnDonnees = %s;\n" $entete (jsonify $d)) -}}
+{{- $glo := resources.FromString "interactifs/_donnees/glossaire.js" (printf "%s\nwindow.KuhnGlossaire = %s;\n" $entete (jsonify $g)) -}}
+{{- return dict
+    "kuhn" $kuhn.RelPermalink
+    "glossaire" $glo.RelPermalink
+    "empreinte" (printf "%s%s" $kuhn.Content $glo.Content | hash.FNV32a)
+-}}

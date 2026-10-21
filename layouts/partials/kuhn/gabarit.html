@@ -1,0 +1,42 @@
+{{- /*
+  kuhn/gabarit.html — remplit un texte à jetons avec les données KUHN (tableaux, glossaire).
+  Appel : partial "kuhn/gabarit.html" (dict "texte" "…" "ctx" (dict "x" … "l" … "d" …) "annee" 2024 "exercice" 2024)
+
+  Jeton : {chemin|format|défaut}
+    chemin  clés séparées par des points, lues dans ctx : {x.ventes}, {d.groupe.exercices.#.ca_eur}
+            « @ » = année de la ligne (annee), « # » = exercice choisi (exercice) ; un nombre = rang dans une liste
+    format  voir kuhn/nombre.html : 0, 1, 2, s1 (signe), z1 (« — » si nul) ; absent = valeur brute
+    défaut  texte si la valeur manque (« — » par défaut), ex. {l.pret|1|n.c.}
+  Après remplacement, l'espace avant « % », « € », « M€ », « Md$ », « M CHF », « : ; ! ? » » et après « « »
+  devient insécable (typographie française).
+*/ -}}
+{{- $t := .texte | default "" -}}
+{{- $ctx := .ctx -}}
+{{- $annee := string (.annee | default "") -}}
+{{- $exercice := string (.exercice | default "") -}}
+{{- range uniq (findRE `\{[A-Za-z0-9_.@#]+(\|[a-z0-9]*)?(\|[^{}|]+)?\}` $t) -}}
+  {{- $jeton := . -}}
+  {{- $parts := split (strings.TrimSuffix "}" (strings.TrimPrefix "{" $jeton)) "|" -}}
+  {{- $f := "" -}}{{- if gt (len $parts) 1 -}}{{- $f = index $parts 1 -}}{{- end -}}
+  {{- $defaut := "—" -}}{{- if gt (len $parts) 2 -}}{{- $defaut = index $parts 2 -}}{{- end -}}
+  {{- $chemin := index $parts 0 -}}
+  {{- $val := $ctx -}}
+  {{- if eq $chemin "@" -}}{{- $val = $annee -}}{{- $chemin = "" -}}{{- end -}}
+  {{- if eq $chemin "#" -}}{{- $val = $exercice -}}{{- $chemin = "" -}}{{- end -}}
+  {{- range (cond (eq $chemin "") slice (split $chemin ".")) -}}
+    {{- $seg := . -}}
+    {{- if eq $seg "@" -}}{{- $seg = $annee -}}{{- else if eq $seg "#" -}}{{- $seg = $exercice -}}{{- end -}}
+    {{- if reflect.IsMap $val -}}
+      {{- $val = index $val $seg -}}
+    {{- else if and (reflect.IsSlice $val) (findRE `^[0-9]+$` $seg) (lt (int $seg) (len $val)) -}}
+      {{- $val = index $val (int $seg) -}}
+    {{- else -}}
+      {{- $val = nil -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $t = replace $t $jeton (partial "kuhn/nombre.html" (dict "v" $val "f" $f "defaut" $defaut)) -}}
+{{- end -}}
+{{- $t = replaceRE `([0-9»)]) (%|€|M€|Md\$|M CHF)` "${1} ${2}" $t -}}
+{{- $t = replaceRE ` ([:;!?»])` " ${1}" $t -}}
+{{- $t = replaceRE `« ` "« " $t -}}
+{{- return $t -}}

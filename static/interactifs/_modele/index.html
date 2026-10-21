@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base target="_top">
+<meta name="robots" content="noindex">
+<title>Modèle de page interactive</title>
+<link rel="stylesheet" href="../_commun/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  Modèle : copier ce dossier en static/interactifs/<nom>/, puis suivre docs/pages-interactives.md.
+  Aucun chiffre ni aucune année en dur : tout vient de window.KuhnDonnees (../_donnees/kuhn.js).
+-->
+<main class="modele">
+  <header class="modele__tete">
+    <p class="modele__surtitre">KUHN SAS · comptes déposés</p>
+    <h1 class="modele__titre">Les ventes, exercice par exercice</h1>
+  </header>
+
+  <nav class="modele__annees" aria-label="Choisir l'exercice" id="annees"></nav>
+
+  <section class="modele__chiffre" aria-live="polite">
+    <p class="modele__grand"><span class="chiffre" id="grand"></span> <span class="modele__unite">M€</span></p>
+    <p id="texte"></p>
+    <p>Dividende sur ce bénéfice&nbsp;: <b class="chiffre" id="dividende"></b> <span id="badge-dividende"></span>
+      (<button type="button" class="terme" data-def="dividende">dividende</button>).</p>
+  </section>
+
+  <figure class="modele__graphique">
+    <div class="barres" id="barres" role="img"></div>
+    <figcaption>Chiffre d'affaires net de KUHN SAS, en&nbsp;M€. Source&nbsp;: comptes sociaux déposés.</figcaption>
+  </figure>
+</main>
+<script src="../_donnees/kuhn.js"></script>
+<script src="../_commun/outils.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

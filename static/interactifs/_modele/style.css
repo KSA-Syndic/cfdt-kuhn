@@ -1,0 +1,116 @@
+/* Modèle : mobile d'abord, pas de vh ni de height:100% sur html et body (mode « auto »). */
+
+.modele {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modele__surtitre {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.modele__titre {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.1;
+}
+
+/* Les années passent à la ligne quand il y en a davantage : rien n'est prévu pour un nombre fixe. */
+.modele__annees {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--rayon);
+  background: var(--fond-3);
+}
+
+.modele__annees button {
+  min-width: var(--cible);
+  min-height: var(--cible);
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.modele__annees button[aria-pressed="true"] {
+  background: var(--encre);
+  color: #FFFFFF;
+}
+
+.modele__grand {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: clamp(40px, 8vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.modele__unite {
+  font-size: 20px;
+  color: var(--gris);
+}
+
+.modele__graphique {
+  margin: 0;
+}
+
+.modele__graphique figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--gris);
+}
+
+.barres {
+  display: grid;
+  grid-auto-columns: minmax(28px, 1fr);
+  grid-auto-flow: column;
+  align-items: end;
+  gap: 6px;
+  height: 160px;
+  border-bottom: 1px solid var(--gris-clair);
+  overflow-x: auto;
+}
+
+.barres__col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.barres__barre {
+  width: 100%;
+  background: var(--trait);
+  transform-origin: bottom;
+  animation: pousse .6s ease-out both;
+}
+
+.barres__col--actif .barres__barre { background: var(--lien); }
+
+@keyframes pousse { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .barres__barre { animation: none; }
+}
+
+@media (hover: hover) {
+  .modele__annees button:not([aria-pressed="true"]):hover { background: #E3E6EB; }
+}

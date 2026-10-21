@@ -1,0 +1,20 @@
+# Dividendes de KUHN SAS à son actionnaire (KUHN Group SAS, puis Bucher Industries), rangés par
+# EXERCICE : le dividende prélevé sur le bénéfice de l'exercice, versé l'année suivante.
+# Les comptes ne le publient pas directement : il est reconstitué à l'euro près par la variation des
+# réserves [DD + DG] (dividende versé en N+1 = résultat N − hausse des réserves en N+1). Chaque montant
+# tombe sur un dividende rond par action et concorde avec les dividendes reçus déclarés par KUHN Group SAS.
+# Montants en millions d'euros.
+# Tant que le montant n'est pas publié : « estime: true » et une méthode, calculée dans
+# layouts/partials/kuhn/donnees.html. Seule méthode prévue : « taux-moyen » = taux de distribution
+# moyen des « sur » exercices précédents, appliqué au bénéfice de l'exercice.
+2014: { montant: 38.976 }      # versé en 2015, 32 € par action
+2015: { montant: 43.848 }      # versé en 2016, 36 € par action
+2016: { montant: 38.976 }      # versé en 2017, 32 € par action
+2017: { montant: 40.194 }      # versé en 2018, 33 € par action
+2018: { montant: 36.54 }       # versé en 2019, 30 € par action
+2019: { montant: 38.976 }      # versé en 2020, 32 € par action
+2020: { montant: 41.412 }      # versé en 2021, 34 € par action
+2021: { montant: 42.63 }       # versé en 2022, 35 € par action
+2022: { montant: 57.246 }      # versé en 2023, 47 € par action
+2023: { montant: 63.336 }      # versé en 2024, 52 € par action
+2024: { estime: true, methode: taux-moyen, sur: 4 }  # versé en 2025, pas encore publié

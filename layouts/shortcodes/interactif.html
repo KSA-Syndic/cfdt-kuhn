@@ -1,0 +1,46 @@
+{{- /*
+  {{< interactif nom="ou-va-l-argent" titre="Où va l'argent d'une année ?" >}}
+  Intègre la page autonome static/interactifs/<nom>/ dans une <iframe>. Mode d'emploi : docs/pages-interactives.md.
+    nom             dossier de la page (obligatoire)
+    titre           titre accessible de l'iframe (obligatoire)
+    hauteur         « auto » (défaut : la hauteur du contenu) ou « ecran » (l'écran, la page défile elle-même)
+    pleine-largeur  « true » : l'article s'élargit à toute la largeur (pleine-largeur.js)
+    hauteur-min     hauteur minimale en px avant chargement (défaut 320)
+  (pleine_largeur et hauteur_min sont acceptés aussi, pour Tina.)
+*/ -}}
+{{- $nom := .Get "nom" -}}
+{{- $titre := .Get "titre" -}}
+{{- if not $nom -}}{{- errorf "interactif : paramètre « nom » manquant (%s)" .Position -}}{{- end -}}
+{{- if not $titre -}}{{- errorf "interactif « %s » : paramètre « titre » obligatoire (%s)" $nom .Position -}}{{- end -}}
+{{- $dossier := printf "static/interactifs/%s" $nom -}}
+{{- if not (fileExists (printf "%s/index.html" $dossier)) -}}
+  {{- errorf "interactif : %s/index.html introuvable (%s)" $dossier .Position -}}
+{{- end -}}
+{{- $hauteur := .Get "hauteur" | default "auto" -}}
+{{- if not (in (slice "auto" "ecran") $hauteur) -}}
+  {{- errorf "interactif « %s » : hauteur « %s » inconnue (auto ou ecran) (%s)" $nom $hauteur .Position -}}
+{{- end -}}
+{{- $pleine := in (slice "true" true) (or (.Get "pleine-largeur") (.Get "pleine_largeur")) -}}
+{{- $hmin := int (or (.Get "hauteur-min") (.Get "hauteur_min") 320) -}}
+
+{{- /* Données publiées + empreinte des fichiers de la page : l'URL change dès qu'un des deux change. */ -}}
+{{- $donnees := partialCached "kuhn/publier-donnees.html" . "publier" -}}
+{{- $contenu := slice $donnees.empreinte -}}
+{{- range slice "index.html" "style.css" "script.js" "../_commun/base.css" "../_commun/outils.js" -}}
+  {{- $f := printf "%s/%s" $dossier . -}}
+  {{- if fileExists $f -}}{{- $contenu = $contenu | append (readFile $f) -}}{{- end -}}
+{{- end -}}
+{{- $empreinte := delimit $contenu "|" | hash.FNV32a -}}
+
+{{- /* integration.js (et pleine-largeur.js) sont chargés une seule fois par docs/inject/body.html */ -}}
+{{- .Page.Store.Set "interactif" true -}}
+{{- if $pleine -}}{{- .Page.Store.Set "interactif-pleine-largeur" true -}}{{- end -}}
+
+{{- $cadre := printf `<iframe class="interactif__cadre interactif__cadre--%s" src="%s?v=%d" title="%s" data-hauteur="%s" style="min-height:%dpx" loading="lazy"></iframe>`
+    $hauteur (printf "/interactifs/%s/" $nom | relURL) $empreinte ($titre | htmlEscape) $hauteur $hmin -}}
+{{- $figure := printf `<figure class="interactif interactif--%s" data-interactif="%s">%s<noscript><p class="interactif__sans-js">Cette illustration interactive a besoin de JavaScript.</p></noscript></figure>` $hauteur $nom $cadre -}}
+{{- if $pleine -}}
+<div class="full-width-post interactif-pleine-largeur">{{ $figure | safeHTML }}</div>
+{{- else -}}
+{{ $figure | safeHTML }}
+{{- end -}}

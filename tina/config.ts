@@ -141,6 +141,67 @@ const detailsTemplate = {
   ],
 };
 
+// === PAGES INTERACTIVES ET CHIFFRES KUHN (docs/pages-interactives.md) ===
+// Ajouter ici chaque nouvelle page de static/interactifs/ et chaque tableau de data/kuhn/tableaux.yaml.
+const pagesInteractives = [
+  { value: "_modele", label: "Modèle (exemple)" },
+];
+
+const tableauxKuhn = [
+  { value: "rentabilite", label: "Rentabilité, année par année" },
+  { value: "trois-perimetres", label: "Trois chiffres d'affaires (groupe, SAS, filiales)" },
+  { value: "ebitda-mesures", label: "Trois mesures de l'EBITDA" },
+  { value: "ebitda-par-annee", label: "Marges d'EBITDA : Pappers et méthode constante" },
+  { value: "dividendes", label: "Dividendes reconstitués" },
+  { value: "filiales", label: "Filiale par filiale" },
+  { value: "fiabilite", label: "Fiabilité des chiffres" },
+  { value: "badges-activite", label: "Badges : activité" },
+  { value: "badges-rentabilite", label: "Badges : rentabilité" },
+  { value: "badges-provisions", label: "Badges : provisions" },
+  { value: "badges-dividende", label: "Badges : dividende" },
+  { value: "flux-filiales", label: "Cartes : flux avec les filiales" },
+];
+
+// Page autonome de static/interactifs/<nom>/ dans une iframe
+const interactifTemplate = {
+  name: "interactif",
+  label: "Page interactive",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "interactif",
+  },
+  fields: [
+    { name: "nom", label: "Page", type: "string", required: true, options: pagesInteractives },
+    { name: "titre", label: "Titre (accessibilité)", type: "string", required: true },
+    {
+      name: "hauteur",
+      label: "Hauteur",
+      type: "string",
+      options: [
+        { value: "auto", label: "Hauteur du contenu" },
+        { value: "ecran", label: "Écran entier (la page défile elle-même)" },
+      ],
+    },
+    { name: "pleine_largeur", label: "Pleine largeur", type: "string", options: [{ value: "true", label: "Oui" }] },
+    { name: "hauteur_min", label: "Hauteur minimale avant chargement (px)", type: "string" },
+  ],
+};
+
+// Tableau de data/kuhn/tableaux.yaml, produit à la compilation
+const tableauKuhnTemplate = {
+  name: "tableau_kuhn",
+  label: "Tableau de chiffres KUHN",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "tableau-kuhn",
+  },
+  fields: [
+    { name: "_value", label: "Tableau", type: "string", required: true, options: tableauxKuhn },
+  ],
+};
+
 // Liste complète des templates pour le body
 // pdfModalBtnTemplate et buttonTemplate sont déjà dans innerTemplates
 const shortcodeTemplates = [
@@ -152,6 +213,8 @@ const shortcodeTemplates = [
   mermaidTemplate,
   pdfModalBtnTemplate,
   buttonTemplate,
+  interactifTemplate,
+  tableauKuhnTemplate,
 ];
 
 // Champ body avec shortcodes

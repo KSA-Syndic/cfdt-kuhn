@@ -1,0 +1,20 @@
+{{- /*
+  kuhn/glossaire.html — data/glossaire.yaml avec ses jetons remplis ({dernier.…}, {affaire.…}).
+  Appel : {{ $g := partialCached "kuhn/glossaire.html" . "glossaire" }} → dict id → {terme, definition}
+*/ -}}
+{{- $d := partialCached "kuhn/donnees.html" . "kuhn" -}}
+{{- $m := $d.meta -}}
+{{- $ctx := dict
+    "dernier" (index $d.exercices (string $m.dernierExercice))
+    "affaire" (index $d.exercices (string $d.affaire.annee))
+    "d" $d
+-}}
+{{- $g := dict -}}
+{{- range $id, $e := site.Data.glossaire -}}
+  {{- if not (and $e.terme $e.definition) -}}
+    {{- errorf "[kuhn] data/glossaire.yaml, entrée « %s » : « terme » et « definition » sont obligatoires." $id -}}
+  {{- end -}}
+  {{- $def := partial "kuhn/gabarit.html" (dict "texte" $e.definition "ctx" $ctx) -}}
+  {{- $g = merge $g (dict $id (dict "terme" $e.terme "definition" $def)) -}}
+{{- end -}}
+{{- return $g -}}

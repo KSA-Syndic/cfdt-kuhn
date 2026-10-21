@@ -1,0 +1,18 @@
+# « L'affaire des 2,6 % » (content/actualites/2026/affaire-2-6.md) porte, par nature, sur un exercice
+# précis : ses figures lisent l'exercice désigné ICI, une seule fois, et non le dernier exercice.
+
+annee: 2024        # exercice examiné (le « 2,6 % »)
+comparaison: 2022  # exercice de référence (le « 9 % »)
+
+# Exercices montrés dans la pièce « Recalculé de la même façon chaque année »
+# (2020 omis pour la lisibilité, comme dans la maquette validée).
+recalcul: [2018, 2019, 2021, 2022, 2023, 2024]
+
+# Marges d'EBITDA de KUHN SAS affichées par Pappers (en % des ventes), et les montants cités.
+# Source publique : pages Pappers de KUHN SAS. Elles ne se retrouvent qu'en retirant les transferts de
+# charges à partir de 2023 seulement (voir l'article).
+pappers:
+  2021: { marge: 9.3 }
+  2022: { marge: 9.0, ebitda: 84.8 }
+  2023: { marge: 4.2 }
+  2024: { marge: 2.6, ebitda: 20.6 }

@@ -1,0 +1,94 @@
+# Glossaire des pages KUHN : une entrée par terme, appelée par son identifiant.
+#   - dans un .md : un lien natif [EBITDA](#def-ebitda), transformé en bulle par integration.js ;
+#   - dans une page interactive : <button class="terme" data-def="ebitda">EBITDA</button>.
+# Publié par Hugo en /interactifs/_donnees/glossaire.js (window.KuhnGlossaire).
+#
+# « definition » accepte un peu de HTML (<b>, <i>) et des jetons remplacés à la compilation par les
+# données de data/kuhn (voir layouts/partials/kuhn/gabarit.html) :
+#   {dernier.CHAMP|1}   valeur du dernier exercice, 1 décimale (|0 : entier, |s1 : avec signe)
+#   {affaire.CHAMP|1}   valeur de l'exercice examiné par « L'affaire des 2,6 % » (data/kuhn/affaire.yaml)
+#   {dernier.annee}     l'année elle-même
+
+valeur-ajoutee:
+  terme: Valeur ajoutée
+  definition: "Ce qui reste des ventes une fois payés les <b>achats</b> (acier, pièces, énergie, sous-traitance) : la richesse créée sur place par le travail. C'est avec elle qu'on paie les salaires, l'usure des machines, les impôts… et l'actionnaire."
+
+ebitda:
+  terme: EBITDA
+  definition: "L'argent brut dégagé par l'activité, avant usure des machines (amortissements) et provisions. Ici : résultat d'exploitation + amortissements + dotations nettes des reprises de provisions."
+
+ebitda-calcul:
+  terme: EBITDA
+  definition: "<b>EBITDA</b> (en français, à peu près l'excédent brut d'exploitation) : résultat d'exploitation + amortissements + dotations aux provisions, moins les reprises de provisions. Il mesure ce que l'activité produit comme argent, avant de compter l'usure des machines, les mises de côté pour risques, les intérêts et l'impôt."
+
+ebitda-norme:
+  terme: EBITDA
+  definition: "Aucune norme comptable ne définit l'<b>EBITDA</b>. Le plan comptable définit l'excédent brut d'exploitation (article 842-1) et range les transferts de charges après lui. On peut aussi les réintégrer quand ils compensent des frais déjà comptés dans l'activité : c'est ce que faisaient les chiffres affichés pour 2021–2022."
+
+ebe:
+  terme: Excédent brut d'exploitation
+  definition: "<b>EBE comptable strict</b> : valeur ajoutée + subventions d'exploitation − impôts et taxes − charges de personnel. Il laisse de côté les transferts de charges et les autres produits et charges : c'est un plancher."
+
+resultat-exploitation:
+  terme: Résultat d'exploitation
+  definition: "<b>Résultat d'exploitation</b> (EBIT) : produits d'exploitation moins charges d'exploitation (achats, charges externes, salaires, impôts et taxes, amortissements, provisions). Il vient avant le résultat financier et l'impôt sur les sociétés."
+
+resultat-exploitation-affaire:
+  terme: Résultat d'exploitation
+  definition: "<b>Résultat d'exploitation</b> (EBIT) : produits d'exploitation moins charges d'exploitation (achats, charges externes, salaires, impôts et taxes, amortissements, provisions). Il vient avant le résultat financier et l'impôt sur les sociétés. {affaire.annee} : {affaire.resultat_exploitation|1} M€ sur {affaire.ventes|1} M€ de ventes."
+
+transferts-de-charges:
+  terme: Transferts de charges
+  definition: "<b>Transferts de charges</b> : frais refacturés à d'autres sociétés, remboursés ou reclassés ({dernier.transferts|1} M€ en {dernier.annee}). Ce ne sont pas des provisions. La réforme comptable de 2025 (règlement ANC n° 2022-06) supprime cette catégorie."
+
+frais-refactures:
+  terme: Frais refacturés
+  definition: "En langage comptable, des <b>transferts de charges</b> : une écriture qui neutralise des frais refacturés à d'autres sociétés, remboursés ou reclassés ailleurs dans les comptes. Leur détail figure dans l'annexe. La réforme comptable applicable depuis 2025 (règlement ANC n° 2022-06) supprime cette catégorie."
+
+provision:
+  terme: Provision
+  definition: "<b>Provision</b> : somme mise de côté sur le papier pour un risque futur (stock, litige, garantie). La constituer réduit le résultat ; la reprendre l'augmente, sans aucune entrée d'argent."
+
+provisions-affaire:
+  terme: Provisions relâchées
+  definition: "<b>Provision</b> : somme mise de côté sur le papier pour un risque (stock, litige, garantie). La relâcher (une « reprise ») fait monter le résultat sans entrée d'argent. En {affaire.annee} : {affaire.reprises_provisions|1} M€ de reprises contre {affaire.dotations|1} M€ de nouvelles dotations, soit {affaire.effet_provisions|s1} M€."
+
+dotation:
+  terme: Dotation
+  definition: "L'écriture qui <b>crée ou augmente</b> une provision. C'est une charge : elle réduit le résultat de l'année où on la passe."
+
+reprise:
+  terme: Reprise
+  definition: "L'inverse de la dotation : on <b>annule</b> une provision devenue inutile. Elle remonte dans le résultat de l'année, sans qu'aucun euro n'entre réellement en trésorerie."
+
+amortissement:
+  terme: Amortissement
+  definition: "La répartition du coût d'une machine sur ses années d'usure. Une machine payée 100 et utilisée cinq ans compte 20 d'usure par an dans le compte de résultat : c'est une charge, mais aucun euro ne sort ce jour-là."
+
+bilan:
+  terme: Bilan
+  definition: "Une photo de l'entreprise au 31 décembre. À gauche (l'actif), tout ce qu'elle possède : machines, stock, factures que les clients doivent encore, argent en banque. À droite (le passif), d'où vient l'argent qui a payé tout ça : les actionnaires, ou des dettes. Les deux côtés sont toujours égaux."
+
+compte-de-resultat:
+  terme: Compte de résultat
+  definition: "Le film de l'année : il part des ventes et retire, étage par étage, ce que l'année a coûté. Ce qui reste tout en bas, c'est le résultat net : le bénéfice de l'année (ou la perte)."
+
+tresorerie:
+  terme: Trésorerie
+  definition: "L'argent <b>réellement disponible</b> : liquidités en banque et placements. C'est ce qui permet de payer, d'investir et de verser les dividendes."
+
+capitaux-propres:
+  terme: Capitaux propres
+  definition: "Ce que les actionnaires possèdent vraiment dans l'entreprise : le capital de départ, plus les bénéfices gardés au fil des ans (réserves). Ce n'est pas un coffre d'argent qui s'ajoute à la trésorerie, mais une <b>mesure de propriété</b>."
+
+dividende:
+  terme: Dividende
+  definition: "La part du bénéfice qui <b>sort</b> de l'entreprise pour rémunérer l'actionnaire (ici KUHN Group, puis Bucher Industries en Suisse). Elle est versée l'année suivante."
+
+encours:
+  terme: Encours
+  definition: "<b>Encours</b> : montant prêté et pas encore remboursé au 31 décembre. C'est un stock, pas un flux de l'année : on ne l'additionne pas d'une année sur l'autre."
+
+pappers:
+  terme: Pappers
+  definition: "<b>Pappers</b> : site qui republie les comptes déposés par les entreprises et calcule des indicateurs. Ses quatre marges d'EBITDA pour KUHN SAS ({d.affaire.pappers.2021.marge|1} / {d.affaire.pappers.2022.marge|1} / {d.affaire.pappers.2023.marge|1} / {d.affaire.pappers.2024.marge|1} %) ne se retrouvent qu'en retirant les transferts de charges à partir de 2023 seulement. Pappers ne documente pas ce changement, et aucune loi ne l'explique : la réforme du plan comptable qui supprime les transferts de charges (règlement ANC n° 2022-06) ne s'applique qu'aux comptes ouverts à partir de 2025."

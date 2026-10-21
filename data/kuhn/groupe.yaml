@@ -1,0 +1,20 @@
+# KUHN Group : le groupe mondial consolidé (division « Kuhn Group » de Bucher Industries).
+# Source : rapports annuels de Bucher Industries, publiés en francs suisses (CHF) ; montants en euros
+# convertis au cours moyen annuel de la BCE. Ventes internes éliminées.
+#   ca_chf  chiffre d'affaires publié, en millions de CHF
+#   ca_eur  le même, converti en millions d'euros
+#   marge   marge opérationnelle (EBIT) publiée par Bucher, en % du chiffre d'affaires
+nom: KUHN Group
+unite: M€
+couleur: "#C20A2A"
+note: "Rapports de Bucher Industries (francs suisses convertis au cours moyen annuel BCE). Marge opérationnelle (EBIT)."
+exercices:
+  2021: { ca_chf: 1319, ca_eur: 1220, marge: 12.2 }
+  2022: { ca_chf: 1510, ca_eur: 1503, marge: 11.7 }
+  2023: { ca_chf: 1422, ca_eur: 1463, marge: 11.4 }
+  2024: { ca_chf: 1159, ca_eur: 1217, marge: 8 }
+  2025: { ca_chf: 1053, ca_eur: 1124, marge: 7.1 }
+# Entrées de commandes de KUHN Group publiées par Bucher : variation en % entre deux exercices.
+commandes:
+  - { de: 2021, a: 2024, variation: -42 }
+  - { de: 2024, a: 2025, variation: 16 }

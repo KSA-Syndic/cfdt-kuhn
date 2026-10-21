@@ -2,3 +2,6 @@
 {{- if and .IsPage .Params.kuhnResultats -}}
 {{- partial "kuhn-resultats/head.html" . -}}
 {{- end -}}
+{{- /* Données des pages interactives (/interactifs/_donnees/) : publiées dès la page d'accueil,
+       pour qu'une page autonome les trouve même avant d'être intégrée à un article. */ -}}
+{{- if .IsHome -}}{{- $_ := partialCached "kuhn/publier-donnees.html" . "publier" -}}{{- end -}}

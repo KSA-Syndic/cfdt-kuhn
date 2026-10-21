@@ -1,0 +1,9 @@
+# Réglages communs des données KUHN (lus par layouts/partials/kuhn/donnees.html).
+
+# Premier exercice affiché dans les pages et les tableaux. Les exercices plus anciens de sas.yaml
+# servent aux calculs (taux de distribution moyen…) s'ils sont complets : 2015 l'est (provisions
+# approchées) ; 2014, sans le détail des provisions, est ignoré.
+premier_exercice: 2016
+
+# Nombre d'actions de KUHN SAS (dividende par action = montant / actions).
+actions: 1218000

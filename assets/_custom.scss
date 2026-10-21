@@ -162,3 +162,215 @@ $book-mobile-breakpoint: 56rem;
     z-index: 130;
   }
 }
+
+// ---------- Pages interactives : {{< interactif >}} (docs/pages-interactives.md) ----------
+
+.interactif {
+  margin: 1.5rem 0;
+
+  iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+  }
+}
+
+.interactif__sans-js {
+  padding: 1rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+}
+
+// Mode « ecran » : l'écran entier sous l'en-tête de hugo-book (--interactif-entete posé par integration.js)
+.interactif--ecran iframe {
+  height: calc(100vh - var(--interactif-entete, 0px));
+  height: calc(100svh - var(--interactif-entete, 0px));
+}
+
+// Pleine largeur : l'iframe va d'un bord à l'autre, le texte de l'article garde ses marges
+.interactif-pleine-largeur .interactif {
+  margin: 0;
+}
+
+html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-article > :not(.interactif-pleine-largeur) {
+  margin-inline: 1rem;
+}
+
+// ---------- Tableaux de chiffres KUHN : {{< tableau-kuhn >}} ----------
+
+.tableau-kuhn {
+  overflow-x: auto;
+  margin: 1rem 0;
+  -webkit-overflow-scrolling: touch;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-link);
+    outline-offset: 2px;
+  }
+
+  table {
+    display: table;
+    margin: 0;
+    overflow: visible;
+  }
+
+  th,
+  td {
+    white-space: nowrap;
+  }
+
+  tbody th {
+    font-weight: inherit;
+  }
+
+  // tableaux classiques : la première colonne (libellés) passe à la ligne sur mobile
+  &.tableau-kuhn--lignes tbody th {
+    min-width: 9rem;
+    white-space: normal;
+  }
+
+  .num {
+    text-align: end;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .large {
+    white-space: normal;
+    min-width: 16rem;
+  }
+
+  .negatif {
+    color: #c0392b;
+  }
+}
+
+// Séries : la première colonne reste visible quand on fait défiler les années
+.tableau-kuhn--series {
+  thead th:first-child,
+  tbody th {
+    position: sticky;
+    left: 0;
+    background: var(--body-background);
+  }
+
+  tbody tr:nth-child(2n) th {
+    background: var(--gray-100);
+  }
+}
+
+.tableau-kuhn__source {
+  font-size: var(--font-size-smaller);
+  color: #495057;
+}
+
+.badges-kuhn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.book-badge.kuhn {
+  --accent-color: var(--color-link);
+}
+
+.book-badge.estimation {
+  --accent-color: #c27413;
+}
+
+.cartes-kuhn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.carte-kuhn {
+  flex: 1 1 12rem;
+  padding: 1rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+}
+
+.carte-kuhn__titre,
+.carte-kuhn__detail {
+  color: #495057;
+  font-size: var(--font-size-smaller);
+}
+
+.carte-kuhn__valeur {
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.carte-kuhn__detail {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.badge-estimation {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: #fdebc8;
+  color: #7a4b00;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.visuellement-cache {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// ---------- Glossaire dans les articles : [terme](#def-id) → bulle (integration.js) ----------
+
+.markdown a.terme-lien {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-link);
+  cursor: help;
+
+  &[aria-expanded="true"] {
+    background: rgba(0, 85, 187, 0.08);
+  }
+}
+
+.terme-bulle {
+  position: absolute;
+  z-index: 200;
+  max-width: #{"min(22rem, calc(100vw - 1rem))"};
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  background: var(--body-background);
+  color: var(--body-font-color);
+  font-size: var(--font-size-smaller);
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.terme-bulle__fermer {
+  float: right;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.25rem -0.5rem 0 0.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}

@@ -1,0 +1,272 @@
+# Comptes sociaux de KUHN SAS (Saverne, SIREN 675 580 542), un bloc par exercice.
+# Source : liasse fiscale des comptes sociaux déposés au greffe (formulaires DGFiP 2050 à 2059,
+# code de la ligne en commentaire) et tableau des provisions annexé.
+# Montants en millions d'euros, six décimales : la valeur exacte à l'euro près.
+# null = donnée non disponible (différent de zéro) ; « dettes » est facultatif.
+# Les calculs (valeur ajoutée, EBITDA, trésorerie, marges…) sont faits une seule fois,
+# dans layouts/partials/kuhn/donnees.html. Ajouter un exercice : docs/pages-interactives.md.
+
+2014:
+  ventes:                  681.865153   # FL  chiffre d'affaires net
+  production:              679.143567   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           578.796345   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0.008646     # FO  subventions d'exploitation
+  reprises_et_transferts:  52.586502    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     null         # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP ; détail non disponible
+  autres_produits:         0.208751     # FQ  autres produits
+  impots_taxes:            6.49394      # FX  impôts, taxes et versements assimilés
+  salaires:                50.518127    # FY  salaires et traitements
+  charges_sociales:        20.144169    # FZ  charges sociales
+  amortissements:          6.406237     # GA  dotations aux amortissements
+  dotations_actif:         10.249366    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       13.883293    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          0.484436     # GE  autres charges
+  resultat_exploitation:   44.971553    # GG  résultat d'exploitation
+  resultat_financier:      17.994404    # GV  résultat financier
+  resultat_net:            41.745953    # HN  bénéfice ou perte
+  capitaux_propres:        126.324507   # DL  capitaux propres
+  provisions:              26.680303    # DR  provisions pour risques et charges
+  fournisseurs:            73.589631    # DX  dettes fournisseurs
+  disponibilites:          136.072583   # CF  disponibilités
+  placements:              44.904136    # CD  valeurs mobilières de placement
+
+2015:
+  ventes:                  626.916275   # FL  chiffre d'affaires net
+  production:              631.338533   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           536.236233   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  50.334368    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     23.208164    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP ; approché (UC − GM − HC)
+  autres_produits:         0.202991     # FQ  autres produits
+  impots_taxes:            5.550564     # FX  impôts, taxes et versements assimilés
+  salaires:                50.776403    # FY  salaires et traitements
+  charges_sociales:        19.783801    # FZ  charges sociales
+  amortissements:          7.109501     # GA  dotations aux amortissements
+  dotations_actif:         9.64605      # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       9.953038     # GD  dotations aux provisions pour risques et charges
+  autres_charges:          0.296291     # GE  autres charges
+  resultat_exploitation:   42.524011    # GG  résultat d'exploitation
+  resultat_financier:      21.204488    # GV  résultat financier
+  resultat_net:            46.225473    # HN  bénéfice ou perte
+  capitaux_propres:        135.668869   # DL  capitaux propres
+  provisions:              20.305931    # DR  provisions pour risques et charges
+  fournisseurs:            71.0126      # DX  dettes fournisseurs
+  disponibilites:          121.111321   # CF  disponibilités
+  placements:              65.498779    # CD  valeurs mobilières de placement
+
+2016:
+  ventes:                  596.732996   # FL  chiffre d'affaires net
+  production:              595.972064   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           502.795249   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0.004189     # FO  subventions d'exploitation
+  reprises_et_transferts:  45.397485    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     19.298299    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP ; UC − GM − HC
+  autres_produits:         0.210982     # FQ  autres produits
+  impots_taxes:            5.44581      # FX  impôts, taxes et versements assimilés
+  salaires:                50.104391    # FY  salaires et traitements
+  charges_sociales:        19.891253    # FZ  charges sociales
+  amortissements:          7.641095     # GA  dotations aux amortissements
+  dotations_actif:         10.040475    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       9.953366     # GD  dotations aux provisions pour risques et charges
+  autres_charges:          0.484335     # GE  autres charges
+  resultat_exploitation:   35.228746    # GG  résultat d'exploitation
+  resultat_financier:      18.195489    # GV  résultat financier
+  resultat_net:            41.660526    # HN  bénéfice ou perte
+  capitaux_propres:        133.523197   # DL  capitaux propres
+  provisions:              18.739232    # DR  provisions pour risques et charges
+  fournisseurs:            72.593494    # DX  dettes fournisseurs
+  disponibilites:          118.530374   # CF  disponibilités
+  placements:              43.243107    # CD  valeurs mobilières de placement
+
+2017:
+  ventes:                  670.721196   # FL  chiffre d'affaires net
+  production:              674.800413   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           577.649741   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  49.800912    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     20.328637    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         10.893507    # FQ  autres produits
+  impots_taxes:            6.153372     # FX  impôts, taxes et versements assimilés
+  salaires:                51.361105    # FY  salaires et traitements
+  charges_sociales:        20.723285    # FZ  charges sociales
+  amortissements:          7.6837       # GA  dotations aux amortissements
+  dotations_actif:         9.427728     # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       9.202983     # GD  dotations aux provisions pour risques et charges
+  autres_charges:          4.694471     # GE  autres charges
+  resultat_exploitation:   48.598447    # GG  résultat d'exploitation
+  resultat_financier:      10.537169    # GV  résultat financier
+  resultat_net:            43.249191    # HN  bénéfice ou perte
+  capitaux_propres:        136.520372   # DL  capitaux propres
+  provisions:              21.449829    # DR  provisions pour risques et charges
+  fournisseurs:            73.078256    # DX  dettes fournisseurs
+  disponibilites:          114.669346   # CF  disponibilités
+  placements:              40.590452    # CD  valeurs mobilières de placement
+
+2018:
+  ventes:                  738.553182   # FL  chiffre d'affaires net
+  production:              737.89618    # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           631.946386   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  48.94401     # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     18.684972    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         5.579143     # FQ  autres produits
+  impots_taxes:            5.277459     # FX  impôts, taxes et versements assimilés
+  salaires:                54.208613    # FY  salaires et traitements
+  charges_sociales:        21.758884    # FZ  charges sociales
+  amortissements:          9.269467     # GA  dotations aux amortissements
+  dotations_actif:         11.420944    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       10.537432    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          7.802763     # GE  autres charges
+  resultat_exploitation:   40.197385    # GG  résultat d'exploitation
+  resultat_financier:      10.968027    # GV  résultat financier
+  resultat_net:            39.177097    # HN  bénéfice ou perte
+  capitaux_propres:        134.311998   # DL  capitaux propres
+  provisions:              21.469815    # DR  provisions pour risques et charges
+  fournisseurs:            74.897156    # DX  dettes fournisseurs
+  disponibilites:          105.561645   # CF  disponibilités
+  placements:              10.557004    # CD  valeurs mobilières de placement
+
+2019:
+  ventes:                  739.312337   # FL  chiffre d'affaires net
+  production:              742.158297   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           638.647196   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  55.442737    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     21.81906     # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         4.106333     # FQ  autres produits
+  impots_taxes:            5.494479     # FX  impôts, taxes et versements assimilés
+  salaires:                56.576715    # FY  salaires et traitements
+  charges_sociales:        21.83922     # FZ  charges sociales
+  amortissements:          9.858562     # GA  dotations aux amortissements
+  dotations_actif:         10.941337    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       10.923765    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          5.904938     # GE  autres charges
+  resultat_exploitation:   41.521154    # GG  résultat d'exploitation
+  resultat_financier:      12.366028    # GV  résultat financier
+  resultat_net:            39.407984    # HN  bénéfice ou perte
+  capitaux_propres:        136.191776   # DL  capitaux propres
+  provisions:              20.495858    # DR  provisions pour risques et charges
+  fournisseurs:            74.997758    # DX  dettes fournisseurs
+  disponibilites:          86.41321     # CF  disponibilités
+  placements:              10.557004    # CD  valeurs mobilières de placement
+
+2020:
+  ventes:                  688.740751   # FL  chiffre d'affaires net
+  production:              689.623331   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           581.873005   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  55.212846    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     20.541234    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         8.137858     # FQ  autres produits
+  impots_taxes:            6.101849     # FX  impôts, taxes et versements assimilés
+  salaires:                52.157603    # FY  salaires et traitements
+  charges_sociales:        22.532588    # FZ  charges sociales
+  amortissements:          10.095887    # GA  dotations aux amortissements
+  dotations_actif:         11.852448    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       13.971584    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          9.613328     # GE  autres charges
+  resultat_exploitation:   44.775744    # GG  résultat d'exploitation
+  resultat_financier:      7.047057     # GV  résultat financier
+  resultat_net:            42.837064    # HN  bénéfice ou perte
+  capitaux_propres:        138.39979    # DL  capitaux propres
+  provisions:              29.132963    # DR  provisions pour risques et charges
+  fournisseurs:            75.566868    # DX  dettes fournisseurs
+  disponibilites:          176.180039   # CF  disponibilités
+  placements:              10.554994    # CD  valeurs mobilières de placement
+
+2021:
+  ventes:                  823.954577   # FL  chiffre d'affaires net
+  production:              835.174805   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           703.662047   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  60.304766    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     25.130946    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         10.822177    # FQ  autres produits
+  impots_taxes:            4.347932     # FX  impôts, taxes et versements assimilés
+  salaires:                60.028215    # FY  salaires et traitements
+  charges_sociales:        24.834337    # FZ  charges sociales
+  amortissements:          9.516321     # GA  dotations aux amortissements
+  dotations_actif:         19.075323    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       20.528457    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          12.210061    # GE  autres charges
+  resultat_exploitation:   52.099054    # GG  résultat d'exploitation
+  resultat_financier:      10.871179    # GV  résultat financier
+  resultat_net:            44.287086    # HN  bénéfice ou perte
+  capitaux_propres:        141.594726   # DL  capitaux propres
+  provisions:              33.335522    # DR  provisions pour risques et charges
+  fournisseurs:            95.547714    # DX  dettes fournisseurs
+  disponibilites:          175.350275   # CF  disponibilités
+  placements:              30.587228    # CD  valeurs mobilières de placement
+
+2022:
+  ventes:                  941.819766   # FL  chiffre d'affaires net
+  production:              952.414883   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           814.93397    # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  65.901518    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     28.552297    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         12.957373    # FQ  autres produits
+  impots_taxes:            4.699212     # FX  impôts, taxes et versements assimilés
+  salaires:                62.989725    # FY  salaires et traitements
+  charges_sociales:        27.017753    # FZ  charges sociales
+  amortissements:          9.081058     # GA  dotations aux amortissements
+  dotations_actif:         19.999642    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       17.372272    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          8.355399     # GE  autres charges
+  resultat_exploitation:   66.824743    # GG  résultat d'exploitation
+  resultat_financier:      10.128713    # GV  résultat financier
+  resultat_net:            59.212585    # HN  bénéfice ou perte
+  capitaux_propres:        159.803207   # DL  capitaux propres
+  provisions:              36.559928    # DR  provisions pour risques et charges
+  fournisseurs:            130.249161   # DX  dettes fournisseurs
+  disponibilites:          181.819188   # CF  disponibilités
+  placements:              40.493592    # CD  valeurs mobilières de placement
+
+2023:
+  ventes:                  979.086556   # FL  chiffre d'affaires net
+  production:              978.600794   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           837.829932   # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0            # FO  subventions d'exploitation
+  reprises_et_transferts:  73.106735    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     30.080228    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         7.801527     # FQ  autres produits
+  impots_taxes:            4.496001     # FX  impôts, taxes et versements assimilés
+  salaires:                66.84068     # FY  salaires et traitements
+  charges_sociales:        29.374254    # FZ  charges sociales
+  amortissements:          9.051759     # GA  dotations aux amortissements
+  dotations_actif:         17.594097    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       16.110076    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          6.740926     # GE  autres charges
+  resultat_exploitation:   71.471331    # GG  résultat d'exploitation
+  resultat_financier:      15.307796    # GV  résultat financier
+  resultat_net:            65.365379    # HN  bénéfice ou perte
+  capitaux_propres:        167.77533    # DL  capitaux propres
+  provisions:              39.613927    # DR  provisions pour risques et charges
+  fournisseurs:            111.285619   # DX  dettes fournisseurs
+  disponibilites:          138.765663   # CF  disponibilités
+  placements:              10.450373    # CD  valeurs mobilières de placement
+
+2024:
+  ventes:                  799.216263   # FL  chiffre d'affaires net
+  production:              793.197313   # FL+FM+FN  production de l'exercice (vendue, stockée, immobilisée)
+  consommations:           674.9845     # FS+FT+FU+FV+FW  achats consommés et charges externes
+  subventions:             0.17777      # FO  subventions d'exploitation
+  reprises_et_transferts:  77.518471    # FP  reprises sur amortissements et provisions, transferts de charges
+  reprises_provisions:     35.214808    # UF  reprises de provisions d'exploitation (tableau des provisions), comprises dans FP
+  autres_produits:         7.962793     # FQ  autres produits
+  impots_taxes:            4.255706     # FX  impôts, taxes et versements assimilés
+  salaires:                67.288809    # FY  salaires et traitements
+  charges_sociales:        28.264396    # FZ  charges sociales
+  amortissements:          9.839946     # GA  dotations aux amortissements
+  dotations_actif:         19.243619    # GC  dotations aux provisions sur actif circulant
+  dotations_risques:       11.584808    # GD  dotations aux provisions pour risques et charges
+  autres_charges:          5.98806      # GE  autres charges
+  resultat_exploitation:   57.406504    # GG  résultat d'exploitation
+  resultat_financier:      12.111615    # GV  résultat financier
+  resultat_net:            55.250485    # HN  bénéfice ou perte
+  capitaux_propres:        160.506338   # DL  capitaux propres
+  provisions:              35.77582     # DR  provisions pour risques et charges
+  dettes:                  332.7        # EC  total des dettes ; arrondi au dixième de M€
+  fournisseurs:            84.38908     # DX  dettes fournisseurs
+  disponibilites:          67.233975    # CF  disponibilités
+  placements:              68.063044    # CD  valeurs mobilières de placement

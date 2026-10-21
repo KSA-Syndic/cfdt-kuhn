@@ -1,0 +1,308 @@
+{{- /*
+  kuhn/donnees.html — LA source des chiffres KUHN du site. Les formules ne sont écrites qu'ICI.
+  Appel : {{ $d := partialCached "kuhn/donnees.html" . "kuhn" }}
+
+  Lit data/kuhn/*.yaml et renvoie :
+    meta        annees (exercices affichés), toutesAnnees, premierExercice, dernierExercice,
+                actions, estimations [{exercice, champ, methode}], dividendes {de, a} (années de versement publiées)
+    exercices   par année (clé texte) : lignes de sas.yaml + calculs ci-dessous (M€ ; marges en %)
+    filiales    par année : {liste (ventes décroissantes), totaux {ventes, dividendes, prets, dividendes_complets}}
+    groupe      groupe.yaml (KUHN Group, Bucher)            concurrents  concurrents.yaml
+    secteur     KUHN Group + concurrents : ca, marge, indice (record = 100), record, annees
+    affaire     affaire.yaml (« L'affaire des 2,6 % ») + exercice et comparaison calculés
+
+  Contrôles à la compilation :
+    errorf  champ obligatoire manquant (exercices affichés), dividende absent, méthode inconnue
+    warnf   identité comptable qui ne tombe pas juste, dividende non rond par action, année manquante
+*/ -}}
+{{- $src := site.Data.kuhn -}}
+{{- $reg := $src.reglages -}}
+{{- $premier := int $reg.premier_exercice -}}
+{{- $actions := float $reg.actions -}}
+{{- $champs := slice "ventes" "production" "consommations" "subventions" "reprises_et_transferts" "reprises_provisions" "autres_produits" "impots_taxes" "salaires" "charges_sociales" "amortissements" "dotations_actif" "dotations_risques" "autres_charges" "resultat_exploitation" "resultat_financier" "resultat_net" "capitaux_propres" "provisions" "fournisseurs" "disponibilites" "placements" -}}
+{{- $facultatifs := slice "dettes" -}}
+{{- $S := newScratch -}}
+{{- $toutes := slice -}}
+{{- $annees := slice -}}
+
+{{- /* ---------- 1. Comptes de KUHN SAS : un calcul par exercice ---------- */ -}}
+{{- range $cle, $b := $src.sas -}}
+  {{- $y := int $cle -}}
+  {{- $manque := slice -}}
+  {{- range $champs -}}{{- if eq (index $b .) nil -}}{{- $manque = $manque | append . -}}{{- end -}}{{- end -}}
+  {{- if $manque -}}
+    {{- if ge $y $premier -}}
+      {{- errorf "[kuhn] data/kuhn/sas.yaml, exercice %d : champ(s) obligatoire(s) manquant(s) : %s" $y (delimit $manque ", ") -}}
+    {{- end -}}
+    {{- continue -}}
+  {{- end -}}
+  {{- $x := newScratch -}}
+  {{- $x.Set "annee" $y -}}
+  {{- range $champs -}}{{- $x.Set . (float (index $b .)) -}}{{- end -}}
+  {{- range $c := $facultatifs -}}{{- with index $b $c -}}{{- $x.Set $c (float .) -}}{{- end -}}{{- end -}}
+
+  {{- $ventes := float $b.ventes -}}
+  {{- $rex := float $b.resultat_exploitation -}}
+  {{- $rn := float $b.resultat_net -}}
+  {{- $amort := float $b.amortissements -}}
+  {{- $reprises := float $b.reprises_provisions -}}
+  {{- $va := sub (float $b.production) (float $b.consommations) -}}
+  {{- $personnel := add (float $b.salaires) (float $b.charges_sociales) -}}
+  {{- $dotations := add (float $b.dotations_actif) (float $b.dotations_risques) -}}
+  {{- $transferts := sub (float $b.reprises_et_transferts) $reprises -}}
+  {{- /* EBITDA à méthode constante : transferts de charges inclus, provisions neutralisées */ -}}
+  {{- $ebitda := sub (add (add $rex $amort) $dotations) $reprises -}}
+  {{- /* EBE comptable strict : valeur ajoutée + subventions − impôts et taxes − personnel */ -}}
+  {{- $ebe := sub (sub (add $va (float $b.subventions)) (float $b.impots_taxes)) $personnel -}}
+
+  {{- /* Contrôle : le résultat d'exploitation se retrouve à partir de l'EBE */ -}}
+  {{- $rexCalc := add (add $ebe (float $b.reprises_et_transferts)) (float $b.autres_produits) -}}
+  {{- $rexCalc = sub (sub (sub (sub $rexCalc $amort) (float $b.dotations_actif)) (float $b.dotations_risques)) (float $b.autres_charges) -}}
+  {{- if gt (math.Abs (sub $rexCalc $rex)) 0.001 -}}
+    {{- warnf "[kuhn] data/kuhn/sas.yaml, exercice %d : le résultat d'exploitation (GG = %.3f M€) ne se retrouve pas à partir des autres lignes (%.3f M€) : vérifier la saisie." $y $rex $rexCalc -}}
+  {{- end -}}
+  {{- if or (lt $reprises 0.0) (gt $reprises (float $b.reprises_et_transferts)) -}}
+    {{- warnf "[kuhn] data/kuhn/sas.yaml, exercice %d : reprises_provisions (%.3f) doit être comprise entre 0 et reprises_et_transferts (FP, %.3f)." $y $reprises (float $b.reprises_et_transferts) -}}
+  {{- end -}}
+
+  {{- $x.Set "valeur_ajoutee" $va -}}
+  {{- $x.Set "achats" (sub $ventes $va) -}}
+  {{- $x.Set "personnel" $personnel -}}
+  {{- $x.Set "dotations" $dotations -}}
+  {{- $x.Set "transferts" $transferts -}}
+  {{- $x.Set "effet_provisions" (sub $reprises $dotations) -}}
+  {{- $x.Set "ebitda" $ebitda -}}
+  {{- $x.Set "ebitda_sans_transferts" (sub $ebitda $transferts) -}}
+  {{- $x.Set "ebe" $ebe -}}
+  {{- $x.Set "refacturations_divers" (add (sub $ebitda $va) $personnel) -}}
+  {{- $x.Set "usure_provisions" (sub $rex $ebitda) -}}
+  {{- $x.Set "financier_impots" (sub $rn $rex) -}}
+  {{- $x.Set "tresorerie" (add (float $b.disponibilites) (float $b.placements)) -}}
+  {{- $x.Set "marge_ebitda" (mul (div $ebitda $ventes) 100) -}}
+  {{- $x.Set "marge_ebitda_sans_transferts" (mul (div (sub $ebitda $transferts) $ventes) 100) -}}
+  {{- $x.Set "marge_ebe" (mul (div $ebe $ventes) 100) -}}
+  {{- $x.Set "marge_exploitation" (mul (div $rex $ventes) 100) -}}
+  {{- $x.Set "marge_nette" (mul (div $rn $ventes) 100) -}}
+  {{- $x.Set "poids_personnel" (mul (div $personnel $ventes) 100) -}}
+  {{- $x.Set "part_personnel_va" (mul (div $personnel $va) 100) -}}
+  {{- $S.SetInMap "x" (string $y) $x -}}
+  {{- $toutes = $toutes | append $y -}}
+  {{- if ge $y $premier -}}{{- $annees = $annees | append $y -}}{{- end -}}
+{{- end -}}
+{{- $toutes = sort $toutes -}}
+{{- $annees = sort $annees -}}
+{{- if not $annees -}}{{- errorf "[kuhn] data/kuhn/sas.yaml : aucun exercice complet à partir de %d." $premier -}}{{- end -}}
+{{- range $i, $y := $annees -}}
+  {{- if and (gt $i 0) (ne $y (add (index $annees (sub $i 1)) 1)) -}}
+    {{- warnf "[kuhn] data/kuhn/sas.yaml : l'exercice %d manque (les séries sautent une année)." (sub $y 1) -}}
+  {{- end -}}
+{{- end -}}
+{{- $dernier := index $annees (sub (len $annees) 1) -}}
+{{- $X := $S.Get "x" -}}
+{{- if not ((index $X (string $dernier)).Get "dettes") -}}
+  {{- warnf "[kuhn] data/kuhn/sas.yaml, exercice %d : « dettes » (EC) manque ; « Lire les comptes en images » affichera « n.c. »." $dernier -}}
+{{- end -}}
+
+{{- /* ---------- 2. Variations d'une année sur l'autre, dividendes ---------- */ -}}
+{{- $estimations := slice -}}
+{{- $divPublies := slice -}}
+{{- range $y := $toutes -}}
+  {{- $x := index $X (string $y) -}}
+  {{- $rn := $x.Get "resultat_net" -}}
+  {{- with index $X (string (sub $y 1)) -}}
+    {{- $x.Set "variation_ventes" (mul (sub (div ($x.Get "ventes") (.Get "ventes")) 1) 100) -}}
+    {{- $x.Set "variation_ebitda" (mul (sub (div ($x.Get "ebitda") (.Get "ebitda")) 1) 100) -}}
+    {{- $x.Set "variation_resultat_net" (mul (sub (div $rn (.Get "resultat_net")) 1) 100) -}}
+  {{- end -}}
+  {{- $dv := index $src.dividendes (string $y) -}}
+  {{- if not $dv -}}
+    {{- if ge $y $premier -}}
+      {{- errorf "[kuhn] data/kuhn/dividendes.yaml : exercice %d manquant (montant, ou « estime: true » et une méthode)." $y -}}
+    {{- end -}}
+    {{- continue -}}
+  {{- end -}}
+  {{- $montant := 0.0 -}}
+  {{- if $dv.estime -}}
+    {{- if ne $dv.methode "taux-moyen" -}}
+      {{- errorf "[kuhn] data/kuhn/dividendes.yaml, exercice %d : méthode d'estimation inconnue « %v » (prévue : taux-moyen)." $y $dv.methode -}}
+    {{- end -}}
+    {{- /* taux de distribution moyen des « sur » derniers exercices au dividende publié */ -}}
+    {{- $n := int ($dv.sur | default 4) -}}
+    {{- $somme := 0.0 -}}{{- $pris := slice -}}
+    {{- range $p := sort $toutes "value" "desc" -}}
+      {{- $xp := index $X (string $p) -}}
+      {{- if and (lt $p $y) (lt (len $pris) $n) (eq ($xp.Get "dividende_estime") false) -}}
+        {{- $somme = add $somme ($xp.Get "taux_distribution") -}}
+        {{- $pris = $pris | append $p -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if lt (len $pris) $n -}}
+      {{- errorf "[kuhn] data/kuhn/dividendes.yaml, exercice %d : il faut %d exercices précédents au dividende publié pour l'estimer." $y $n -}}
+    {{- end -}}
+    {{- $taux := div $somme (float $n) -}}
+    {{- $montant = mul $rn (div $taux 100) -}}
+    {{- $x.Set "dividende_estime" true -}}
+    {{- $x.Set "dividende_methode" (dict "nom" "taux-moyen" "sur" $n "taux" $taux "de" (index (sort $pris) 0) "a" (index (sort $pris) (sub $n 1))) -}}
+    {{- $estimations = $estimations | append (dict "exercice" $y "champ" "dividende" "methode" ($x.Get "dividende_methode")) -}}
+  {{- else -}}
+    {{- $montant = float $dv.montant -}}
+    {{- $pa := div (mul $montant 1000000) $actions -}}
+    {{- if gt (math.Abs (sub $pa (math.Round $pa))) 0.01 -}}
+      {{- warnf "[kuhn] data/kuhn/dividendes.yaml, exercice %d : %.2f € par action, pas un montant rond (vérifier le montant ou le nombre d'actions)." $y $pa -}}
+    {{- end -}}
+    {{- $x.Set "dividende_estime" false -}}
+    {{- $x.Set "dividende_par_action" (math.Round $pa) -}}
+  {{- end -}}
+  {{- $x.Set "dividende" $montant -}}
+  {{- $x.Set "dividende_verse_en" (add $y 1) -}}
+  {{- $x.Set "taux_distribution" (mul (div $montant $rn) 100) -}}
+  {{- $x.Set "garde" (sub $rn $montant) -}}
+{{- end -}}
+
+{{- /* années de versement des dividendes publiés (y compris sur des exercices non détaillés) */ -}}
+{{- range $cle, $dv := $src.dividendes -}}
+  {{- if not $dv.estime -}}{{- $divPublies = $divPublies | append (add (int $cle) 1) -}}{{- end -}}
+{{- end -}}
+{{- $divPublies = sort $divPublies -}}
+
+{{- $exercices := dict -}}
+{{- range $y := $toutes -}}{{- $exercices = merge $exercices (dict (string $y) (index $X (string $y)).Values) -}}{{- end -}}
+
+{{- /* ---------- 3. Filiales : liste triée et totaux par année ---------- */ -}}
+{{- $filiales := dict -}}
+{{- range $cle, $bloc := $src.filiales -}}
+  {{- $liste := slice -}}
+  {{- $tv := 0.0 -}}{{- $td := 0.0 -}}{{- $tp := 0.0 -}}{{- $complet := true -}}
+  {{- range $nom, $f := $bloc -}}
+    {{- /* nombres en float (un montant entier du YAML fausserait le tri), null conservé */ -}}
+    {{- $ligne := dict "nom" $nom -}}
+    {{- range $k, $v := $f -}}
+      {{- if eq $v nil -}}{{- $ligne = merge $ligne (dict $k nil) -}}{{- else -}}{{- $ligne = merge $ligne (dict $k (float $v)) -}}{{- end -}}
+    {{- end -}}
+    {{- $liste = $liste | append $ligne -}}
+    {{- with $f.ventes -}}{{- $tv = add $tv (float .) -}}{{- end -}}
+    {{- if eq $f.dividende nil -}}{{- $complet = false -}}{{- else -}}{{- $td = add $td (float $f.dividende) -}}{{- end -}}
+    {{- with $f.pret -}}{{- $tp = add $tp (float .) -}}{{- end -}}
+  {{- end -}}
+  {{- $filiales = merge $filiales (dict $cle (dict
+      "liste" (sort $liste "ventes" "desc")
+      "totaux" (dict "ventes" $tv "dividendes" $td "prets" $tp "dividendes_complets" $complet)
+  )) -}}
+{{- end -}}
+
+{{- /* ---------- 4. Le secteur : KUHN Group (Bucher) et concurrents, indexés sur leur record ---------- */ -}}
+{{- $series := slice (dict "nom" $src.groupe.nom "unite" $src.groupe.unite "couleur" $src.groupe.couleur "note" $src.groupe.note "exercices" $src.groupe.exercices "champ" "ca_eur") -}}
+{{- range $src.concurrents -}}
+  {{- $series = $series | append (dict "nom" .nom "unite" .unite "couleur" .couleur "note" .note "exercices" .exercices "champ" "ca") -}}
+{{- end -}}
+{{- $secteur := slice -}}
+{{- $anneesSecteur := slice -}}
+{{- range $series -}}
+  {{- $champ := .champ -}}
+  {{- $record := 0.0 -}}{{- $anneeRecord := 0 -}}
+  {{- $ca := dict -}}{{- $marge := dict -}}{{- $indice := dict -}}
+  {{- range $k, $e := .exercices -}}
+    {{- $anneesSecteur = $anneesSecteur | append (int $k) -}}
+    {{- with index $e $champ -}}
+      {{- $ca = merge $ca (dict $k (float .)) -}}
+      {{- if gt (float .) $record -}}{{- $record = float . -}}{{- $anneeRecord = int $k -}}{{- end -}}
+    {{- end -}}
+    {{- with $e.marge -}}{{- $marge = merge $marge (dict $k (float .)) -}}{{- end -}}
+  {{- end -}}
+  {{- range $k, $v := $ca -}}{{- $indice = merge $indice (dict $k (mul (div $v $record) 100)) -}}{{- end -}}
+  {{- $secteur = $secteur | append (dict "nom" .nom "unite" .unite "couleur" .couleur "note" .note "ca" $ca "marge" $marge "indice" $indice "record" $anneeRecord) -}}
+{{- end -}}
+
+{{- /* ---------- 5. « L'affaire des 2,6 % » : exercice désigné une seule fois ---------- */ -}}
+{{- range slice $src.affaire.annee $src.affaire.comparaison -}}
+  {{- if not (index $exercices (string .)) -}}
+    {{- errorf "[kuhn] data/kuhn/affaire.yaml : l'exercice %v n'existe pas dans data/kuhn/sas.yaml." . -}}
+  {{- end -}}
+{{- end -}}
+{{- $xa := index $exercices (string $src.affaire.annee) -}}
+{{- $xc := index $exercices (string $src.affaire.comparaison) -}}
+{{- $pa := index $src.affaire.pappers (string $src.affaire.annee) -}}
+{{- $pc := index $src.affaire.pappers (string $src.affaire.comparaison) -}}
+{{- $aff := merge $src.affaire (dict "calculs" (dict
+    "variation_ebitda" (mul (sub (div $xa.ebitda $xc.ebitda) 1) 100)
+    "rapport_pappers" (div (float $pc.ebitda) (float $pa.ebitda))
+)) -}}
+
+{{- /* ---------- 6. Repères calculés pour les remarques des pages ---------- */ -}}
+{{- /* extremes.CHAMP = {max: {annee, valeur, ecart_dernier (%)}, min: {annee, valeur}} sur les exercices
+       affichés ; les champs du dividende ne tiennent compte que des montants publiés. */ -}}
+{{- $extremes := dict -}}
+{{- $champsDividende := slice "dividende" "taux_distribution" "garde" -}}
+{{- $vDernier := index $X (string $dernier) -}}
+{{- range $c := slice "ventes" "valeur_ajoutee" "ebitda" "marge_ebitda" "marge_exploitation" "resultat_exploitation" "resultat_net" "poids_personnel" "effet_provisions" "provisions" "tresorerie" "capitaux_propres" "dividende" "taux_distribution" "garde" -}}
+  {{- $max := dict -}}{{- $min := dict -}}
+  {{- range $y := $annees -}}
+    {{- $xe := index $X (string $y) -}}
+    {{- if and (in $champsDividende $c) ($xe.Get "dividende_estime") -}}{{- continue -}}{{- end -}}
+    {{- $v := $xe.Get $c -}}
+    {{- if or (not $max) (gt $v $max.valeur) -}}{{- $max = dict "annee" $y "valeur" $v -}}{{- end -}}
+    {{- if or (not $min) (lt $v $min.valeur) -}}{{- $min = dict "annee" $y "valeur" $v -}}{{- end -}}
+  {{- end -}}
+  {{- $estimeDernier := and (in $champsDividende $c) ($vDernier.Get "dividende_estime") -}}
+  {{- if and $max (ne $max.valeur 0.0) (not $estimeDernier) -}}
+    {{- $max = merge $max (dict "ecart_dernier" (mul (sub (div ($vDernier.Get $c) $max.valeur) 1) 100)) -}}
+  {{- end -}}
+  {{- $extremes = merge $extremes (dict $c (dict "max" $max "min" $min)) -}}
+{{- end -}}
+
+{{- /* Dividendes versés depuis le premier exercice affiché : années de versement et fourchette */ -}}
+{{- $verses := slice -}}
+{{- range $y := $toutes -}}
+  {{- $xe := index $X (string $y) -}}
+  {{- if and (not ($xe.Get "dividende_estime")) (ge (add $y 1) $premier) -}}{{- $verses = $verses | append $xe.Values -}}{{- end -}}
+{{- end -}}
+{{- $verses = sort $verses "dividende" -}}
+{{- $versesAnnees := sort (apply $verses "index" "." "dividende_verse_en") -}}
+
+{{- /* Filiales : fourchette des dividendes reçus par KUHN SAS (années complètes) */ -}}
+{{- $filDiv := slice -}}
+{{- range $y := $annees -}}
+  {{- with index $filiales (string $y) -}}
+    {{- if .totaux.dividendes_complets -}}{{- $filDiv = $filDiv | append (dict "annee" $y "valeur" .totaux.dividendes) -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $filialesDividendes := dict -}}
+{{- with $filDiv -}}
+  {{- $tri := sort . "valeur" -}}
+  {{- $filialesDividendes = dict "de" (index . 0).annee "min" (index $tri 0).valeur "max" (index $tri (sub (len $tri) 1)).valeur -}}
+{{- end -}}
+{{- if not $verses -}}{{- errorf "[kuhn] data/kuhn/dividendes.yaml : aucun dividende publié." -}}{{- end -}}
+
+{{- /* Commandes de KUHN Group : la dernière variation publiée qui s'arrête au plus tard au dernier exercice */ -}}
+{{- $commandes := dict -}}
+{{- range $src.groupe.commandes -}}
+  {{- if and (le (int .a) $dernier) (or (not $commandes) (gt (int .a) (int $commandes.a))) -}}{{- $commandes = . -}}{{- end -}}
+{{- end -}}
+
+{{- $meta := dict
+    "annees" $annees
+    "toutesAnnees" $toutes
+    "premierExercice" (index $annees 0)
+    "dernierExercice" $dernier
+    "actions" $actions
+    "estimations" $estimations
+    "dividendes" (dict "de" (index $divPublies 0) "a" (index $divPublies (sub (len $divPublies) 1)))
+    "dividendesVerses" (dict
+        "de" (index $versesAnnees 0)
+        "a" (index $versesAnnees (sub (len $versesAnnees) 1))
+        "min" (index $verses 0).dividende
+        "max" (index $verses (sub (len $verses) 1)).dividende)
+    "filialesDividendes" $filialesDividendes
+    "extremes" $extremes
+    "commandes" $commandes
+    "secteur" (dict "annees" (sort (uniq $anneesSecteur)))
+-}}
+{{- return dict
+    "meta" $meta
+    "exercices" $exercices
+    "filiales" $filiales
+    "groupe" $src.groupe
+    "concurrents" $src.concurrents
+    "secteur" $secteur
+    "affaire" $aff
+-}}

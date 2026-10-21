@@ -1,0 +1,102 @@
+# Filiales de KUHN SAS, un bloc par exercice.
+# Sources : annexe « Filiales et participations » des comptes de KUHN SAS (2016-2020, 2022-2024),
+# comptes sociaux et procès-verbaux d'affectation déposés par les filiales, pages publiques Pappers
+# (montants arrondis pour certains exercices). Les filiales étrangères n'apparaissent qu'à travers
+# l'annexe de KUHN SAS (d'où l'absence de l'exercice 2021).
+# Montants en millions d'euros ; null = donnée non établie (différent de zéro).
+#   ventes            chiffre d'affaires de la filiale
+#   resultat          résultat net de la filiale
+#   capitaux_propres  renseignés à partir de 2021
+#   dettes            dettes de la filiale
+#   pret              encours au 31 décembre des prêts et avances de KUHN SAS (un stock, pas un flux)
+#   dividende         dividende encaissé par KUHN SAS dans l'année (sur le résultat de l'année précédente)
+# Contifonte 2021 : dividende non établi (sources contradictoires : 0,165 ou 0,24 M€).
+
+2016:
+  "Huard":          { ventes: 101.550619, resultat: 7.697848, capitaux_propres: null, dettes: null, pret: 0, dividende: 7.49776 }
+  "Audureau":       { ventes: 48.057951, resultat: 2.348037, capitaux_propres: null, dettes: null, pret: 2.142462, dividende: 1.86847 }
+  "MGM":            { ventes: 17.226888, resultat: 0.874163, capitaux_propres: null, dettes: null, pret: 4.824297, dividende: 0 }
+  "Parts":          { ventes: 15.000076, resultat: 0.453294, capitaux_propres: null, dettes: null, pret: 6.225777, dividende: 0 }
+  "Blanchard":      { ventes: 20.477867, resultat: 0.414694, capitaux_propres: null, dettes: null, pret: 4.670847, dividende: 0 }
+  "Maszyny (PL)":   { ventes: 24.619845, resultat: -0.967329, capitaux_propres: null, dettes: null, pret: 0, dividende: 0.179917 }
+
+2017:
+  "Huard":          { ventes: 110.734998, resultat: 5.819868, capitaux_propres: null, dettes: null, pret: 0, dividende: 7.049977 }
+  "Audureau":       { ventes: 60.35595, resultat: 2.370665, capitaux_propres: null, dettes: null, pret: 2.139995, dividende: 1.979992 }
+  "MGM":            { ventes: 21.184164, resultat: 0.915642, capitaux_propres: null, dettes: null, pret: 3.110135, dividende: 0 }
+  "Parts":          { ventes: 16.940403, resultat: 0.095226, capitaux_propres: null, dettes: null, pret: 4.339357, dividende: 0 }
+  "Blanchard":      { ventes: 16.947503, resultat: -0.767144, capitaux_propres: null, dettes: null, pret: 0, dividende: 0 }
+  "Maszyny (PL)":   { ventes: 33.183935, resultat: 0.315368, capitaux_propres: null, dettes: null, pret: 0.001914, dividende: 0 }
+
+2018:
+  "Huard":          { ventes: 115.299591, resultat: 6.494421, capitaux_propres: null, dettes: null, pret: 0, dividende: 5.059993 }
+  "Audureau":       { ventes: 72.313421, resultat: 2.71114, capitaux_propres: null, dettes: null, pret: 4.586424, dividende: 1.869993 }
+  "MGM":            { ventes: 22.753049, resultat: 0.742644, capitaux_propres: null, dettes: null, pret: 3.650469, dividende: 0 }
+  "Parts":          { ventes: 16.258642, resultat: 0.457931, capitaux_propres: null, dettes: null, pret: 1.194192, dividende: 0 }
+  "Artec":          { ventes: 6.893885, resultat: 0.183674, capitaux_propres: null, dettes: null, pret: 0.381824, dividende: 0.10982 }
+  "Blanchard":      { ventes: 21.500855, resultat: 1.44822, capitaux_propres: null, dettes: null, pret: 5.174856, dividende: 0 }
+  "Maszyny (PL)":   { ventes: 41.653267, resultat: 0.262442, capitaux_propres: null, dettes: null, pret: 0, dividende: 0 }
+
+2019:
+  "Huard":          { ventes: 111.162207, resultat: 5.631737, capitaux_propres: null, dettes: null, pret: 0, dividende: 4.799984 }
+  "Audureau":       { ventes: 76.872694, resultat: 2.857672, capitaux_propres: null, dettes: null, pret: 6.609323, dividende: 2.309979 }
+  "MGM":            { ventes: 23.236082, resultat: 0.254494, capitaux_propres: null, dettes: null, pret: 5.848593, dividende: 0 }
+  "Parts":          { ventes: 17.416908, resultat: 0.692691, capitaux_propres: null, dettes: null, pret: 3.859343, dividende: 0 }
+  "Artec":          { ventes: 22.073943, resultat: 0.697712, capitaux_propres: null, dettes: null, pret: 2.254221, dividende: 0.0999 }
+  "Blanchard":      { ventes: 20.682595, resultat: -0.751009, capitaux_propres: null, dettes: null, pret: 6.516115, dividende: 0 }
+  "Contifonte":     { ventes: 7.920174, resultat: 0.252286, capitaux_propres: null, dettes: null, pret: null, dividende: 0.18 }
+  "Maszyny (PL)":   { ventes: 42.731213, resultat: 0.271672, capitaux_propres: null, dettes: null, pret: 0.867551, dividende: 0 }
+
+2020:
+  "Huard":          { ventes: 100.896483, resultat: 2.312925, capitaux_propres: null, dettes: null, pret: 6.249705, dividende: 5.1 }
+  "Audureau":       { ventes: 69.455807, resultat: 3.833224, capitaux_propres: null, dettes: null, pret: 2.601336, dividende: 2.43 }
+  "MGM":            { ventes: 20.009137, resultat: -1.546597, capitaux_propres: null, dettes: null, pret: 18.976387, dividende: 0 }
+  "Parts":          { ventes: 17.63392, resultat: 1.176888, capitaux_propres: null, dettes: null, pret: 0, dividende: 0.49 }
+  "Artec":          { ventes: 20.41216, resultat: 0.209197, capitaux_propres: null, dettes: null, pret: 1.062431, dividende: 0.3 }
+  "Blanchard":      { ventes: 18.560271, resultat: -0.520682, capitaux_propres: null, dettes: null, pret: 3.701932, dividende: 0 }
+  "Contifonte":     { ventes: 5.454288, resultat: 0.175511, capitaux_propres: null, dettes: null, pret: null, dividende: 0.24 }
+  "Maszyny (PL)":   { ventes: 42.115311, resultat: 0.520222, capitaux_propres: null, dettes: null, pret: 0.000375, dividende: 0 }
+
+2021:
+  "Huard":          { ventes: 123, resultat: 6.71, capitaux_propres: 46.7, dettes: 10.5, pret: null, dividende: 2.01 }
+  "Audureau":       { ventes: 75.5, resultat: 3.93, capitaux_propres: 19.5, dettes: 0.677, pret: null, dividende: null }
+  "Artec":          { ventes: 16.8, resultat: -1.53, capitaux_propres: 3.74, dettes: 4.97, pret: null, dividende: 0.15 }
+  "MGM":            { ventes: 28.105217, resultat: 1.016185, capitaux_propres: null, dettes: null, pret: null, dividende: 0 }
+  "Parts":          { ventes: 17.850434, resultat: 0.990974, capitaux_propres: null, dettes: null, pret: null, dividende: 1 }
+  "Blanchard":      { ventes: 20.451584, resultat: -0.355785, capitaux_propres: null, dettes: null, pret: null, dividende: 0 }
+  "Contifonte":     { ventes: 7.770292, resultat: 0.253076, capitaux_propres: null, dettes: null, pret: null, dividende: null }
+
+2022:
+  "Huard":          { ventes: 137, resultat: 5.646047, capitaux_propres: 46.2, dettes: 20.8, pret: 19.750266, dividende: 6.21 }
+  "Audureau":       { ventes: 84.273158, resultat: 2.548175, capitaux_propres: 18.5, dettes: 22.6, pret: 21.937892, dividende: 3.74 }
+  "MGM":            { ventes: 31.521377, resultat: 0.692712, capitaux_propres: 7.8, dettes: 15, pret: 15.026739, dividende: 0.5 }
+  "Parts":          { ventes: 19.736919, resultat: 1.156312, capitaux_propres: 9.55, dettes: 0.066, pret: 0, dividende: 0.8 }
+  "Artec":          { ventes: 21.853912, resultat: -0.622545, capitaux_propres: 3.12, dettes: 10.5, pret: 10.543058, dividende: 0 }
+  "Blanchard":      { ventes: 21.896843, resultat: 0.841836, capitaux_propres: 1.83, dettes: 4.857207, pret: 4.857207, dividende: 0 }
+  "Contifonte":     { ventes: 10.3, resultat: 0.343, capitaux_propres: 2.27, dettes: 0, pret: null, dividende: 0.24 }
+  "Maszyny (PL)":   { ventes: 59.687562, resultat: 1.013365, capitaux_propres: null, dettes: null, pret: 2.203419, dividende: 0.81591 }
+  "Tianjin (CN)":   { ventes: 6.669877, resultat: 0.347056, capitaux_propres: null, dettes: null, pret: 0, dividende: 0 }
+
+2023:
+  "Huard":          { ventes: 165.221518, resultat: 7.950732, capitaux_propres: 48.8, dettes: 21.4, pret: 20.247442, dividende: 5.19 }
+  "Audureau":       { ventes: 94.831804, resultat: 4.822859, capitaux_propres: 20.9, dettes: 25.3, pret: 24.440451, dividende: 2.42 }
+  "MGM":            { ventes: 32.20692, resultat: 0.67958, capitaux_propres: 7.88, dettes: 16.1, pret: 16.074115, dividende: 0.25 }
+  "Parts":          { ventes: 19.862453, resultat: 1.272365, capitaux_propres: 9.56, dettes: 0.014, pret: 0, dividende: 1 }
+  "Artec":          { ventes: 29.345359, resultat: 0.390677, capitaux_propres: 3.51, dettes: 11.2, pret: 11.155052, dividende: 0 }
+  "Blanchard":      { ventes: 21.836857, resultat: 1.114061, capitaux_propres: 3.039, dettes: 2.968861, pret: 2.968861, dividende: 0 }
+  "Contifonte":     { ventes: 10.1, resultat: 0.369, capitaux_propres: 2.31, dettes: 0.00109, pret: null, dividende: 0.33 }
+  "Maszyny (PL)":   { ventes: 56.90598, resultat: 1.109991, capitaux_propres: null, dettes: null, pret: 0, dividende: 0.588293 }
+  "Mezo Gep (HU)":  { ventes: 5.368596, resultat: 0.121109, capitaux_propres: null, dettes: null, pret: 3.048626, dividende: 0 }
+  "Tianjin (CN)":   { ventes: 6.856599, resultat: -0.197164, capitaux_propres: null, dettes: null, pret: 0, dividende: 0 }
+
+2024:
+  "Huard":          { ventes: 129.556373, resultat: 0.598697, capitaux_propres: 44.2, dettes: 21.8, pret: 20.370667, dividende: 7.35 }
+  "Audureau":       { ventes: 96.279397, resultat: 5.62, capitaux_propres: 22.2, dettes: 14.3, pret: 13.283683, dividende: 4.4 }
+  "MGM":            { ventes: 27.834213, resultat: 0.626822, capitaux_propres: 8.06, dettes: 11.6, pret: 11.611861, dividende: 0.25 }
+  "Parts":          { ventes: 19.471316, resultat: 1.674309, capitaux_propres: 10, dettes: 0.012, pret: 0, dividende: 1 }
+  "Artec":          { ventes: 26.549924, resultat: -1.839655, capitaux_propres: 1.67, dettes: 11, pret: 11.040651, dividende: 0 }
+  "Blanchard":      { ventes: 20.267423, resultat: 1.423227, capitaux_propres: 4.461, dettes: 0.655205, pret: 0.655205, dividende: 0 }
+  "Contifonte":     { ventes: 7.79, resultat: 0.224, capitaux_propres: 2.2, dettes: 0, pret: null, dividende: 0.33 }
+  "Maszyny (PL)":   { ventes: 43.02536, resultat: 1.644401, capitaux_propres: null, dettes: null, pret: 0.170031, dividende: 0 }
+  "Mezo Gep (HU)":  { ventes: 5.083462, resultat: -0.382632, capitaux_propres: null, dettes: null, pret: 4.407125, dividende: 0 }
+  "Tianjin (CN)":   { ventes: 7.092841, resultat: -0.567658, capitaux_propres: null, dettes: null, pret: 0, dividende: 0 }

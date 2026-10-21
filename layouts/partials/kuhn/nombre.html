@@ -1,0 +1,44 @@
+{{- /*
+  kuhn/nombre.html — met en forme une valeur à la française (côté Hugo ; côté pages : KuhnOutils.nombre).
+  Appel : partial "kuhn/nombre.html" (dict "v" 42.3 "f" "1" "defaut" "n.c.")
+    f = "0" | "1" | "2"     nombre à n décimales : 1 217 ; 42,3 ; −1,8 (espace fine insécable, vrai signe moins)
+        "s0" | "s1" | "s2"  idem avec signe : +4,4 ; −14,5 ; 0,0
+        "z0" | "z1" | "z2"  idem, mais « — » pour une valeur nulle à l'arrondi
+        autre / absent      la valeur telle quelle (texte, année)
+        suffixe « m » ou « p »  ajoute « M€ » ou « % » à un nombre (pas au « — » ni au défaut) : 1m, z1m, s1p
+    defaut                  texte affiché si la valeur manque (nil) ; « — » par défaut
+*/ -}}
+{{- $v := .v -}}
+{{- $f := .f | default "" -}}
+{{- $res := .defaut | default "—" -}}
+{{- $unite := "" -}}
+{{- if hasSuffix $f "m" -}}{{- $unite = " M€" -}}{{- $f = strings.TrimSuffix "m" $f -}}{{- end -}}
+{{- if hasSuffix $f "p" -}}{{- $unite = " %" -}}{{- $f = strings.TrimSuffix "p" $f -}}{{- end -}}
+{{- if ne $v nil -}}
+  {{- if in (slice "0" "1" "2" "s0" "s1" "s2" "z0" "z1" "z2") $f -}}
+    {{- $dec := int (substr $f -1) -}}
+    {{- $x := float $v -}}
+    {{- $p := math.Pow 10 $dec -}}
+    {{- $r := div (math.Round (mul (math.Abs $x) $p)) $p -}}
+    {{- if and (hasPrefix $f "z") (eq $r 0.0) -}}
+      {{- $res = "—" -}}
+    {{- else -}}
+      {{- $parts := split (printf (printf "%%.%df" $dec) $r) "." -}}
+      {{- $ent := index $parts 0 -}}
+      {{- if gt (len $ent) 3 -}}
+        {{- $ent = printf "%s %s" (substr $ent 0 (sub (len $ent) 3)) (substr $ent -3) -}}
+      {{- end -}}
+      {{- $res = $ent -}}
+      {{- if gt $dec 0 -}}{{- $res = printf "%s,%s" $ent (index $parts 1) -}}{{- end -}}
+      {{- if and (lt $x 0.0) (gt $r 0.0) -}}
+        {{- $res = printf "−%s" $res -}}
+      {{- else if and (hasPrefix $f "s") (gt $r 0.0) -}}
+        {{- $res = printf "+%s" $res -}}
+      {{- end -}}
+      {{- $res = printf "%s%s" $res $unite -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $res = string $v -}}
+  {{- end -}}
+{{- end -}}
+{{- return $res -}}
