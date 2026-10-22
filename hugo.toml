@@ -25,7 +25,7 @@ enableEmoji = true
   BookPortableLinks = true
 
 [markup.goldmark.renderer]
-  unsafe = true # requis pour les pages autonomes (ex. kuhn-resultats : HTML/SVG inline)
+  unsafe = true # requis par le HTML brut de quelques pages (accueil, documents, convention collective)
 
 [caches]
   [caches.images]

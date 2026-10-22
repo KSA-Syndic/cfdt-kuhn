@@ -39,4 +39,5 @@
 {{- $t = replaceRE `([0-9»)]) (%|€|M€|Md\$|M CHF)` "${1} ${2}" $t -}}
 {{- $t = replaceRE ` ([:;!?»])` " ${1}" $t -}}
 {{- $t = replaceRE `« ` "« " $t -}}
+{{- $t = replaceRE `≈ ` "≈ " $t -}}
 {{- return $t -}}

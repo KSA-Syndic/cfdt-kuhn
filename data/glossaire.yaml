@@ -9,6 +9,10 @@
 #   {affaire.CHAMP|1}   valeur de l'exercice examiné par « L'affaire des 2,6 % » (data/kuhn/affaire.yaml)
 #   {dernier.annee}     l'année elle-même
 
+charges:
+  terme: Charges
+  definition: "Tout ce que l'entreprise dépense pour fonctionner : matières, salaires, énergie, amortissements… Les charges se soustraient des ventes pour donner le résultat."
+
 valeur-ajoutee:
   terme: Valeur ajoutée
   definition: "Ce qui reste des ventes une fois payés les <b>achats</b> (acier, pièces, énergie, sous-traitance) : la richesse créée sur place par le travail. C'est avec elle qu'on paie les salaires, l'usure des machines, les impôts… et l'actionnaire."

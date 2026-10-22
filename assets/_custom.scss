@@ -1,9 +1,9 @@
-// Articles pleine largeur dans hugo-book (ex. kuhn-resultats)
+// Articles pleine largeur dans hugo-book ({{< interactif … pleine-largeur="true" >}})
 
 :root {
   --full-width-post-dur: 0.65s;
   --full-width-post-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --full-width-post-menu-w: 0px; // posé par full-width-post.js : 16rem si menu visible, 0 sinon
+  --full-width-post-menu-w: 0px; // posé par static/interactifs/_commun/pleine-largeur.js : 16rem si menu visible, 0 sinon
 }
 
 @view-transition {
@@ -193,8 +193,12 @@ $book-mobile-breakpoint: 56rem;
   margin: 0;
 }
 
+// (colonne de lecture centrée, comme un article ordinaire)
 html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-article > :not(.interactif-pleine-largeur) {
-  margin-inline: 1rem;
+  box-sizing: border-box;
+  max-width: 54rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
 
 // ---------- Tableaux de chiffres KUHN : {{< tableau-kuhn >}} ----------

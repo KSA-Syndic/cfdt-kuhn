@@ -247,7 +247,18 @@
   {{- if and $max (ne $max.valeur 0.0) (not $estimeDernier) -}}
     {{- $max = merge $max (dict "ecart_dernier" (mul (sub (div ($vDernier.Get $c) $max.valeur) 1) 100)) -}}
   {{- end -}}
-  {{- $extremes = merge $extremes (dict $c (dict "max" $max "min" $min)) -}}
+  {{- /* creux_apres_max : le plus bas des exercices postérieurs au maximum (absent si le maximum est le dernier) */ -}}
+  {{- $creux := dict -}}
+  {{- range $y := $annees -}}
+    {{- if or (not $max) (le $y $max.annee) -}}{{- continue -}}{{- end -}}
+    {{- $xe := index $X (string $y) -}}
+    {{- if and (in $champsDividende $c) ($xe.Get "dividende_estime") -}}{{- continue -}}{{- end -}}
+    {{- $v := $xe.Get $c -}}
+    {{- if or (not $creux) (lt $v $creux.valeur) -}}{{- $creux = dict "annee" $y "valeur" $v -}}{{- end -}}
+  {{- end -}}
+  {{- $e := dict "max" $max "min" $min -}}
+  {{- if $creux -}}{{- $e = merge $e (dict "creux_apres_max" $creux) -}}{{- end -}}
+  {{- $extremes = merge $extremes (dict $c $e) -}}
 {{- end -}}
 
 {{- /* Dividendes versés depuis le premier exercice affiché : années de versement et fourchette */ -}}

@@ -1,0 +1,214 @@
+/* « Où va l'argent d'une année ? » — mise en page de la maquette A, mobile d'abord.
+   Mode « auto » : aucune hauteur liée à la fenêtre. */
+
+:root {
+  --sort: #C8102E;
+  --ajout: #1F5FBF;
+  --grille: minmax(110px, 200px) minmax(0, 1fr) 86px 44px;
+}
+
+body { background: #FFFFFF; }
+a { color: var(--lien); }
+@media (hover: hover) { a:hover { color: #163A85; } }
+
+.argent { padding: 28px clamp(16px, 4vw, 56px) 40px; }
+.argent__cadre { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+
+/* ---------- En-tête et exercices ---------- */
+.argent__tete {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+  padding-bottom: 18px; border-bottom: 1px solid var(--trait);
+}
+.argent__titres { display: flex; flex-direction: column; gap: 4px; }
+.argent__surtitre { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
+.argent__titre { margin: 0; font-family: var(--police-titre); font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+
+/* les années passent à la ligne quand il y en a davantage */
+.annees { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 10px; background: var(--fond-3); }
+.annees button {
+  min-height: var(--cible); min-width: 52px; padding: 0 10px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--encre-2); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.annees button[aria-pressed="true"] { background: var(--encre); color: #FFFFFF; }
+.annees-liste { display: none; }
+.annees-liste select {
+  min-height: var(--cible); padding: 0 36px 0 12px; border: 1px solid #D5DAE1; border-radius: 10px;
+  background: #FFFFFF; font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Corps : le récit à gauche, la cascade à droite ---------- */
+.argent__corps { display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start; }
+
+.recit { flex: 1 1 320px; min-width: 0; max-width: 420px; display: flex; flex-direction: column; gap: 14px; }
+.recit__etape { font-size: 13px; font-weight: 600; color: var(--gris); }
+.recit__titre { margin: 0; font-family: var(--police-titre); font-size: 28px; font-weight: 600; letter-spacing: -.01em; }
+.recit__chiffre { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.recit__grand { font-family: var(--police-titre); font-size: 64px; font-weight: 700; letter-spacing: -.03em; line-height: 1; }
+.recit__unite { font-size: 20px; font-weight: 600; color: var(--gris); }
+/* hauteur minimale : le bouton ne saute pas d'une étape à l'autre */
+.recit__texte { margin: 0; min-height: 6.2em; font-size: 17px; line-height: 1.55; text-wrap: pretty; }
+.recit__plus {
+  align-self: flex-start; display: flex; align-items: center; gap: 8px; min-height: var(--cible); padding: 0 14px;
+  border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; color: var(--encre); font-size: 14px; font-weight: 500;
+}
+.recit__detail {
+  display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 12px;
+  background: var(--fond-2); color: var(--encre-2); font-size: 14px; line-height: 1.55;
+}
+.recit__detail[hidden] { display: none; }
+.recit__source { font-size: 12px; color: var(--gris); }
+
+.cascade { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.cascade__legende { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; font-size: 13px; color: var(--gris); }
+.cascade__legende span { display: flex; align-items: center; gap: 6px; }
+.pastille { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+.pastille--reste { background: var(--encre); }
+.pastille--sort { background: var(--sort); }
+.pastille--ajout { background: var(--ajout); }
+
+/* ---------- Lignes de la cascade ---------- */
+.ligne, .partage, .entonnoir, .lignes__ligne {
+  display: grid; grid-template-columns: var(--grille); gap: 12px;
+}
+.ligne { align-items: center; min-height: 46px; }
+.ligne--ventes { border-top: 1px solid var(--trait); border-bottom: 1px solid var(--trait-2); }
+.ligne__libelle { font-size: 14px; line-height: 1.25; font-weight: 500; color: var(--encre-2); padding-left: 12px; }
+.ligne__libelle--total { font-weight: 700; color: var(--encre); padding-left: 0; }
+.ligne__piste { position: relative; height: 22px; border-radius: 4px; background: var(--fond-2); overflow: hidden; }
+.ligne__piste--ventes { height: 26px; }
+.ligne__valeur { text-align: right; font-size: 14.5px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ligne__valeur--total { font-weight: 700; color: var(--encre); }
+.ligne__info {
+  width: 44px; height: 44px; border: 0; border-radius: 8px; background: transparent; color: var(--gris);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.barre {
+  position: absolute; top: 0; bottom: 0;
+  transition: left .7s cubic-bezier(.22, .8, .24, 1), width .7s cubic-bezier(.22, .8, .24, 1), background-color .5s ease, opacity .45s ease;
+}
+.lignes .barre { border-radius: 4px; }
+
+.lignes { display: flex; flex-direction: column; border-top: 1px solid var(--trait); }
+.lignes__rang { border-bottom: 1px solid var(--trait-2); transition: background-color .45s ease; }
+.lignes__rang--courant { background: #FAFBFC; }
+.lignes__ligne { align-items: center; min-height: 44px; transition: opacity .45s ease; }
+.lignes__ligne--a-venir { opacity: .22; }
+
+/* places réservées en invisible : rien ne bouge d'une étape à l'autre */
+.cache-revele { transition: opacity .45s ease, visibility .45s; }
+.cache-revele--cache, .entonnoir--cache { opacity: 0; visibility: hidden; }
+
+.partage { font-size: 13px; }
+.partage__textes { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.partage__sort { color: var(--sort); font-weight: 600; }
+.partage__reste { font-weight: 700; }
+
+.info {
+  padding: 10px 14px; border-radius: 10px; background: var(--fond-2); color: var(--encre-2);
+  font-size: 13.5px; line-height: 1.5;
+}
+.info[hidden] { display: none; }
+.info--ventes { margin: 4px 56px 4px 0; }
+.info--ligne { margin: 0 56px 12px 0; display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+.info--ligne .info__texte { flex: 1 1 260px; }
+.badge { font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.badge--officiel { background: #E3EED6; color: #335512; }
+.badge--calcule { background: #E6E2F0; color: #4A3C6E; }
+.badge--estime { background: var(--estimation-fond); color: var(--estimation-texte); }
+
+/* ---------- L'entonnoir et la loupe ---------- */
+.entonnoir {
+  position: relative; z-index: 20; /* au-dessus des lignes : l'infobulle passe devant elles */
+  transform-origin: top;
+  transition: opacity .5s ease, transform .7s cubic-bezier(.22, .8, .24, 1), visibility .7s;
+}
+.entonnoir--cache { transform: scaleY(.2); }
+.entonnoir__zone { position: relative; height: 54px; }
+.entonnoir__zone svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.loupe {
+  position: absolute; top: 18px; transform: translate(-50%, -50%);
+  width: 44px; height: 44px; padding: 0; border: 0; background: transparent;
+  display: flex; align-items: center; justify-content: center;
+}
+.loupe__rond {
+  width: 30px; height: 30px; border-radius: 999px; background: #FFFFFF; border: 1px solid #C9D0DA;
+  box-shadow: 0 2px 6px rgba(20, 23, 28, .12); display: flex; align-items: center; justify-content: center; color: var(--encre);
+}
+.loupe__bulle {
+  position: absolute; right: 56px; top: 46px; width: min(320px, 100% - 56px); padding: 10px 12px;
+  border-radius: 10px; background: var(--encre); color: #FFFFFF; font-size: 13px; line-height: 1.45;
+  box-shadow: 0 10px 24px rgba(20, 23, 28, .25);
+}
+.loupe__bulle[hidden] { display: none; }
+
+/* ---------- Navigation entre étapes ---------- */
+.etapes { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--trait); }
+.etapes__prec {
+  min-height: var(--cible); min-width: var(--cible); padding: 0 14px; border: 1px solid #D5DAE1; border-radius: 10px;
+  background: #FFFFFF; color: var(--encre); font-size: 14px;
+}
+.etapes__liste { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 auto; }
+.etapes__pastille {
+  display: flex; align-items: center; gap: 8px; min-height: var(--cible); padding: 0 12px 0 6px;
+  border: 1px solid var(--trait); border-radius: 999px; background: #FFFFFF; color: var(--encre-2); font-size: 14px; font-weight: 500;
+}
+.etapes__pastille[aria-current="step"] { border-color: var(--encre); background: var(--encre); color: #FFFFFF; }
+.etapes__num {
+  display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 999px;
+  background: var(--fond-3); color: var(--gris); font-size: 12px; font-weight: 700;
+}
+.etapes__pastille--faite .etapes__num { background: var(--encre); color: #FFFFFF; }
+.etapes__pastille[aria-current="step"] .etapes__num { background: #FFFFFF; color: var(--encre); }
+.etapes__compteur { display: none; }
+/* largeur fixe : le bouton ne change pas de taille entre « Étape suivante » et « Recommencer » */
+.etapes__suiv {
+  min-height: var(--cible); min-width: 168px; padding: 0 18px; border: 0; border-radius: 10px;
+  background: var(--encre); color: #FFFFFF; font-size: 14px; font-weight: 600;
+}
+
+.argent__source { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--gris); }
+
+/* ---------- Apparitions ---------- */
+.fondu--joue { animation: monte .5s ease both; }
+@keyframes monte { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+@media (hover: hover) {
+  .annees button:not([aria-pressed="true"]):hover, .ligne__info:hover, .recit__plus:hover, .etapes__prec:hover { background: var(--fond-3); }
+}
+
+/* ---------- Mobile : lignes sur deux niveaux, liste déroulante, ← Étape n sur 6 → ---------- */
+@media (max-width: 640px) {
+  :root { --grille: minmax(0, 1fr) auto 44px; }
+  .argent { padding-top: 20px; }
+  .argent__tete { gap: 12px; }
+  .annees { display: none; }
+  .annees-liste { display: block; }
+  .argent__corps { gap: 24px; }
+  .recit { max-width: none; }
+  .recit__grand { font-size: 52px; }
+  .recit__texte { min-height: 7.75em; }
+
+  .ligne, .lignes__ligne {
+    grid-template-areas: "libelle valeur info" "piste piste piste";
+    row-gap: 4px; column-gap: 8px; padding-bottom: 8px;
+  }
+  .ligne__libelle { grid-area: libelle; }
+  .ligne__piste { grid-area: piste; }
+  .ligne__valeur { grid-area: valeur; }
+  .ligne__info { grid-area: info; }
+  .partage, .entonnoir { grid-template-columns: minmax(0, 1fr); }
+  .partage > div:first-child, .entonnoir > div:first-child { display: none; }
+  .info--ventes, .info--ligne { margin-right: 0; }
+  .loupe__bulle { right: 0; width: 100%; }
+
+  .etapes { flex-wrap: nowrap; justify-content: space-between; }
+  .etapes__liste { display: none; }
+  .etapes__compteur { display: block; flex: 1 1 auto; text-align: center; font-size: 14px; font-weight: 600; color: var(--encre-2); }
+  .etapes__suiv { min-width: var(--cible); padding: 0 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barre, .lignes__rang, .lignes__ligne, .cache-revele, .entonnoir { transition: none; }
+  .fondu--joue { animation: none; }
+}

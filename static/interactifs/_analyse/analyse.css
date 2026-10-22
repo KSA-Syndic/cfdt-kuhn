@@ -1,0 +1,53 @@
+/* Graphiques de l'analyse (static/interactifs/analyse-…/) : dans le style sobre de hugo-book.
+   Chaque page charge ../_commun/base.css puis ce fichier. Mode « auto ». */
+
+:root {
+  --lien-livre: #0055bb;
+  --gris-colonne: #adb5bd;
+  --gris-texte: #495057;
+  --note: #4486dd;
+  --frein: #f59e42;
+  --trait-livre: #e9ecef;
+}
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  background: #FFFFFF;
+}
+
+.graphique { margin: 0; padding: 4px 0 2px; }
+.graphique figcaption { margin-top: .5rem; font-size: .875rem; color: var(--gris-texte); }
+
+/* Colonnes : une par exercice, la grille s'adapte au nombre d'exercices ; défilement si l'écran est trop étroit */
+.defile { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.colonnes, .colonnes__annees {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(30px, 1fr);
+  gap: 8px;
+}
+.colonnes { height: 160px; align-items: end; border-bottom: 1px solid var(--gris-colonne); }
+.colonnes__col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+}
+.colonnes__valeur { font-size: .75rem; color: var(--gris-texte); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.colonnes__barre { width: 100%; transform-origin: bottom; animation: pousse .6s ease-out both; }
+.colonnes__annees { margin-top: .25rem; text-align: center; font-size: .75rem; color: var(--gris-texte); }
+
+@keyframes pousse { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+@media (max-width: 480px) {
+  .colonnes, .colonnes__annees { gap: 4px; }
+  .colonnes__valeur, .colonnes__annees { font-size: .6875rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colonnes__barre { animation: none; }
+}

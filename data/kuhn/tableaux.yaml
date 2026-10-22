@@ -113,7 +113,7 @@ fiabilite:
     - ["CA, résultats, bilan, provisions de KUHN SAS", "{statut:officiel}", "Comptes sociaux déposés au greffe (liasse fiscale, tableau des provisions)."]
     - ["EBITDA, valeur ajoutée, effet des provisions", "{statut:calcule}", "Recalculés à méthode constante sur ces comptes."]
     - ["Dividendes {m.dividendes.de}–{m.dividendes.a}", "{statut:calcule}", "Variation des réserves, exacte à l’euro, recoupée avec KUHN Group SAS."]
-    - { si: x.dividende_estime, cellules: ["Dividende versé en {x.dividende_verse_en}", "{statut:estime}", "Taux moyen des {x.dividende_methode.sur} années précédentes, en attendant les comptes {x.dividende_verse_en}."] }
+    - { si: x.dividende_estime, cellules: ["Dividende versé en {x.dividende_verse_en}", "{statut:estime}", "Taux moyen des {x.dividende_methode.sur|lettres} années précédentes, en attendant les comptes {x.dividende_verse_en}."] }
     - ["KUHN Group et concurrents", "{statut:officiel}", "Rapports de Bucher Industries et communiqués annuels des groupes."]
 
 # ---------- Badges et cartes de l'analyse ----------

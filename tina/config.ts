@@ -146,6 +146,13 @@ const detailsTemplate = {
 const pagesInteractives = [
   { value: "_modele", label: "Modèle (exemple)" },
   { value: "lire-les-comptes", label: "Lire les comptes en images (tutoriel, écran entier)" },
+  { value: "intro-usine", label: "Résultats : intro animée de l'usine" },
+  { value: "ou-va-l-argent", label: "Résultats : où va l'argent d'une année ?" },
+  { value: "analyse-activite", label: "Résultats : graphique du chiffre d'affaires" },
+  { value: "analyse-rentabilite", label: "Résultats : graphique de la marge d'EBITDA" },
+  { value: "analyse-provisions", label: "Résultats : graphique de l'effet des provisions" },
+  { value: "analyse-dividende", label: "Résultats : graphique du bénéfice et du dividende" },
+  { value: "analyse-secteur", label: "Résultats : le secteur (onglets)" },
   { value: "affaire-ouverture", label: "L'affaire des 2,6 % : ouverture" },
   { value: "affaire-ventes", label: "L'affaire des 2,6 % : pièce n° 1, les ventes" },
   { value: "affaire-rentabilite", label: "L'affaire des 2,6 % : pièce n° 2, la marge d'exploitation" },

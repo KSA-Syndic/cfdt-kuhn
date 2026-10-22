@@ -1,0 +1,22 @@
+/* Effet net des provisions : barres de part et d'autre de zéro. */
+.ecarts {
+  position: relative;
+  height: 180px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(30px, 1fr);
+  gap: 8px;
+}
+.ecarts__zero { position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--gris-colonne); }
+.ecarts__col { position: relative; height: 100%; }
+.ecarts__barre { position: absolute; left: 0; right: 0; }
+.ecarts__barre--soutien { bottom: 50%; background: var(--note); }
+.ecarts__barre--frein { top: 50%; background: var(--frein); }
+.ecarts__valeur {
+  position: absolute; left: 0; right: 0; text-align: center;
+  font-size: .75rem; color: var(--gris-texte); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .ecarts { gap: 4px; }
+  .ecarts__valeur { font-size: .6875rem; }
+}

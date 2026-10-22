@@ -43,7 +43,8 @@
       return valeurs[k] != null ? valeurs[k] : m;
     }).replace(/(\d) (%|€|M€|Md\$|M CHF)/g, '$1' + NBSP + '$2')
       .replace(/ ([:;!?»])/g, NBSP + '$1')
-      .replace(/« /g, '«' + NBSP);
+      .replace(/« /g, '«' + NBSP)
+      .replace(/≈ /g, '≈' + NBSP);
   }
 
   /* ---------- Environnement ---------- */

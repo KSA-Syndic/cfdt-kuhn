@@ -164,6 +164,23 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
 - `data/kuhn/tableaux.yaml` : textes des colonnes et des lignes fixes (`trois-perimetres`, `ebitda-mesures`,
   `fiabilite`).
 - `data/kuhn/groupe.yaml` : `commandes` (variations publiées par Bucher) à compléter.
+- `content/actualites/2026/kuhn-resultats.md` (« Résultats 2016–2024 ») : le titre (`title`) et l'intertitre
+  « Résultats 2016–2024 : l'analyse », puis le texte de l'analyse, qui cite des chiffres et des années :
+  - « En bref » : pic de 2023, −18 %, marge d'EBITDA 9,2 % → 7,9 %, dividende 93 à 99 % ;
+  - constat 1 : 979 M€ en 2023, 799 M€ en 2024 ; commandes du groupe « dès 2022 » ;
+  - constat 2 : 9,2 % (2021) → 7,9 % (2024), niveau de 2018–2019, marge d'exploitation « autour de 7 % » ;
+    l'encadré et le bloc « D'où vient le fossé » (20 M€, 2,6 %, 42,3 M€, 20,6 / 62,9 M€) portent sur l'exercice
+    de `affaire.yaml`, à laisser tels quels, sauf la phrase sur la « rupture de 2023 » et la réforme qui
+    « ne s'applique qu'aux comptes ouverts à partir de 2025 », à revoir avec les comptes 2025 (section 7) ;
+  - constat 3 : « de 2018 à 2023 », 14,5 M€ en 2021, +4,4 M€ en 2024 ; bloc « 77,5 M€ de reprises » (35,2 /
+    42,3 / 30,8 M€) ; stock de provisions 18,7 M€ (2016), 39,6 M€ (2023), 35,8 M€ (2024), « une première
+    depuis 2019 » ;
+  - constat 4 : « 93 à 99 % » (titre compris), 1 218 000 actions ;
+  - constat 5 : 7 à 13 M€, 37 à 63 M€, encours de 61,5 M€ fin 2024 ; « Filiale par filiale (exercice 2024) » ;
+    Blanchard et Artec ;
+  - le secteur : « entre 70 et 75 en 2025 » ;
+  - points de vigilance : −26 % entre 2022 et 2024, 9,6 % / 12,0 % / 11,7 %, 93 à 99 %.
+  Les badges, cartes, tableaux et graphiques de cet article se mettent à jour tout seuls.
 - `content/actualites/2026/affaire-2-6.md` (« L'affaire des 2,6 % ») : l'article porte par nature sur
   l'exercice désigné dans `data/kuhn/affaire.yaml` (2024, comparé à 2022) ; son texte et ses figures
   `affaire-*` restent sur ces années. Seule exception à revérifier à chaque exercice (et quand le dividende

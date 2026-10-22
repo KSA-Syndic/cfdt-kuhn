@@ -1,0 +1,22 @@
+/* L'onglet « Le secteur » : un tableau par groupe, dans le style des onglets de hugo-book. */
+.secteur { border: 1px solid var(--trait-livre); border-radius: .25rem; }
+.secteur__onglets { display: flex; flex-wrap: wrap; border-bottom: 1px solid #f8f9fa; }
+.secteur__onglets button {
+  min-height: 44px; padding: .5rem 1rem; border: 0; border-bottom: 1px solid transparent;
+  background: transparent; color: #000000; font: inherit; cursor: pointer;
+}
+.secteur__onglets button[aria-selected="true"] { border-bottom-color: var(--lien-livre); }
+.secteur__panneau { padding: 1rem; }
+.secteur__panneau:focus-visible { outline: 2px solid var(--lien-livre); outline-offset: -2px; }
+.secteur__table { border-collapse: collapse; }
+.secteur__table th, .secteur__table td {
+  padding: .5rem 1rem; border: 1px solid var(--trait-livre); text-align: start; white-space: nowrap;
+}
+.secteur__table td { text-align: end; font-variant-numeric: tabular-nums; }
+.secteur__table tr:nth-child(2n) { background: #f8f9fa; }
+.secteur__note { margin: .75rem 0 0; font-size: .875rem; color: var(--gris-texte); }
+@media (hover: hover) { .secteur__onglets button:hover { background: #f8f9fa; } }
+@media (max-width: 480px) {
+  .secteur__panneau { padding: .75rem; }
+  .secteur__table th, .secteur__table td { padding: .4rem .6rem; }
+}

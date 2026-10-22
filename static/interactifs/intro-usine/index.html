@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base target="_top">
+<meta name="robots" content="noindex">
+<title>Le voyage d'un euro&nbsp;: de l'atelier au dividende</title>
+<link rel="stylesheet" href="../_commun/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Bandeau d'ouverture de l'article « Résultats » (hauteur auto, pleine largeur) :
+     « Le voyage d'un euro », puis « L'activité réelle » avec l'usine animée.
+     Exercice et montants : dernier exercice de window.KuhnDonnees (script.js), rien en dur. -->
+<main class="intro">
+
+  <!-- Le voyage d'un euro -->
+  <section class="scene" id="s0" aria-labelledby="titre-voyage">
+    <div class="inner">
+      <div class="kicker rv">Le voyage d'un euro</div>
+      <h1 class="rv d1" id="titre-voyage">De l'atelier <span class="red">au dividende</span></h1>
+      <p class="lead sub rv d2">Suivez, étape par étape, comment <b>KUHN</b> (constructeur alsacien de machines agricoles, filiale du suisse <b>Bucher Industries</b>) transforme le travail réel de ses usines en valeur, puis en bénéfice, puis en argent qui remonte vers l'actionnaire.<span id="phrase-creux" hidden> Et pourquoi le «&nbsp;creux&nbsp;» de <span data-champ="annee-creux">—</span> raconte une fin de cycle, pas une crise.</span></p>
+      <div class="hero-tags rv d3">
+        <span><span aria-hidden="true">🏭</span> L'activité réelle</span><span><span aria-hidden="true">🧮</span> L'exercice comptable</span><span><span aria-hidden="true">💶</span> Où part le bénéfice</span><span><span aria-hidden="true">📉</span> Le cycle du marché</span>
+      </div>
+      <a class="scrollcue rv d4" href="/actualites/2026/kuhn-resultats/#ou-va-l-argent"><span>Faites défiler</span><span class="arr" aria-hidden="true"></span></a>
+    </div>
+  </section>
+
+  <!-- L'activité réelle : là où la valeur naît -->
+  <section class="scene" id="s1" aria-labelledby="titre-usine">
+    <div class="inner split">
+      <div class="copy">
+        <h2 class="rv d1" id="titre-usine">L'activité réelle&nbsp;:<br>là où la valeur naît</h2>
+        <span class="perim rv d1"><span class="perim-chunk perim-chunk--head">Périmètre&nbsp;: <b>KUHN&nbsp;SAS</b></span><span class="perim-chunk">· la maison-mère de Saverne (comptes sociaux)</span></span>
+        <p class="lead rv d2">On observe d'abord <b>KUHN SAS</b>, la maison-mère installée à Saverne. Des <b>fournisseurs</b> livrent l'acier (ils repartent avec de l'argent), des <b>ouvriers</b> assemblent charrues, semoirs et broyeurs, et des <b>clients</b> agriculteurs repartent avec une machine agricole en laissant leur argent. Ce qui reste après avoir payé matières et fournisseurs, c'est la <button type="button" class="terme" data-def="valeur-ajoutee">valeur ajoutée</button>&nbsp;: le carburant de l'entreprise. <span class="lead__note">Le chiffre d'affaires ci-dessous est celui de la <b>seule société KUHN SAS</b> (pas du groupe entier). Comme elle vend aussi à ses propres filiales, une partie de ce montant correspond à des ventes internes au groupe.</span></p>
+        <!-- Montants du dernier exercice : data-stat = nom du champ dans KuhnDonnees.exercices[année] -->
+        <div class="chips rv d3">
+          <p class="chips__exercice">Exercice <span data-champ="annee">—</span></p>
+          <div class="chip"><div class="k">Argent des clients (CA)</div><div class="v gold" data-stat="ventes">— M€</div><div class="d">chiffre d'affaires net</div></div>
+          <div class="chip op"><div class="opsign" aria-hidden="true">−</div><div class="k">Payé aux fournisseurs</div><div class="v" data-stat="achats">— M€</div><div class="d">achats, sous-traitance, services (± stocks)</div></div>
+          <div class="chip op"><div class="opsign" aria-hidden="true">=</div><div class="k">Valeur ajoutée créée</div><div class="v green" data-stat="valeur_ajoutee">— M€</div><div class="d">ce qui reste pour faire vivre l'entreprise</div></div>
+          <div class="chip op"><div class="opsign" aria-hidden="true">−</div><div class="k">Versé aux salariés</div><div class="v" data-stat="personnel">— M€</div><div class="d">salaires + <button type="button" class="terme" data-def="charges">charges</button> sociales</div></div>
+        </div>
+      </div>
+
+      <div class="stagebox">
+        <div class="tip rv d2">L'acier et le travail entrent d'un côté, une machine agricole ressort de l'autre&nbsp;: c'est ici, et nulle part ailleurs, que la <b>valeur</b> est réellement créée.</div>
+        <div class="stage" id="stageFactory" aria-hidden="true">
+          <!-- Échelle commune : environ 24 unités pour 1 m. Sol : y = 388, dedans comme dehors. -->
+          <svg viewBox="0 112 760 363" preserveAspectRatio="xMidYMid meet" focusable="false">
+            <defs>
+              <clipPath id="factory-clip"><rect x="150" y="195" width="470" height="193"/></clipPath>
+              <!-- combiné de semis porté (herse rotative, trémie, rouleau), vu de côté, avant à droite ;
+                   rouge, sans marque. Origine : appui au sol, à l'arrière. -->
+              <g id="combine">
+                <path d="M9 -9 L18 -14" stroke="#b80a22" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="9" cy="-9" r="8.25" fill="#2b3036" stroke="#6b737c" stroke-width="1.5"/>
+                <circle cx="9" cy="-9" r="2.5" fill="#6b737c"/>
+                <rect x="19" y="-8" width="2.5" height="8" fill="#6b737c"/>
+                <rect x="26.5" y="-8" width="2.5" height="8" fill="#6b737c"/>
+                <rect x="34" y="-8" width="2.5" height="8" fill="#6b737c"/>
+                <rect x="16" y="-17" width="23" height="10" rx="1.5" fill="#E10E2B"/>
+                <rect x="8" y="-21" width="31" height="4" fill="#8f0b1f"/>
+                <path d="M9 -21 L36 -21 L39 -40 L6 -40 Z" fill="#E10E2B"/>
+                <rect x="4" y="-44" width="37" height="5" rx="1.5" fill="#b80a22"/>
+                <rect x="37" y="-38" width="4" height="31" rx="1" fill="#b80a22"/>
+              </g>
+            </defs>
+            <!-- sol -->
+            <rect x="0" y="392" width="760" height="83" fill="#0b1014"/>
+            <rect x="0" y="388" width="760" height="6" fill="#2a3744"/>
+            <!-- bâtiment en coupe ; une porte dans chaque mur (l'acier entre, la machine sort) -->
+            <g class="batiment">
+              <rect x="148" y="150" width="474" height="238" fill="#1b2632"/>
+              <path d="M148 150 L195.4 120 L195.4 150 L242.8 120 L242.8 150 L290.2 120 L290.2 150 L337.6 120 L337.6 150 L385 120 L385 150 L432.4 120 L432.4 150 L479.8 120 L479.8 150 L527.2 120 L527.2 150 L574.6 120 L574.6 150 L622 120 L622 150 Z" fill="#23323f" stroke="#33485a" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- murs épais et plafond ; chaque mur s'arrête au linteau de sa porte (y = 320) -->
+              <rect x="148" y="148" width="474" height="5" fill="#33485a"/>
+              <rect x="148" y="148" width="5" height="172" fill="#33485a"/>
+              <rect x="617" y="148" width="5" height="172" fill="#33485a"/>
+              <text class="lbl-usine" x="385" y="181" text-anchor="middle" fill="#E8B23A" font-size="20" letter-spacing="2.5">USINE KUHN · SAVERNE</text>
+              <line x1="170" y1="195" x2="600" y2="195" stroke="#2c3d4c" stroke-width="1"/>
+              <!-- pont roulant -->
+              <rect x="153" y="210" width="464" height="5" fill="#2c3d4c"/>
+              <rect x="417" y="215" width="26" height="9" rx="1.5" fill="#33485a"/>
+              <line x1="430" y1="224" x2="430" y2="262" stroke="#4a627a" stroke-width="1.5"/>
+              <path d="M430 262 v5 a4 4 0 1 1 -5 4" fill="none" stroke="#4a627a" stroke-width="2" stroke-linecap="round"/>
+            </g>
+            <!-- tapis roulant sur pieds (plateau vers 1,2 m) -->
+            <g class="tapis">
+              <rect x="184" y="366" width="5" height="22" fill="#2c3d4c"/>
+              <rect x="343" y="366" width="5" height="22" fill="#2c3d4c"/>
+              <rect x="435" y="366" width="5" height="22" fill="#2c3d4c"/>
+              <rect x="581" y="366" width="5" height="22" fill="#2c3d4c"/>
+              <rect x="180" y="360" width="410" height="6" rx="3" fill="#33485a"/>
+            </g>
+            <g class="conv">
+              <circle cx="210" cy="372" r="6" fill="#1b2632" stroke="#4a627a" stroke-width="2"/>
+              <circle cx="300" cy="372" r="6" fill="#1b2632" stroke="#4a627a" stroke-width="2"/>
+              <circle cx="390" cy="372" r="6" fill="#1b2632" stroke="#4a627a" stroke-width="2"/>
+              <circle cx="480" cy="372" r="6" fill="#1b2632" stroke="#4a627a" stroke-width="2"/>
+              <circle cx="560" cy="372" r="6" fill="#1b2632" stroke="#4a627a" stroke-width="2"/>
+            </g>
+            <!-- machine sur le tapis (visible dans l'usine seulement ; elle ressort attelée : .convoi) -->
+            <g clip-path="url(#factory-clip)">
+              <g class="seeder-flow" transform="translate(340,360)">
+                <use href="#combine"/>
+                <animateTransform attributeName="transform" type="translate"
+                  keyTimes="0;0.14;0.48;1" values="180,360;180,360;504,360;504,360"
+                  dur="12s" repeatCount="indefinite" calcMode="linear"/>
+                <animate attributeName="opacity"
+                  keyTimes="0;0.14;0.48;1" values="0;1;0;0"
+                  dur="12s" repeatCount="indefinite" calcMode="discrete"/>
+              </g>
+            </g>
+            <!-- ouvriers debout sur le sol de l'atelier, devant le tapis -->
+            <g class="worker w1" transform="translate(250,388)">
+              <rect x="-5.5" y="-20" width="4.5" height="20" rx="2" fill="#1f4a7d"/>
+              <rect x="1" y="-20" width="4.5" height="20" rx="2" fill="#1f4a7d"/>
+              <rect x="-7" y="-35" width="14" height="17" rx="4" fill="#2f6db5"/>
+              <circle cx="0" cy="-40.5" r="5.5" fill="#E8B23A"/>
+              <rect class="arm" x="5" y="-33" width="3.5" height="13" rx="1.75" fill="#2f6db5"/>
+            </g>
+            <g class="worker w2" transform="translate(515,388)">
+              <rect x="-5.5" y="-20" width="4.5" height="20" rx="2" fill="#8a2f2f"/>
+              <rect x="1" y="-20" width="4.5" height="20" rx="2" fill="#8a2f2f"/>
+              <rect x="-7" y="-35" width="14" height="17" rx="4" fill="#c44"/>
+              <circle cx="0" cy="-40.5" r="5.5" fill="#E8B23A"/>
+              <rect class="arm" x="-8.5" y="-33" width="3.5" height="13" rx="1.75" fill="#c44"/>
+            </g>
+            <!-- camion du fournisseur (porteur d'environ 5 m) : il arrive par la gauche, puis repart -->
+            <g class="truck-in" transform="translate(0,388)">
+              <rect x="2" y="-15" width="124" height="5" fill="#2b3036"/>
+              <rect x="2" y="-62" width="82" height="48" rx="2" fill="#5C6B7A"/>
+              <text class="lbl-acier" x="43" y="-33" text-anchor="middle" fill="#cdd6df" font-size="13" letter-spacing="1">ACIER</text>
+              <rect x="88" y="-54" width="36" height="41" rx="4" fill="#46566a"/>
+              <rect x="106" y="-50" width="15" height="14" rx="1.5" fill="#a9b8c4" opacity=".5"/>
+              <rect x="122" y="-19" width="6" height="7" rx="1" fill="#2b3036"/>
+              <circle cx="26" cy="-11" r="10" fill="#0e141a" stroke="#888" stroke-width="2"/>
+              <circle cx="26" cy="-11" r="3.5" fill="#9aa6b2"/>
+              <circle cx="106" cy="-11" r="10" fill="#0e141a" stroke="#888" stroke-width="2"/>
+              <circle cx="106" cy="-11" r="3.5" fill="#9aa6b2"/>
+            </g>
+            <text class="lbl lbl-fourn" x="62" y="270" text-anchor="middle" fill="#9aa6b2" font-size="17">Fournisseurs →</text>
+            <!-- convoi vers les clients : la machine rouge finie, portée par l'attelage trois points
+                 d'un tracteur neutre, anthracite et crème. Origine : sol ; de x = −19 à x = 119. -->
+            <g class="convoi" transform="translate(640,388)">
+              <use href="#combine" x="-19"/>
+              <!-- attelage trois points : bras inférieur et troisième point -->
+              <line x1="21" y1="-11" x2="34" y2="-15" stroke="#2b3036" stroke-width="3" stroke-linecap="round"/>
+              <line x1="21" y1="-36" x2="31" y2="-44" stroke="#2b3036" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- tracteur (environ 4 m), avant à droite -->
+              <rect x="32" y="-36" width="30" height="9" fill="#2b3036"/>
+              <rect x="30" y="-68" width="34" height="34" rx="2" fill="#3d434b"/>
+              <rect x="33" y="-64" width="13" height="21" rx="1.5" fill="#a9b8c4" opacity=".5"/>
+              <rect x="48" y="-64" width="13" height="21" rx="1.5" fill="#a9b8c4" opacity=".5"/>
+              <rect x="28" y="-71" width="38" height="5" rx="2" fill="#EDE3C8"/>
+              <rect x="58" y="-28" width="54" height="9" fill="#2b3036"/>
+              <rect x="62" y="-44" width="52" height="18" rx="4" fill="#3d434b"/>
+              <rect x="98" y="-57" width="3.5" height="14" rx="1" fill="#22262b"/>
+              <rect x="112" y="-42" width="4" height="14" rx="1" fill="#22262b"/>
+              <rect x="113" y="-30" width="6" height="9" rx="1" fill="#2b3036"/>
+              <path d="M23 -18 A22 22 0 0 1 67 -18" fill="none" stroke="#EDE3C8" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="45" cy="-18" r="16.5" fill="#15191e" stroke="#2b3036" stroke-width="3"/>
+              <circle cx="45" cy="-18" r="8.5" fill="#EDE3C8"/>
+              <circle cx="45" cy="-18" r="3" fill="#3d434b"/>
+              <circle cx="101" cy="-12" r="10.75" fill="#15191e" stroke="#2b3036" stroke-width="2.5"/>
+              <circle cx="101" cy="-12" r="5" fill="#EDE3C8"/>
+              <circle cx="101" cy="-12" r="2" fill="#3d434b"/>
+            </g>
+            <text class="lbl lbl-clients" x="688" y="270" text-anchor="middle" fill="#9aa6b2" font-size="17">→ Clients</text>
+            <!-- argent des clients -->
+            <g class="coinflow">
+              <circle cx="690" cy="205" r="9" fill="#E8B23A"/><circle cx="660" cy="182" r="7" fill="#E8B23A" opacity=".8"/>
+              <circle cx="710" cy="170" r="6" fill="#E8B23A" opacity=".6"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="../_donnees/kuhn.js"></script>
+<script src="../_commun/outils.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

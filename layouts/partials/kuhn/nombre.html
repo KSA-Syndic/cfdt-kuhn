@@ -6,6 +6,7 @@
         "z0" | "z1" | "z2"  idem, mais « — » pour une valeur nulle à l'arrondi
         autre / absent      la valeur telle quelle (texte, année)
         suffixe « m » ou « p »  ajoute « M€ » ou « % » à un nombre (pas au « — » ni au défaut) : 1m, z1m, s1p
+        "lettres"           entier de 0 à 10 écrit en lettres (« quatre »), sinon en chiffres
     defaut                  texte affiché si la valeur manque (nil) ; « — » par défaut
 */ -}}
 {{- $v := .v -}}
@@ -37,6 +38,10 @@
       {{- end -}}
       {{- $res = printf "%s%s" $res $unite -}}
     {{- end -}}
+  {{- else if eq $f "lettres" -}}
+    {{- $mots := slice "zéro" "un" "deux" "trois" "quatre" "cinq" "six" "sept" "huit" "neuf" "dix" -}}
+    {{- $n := int (math.Round (float $v)) -}}
+    {{- $res = cond (and (ge $n 0) (le $n 10)) (index $mots (cond (and (ge $n 0) (le $n 10)) $n 0)) (string $n) -}}
   {{- else -}}
     {{- $res = string $v -}}
   {{- end -}}
