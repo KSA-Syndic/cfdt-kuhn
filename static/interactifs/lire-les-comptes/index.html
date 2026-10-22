@@ -1,0 +1,2329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base target="_top">
+<meta name="robots" content="noindex">
+<title>Lire les comptes en images</title>
+<link rel="stylesheet" href="../_commun/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  « Lire les comptes en images » : tutoriel en parallaxe horizontale (mode « ecran »).
+  Le défilement vertical de .hx fait avancer la caméra de scène en scène (script.js).
+  Chaque scène a deux dessins : .paysage (840 × 560) et .portrait (400 × 620, mobile < 760 px).
+  Animations déclarées dans le dessin : data-fx (type), data-t (début durée, de 0 à 1), data-v (valeurs).
+  Scènes 0 à 8 : l'Atelier, entreprise imaginaire, montants fictifs et fixes.
+  Scène 9 : les comptes de KUHN SAS, remplis par script.js avec le dernier exercice de
+  window.KuhnDonnees (data-gabarit, data-champ) : aucun chiffre ni aucune année en dur.
+-->
+<div class="hx" tabindex="0" aria-label="Tutoriel en images&nbsp;: lire les comptes d’une entreprise. Faites défiler ou utilisez les flèches.">
+<div class="track" data-track>
+<div class="stage">
+  <div class="lyr l-sun" data-f=".02" data-m="4"></div>
+  <div class="lyr l-clouds" data-f=".05" data-m="8">
+    <img class="cl" src="decors/nuage.svg" alt="" style="left:2cqw;top:10cqh;width:165px;animation-delay:0s">
+    <img class="cl" src="decors/nuage.svg" alt="" style="left:24cqw;top:2cqh;width:120px;animation-delay:-9s">
+    <img class="cl" src="decors/nuage.svg" alt="" style="left:46cqw;top:14cqh;width:195px;animation-delay:-18s">
+    <img class="cl" src="decors/nuage.svg" alt="" style="left:70cqw;top:4cqh;width:135px;animation-delay:-27s">
+    <img class="cl" src="decors/nuage.svg" alt="" style="left:96cqw;top:12cqh;width:180px;animation-delay:-36s">
+    <img class="cl" src="decors/nuage.svg" alt="" style="left:122cqw;top:2cqh;width:128px;animation-delay:-45s">
+    <img class="cl" src="decors/nuage.svg" alt="" style="left:150cqw;top:10cqh;width:150px;animation-delay:-54s">
+    <img class="cl" src="decors/oiseaux.svg" alt="" style="left:38cqw;top:18cqh;width:46px;animation-duration:40s">
+  </div>
+  <div class="lyr l-mtn" data-f=".12" data-m="12"></div>
+  <div class="lyr l-hills" data-f=".3" data-m="18"></div>
+  <div class="lyr l-fields" data-f=".6" data-m="26"></div>
+  <div class="lyr world" data-f="1" data-m="0">
+    <div class="ground"></div>
+    <div class="road"></div>
+
+    <!-- 0 · Départ -->
+    <section class="scene" data-scene="0" aria-label="Départ" style="--i:0">
+      <div class="cap hero" id="texte-0">
+        <div class="kick">Tutoriel en images</div>
+        <h1>Lire les comptes d’une entreprise</h1>
+        <p><span class="debut">Suivez une année de l’Atelier, une petite entreprise imaginaire.</span> <span class="reste">En neuf images, voyez ce que racontent le bilan et le compte de résultat, et pourquoi un bénéfice n’est pas de l’argent en caisse.</span></p>
+        <div class="btns"><button type="button" class="btn primary" data-action="commencer">Commencer →</button><button type="button" class="btn" data-action="lecture">▶ Lecture automatique</button></div>
+        <p class="small">Faites défiler, ou utilisez les flèches du clavier. Montants imaginaires, en milliers d’euros.</p>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-0">Lire la suite</button>
+      </div>
+      <div class="art wide">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="L’Atelier, une petite usine, et les mots que l’on va découvrir.">
+          <g class="bob" style="animation-delay:0s">
+            <line x1="120" y1="128" x2="120" y2="154" stroke="#1F4E9A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="85.5" y="94.5" width="69" height="31" rx="15.5" fill="#FFFDF8" stroke="#1F4E9A" stroke-width="2" class="sh"/>
+              <text x="120" y="115.4" text-anchor="middle" class="tl" font-size="15" fill="#1F4E9A">Bilan</text>
+            </g>
+            <circle cx="120" cy="156" r="3" fill="#1F4E9A"/>
+          </g>
+          <g class="bob" style="animation-delay:-0.7s">
+            <line x1="360" y1="68" x2="360" y2="94" stroke="#C8102E" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="271.5" y="34.5" width="177" height="31" rx="15.5" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="360" y="55.4" text-anchor="middle" class="tl" font-size="15" fill="#C8102E">Compte de résultat</text>
+            </g>
+            <circle cx="360" cy="96" r="3" fill="#C8102E"/>
+          </g>
+          <g class="bob" style="animation-delay:-1.4s">
+            <line x1="640" y1="114" x2="640" y2="140" stroke="#2E7D62" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="568" y="80.5" width="144" height="31" rx="15.5" fill="#FFFDF8" stroke="#2E7D62" stroke-width="2" class="sh"/>
+              <text x="640" y="101.4" text-anchor="middle" class="tl" font-size="15" fill="#2E7D62">Valeur ajoutée</text>
+            </g>
+            <circle cx="640" cy="142" r="3" fill="#2E7D62"/>
+          </g>
+          <g class="bob" style="animation-delay:-2.1s">
+            <line x1="210" y1="238" x2="210" y2="264" stroke="#5C6B7A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="142.5" y="204.5" width="135" height="31" rx="15.5" fill="#FFFDF8" stroke="#5C6B7A" stroke-width="2" class="sh"/>
+              <text x="210" y="225.4" text-anchor="middle" class="tl" font-size="15" fill="#5C6B7A">Amortissement</text>
+            </g>
+            <circle cx="210" cy="266" r="3" fill="#5C6B7A"/>
+          </g>
+          <g class="bob" style="animation-delay:-2.8s">
+            <line x1="470" y1="198" x2="470" y2="224" stroke="#B07B4F" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="419" y="164.5" width="102" height="31" rx="15.5" fill="#FFFDF8" stroke="#B07B4F" stroke-width="2" class="sh"/>
+              <text x="470" y="185.4" text-anchor="middle" class="tl" font-size="15" fill="#B07B4F">Provision</text>
+            </g>
+            <circle cx="470" cy="226" r="3" fill="#B07B4F"/>
+          </g>
+          <g class="bob" style="animation-delay:-3.5s">
+            <line x1="720" y1="238" x2="720" y2="264" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="681" y="204.5" width="78" height="31" rx="15.5" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" class="sh"/>
+              <text x="720" y="225.4" text-anchor="middle" class="tl" font-size="15" fill="#1A1712">EBITDA</text>
+            </g>
+            <circle cx="720" cy="266" r="3" fill="#1A1712"/>
+          </g>
+          <g class="bob" style="animation-delay:-4.2s">
+            <line x1="120" y1="348" x2="120" y2="374" stroke="#B8891A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="64.5" y="314.5" width="111" height="31" rx="15.5" fill="#FFFDF8" stroke="#B8891A" stroke-width="2" class="sh"/>
+              <text x="120" y="335.4" text-anchor="middle" class="tl" font-size="15" fill="#B8891A">Trésorerie</text>
+            </g>
+            <circle cx="120" cy="376" r="3" fill="#B8891A"/>
+          </g>
+          <g class="bob" style="animation-delay:-4.9s">
+            <line x1="330" y1="318" x2="330" y2="344" stroke="#3E4C7A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="279" y="284.5" width="102" height="31" rx="15.5" fill="#FFFDF8" stroke="#3E4C7A" stroke-width="2" class="sh"/>
+              <text x="330" y="305.4" text-anchor="middle" class="tl" font-size="15" fill="#3E4C7A">Dividende</text>
+            </g>
+            <circle cx="330" cy="346" r="3" fill="#3E4C7A"/>
+          </g>
+          <g transform="translate(500 548)">
+            <rect x="222" y="-238" width="24" height="100" fill="#9C6B5A" stroke="#1A1712" stroke-width="2"/>
+            <rect x="218" y="-246" width="32" height="10" rx="2" fill="#7E5446" stroke="#1A1712" stroke-width="2"/>
+            <circle class="smoke" cx="234" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:0s"/>
+            <circle class="smoke" cx="234" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-1.1s"/>
+            <circle class="smoke" cx="234" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-2.2s"/>
+            <path d="M0 -150 L0 -196 L93.3 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M93.3 -150 L93.3 -196 L186.6 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="96.3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M186.7 -150 L186.7 -196 L280 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="189.7" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <rect x="0" y="-150" width="280" height="150" fill="#EFE7D6" stroke="#1A1712" stroke-width="2"/>
+            <rect x="18" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="72.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="127" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="181.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="236" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="78" y="-142" width="124" height="25" rx="4" fill="#FFFDF8" stroke="#1A1712" stroke-width="1.5"/>
+            <text x="140" y="-124" text-anchor="middle" class="tt" font-size="15">L’Atelier</text>
+            <rect x="118" y="-62" width="44" height="62" fill="#8A6A4F" stroke="#1A1712" stroke-width="2"/>
+            <line x1="140" y1="-62" x2="140" y2="0" stroke="#1A1712" stroke-width="1.5"/>
+          </g>
+          <g>
+            <rect x="396" y="440" width="8" height="108" fill="#8A6B4A"/>
+            <path d="M330 446 L448 446 L466 462 L448 478 L330 478 Z" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+            <text x="390" y="467" text-anchor="middle" class="tl" font-size="14">9 images →</text>
+          </g>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="L’Atelier, une petite usine, et les mots que l’on va découvrir.">
+          <g class="bob" style="animation-delay:0s">
+            <line x1="74" y1="58" x2="74" y2="84" stroke="#1F4E9A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="38" y="24" width="72" height="32" rx="16" fill="#FFFDF8" stroke="#1F4E9A" stroke-width="2" class="sh"/>
+              <text x="74" y="45.8" text-anchor="middle" class="tl" font-size="16" fill="#1F4E9A">Bilan</text>
+            </g>
+            <circle cx="74" cy="86" r="3" fill="#1F4E9A"/>
+          </g>
+          <g class="bob" style="animation-delay:-0.7s">
+            <line x1="262" y1="48" x2="262" y2="74" stroke="#C8102E" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="169" y="14" width="186" height="32" rx="16" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="262" y="35.8" text-anchor="middle" class="tl" font-size="16" fill="#C8102E">Compte de résultat</text>
+            </g>
+            <circle cx="262" cy="76" r="3" fill="#C8102E"/>
+          </g>
+          <g class="bob" style="animation-delay:-1.4s">
+            <line x1="284" y1="130" x2="284" y2="156" stroke="#2E7D62" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="208.5" y="96" width="151" height="32" rx="16" fill="#FFFDF8" stroke="#2E7D62" stroke-width="2" class="sh"/>
+              <text x="284" y="117.8" text-anchor="middle" class="tl" font-size="16" fill="#2E7D62">Valeur ajoutée</text>
+            </g>
+            <circle cx="284" cy="158" r="3" fill="#2E7D62"/>
+          </g>
+          <g class="bob" style="animation-delay:-2.1s">
+            <line x1="112" y1="142" x2="112" y2="168" stroke="#5C6B7A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="41" y="108" width="142" height="32" rx="16" fill="#FFFDF8" stroke="#5C6B7A" stroke-width="2" class="sh"/>
+              <text x="112" y="129.8" text-anchor="middle" class="tl" font-size="16" fill="#5C6B7A">Amortissement</text>
+            </g>
+            <circle cx="112" cy="170" r="3" fill="#5C6B7A"/>
+          </g>
+          <g class="bob" style="animation-delay:-2.8s">
+            <line x1="304" y1="214" x2="304" y2="240" stroke="#B07B4F" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="250.5" y="180" width="107" height="32" rx="16" fill="#FFFDF8" stroke="#B07B4F" stroke-width="2" class="sh"/>
+              <text x="304" y="201.8" text-anchor="middle" class="tl" font-size="16" fill="#B07B4F">Provision</text>
+            </g>
+            <circle cx="304" cy="242" r="3" fill="#B07B4F"/>
+          </g>
+          <g class="bob" style="animation-delay:-3.5s">
+            <line x1="74" y1="224" x2="74" y2="250" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="33.5" y="190" width="81" height="32" rx="16" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" class="sh"/>
+              <text x="74" y="211.8" text-anchor="middle" class="tl" font-size="16" fill="#1A1712">EBITDA</text>
+            </g>
+            <circle cx="74" cy="252" r="3" fill="#1A1712"/>
+          </g>
+          <g class="bob" style="animation-delay:-4.2s">
+            <line x1="196" y1="304" x2="196" y2="330" stroke="#B8891A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="138" y="270" width="116" height="32" rx="16" fill="#FFFDF8" stroke="#B8891A" stroke-width="2" class="sh"/>
+              <text x="196" y="291.8" text-anchor="middle" class="tl" font-size="16" fill="#B8891A">Trésorerie</text>
+            </g>
+            <circle cx="196" cy="332" r="3" fill="#B8891A"/>
+          </g>
+          <g class="bob" style="animation-delay:-4.9s">
+            <line x1="96" y1="390" x2="96" y2="416" stroke="#3E4C7A" stroke-width="1.5" stroke-dasharray="2 3"/>
+            <g>
+              <rect x="42.5" y="356" width="107" height="32" rx="16" fill="#FFFDF8" stroke="#3E4C7A" stroke-width="2" class="sh"/>
+              <text x="96" y="377.8" text-anchor="middle" class="tl" font-size="16" fill="#3E4C7A">Dividende</text>
+            </g>
+            <circle cx="96" cy="418" r="3" fill="#3E4C7A"/>
+          </g>
+          <g transform="translate(140 612)">
+            <rect x="178" y="-238" width="24" height="100" fill="#9C6B5A" stroke="#1A1712" stroke-width="2"/>
+            <rect x="174" y="-246" width="32" height="10" rx="2" fill="#7E5446" stroke="#1A1712" stroke-width="2"/>
+            <circle class="smoke" cx="190" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:0s"/>
+            <circle class="smoke" cx="190" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-1.1s"/>
+            <circle class="smoke" cx="190" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-2.2s"/>
+            <path d="M0 -150 L0 -196 L78.7 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M78.7 -150 L78.7 -196 L157.4 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="81.7" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M157.3 -150 L157.3 -196 L236 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="160.3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <rect x="0" y="-150" width="236" height="150" fill="#EFE7D6" stroke="#1A1712" stroke-width="2"/>
+            <rect x="18" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="61.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="105" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="148.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="192" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="56" y="-142" width="124" height="25" rx="4" fill="#FFFDF8" stroke="#1A1712" stroke-width="1.5"/>
+            <text x="118" y="-124" text-anchor="middle" class="tt" font-size="15">L’Atelier</text>
+            <rect x="96" y="-62" width="44" height="62" fill="#8A6A4F" stroke="#1A1712" stroke-width="2"/>
+            <line x1="118" y1="-62" x2="118" y2="0" stroke="#1A1712" stroke-width="1.5"/>
+          </g>
+          <g>
+            <rect x="60" y="484" width="8" height="128" fill="#8A6B4A"/>
+            <path d="M8 488 L112 488 L130 506 L112 524 L8 524 Z" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+            <text x="64" y="512" text-anchor="middle" class="tl" font-size="16">9 images →</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 1 · Le bilan -->
+    <section class="scene" data-scene="1" aria-label="Le bilan" style="--i:1">
+      <article class="cap" id="texte-1">
+        <div class="kick">1 · Le bilan</div>
+        <h2>Une balance, photographiée le 31 décembre</h2>
+        <p><span class="debut">À gauche, tout ce que l’entreprise possède&nbsp;: machines, stock, factures que les clients doivent encore, argent en banque.</span> <span class="reste">À droite, d’où vient l’argent qui a payé tout ça&nbsp;: les actionnaires, ou des dettes. Les deux plateaux pèsent toujours exactement le même poids.</span></p>
+        <details><summary>Définition comptable</summary><p>Bilan&nbsp;: état du patrimoine de l’entreprise à une date donnée. L’actif (ce qu’elle possède) est toujours égal au passif (capitaux propres, provisions et dettes qui l’ont financé).</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-1">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Une balance&nbsp;: l’actif, 191, à gauche&nbsp;; le passif, 191, à droite.">
+          <g data-fx="pop" data-t="0 0.06">
+            <text x="230" y="22" text-anchor="middle" class="tl" font-size="12" fill="#6B6255" letter-spacing="1.4">CE QU’ELLE POSSÈDE</text>
+            <text x="230" y="46" text-anchor="middle" class="tt" font-size="24">L’actif</text>
+          </g>
+          <g data-fx="pop" data-t="0.03 0.06">
+            <text x="610" y="22" text-anchor="middle" class="tl" font-size="12" fill="#6B6255" letter-spacing="1.4">D’OÙ VIENT L’ARGENT</text>
+            <text x="610" y="46" text-anchor="middle" class="tt" font-size="24">Le passif</text>
+          </g>
+          <path d="M336 548 L504 548 L480 516 L360 516 Z" fill="#2B2620"/>
+          <rect x="410" y="382" width="20" height="136" rx="4" fill="#3A342C"/>
+          <g data-beam data-bras="190" style="transform-origin:420px 380px">
+            <rect x="222" y="373" width="396" height="14" rx="7" fill="#3A342C"/>
+            <circle cx="230" cy="380" r="9" fill="#5A5148"/>
+            <circle cx="610" cy="380" r="9" fill="#5A5148"/>
+          </g>
+          <circle cx="420" cy="380" r="12" fill="#E8B931" stroke="#B8891A" stroke-width="3"/>
+          <g data-pl="L">
+            <rect x="224" y="292" width="12" height="88" fill="#3A342C"/>
+            <rect x="140" y="284" width="180" height="10" rx="3" fill="#2B2620"/>
+            <g data-fx="drop" data-t="0.06 0.07" data-v="430" data-w="100" data-side="L">
+              <rect x="150" y="169" width="160" height="115" rx="3" fill="#5C6B7A" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="230" y="217.7" text-anchor="middle" class="tl" font-size="14" fill="#FFFDF8">Machines, filiale</text>
+              <text x="230" y="242.7" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">100</text>
+            </g>
+            <g data-fx="drop" data-t="0.22 0.07" data-v="430" data-w="10" data-side="L">
+              <rect x="150" y="157.5" width="160" height="11.5" rx="3" fill="#B07B4F" stroke="#FFFDF8" stroke-width="1.5"/>
+              <line x1="150" y1="163.3" x2="142" y2="163.3" stroke="#1A1712" stroke-width="1.5"/>
+              <text x="138" y="168.3" text-anchor="end" class="tl" font-size="14">Stock <tspan class="tn">10</tspan></text>
+            </g>
+            <g data-fx="drop" data-t="0.28 0.07" data-v="430" data-w="50" data-side="L">
+              <rect x="150" y="100" width="160" height="57.5" rx="3" fill="#2F6FB5" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="230" y="120" text-anchor="middle" class="tl" font-size="14" fill="#FFFDF8">Factures clients</text>
+              <text x="230" y="145" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">50</text>
+            </g>
+            <g data-fx="drop" data-t="0.5 0.07" data-v="430" data-w="31" data-side="L">
+              <rect x="150" y="64.4" width="160" height="35.7" rx="3" fill="#E8B931" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="162" y="87.2" class="tl" font-size="14" fill="#3B2A05">Trésorerie</text>
+              <text x="298" y="88.2" text-anchor="end" class="tn" font-size="18" fill="#3B2A05">31</text>
+            </g>
+          </g>
+          <g data-pl="R">
+            <rect x="604" y="292" width="12" height="88" fill="#3A342C"/>
+            <rect x="520" y="284" width="180" height="10" rx="3" fill="#2B2620"/>
+            <g data-fx="drop" data-t="0.14 0.07" data-v="430" data-w="105" data-side="R">
+              <rect x="530" y="163.3" width="160" height="120.7" rx="3" fill="#2E7D62" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="610" y="208.1" text-anchor="middle" class="tl" font-size="14" fill="#FFFDF8">Capitaux propres</text>
+              <text x="610" y="233.1" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">105</text>
+              <text x="610" y="250.6" text-anchor="middle" class="tr" font-size="11.5" fill="#E8EEF5">apports + réserves</text>
+            </g>
+            <g data-fx="drop" data-t="0.36 0.07" data-v="430" data-w="6" data-side="R">
+              <rect x="530" y="156.4" width="160" height="6.9" rx="3" fill="#8C95A1" stroke="#FFFDF8" stroke-width="1.5"/>
+              <line x1="690" y1="159.8" x2="698" y2="159.8" stroke="#1A1712" stroke-width="1.5"/>
+              <text x="702" y="164.8" text-anchor="start" class="tl" font-size="14">Provisions <tspan class="tn">6</tspan></text>
+            </g>
+            <g data-fx="drop" data-t="0.42 0.07" data-v="430" data-w="80" data-side="R">
+              <rect x="530" y="64.4" width="160" height="92" rx="3" fill="#3E4C7A" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="610" y="94.8" text-anchor="middle" class="tl" font-size="14" fill="#FFFDF8">Dettes</text>
+              <text x="610" y="119.8" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">80</text>
+              <text x="610" y="137.3" text-anchor="middle" class="tr" font-size="11.5" fill="#E8EEF5">banque, État</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.64 0.08">
+            <rect x="336" y="430" width="168" height="48" rx="12" fill="#FFFDF8" stroke="#1A1712" stroke-width="2.5" class="sh"/>
+            <text x="420" y="462" text-anchor="middle" class="tn" font-size="24">191 = 191</text>
+          </g>
+          <g data-fx="pop" data-t="0.02 0.06">
+            <g transform="rotate(-4 420 118)">
+              <rect x="340" y="98" width="160" height="40" rx="6" fill="#1A1712"/>
+              <rect x="354" y="110" width="22" height="16" rx="3" fill="none" stroke="#FFFDF8" stroke-width="2"/>
+              <circle cx="365" cy="118" r="4" fill="#FFFDF8"/>
+              <text x="386" y="124" class="tl" font-size="15" fill="#FFFDF8">31 décembre</text>
+            </g>
+          </g>
+          <rect x="-600" y="-300" width="2040" height="1100" fill="#FFFFFF" style="opacity:0;pointer-events:none" data-fx="flash" data-t="0.005 0.07"/>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Une balance&nbsp;: l’actif, 191, à gauche&nbsp;; le passif, 191, à droite.">
+          <g data-fx="pop" data-t="0 0.06">
+            <text x="79" y="20" text-anchor="middle" class="tl" font-size="15" fill="#6B6255" letter-spacing="0.6">CE QU’ELLE</text>
+            <text x="79" y="38" text-anchor="middle" class="tl" font-size="15" fill="#6B6255" letter-spacing="0.6">POSSÈDE</text>
+            <text x="79" y="74" text-anchor="middle" class="tt" font-size="26">L’actif</text>
+          </g>
+          <g data-fx="pop" data-t="0.03 0.06">
+            <text x="321" y="20" text-anchor="middle" class="tl" font-size="15" fill="#6B6255" letter-spacing="0.6">D’OÙ VIENT</text>
+            <text x="321" y="38" text-anchor="middle" class="tl" font-size="15" fill="#6B6255" letter-spacing="0.6">L’ARGENT</text>
+            <text x="321" y="74" text-anchor="middle" class="tt" font-size="26">Le passif</text>
+          </g>
+          <path d="M118 612 L282 612 L260 582 L140 582 Z" fill="#2B2620"/>
+          <rect x="190" y="474" width="20" height="112" rx="4" fill="#3A342C"/>
+          <g data-beam data-bras="121" style="transform-origin:200px 470px">
+            <rect x="70" y="463" width="260" height="14" rx="7" fill="#3A342C"/>
+            <circle cx="79" cy="470" r="8" fill="#5A5148"/>
+            <circle cx="321" cy="470" r="8" fill="#5A5148"/>
+          </g>
+          <circle cx="200" cy="470" r="11" fill="#E8B931" stroke="#B8891A" stroke-width="3"/>
+          <g data-pl="L">
+            <rect x="73" y="392" width="12" height="78" fill="#3A342C"/>
+            <rect x="4" y="384" width="150" height="10" rx="3" fill="#2B2620"/>
+            <g data-fx="drop" data-t="0.06 0.07" data-v="430" data-w="100" data-side="L">
+              <rect x="12" y="269" width="134" height="115" rx="3" fill="#5C6B7A" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="79" y="318" text-anchor="middle" class="tl" font-size="15" fill="#FFFDF8">Machines, filiale</text>
+              <text x="79" y="343" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">100</text>
+            </g>
+            <g data-fx="drop" data-t="0.22 0.07" data-v="430" data-w="10" data-side="L">
+              <rect x="12" y="257.5" width="134" height="11.5" rx="3" fill="#B07B4F" stroke="#FFFDF8" stroke-width="1.5"/>
+              <path d="M146 263.3 L154 263.3 L162 245.3" fill="none" stroke="#1A1712" stroke-width="1.5"/>
+              <text x="152" y="239.3" class="tl" font-size="15">Stock <tspan class="tn">10</tspan></text>
+            </g>
+            <g data-fx="drop" data-t="0.28 0.07" data-v="430" data-w="50" data-side="L">
+              <rect x="12" y="200" width="134" height="57.5" rx="3" fill="#2F6FB5" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="79" y="220.3" text-anchor="middle" class="tl" font-size="15" fill="#FFFDF8">Factures clients</text>
+              <text x="79" y="245.3" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">50</text>
+            </g>
+            <g data-fx="drop" data-t="0.5 0.07" data-v="430" data-w="31" data-side="L">
+              <rect x="12" y="164.4" width="134" height="35.7" rx="3" fill="#E8B931" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="24" y="187.2" class="tl" font-size="15" fill="#3B2A05">Trésorerie</text>
+              <text x="134" y="188.2" text-anchor="end" class="tn" font-size="18" fill="#3B2A05">31</text>
+            </g>
+          </g>
+          <g data-pl="R">
+            <rect x="315" y="392" width="12" height="78" fill="#3A342C"/>
+            <rect x="246" y="384" width="150" height="10" rx="3" fill="#2B2620"/>
+            <g data-fx="drop" data-t="0.14 0.07" data-v="430" data-w="105" data-side="R">
+              <rect x="254" y="263.3" width="134" height="120.7" rx="3" fill="#2E7D62" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="321" y="298.1" text-anchor="middle" class="tl" font-size="15" fill="#FFFDF8">Capitaux propres</text>
+              <text x="321" y="323.1" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">105</text>
+              <text x="321" y="344.1" text-anchor="middle" class="tr" font-size="15" fill="#E8EEF5">apports +</text>
+              <text x="321" y="361.1" text-anchor="middle" class="tr" font-size="15" fill="#E8EEF5">réserves</text>
+            </g>
+            <g data-fx="drop" data-t="0.36 0.07" data-v="430" data-w="6" data-side="R">
+              <rect x="254" y="256.4" width="134" height="6.9" rx="3" fill="#8C95A1" stroke="#FFFDF8" stroke-width="1.5"/>
+              <path d="M254 259.8 L246 259.8 L238 277.8" fill="none" stroke="#1A1712" stroke-width="1.5"/>
+              <text x="250" y="293.8" text-anchor="end" class="tl" font-size="15">Provisions <tspan class="tn">6</tspan></text>
+            </g>
+            <g data-fx="drop" data-t="0.42 0.07" data-v="430" data-w="80" data-side="R">
+              <rect x="254" y="164.4" width="134" height="92" rx="3" fill="#3E4C7A" stroke="#FFFDF8" stroke-width="1.5"/>
+              <text x="321" y="193.4" text-anchor="middle" class="tl" font-size="15" fill="#FFFDF8">Dettes</text>
+              <text x="321" y="218.4" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8">80</text>
+              <text x="321" y="239.4" text-anchor="middle" class="tr" font-size="15" fill="#E8EEF5">banque, État</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.64 0.08">
+            <rect x="116" y="506" width="168" height="48" rx="12" fill="#FFFDF8" stroke="#1A1712" stroke-width="2.5" class="sh"/>
+            <text x="200" y="538" text-anchor="middle" class="tn" font-size="24">191 = 191</text>
+          </g>
+          <g data-fx="pop" data-t="0.02 0.06">
+            <g transform="rotate(-4 200 120)">
+              <rect x="122" y="100" width="156" height="40" rx="6" fill="#1A1712"/>
+              <rect x="134" y="112" width="22" height="16" rx="3" fill="none" stroke="#FFFDF8" stroke-width="2"/>
+              <circle cx="145" cy="120" r="4" fill="#FFFDF8"/>
+              <text x="164" y="126" class="tl" font-size="16" fill="#FFFDF8">31 décembre</text>
+            </g>
+          </g>
+          <rect x="-400" y="-300" width="1200" height="1300" fill="#FFFFFF" style="opacity:0;pointer-events:none" data-fx="flash" data-t="0.005 0.07"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 2 · Le compte de résultat -->
+    <section class="scene" data-scene="2" aria-label="Le compte de résultat" style="--i:2">
+      <article class="cap" id="texte-2">
+        <div class="kick">2 · Le compte de résultat</div>
+        <h2>Le film de l’année, en cascade</h2>
+        <p><span class="debut">Le compte de résultat part des ventes et retire, étage par étage, ce que l’année a coûté.</span> <span class="reste">Chaque étage porte un nom que l’on retrouve dans les comptes. Ce qui reste tout en bas, c’est le résultat net&nbsp;: le bénéfice de l’année (ou la perte).</span></p>
+        <details><summary>Définition comptable</summary><p>Compte de résultat&nbsp;: produits de l’exercice moins charges de l’exercice. Les soldes intermédiaires (valeur ajoutée, EBITDA, résultat d’exploitation) découpent ce calcul en étapes.</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-2">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Une cascade&nbsp;: ventes 200, valeur ajoutée 160, EBITDA 90, résultat d’exploitation 64, résultat net 50.">
+          <g data-fx="growy" data-o="t" data-t="0 .04">
+            <rect x="294" y="-30" width="12" height="60" fill="#4A90C8"/>
+          </g>
+          <g data-fx="pop" data-t="0.02 0.05">
+            <text x="320" y="4" class="tl" font-size="13" fill="#1F5FBF">200 payés par les clients</text>
+          </g>
+          <rect x="142" y="28" width="316" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0 .08">
+            <rect x="150" y="34" width="300" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="154" y="38" width="292" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.1 0.05">
+            <text x="300" y="65" text-anchor="middle" class="tn" font-size="23" fill="#FFFFFF">200</text>
+          </g>
+          <g data-fx="fade" data-t="0 0.06">
+            <text x="130" y="62" text-anchor="end" class="tl" font-size="15">Ventes</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.1 .05">
+            <line x1="300" y1="84" x2="300" y2="132" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="300" y1="84" x2="300" y2="132" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M304 104 C 390 104, 470 118, 540 118" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.1 0.06"/>
+          <path d="M304 104 C 390 104, 470 118, 540 118" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.2 0.03"/>
+          <g data-fx="slide" data-t="0.1 0.06" data-v="30 0">
+            <circle cx="570" cy="118" r="21" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <rect x="558" y="112" width="15" height="11" fill="#5C6B7A"/>
+            <rect x="573" y="116" width="9" height="7" fill="#5C6B7A"/>
+            <circle cx="564" cy="125" r="3" fill="#1A1712"/>
+            <circle cx="578" cy="125" r="3" fill="#1A1712"/>
+            <text x="600" y="116" class="tl" font-size="14.5">Fournisseurs</text>
+            <text x="600" y="134" class="tr" font-size="12" fill="#6B6255">acier, pièces</text>
+            <text x="834" y="125" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−40</text>
+          </g>
+          <rect x="172" y="132" width="256" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.2 .08">
+            <rect x="180" y="138" width="240" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="184" y="142" width="232" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.3 0.05">
+            <text x="300" y="169" text-anchor="middle" class="tn" font-size="23" fill="#FFFFFF">160</text>
+          </g>
+          <g data-fx="fade" data-t="0.2 0.06">
+            <text x="160" y="166" text-anchor="end" class="tl" font-size="15">Valeur ajoutée</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.3 .05">
+            <line x1="300" y1="188" x2="300" y2="236" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="300" y1="188" x2="300" y2="236" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M304 208 C 390 208, 470 222, 540 222" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.3 0.06"/>
+          <path d="M304 208 C 390 208, 470 222, 540 222" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.4 0.03"/>
+          <g data-fx="slide" data-t="0.3 0.06" data-v="30 0">
+            <circle cx="570" cy="222" r="21" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <g transform="translate(564 224) scale(0.85)">
+              <circle cx="0" cy="-9" r="5.5" fill="#B3261E"/>
+              <path d="M-9 8 Q-9 -2 0 -2 Q9 -2 9 8 Z" fill="#B3261E"/>
+            </g>
+            <g transform="translate(576 226) scale(0.85)">
+              <circle cx="0" cy="-9" r="5.5" fill="#D9475B"/>
+              <path d="M-9 8 Q-9 -2 0 -2 Q9 -2 9 8 Z" fill="#D9475B"/>
+            </g>
+            <text x="600" y="220" class="tl" font-size="14.5">Salariés</text>
+            <text x="600" y="238" class="tr" font-size="12" fill="#6B6255">salaires et cotisations</text>
+            <text x="834" y="229" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−70</text>
+          </g>
+          <rect x="224.5" y="236" width="151" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.4 .08">
+            <rect x="232.5" y="242" width="135" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="236.5" y="246" width="127" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.5 0.05">
+            <text x="300" y="273" text-anchor="middle" class="tn" font-size="23" fill="#FFFFFF">90</text>
+          </g>
+          <g data-fx="fade" data-t="0.4 0.06">
+            <text x="212.5" y="270" text-anchor="end" class="tl" font-size="15">EBITDA</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.5 .05">
+            <line x1="300" y1="292" x2="300" y2="340" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="300" y1="292" x2="300" y2="340" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M304 312 C 390 312, 470 326, 540 326" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.5 0.06"/>
+          <path d="M304 312 C 390 312, 470 326, 540 326" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.6 0.03"/>
+          <g data-fx="slide" data-t="0.5 0.06" data-v="30 0">
+            <circle cx="570" cy="326" r="21" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <path d="M581 326 L580.8 328.1 L577.9 329.3 L577.1 330.8 L577.8 333.8 L576.1 335.1 L573.3 333.9 L571.7 334.4 L570 337 L567.9 336.8 L566.7 333.9 L565.2 333.1 L562.2 333.8 L560.9 332.1 L562.1 329.3 L561.6 327.7 L559 326 L559.2 323.9 L562.1 322.7 L562.9 321.2 L562.2 318.2 L563.9 316.9 L566.7 318.1 L568.3 317.6 L570 315 L572.1 315.2 L573.3 318.1 L574.8 318.9 L577.8 318.2 L579.1 319.9 L577.9 322.7 L578.4 324.3 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="1.5"/>
+            <circle cx="570" cy="326" r="3.5" fill="#F3EEE3"/>
+            <text x="600" y="324" class="tl" font-size="14.5">Usure et provisions</text>
+            <text x="600" y="342" class="tr" font-size="12" fill="#6B6255">20 + 10 − 4</text>
+            <text x="834" y="333" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−26</text>
+          </g>
+          <rect x="244" y="340" width="112" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.6 .08">
+            <rect x="252" y="346" width="96" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="256" y="350" width="88" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.7 0.05">
+            <text x="300" y="377" text-anchor="middle" class="tn" font-size="23" fill="#FFFFFF">64</text>
+          </g>
+          <g data-fx="fade" data-t="0.6 0.06">
+            <text x="232" y="374" text-anchor="end" class="tl" font-size="15">Résultat d’exploitation</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.7 .05">
+            <line x1="300" y1="396" x2="300" y2="444" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="300" y1="396" x2="300" y2="444" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M304 416 C 390 416, 470 430, 540 430" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.7 0.06"/>
+          <path d="M304 416 C 390 416, 470 430, 540 430" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.8 0.03"/>
+          <g data-fx="slide" data-t="0.7 0.06" data-v="30 0">
+            <circle cx="570" cy="430" r="21" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <path d="M558 428 L570 419 L582 428 Z" fill="#3E4C7A"/>
+            <rect x="560" y="429" width="20" height="11" fill="#3E4C7A"/>
+            <path d="M564 430 V439 M570 430 V439 M576 430 V439" stroke="#F3EEE3" stroke-width="2"/>
+            <text x="600" y="428" class="tl" font-size="14.5">Impôt et participation</text>
+            <text x="600" y="446" class="tr" font-size="12" fill="#6B6255">État 16, salariés 4</text>
+            <text x="834" y="437" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−20</text>
+          </g>
+          <path d="M206 422 C 240 422, 262 420, 294 420" fill="none" stroke="#2F6FB5" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.7 0.06"/>
+          <g data-fx="slide" data-t="0.7 0.06" data-v="-30 0">
+            <text x="150" y="418" text-anchor="end" class="tl" font-size="14.5">Financier</text>
+            <text x="196" y="420" text-anchor="end" class="tn" font-size="21" fill="#1F5FBF">+6</text>
+            <text x="196" y="438" text-anchor="end" class="tr" font-size="12" fill="#6B6255">filiale 10 − intérêts 4</text>
+          </g>
+          <rect x="254.5" y="444" width="91" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.8 .08">
+            <rect x="262.5" y="450" width="75" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="266.5" y="454" width="67" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.9 0.05">
+            <text x="300" y="481" text-anchor="middle" class="tn" font-size="23" fill="#FFFFFF">50</text>
+          </g>
+          <g data-fx="fade" data-t="0.8 0.06">
+            <text x="242.5" y="478" text-anchor="end" class="tt" font-size="17">Résultat net</text>
+          </g>
+          <rect x="248.5" y="438" width="103" height="68" rx="16" fill="none" stroke="#1A1712" stroke-width="2.5" stroke-dasharray="6 5" data-fx="fade" data-t="0.95 0.04"/>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Une cascade&nbsp;: ventes 200, valeur ajoutée 160, EBITDA 90, résultat d’exploitation 64, résultat net 50.">
+          <g data-fx="growy" data-o="t" data-t="0 .04">
+            <rect x="40" y="-30" width="12" height="70" fill="#4A90C8"/>
+          </g>
+          <g data-fx="pop" data-t="0.02 0.05">
+            <text x="64" y="20" class="tl" font-size="15" fill="#1F5FBF">200 payés par les clients</text>
+          </g>
+          <rect x="14" y="38" width="216" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0 .08">
+            <rect x="22" y="44" width="200" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="26" y="48" width="192" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.1 0.05">
+            <text x="122" y="74" text-anchor="middle" class="tn" font-size="22" fill="#FFFFFF">200</text>
+          </g>
+          <g data-fx="fade" data-t="0 0.06">
+            <text x="240" y="72" class="tl" font-size="16">Ventes</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.1 .05">
+            <line x1="46" y1="94" x2="46" y2="138" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="46" y1="94" x2="46" y2="138" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M50 116 C 68 116, 60 116, 78 116" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.1 0.06"/>
+          <path d="M50 116 C 68 116, 60 116, 78 116" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.2 0.03"/>
+          <g data-fx="slide" data-t="0.1 0.06" data-v="30 0">
+            <circle cx="100" cy="116" r="19" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <rect x="88" y="110" width="15" height="11" fill="#5C6B7A"/>
+            <rect x="103" y="114" width="9" height="7" fill="#5C6B7A"/>
+            <circle cx="94" cy="123" r="3" fill="#1A1712"/>
+            <circle cx="108" cy="123" r="3" fill="#1A1712"/>
+            <text x="128" y="113" class="tl" font-size="15">Fournisseurs</text>
+            <text x="128" y="132" class="tr" font-size="15" fill="#6B6255">acier, pièces</text>
+            <text x="394" y="123" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−40</text>
+          </g>
+          <rect x="14" y="138" width="176" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.2 .08">
+            <rect x="22" y="144" width="160" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="26" y="148" width="152" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.3 0.05">
+            <text x="102" y="174" text-anchor="middle" class="tn" font-size="22" fill="#FFFFFF">160</text>
+          </g>
+          <g data-fx="fade" data-t="0.2 0.06">
+            <text x="200" y="172" class="tl" font-size="16">Valeur ajoutée</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.3 .05">
+            <line x1="46" y1="194" x2="46" y2="238" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="46" y1="194" x2="46" y2="238" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M50 216 C 68 216, 60 216, 78 216" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.3 0.06"/>
+          <path d="M50 216 C 68 216, 60 216, 78 216" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.4 0.03"/>
+          <g data-fx="slide" data-t="0.3 0.06" data-v="30 0">
+            <circle cx="100" cy="216" r="19" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <g transform="translate(94 218) scale(0.85)">
+              <circle cx="0" cy="-9" r="5.5" fill="#B3261E"/>
+              <path d="M-9 8 Q-9 -2 0 -2 Q9 -2 9 8 Z" fill="#B3261E"/>
+            </g>
+            <g transform="translate(106 220) scale(0.85)">
+              <circle cx="0" cy="-9" r="5.5" fill="#D9475B"/>
+              <path d="M-9 8 Q-9 -2 0 -2 Q9 -2 9 8 Z" fill="#D9475B"/>
+            </g>
+            <text x="128" y="213" class="tl" font-size="15">Salariés</text>
+            <text x="128" y="232" class="tr" font-size="15" fill="#6B6255">salaires et cotisations</text>
+            <text x="394" y="223" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−70</text>
+          </g>
+          <rect x="14" y="238" width="106" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.4 .08">
+            <rect x="22" y="244" width="90" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="26" y="248" width="82" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.5 0.05">
+            <text x="67" y="274" text-anchor="middle" class="tn" font-size="22" fill="#FFFFFF">90</text>
+          </g>
+          <g data-fx="fade" data-t="0.4 0.06">
+            <text x="130" y="272" class="tl" font-size="16">EBITDA</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.5 .05">
+            <line x1="46" y1="294" x2="46" y2="338" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="46" y1="294" x2="46" y2="338" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M50 316 C 68 316, 60 316, 78 316" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.5 0.06"/>
+          <path d="M50 316 C 68 316, 60 316, 78 316" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.6 0.03"/>
+          <g data-fx="slide" data-t="0.5 0.06" data-v="30 0">
+            <circle cx="100" cy="316" r="19" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <path d="M111 316 L110.8 318.1 L107.9 319.3 L107.1 320.8 L107.8 323.8 L106.1 325.1 L103.3 323.9 L101.7 324.4 L100 327 L97.9 326.8 L96.7 323.9 L95.2 323.1 L92.2 323.8 L90.9 322.1 L92.1 319.3 L91.6 317.7 L89 316 L89.2 313.9 L92.1 312.7 L92.9 311.2 L92.2 308.2 L93.9 306.9 L96.7 308.1 L98.3 307.6 L100 305 L102.1 305.2 L103.3 308.1 L104.8 308.9 L107.8 308.2 L109.1 309.9 L107.9 312.7 L108.4 314.3 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="1.5"/>
+            <circle cx="100" cy="316" r="3.5" fill="#F3EEE3"/>
+            <text x="128" y="313" class="tl" font-size="15">Usure et provisions</text>
+            <text x="128" y="332" class="tr" font-size="15" fill="#6B6255">20 + 10 − 4</text>
+            <text x="394" y="323" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−26</text>
+          </g>
+          <rect x="14" y="338" width="80" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.6 .08">
+            <rect x="22" y="344" width="64" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="26" y="348" width="56" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.7 0.05">
+            <text x="54" y="374" text-anchor="middle" class="tn" font-size="22" fill="#FFFFFF">64</text>
+          </g>
+          <g data-fx="fade" data-t="0.6 0.06">
+            <text x="104" y="372" class="tl" font-size="16">Résultat d’exploitation</text>
+          </g>
+          <g data-fx="growy" data-o="t" data-t="0.7 .05">
+            <line x1="46" y1="394" x2="46" y2="492" stroke="#4A90C8" stroke-width="10"/>
+            <line x1="46" y1="394" x2="46" y2="492" stroke="#BFE0F7" stroke-width="3" class="flow"/>
+          </g>
+          <path d="M50 454 C 68 454, 60 454, 78 454" fill="none" stroke="#D9475B" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.7 0.06"/>
+          <path d="M50 454 C 68 454, 60 454, 78 454" fill="none" stroke="#F6C1C9" stroke-width="2.5" class="flow" data-fx="fade" data-t="0.8 0.03"/>
+          <g data-fx="slide" data-t="0.7 0.06" data-v="30 0">
+            <circle cx="100" cy="454" r="19" fill="#F3EEE3" stroke="#1A1712" stroke-width="2"/>
+            <path d="M88 452 L100 443 L112 452 Z" fill="#3E4C7A"/>
+            <rect x="90" y="453" width="20" height="11" fill="#3E4C7A"/>
+            <path d="M94 454 V463 M100 454 V463 M106 454 V463" stroke="#F3EEE3" stroke-width="2"/>
+            <text x="128" y="451" class="tl" font-size="15">Impôt et participation</text>
+            <text x="128" y="470" class="tr" font-size="15" fill="#6B6255">État 16, salariés 4</text>
+            <text x="394" y="461" text-anchor="end" class="tn" font-size="21" fill="#C8102E">−20</text>
+          </g>
+          <path d="M78 412 C 60 412, 68 412, 52 412" fill="none" stroke="#2F6FB5" stroke-width="7" stroke-linecap="round" data-fx="draw" data-t="0.7 0.06"/>
+          <g data-fx="slide" data-t="0.7 0.06" data-v="30 0">
+            <text x="128" y="410" class="tl" font-size="15">Financier</text>
+            <text x="394" y="418" text-anchor="end" class="tn" font-size="21" fill="#1F5FBF">+6</text>
+            <text x="128" y="429" class="tr" font-size="15" fill="#6B6255">filiale 10 − intérêts 4</text>
+          </g>
+          <rect x="14" y="492" width="66" height="56" rx="12" fill="#E9E2D3" stroke="#6B5E4B" stroke-width="2"/>
+          <g data-fx="growy" data-o="b" data-t="0.8 .08">
+            <rect x="22" y="498" width="50" height="44" rx="6" fill="#4A90C8"/>
+            <rect x="26" y="502" width="42" height="5" rx="2.5" fill="#8EC0E6"/>
+          </g>
+          <g data-fx="pop" data-t="0.9 0.05">
+            <text x="47" y="528" text-anchor="middle" class="tn" font-size="22" fill="#FFFFFF">50</text>
+          </g>
+          <g data-fx="fade" data-t="0.8 0.06">
+            <text x="90" y="526" class="tt" font-size="19">Résultat net</text>
+          </g>
+          <rect x="8" y="486" width="78" height="68" rx="16" fill="none" stroke="#1A1712" stroke-width="2.5" stroke-dasharray="6 5" data-fx="fade" data-t="0.95 0.04"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 3 · La valeur ajoutée -->
+    <section class="scene" data-scene="3" aria-label="La valeur ajoutée" style="--i:3">
+      <article class="cap" id="texte-3">
+        <div class="kick">3 · La valeur ajoutée</div>
+        <h2>Ce que le travail ajoute</h2>
+        <p><span class="debut">L’Atelier achète 40 d’acier et de pièces, les transforme, et vend la machine 200.</span> <span class="reste">La différence, 160, c’est la valeur ajoutée&nbsp;: la richesse créée sur place. C’est avec elle qu’on paie les salaires, l’usure des machines, les impôts… et l’actionnaire.</span></p>
+        <details><summary>Définition comptable</summary><p>Valeur ajoutée&nbsp;: production de l’exercice moins les consommations venant de tiers (matières, sous-traitance, énergie, services extérieurs).</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-3">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="L’acier acheté 40 entre dans l’atelier, une machine vendue 200 en sort&nbsp;: 160 de valeur ajoutée.">
+          <g transform="translate(300 526)">
+            <rect x="202" y="-238" width="24" height="100" fill="#9C6B5A" stroke="#1A1712" stroke-width="2"/>
+            <rect x="198" y="-246" width="32" height="10" rx="2" fill="#7E5446" stroke="#1A1712" stroke-width="2"/>
+            <circle class="smoke" cx="214" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:0s"/>
+            <circle class="smoke" cx="214" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-1.1s"/>
+            <circle class="smoke" cx="214" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-2.2s"/>
+            <path d="M0 -150 L0 -196 L86.7 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M86.7 -150 L86.7 -196 L173.4 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="89.7" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M173.3 -150 L173.3 -196 L260 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="176.3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <rect x="0" y="-150" width="260" height="150" fill="#EFE7D6" stroke="#1A1712" stroke-width="2"/>
+            <rect x="18" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="67.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="117" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="166.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="216" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="68" y="-142" width="124" height="25" rx="4" fill="#FFFDF8" stroke="#1A1712" stroke-width="1.5"/>
+            <text x="130" y="-124" text-anchor="middle" class="tt" font-size="15">L’Atelier</text>
+            <rect x="0" y="-54" width="38" height="54" fill="#2B2620"/>
+            <rect x="222" y="-54" width="38" height="54" fill="#2B2620"/>
+            <g data-fx="spin" data-t="0.08 0.6" data-v="720">
+              <path d="M116 -78 L115.7 -74.5 L110.7 -72.7 L109.5 -70.2 L111.3 -65.1 L108.9 -62.7 L103.8 -64.5 L101.3 -63.3 L99.5 -58.3 L96 -58 L93.3 -62.6 L90.7 -63.3 L86 -60.7 L83.1 -62.7 L84 -68 L82.5 -70.2 L77.2 -71.2 L76.3 -74.5 L80.4 -78 L80.6 -80.7 L77.2 -84.8 L78.7 -88 L84 -88 L86 -90 L86 -95.3 L89.2 -96.8 L93.3 -93.4 L96 -93.6 L99.5 -97.7 L102.8 -96.8 L103.8 -91.5 L106 -90 L111.3 -90.9 L113.3 -88 L110.7 -83.3 L111.4 -80.7 Z" fill="#E8B931" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="96" cy="-78" r="6.4" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+            </g>
+            <g data-fx="spin" data-t="0.08 0.6" data-v="-1080">
+              <path d="M139 -60 L138.7 -57.1 L135.1 -55.6 L133.9 -53.7 L134.1 -49.8 L131.6 -48.3 L128.3 -50.1 L126 -49.9 L123.1 -47.3 L120.4 -48.3 L119.7 -52.1 L118.1 -53.7 L114.3 -54.4 L113.3 -57.1 L115.9 -60 L116.1 -62.3 L114.3 -65.6 L115.8 -68.1 L119.7 -67.9 L121.6 -69.1 L123.1 -72.7 L126 -73 L128.3 -69.9 L130.4 -69.1 L134.1 -70.2 L136.2 -68.1 L135.1 -64.4 L135.9 -62.3 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="126" cy="-60" r="4.2" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+            </g>
+          </g>
+          <rect x="16" y="526" width="808" height="20" rx="10" fill="#3A342C"/>
+          <line x1="26" y1="528" x2="814" y2="528" stroke="#8C8273" stroke-width="3" stroke-dasharray="10 8" class="flow"/>
+          <g class="roll">
+            <circle cx="36" cy="536" r="6" fill="#6B6255"/>
+            <line x1="31" y1="536" x2="41" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="78" cy="536" r="6" fill="#6B6255"/>
+            <line x1="73" y1="536" x2="83" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="120" cy="536" r="6" fill="#6B6255"/>
+            <line x1="115" y1="536" x2="125" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="162" cy="536" r="6" fill="#6B6255"/>
+            <line x1="157" y1="536" x2="167" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="204" cy="536" r="6" fill="#6B6255"/>
+            <line x1="199" y1="536" x2="209" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="246" cy="536" r="6" fill="#6B6255"/>
+            <line x1="241" y1="536" x2="251" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="288" cy="536" r="6" fill="#6B6255"/>
+            <line x1="283" y1="536" x2="293" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="330" cy="536" r="6" fill="#6B6255"/>
+            <line x1="325" y1="536" x2="335" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="372" cy="536" r="6" fill="#6B6255"/>
+            <line x1="367" y1="536" x2="377" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="414" cy="536" r="6" fill="#6B6255"/>
+            <line x1="409" y1="536" x2="419" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="456" cy="536" r="6" fill="#6B6255"/>
+            <line x1="451" y1="536" x2="461" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="498" cy="536" r="6" fill="#6B6255"/>
+            <line x1="493" y1="536" x2="503" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="540" cy="536" r="6" fill="#6B6255"/>
+            <line x1="535" y1="536" x2="545" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="582" cy="536" r="6" fill="#6B6255"/>
+            <line x1="577" y1="536" x2="587" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="624" cy="536" r="6" fill="#6B6255"/>
+            <line x1="619" y1="536" x2="629" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="666" cy="536" r="6" fill="#6B6255"/>
+            <line x1="661" y1="536" x2="671" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="708" cy="536" r="6" fill="#6B6255"/>
+            <line x1="703" y1="536" x2="713" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="750" cy="536" r="6" fill="#6B6255"/>
+            <line x1="745" y1="536" x2="755" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="792" cy="536" r="6" fill="#6B6255"/>
+            <line x1="787" y1="536" x2="797" y2="536" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g data-fx="out" data-t="0.27 0.04">
+            <g data-fx="fly" data-t="0.08 0.19" data-v="196 0">
+              <path d="M40 524 L52 504 L150 504 L138 524 Z" fill="#9AA5B1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M58 508 L140 508" stroke="#C9D0DA" stroke-width="3"/>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.03 0.05">
+            <line x1="96" y1="460" x2="96" y2="500" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <g>
+              <rect x="12.5" y="431" width="167" height="30" rx="15" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="96" y="451" text-anchor="middle" class="tl" font-size="14" fill="#C8102E">Acier, pièces&nbsp;: 40</text>
+            </g>
+          </g>
+          <path d="M318 451 L321 457 L327 460 L321 463 L318 469 L315 463 L309 460 L315 457 Z" fill="#E8B931" data-fx="win" data-t="0.26 0.1" style="opacity:0"/>
+          <path d="M350 439 L353 445 L359 448 L353 451 L350 457 L347 451 L341 448 L347 445 Z" fill="#E8B931" data-fx="win" data-t="0.29 0.1" style="opacity:0"/>
+          <path d="M552 447 L555 453 L561 456 L555 459 L552 465 L549 459 L543 456 L549 453 Z" fill="#E8B931" data-fx="win" data-t="0.32 0.1" style="opacity:0"/>
+          <path d="M586 457 L589 463 L595 466 L589 469 L586 475 L583 469 L577 466 L583 463 Z" fill="#E8B931" data-fx="win" data-t="0.35 0.1" style="opacity:0"/>
+          <g data-fx="slide" data-t="0.36 0.2" data-v="-90 0">
+            <g transform="translate(612 524) scale(0.6)">
+              <path d="M-34 -30 L8 -30" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+              <path d="M6 -26 L18 -72 L134 -72 L146 -26 Z" fill="#3E7C6B" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="20" y="-84" width="112" height="13" rx="3" fill="#2C5E50" stroke="#1A1712" stroke-width="2"/>
+              <path d="M46 -66 L42 -32 M76 -66 L76 -32 M106 -66 L110 -32" stroke="#2C5E50" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="40" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="40" cy="-18" r="8" fill="#D5DAE1"/>
+              <circle cx="114" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="114" cy="-18" r="8" fill="#D5DAE1"/>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.55 0.06">
+            <line x1="660" y1="486" x2="660" y2="456" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <g>
+              <rect x="600" y="425" width="120" height="30" rx="15" fill="#FFFDF8" stroke="#1F5FBF" stroke-width="2" class="sh"/>
+              <text x="660" y="445" text-anchor="middle" class="tl" font-size="14" fill="#1F5FBF">Vendue&nbsp;: 200</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.6 0.06">
+            <text x="250" y="152" text-anchor="middle" class="tn" font-size="56" fill="#1F5FBF">200</text>
+          </g>
+          <g data-fx="pop" data-t="0.66 0.06">
+            <text x="330" y="152" text-anchor="middle" class="tn" font-size="56">−</text>
+            <text x="402" y="152" text-anchor="middle" class="tn" font-size="56" fill="#C8102E">40</text>
+          </g>
+          <g data-fx="pop" data-t="0.72 0.06">
+            <text x="474" y="152" text-anchor="middle" class="tn" font-size="56">=</text>
+          </g>
+          <g data-fx="pop" data-t="0.76 0.07">
+            <rect x="512" y="94" width="150" height="76" rx="14" fill="#1A1712"/>
+            <text x="587" y="152" text-anchor="middle" class="tn" font-size="56" fill="#FFFDF8">160</text>
+          </g>
+          <g data-fx="rise" data-t="0.82 0.08">
+            <text x="587" y="196" text-anchor="middle" class="tt" font-size="17">Valeur ajoutée</text>
+            <text x="587" y="216" text-anchor="middle" class="tr" font-size="13.5" fill="#6B6255">la richesse créée ici</text>
+          </g>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="L’acier acheté 40 entre dans l’atelier, une machine vendue 200 en sort&nbsp;: 160 de valeur ajoutée.">
+          <g transform="translate(92 588)">
+            <rect x="142" y="-238" width="24" height="100" fill="#9C6B5A" stroke="#1A1712" stroke-width="2"/>
+            <rect x="138" y="-246" width="32" height="10" rx="2" fill="#7E5446" stroke="#1A1712" stroke-width="2"/>
+            <circle class="smoke" cx="154" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:0s"/>
+            <circle class="smoke" cx="154" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-1.1s"/>
+            <circle class="smoke" cx="154" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-2.2s"/>
+            <path d="M0 -150 L0 -196 L66.7 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M66.7 -150 L66.7 -196 L133.4 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="69.7" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M133.3 -150 L133.3 -196 L200 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="136.3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <rect x="0" y="-150" width="200" height="150" fill="#EFE7D6" stroke="#1A1712" stroke-width="2"/>
+            <rect x="18" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="52.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="87" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="121.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="156" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="38" y="-142" width="124" height="25" rx="4" fill="#FFFDF8" stroke="#1A1712" stroke-width="1.5"/>
+            <text x="100" y="-124" text-anchor="middle" class="tt" font-size="15">L’Atelier</text>
+            <rect x="0" y="-48" width="30" height="48" fill="#2B2620"/>
+            <rect x="170" y="-48" width="30" height="48" fill="#2B2620"/>
+            <g data-fx="spin" data-t="0.08 0.6" data-v="720">
+              <path d="M88 -80 L87.7 -76.9 L83.2 -75.2 L82.2 -73 L83.8 -68.4 L81.6 -66.2 L77 -67.8 L74.8 -66.8 L73.1 -62.3 L70 -62 L67.6 -66.2 L65.2 -66.8 L61 -64.4 L58.4 -66.2 L59.2 -71 L57.8 -73 L53.1 -73.8 L52.3 -76.9 L56 -80 L56.2 -82.4 L53.1 -86.2 L54.4 -89 L59.2 -89 L61 -90.8 L61 -95.6 L63.8 -96.9 L67.6 -93.8 L70 -94 L73.1 -97.7 L76.2 -96.9 L77 -92.2 L79 -90.8 L83.8 -91.6 L85.6 -89 L83.2 -84.8 L83.8 -82.4 Z" fill="#E8B931" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="70" cy="-80" r="5.8" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+            </g>
+            <g data-fx="spin" data-t="0.08 0.6" data-v="-1080">
+              <path d="M110 -62 L109.7 -59.3 L106.4 -57.9 L105.3 -56.2 L105.5 -52.6 L103.2 -51.2 L100.1 -52.9 L98 -52.6 L95.3 -50.3 L92.8 -51.2 L92.2 -54.7 L90.7 -56.2 L87.2 -56.8 L86.3 -59.3 L88.6 -62 L88.9 -64.1 L87.2 -67.2 L88.6 -69.5 L92.2 -69.3 L93.9 -70.4 L95.3 -73.7 L98 -74 L100.1 -71.1 L102.1 -70.4 L105.5 -71.4 L107.4 -69.5 L106.4 -66.1 L107.1 -64.1 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="98" cy="-62" r="3.8" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+            </g>
+          </g>
+          <rect x="6" y="588" width="388" height="18" rx="9" fill="#3A342C"/>
+          <line x1="14" y1="590" x2="386" y2="590" stroke="#8C8273" stroke-width="3" stroke-dasharray="10 8" class="flow"/>
+          <g class="roll">
+            <circle cx="22" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="17.5" y1="597" x2="26.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="58" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="53.5" y1="597" x2="62.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="94" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="89.5" y1="597" x2="98.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="130" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="125.5" y1="597" x2="134.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="166" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="161.5" y1="597" x2="170.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="202" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="197.5" y1="597" x2="206.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="238" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="233.5" y1="597" x2="242.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="274" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="269.5" y1="597" x2="278.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="310" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="305.5" y1="597" x2="314.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="346" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="341.5" y1="597" x2="350.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g class="roll">
+            <circle cx="382" cy="597" r="5.5" fill="#6B6255"/>
+            <line x1="377.5" y1="597" x2="386.5" y2="597" stroke="#3A342C" stroke-width="2"/>
+          </g>
+          <g data-fx="out" data-t="0.27 0.04">
+            <g data-fx="fly" data-t="0.08 0.19" data-v="74 0">
+              <path d="M14 586 L22 572 L80 572 L72 586 Z" fill="#9AA5B1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M26 575 L74 575" stroke="#C9D0DA" stroke-width="3"/>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.03 0.05">
+            <line x1="47" y1="376" x2="47" y2="566" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <g>
+              <rect x="9.5" y="344.5" width="177" height="31" rx="15.5" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="98" y="365.4" text-anchor="middle" class="tl" font-size="15" fill="#C8102E">Acier, pièces&nbsp;: 40</text>
+            </g>
+          </g>
+          <path d="M126 453 L129 459 L135 462 L129 465 L126 471 L123 465 L117 462 L123 459 Z" fill="#E8B931" data-fx="win" data-t="0.26 0.1" style="opacity:0"/>
+          <path d="M156 441 L159 447 L165 450 L159 453 L156 459 L153 453 L147 450 L153 447 Z" fill="#E8B931" data-fx="win" data-t="0.29 0.1" style="opacity:0"/>
+          <path d="M236 447 L239 453 L245 456 L239 459 L236 465 L233 459 L227 456 L233 453 Z" fill="#E8B931" data-fx="win" data-t="0.32 0.1" style="opacity:0"/>
+          <path d="M262 459 L265 465 L271 468 L265 471 L262 477 L259 471 L253 468 L259 465 Z" fill="#E8B931" data-fx="win" data-t="0.35 0.1" style="opacity:0"/>
+          <g data-fx="slide" data-t="0.36 0.2" data-v="-60 0">
+            <g transform="translate(314 588) scale(0.5)">
+              <path d="M-34 -30 L8 -30" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+              <path d="M6 -26 L18 -72 L134 -72 L146 -26 Z" fill="#3E7C6B" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="20" y="-84" width="112" height="13" rx="3" fill="#2C5E50" stroke="#1A1712" stroke-width="2"/>
+              <path d="M46 -66 L42 -32 M76 -66 L76 -32 M106 -66 L110 -32" stroke="#2C5E50" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="40" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="40" cy="-18" r="8" fill="#D5DAE1"/>
+              <circle cx="114" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="114" cy="-18" r="8" fill="#D5DAE1"/>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.55 0.06">
+            <line x1="342" y1="540" x2="342" y2="388" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <g>
+              <rect x="266.5" y="356.5" width="127" height="31" rx="15.5" fill="#FFFDF8" stroke="#1F5FBF" stroke-width="2" class="sh"/>
+              <text x="330" y="377.4" text-anchor="middle" class="tl" font-size="15" fill="#1F5FBF">Vendue&nbsp;: 200</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.6 0.06">
+            <text x="58" y="200" text-anchor="middle" class="tn" font-size="40" fill="#1F5FBF">200</text>
+          </g>
+          <g data-fx="pop" data-t="0.66 0.06">
+            <text x="116" y="200" text-anchor="middle" class="tn" font-size="40">−</text>
+            <text x="166" y="200" text-anchor="middle" class="tn" font-size="40" fill="#C8102E">40</text>
+          </g>
+          <g data-fx="pop" data-t="0.72 0.06">
+            <text x="218" y="200" text-anchor="middle" class="tn" font-size="40">=</text>
+          </g>
+          <g data-fx="pop" data-t="0.76 0.07">
+            <rect x="246" y="156" width="118" height="58" rx="12" fill="#1A1712"/>
+            <text x="305" y="200" text-anchor="middle" class="tn" font-size="40" fill="#FFFDF8">160</text>
+          </g>
+          <g data-fx="rise" data-t="0.82 0.08">
+            <text x="305" y="242" text-anchor="middle" class="tt" font-size="19">Valeur ajoutée</text>
+            <text x="305" y="263" text-anchor="middle" class="tr" font-size="15" fill="#6B6255">la richesse créée ici</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 4 · L’amortissement -->
+    <section class="scene" data-scene="4" aria-label="L’amortissement" style="--i:4">
+      <article class="cap" id="texte-4">
+        <div class="kick">4 · L’amortissement</div>
+        <h2>La machine s’use, l’argent ne bouge pas</h2>
+        <p><span class="debut">La machine a coûté 100, payés le jour de l’achat.</span> <span class="reste">Elle va servir cinq ans&nbsp;: chaque année, on compte 20 d’usure dans le compte de résultat. C’est une charge, mais aucun euro ne sort ce jour-là. Au bilan, la valeur de la machine baisse d’autant.</span></p>
+        <details><summary>Définition comptable</summary><p>Amortissement&nbsp;: constatation de la dépréciation d’une immobilisation sur sa durée d’utilisation. C’est une charge «&nbsp;calculée&nbsp;», sans décaissement.</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-4">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Une machine achetée 100 perd 20 de valeur par an pendant cinq ans&nbsp;; la trésorerie ne bouge pas.">
+          <g data-fx="pop" data-t="0.04 0.06">
+            <g data-badge>
+              <g>
+                <rect x="59" y="274.5" width="102" height="31" rx="15.5" fill="#E3EED6" class="sh"/>
+                <text x="110" y="295.4" text-anchor="middle" class="tl" font-size="15" fill="#335512">0&nbsp;€ sorti</text>
+              </g>
+            </g>
+          </g>
+          <text x="110" y="328" text-anchor="middle" class="tl" font-size="15">Trésorerie</text>
+          <g>
+            <rect x="30" y="340" width="160" height="186" rx="10" fill="#6B7686" stroke="#1A1712" stroke-width="2.5"/>
+            <rect x="42" y="352" width="136" height="162" rx="6" fill="#7C8796" stroke="#4E5866" stroke-width="2"/>
+            <circle cx="110" cy="418.1" r="27.2" fill="#D5DAE1" stroke="#1A1712" stroke-width="2"/>
+            <circle cx="110" cy="418.1" r="8" fill="#1A1712"/>
+            <line x1="160" y1="455.3" x2="160" y2="488.8" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+            <rect x="38" y="526" width="16" height="8" fill="#1A1712"/>
+            <rect x="166" y="526" width="16" height="8" fill="#1A1712"/>
+          </g>
+          <g data-fx="pop" data-t="0.01 0.06">
+            <path d="M196 392 C 230 356, 262 356, 296 384" fill="none" stroke="#8C95A1" stroke-width="2.5" stroke-dasharray="6 5"/>
+            <path d="M286 378 L298 386 L284 392" fill="none" stroke="#8C95A1" stroke-width="2.5"/>
+            <text x="240" y="340" text-anchor="middle" class="tr" font-size="12.5" fill="#6B6255">Achat&nbsp;: 100,</text>
+            <text x="240" y="356" text-anchor="middle" class="tr" font-size="12.5" fill="#6B6255">payé une fois</text>
+          </g>
+          <g data-fx="pop" data-t="0 0.06">
+            <rect x="300" y="500" width="220" height="30" rx="4" fill="#4E5866" stroke="#1A1712" stroke-width="2"/>
+            <rect x="318" y="300" width="22" height="200" fill="#6B7686" stroke="#1A1712" stroke-width="2"/>
+            <rect x="480" y="300" width="22" height="200" fill="#6B7686" stroke="#1A1712" stroke-width="2"/>
+            <rect x="300" y="266" width="220" height="44" rx="6" fill="#5C6B7A" stroke="#1A1712" stroke-width="2"/>
+            <rect x="404" y="310" width="12" height="26" fill="#3A342C"/>
+            <rect x="370" y="336" width="80" height="54" rx="4" fill="#3E7C6B" stroke="#1A1712" stroke-width="2"/>
+            <rect x="352" y="452" width="116" height="48" fill="#8C95A1" stroke="#1A1712" stroke-width="2"/>
+            <circle cx="508" cy="288" r="6" fill="#7FD27F" stroke="#1A1712" stroke-width="1.5"/>
+            <g data-rust style="opacity:0">
+              <circle cx="326" cy="340" r="7" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="330.2" cy="337.2" r="3.5" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="332" cy="420" r="9" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="337.4" cy="416.4" r="4.5" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="488" cy="380" r="8" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="492.8" cy="376.8" r="4" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="494" cy="452" r="6" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="497.6" cy="449.6" r="3" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="330" cy="280" r="6" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="333.6" cy="277.6" r="3" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="470" cy="290" r="9" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="475.4" cy="286.4" r="4.5" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="430" cy="296" r="5" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="433" cy="294" r="2.5" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="384" cy="360" r="7" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="388.2" cy="357.2" r="3.5" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="440" cy="372" r="5" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="443" cy="370" r="2.5" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="372" cy="470" r="8" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="376.8" cy="466.8" r="4" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="452" cy="480" r="7" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="456.2" cy="477.2" r="3.5" fill="#8A5530" fill-opacity=".6"/>
+              <circle cx="410" cy="514" r="9" fill="#A0663A" fill-opacity=".75"/>
+              <circle cx="415.4" cy="510.4" r="4.5" fill="#8A5530" fill-opacity=".6"/>
+            </g>
+          </g>
+          <text x="410" y="198" text-anchor="middle" class="tl" font-size="13" fill="#6B6255">Valeur au bilan</text>
+          <rect x="320" y="208" width="180" height="16" rx="8" fill="#E3E6EB"/>
+          <rect x="320" y="208" width="180" height="16" rx="8" fill="#5C6B7A" data-bar data-o="l"/>
+          <text x="512" y="222" class="tn" font-size="16" data-val>100</text>
+          <text x="410" y="74" text-anchor="middle" class="tt" font-size="36" data-yr>À l’achat</text>
+          <circle cx="350" cy="102" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="350" cy="102" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="380" cy="102" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="380" cy="102" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="410" cy="102" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="410" cy="102" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="440" cy="102" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="440" cy="102" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="470" cy="102" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="470" cy="102" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <text x="410" y="136" text-anchor="middle" class="tr" font-size="13.5" fill="#6B6255">sur 5 ans d’utilisation</text>
+          <g data-fx="pop" data-t="0.07 0.06">
+            <path d="M600 250 L820 250 L820 440 L809 432 L798 440 L787 432 L776 440 L765 432 L754 440 L743 432 L732 440 L721 432 L710 440 L699 432 L688 440 L677 432 L666 440 L655 432 L644 440 L633 432 L622 440 L611 432 L600 440 Z" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" stroke-linejoin="round" class="sh"/>
+            <text x="616" y="278" class="tl" font-size="11.5" fill="#6B6255" letter-spacing="1.2">COMPTE DE RÉSULTAT</text>
+            <line x1="616" y1="290" x2="804" y2="290" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <text x="616" y="306" class="tl" font-size="14">Amortissement</text>
+            <text x="616" y="324" class="tr" font-size="12.5" fill="#6B6255">de la machine</text>
+            <text x="804" y="314" text-anchor="end" class="tn" font-size="20" fill="#C8102E">−20</text>
+            <line x1="616" y1="344" x2="804" y2="344" stroke="#1A1712" stroke-width="1" stroke-dasharray="2 4"/>
+            <text x="616" y="372" class="tr" font-size="12.5">Chaque année&nbsp;: une charge,</text>
+            <text x="616" y="390" class="tr" font-size="12.5">sans sortie d’argent.</text>
+          </g>
+          <g data-tok data-v="368 -36 70" style="opacity:0">
+            <rect x="384" y="350" width="56" height="30" rx="15" fill="#C8102E"/>
+            <text x="412" y="371" text-anchor="middle" class="tn" font-size="16" fill="#FFFFFF">−20</text>
+          </g>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Une machine achetée 100 perd 20 de valeur par an pendant cinq ans&nbsp;; la trésorerie ne bouge pas.">
+          <text x="200" y="44" text-anchor="middle" class="tt" font-size="34" data-yr>À l’achat</text>
+          <circle cx="140" cy="72" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="140" cy="72" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="170" cy="72" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="170" cy="72" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="200" cy="72" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="200" cy="72" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="230" cy="72" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="230" cy="72" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <circle cx="260" cy="72" r="9" fill="none" stroke="#1A1712" stroke-width="2"/>
+          <circle cx="260" cy="72" r="9" fill="#1A1712" data-pill style="opacity:0"/>
+          <text x="200" y="104" text-anchor="middle" class="tr" font-size="15" fill="#6B6255">sur 5 ans d’utilisation</text>
+          <text x="170" y="140" text-anchor="middle" class="tl" font-size="15" fill="#6B6255">Valeur au bilan</text>
+          <rect x="80" y="150" width="180" height="16" rx="8" fill="#E3E6EB"/>
+          <rect x="80" y="150" width="180" height="16" rx="8" fill="#5C6B7A" data-bar data-o="l"/>
+          <text x="272" y="165" class="tn" font-size="18" data-val>100</text>
+          <g data-fx="pop" data-t="0.07 0.06">
+            <path d="M56 186 L344 186 L344 376 L329.6 368 L315.2 376 L300.8 368 L286.4 376 L272 368 L257.6 376 L243.2 368 L228.8 376 L214.4 368 L200 376 L185.6 368 L171.2 376 L156.8 368 L142.4 376 L128 368 L113.6 376 L99.2 368 L84.8 376 L70.4 368 L56 376 Z" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" stroke-linejoin="round" class="sh"/>
+            <text x="72" y="214" class="tl" font-size="15" fill="#6B6255" letter-spacing="0.6">COMPTE DE RÉSULTAT</text>
+            <line x1="72" y1="226" x2="328" y2="226" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <text x="72" y="252" class="tl" font-size="16">Amortissement</text>
+            <text x="72" y="272" class="tr" font-size="15" fill="#6B6255">de la machine</text>
+            <text x="328" y="262" text-anchor="end" class="tn" font-size="22" fill="#C8102E">−20</text>
+            <line x1="72" y1="292" x2="328" y2="292" stroke="#1A1712" stroke-width="1" stroke-dasharray="2 4"/>
+            <text x="72" y="320" class="tr" font-size="15">Chaque année&nbsp;: une charge,</text>
+            <text x="72" y="340" class="tr" font-size="15">sans sortie d’argent.</text>
+          </g>
+          <g data-fx="pop" data-t="0 0.06">
+            <g transform="translate(126 612) scale(0.56) translate(-410 -530)">
+              <rect x="300" y="500" width="220" height="30" rx="4" fill="#4E5866" stroke="#1A1712" stroke-width="2"/>
+              <rect x="318" y="300" width="22" height="200" fill="#6B7686" stroke="#1A1712" stroke-width="2"/>
+              <rect x="480" y="300" width="22" height="200" fill="#6B7686" stroke="#1A1712" stroke-width="2"/>
+              <rect x="300" y="266" width="220" height="44" rx="6" fill="#5C6B7A" stroke="#1A1712" stroke-width="2"/>
+              <rect x="404" y="310" width="12" height="26" fill="#3A342C"/>
+              <rect x="370" y="336" width="80" height="54" rx="4" fill="#3E7C6B" stroke="#1A1712" stroke-width="2"/>
+              <rect x="352" y="452" width="116" height="48" fill="#8C95A1" stroke="#1A1712" stroke-width="2"/>
+              <circle cx="508" cy="288" r="6" fill="#7FD27F" stroke="#1A1712" stroke-width="1.5"/>
+              <g data-rust style="opacity:0">
+                <circle cx="326" cy="340" r="7" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="330.2" cy="337.2" r="3.5" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="332" cy="420" r="9" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="337.4" cy="416.4" r="4.5" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="488" cy="380" r="8" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="492.8" cy="376.8" r="4" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="494" cy="452" r="6" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="497.6" cy="449.6" r="3" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="330" cy="280" r="6" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="333.6" cy="277.6" r="3" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="470" cy="290" r="9" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="475.4" cy="286.4" r="4.5" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="430" cy="296" r="5" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="433" cy="294" r="2.5" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="384" cy="360" r="7" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="388.2" cy="357.2" r="3.5" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="440" cy="372" r="5" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="443" cy="370" r="2.5" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="372" cy="470" r="8" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="376.8" cy="466.8" r="4" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="452" cy="480" r="7" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="456.2" cy="477.2" r="3.5" fill="#8A5530" fill-opacity=".6"/>
+                <circle cx="410" cy="514" r="9" fill="#A0663A" fill-opacity=".75"/>
+                <circle cx="415.4" cy="510.4" r="4.5" fill="#8A5530" fill-opacity=".6"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.04 0.06">
+            <g data-badge>
+              <g>
+                <rect x="264.5" y="388" width="107" height="32" rx="16" fill="#E3EED6" class="sh"/>
+                <text x="318" y="409.8" text-anchor="middle" class="tl" font-size="16" fill="#335512">0&nbsp;€ sorti</text>
+              </g>
+            </g>
+          </g>
+          <text x="318" y="444" text-anchor="middle" class="tl" font-size="16">Trésorerie</text>
+          <g>
+            <rect x="258" y="456" width="120" height="148" rx="10" fill="#6B7686" stroke="#1A1712" stroke-width="2.5"/>
+            <rect x="270" y="468" width="96" height="124" rx="6" fill="#7C8796" stroke="#4E5866" stroke-width="2"/>
+            <circle cx="318" cy="518.2" r="20.4" fill="#D5DAE1" stroke="#1A1712" stroke-width="2"/>
+            <circle cx="318" cy="518.2" r="6" fill="#1A1712"/>
+            <line x1="348" y1="547.8" x2="348" y2="574.4" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+            <rect x="266" y="604" width="16" height="8" fill="#1A1712"/>
+            <rect x="354" y="604" width="16" height="8" fill="#1A1712"/>
+          </g>
+          <g data-fx="pop" data-t="0.01 0.06">
+            <path d="M254 482 C 236 458, 214 458, 194 478" fill="none" stroke="#8C95A1" stroke-width="2.5" stroke-dasharray="6 5"/>
+            <path d="M204 468 L193 479 L208 482" fill="none" stroke="#8C95A1" stroke-width="2.5"/>
+            <text x="200" y="404" text-anchor="middle" class="tr" font-size="15" fill="#6B6255">Achat&nbsp;: 100,</text>
+            <text x="200" y="422" text-anchor="middle" class="tr" font-size="15" fill="#6B6255">payé une fois</text>
+          </g>
+          <g data-tok data-v="168.4 -271.2 60" style="opacity:0">
+            <rect x="103.6" y="511.2" width="56" height="30" rx="15" fill="#C8102E"/>
+            <text x="131.6" y="532.2" text-anchor="middle" class="tn" font-size="16" fill="#FFFFFF">−20</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 5 · La provision -->
+    <section class="scene" data-scene="5" aria-label="La provision" style="--i:5">
+      <article class="cap" id="texte-5">
+        <div class="kick">5 · La provision</div>
+        <h2>Ouvrir le parapluie avant l’orage</h2>
+        <p><span class="debut">Un client réclame 10 pour un défaut.</span> <span class="reste">On ne sait pas encore ce qu’il faudra payer&nbsp;: on met 10 de côté sur le papier. C’est une provision&nbsp;: le résultat baisse de 10, l’argent ne bouge pas. Plus tard, le risque n’est plus que de 6&nbsp;: on reprend 4, et le résultat remonte d’autant.</span></p>
+        <details><summary>Définition comptable</summary><p>Provision&nbsp;: charge probable dont le montant ou l’échéance est incertain. La dotation réduit le résultat&nbsp;; la reprise l’augmente quand le risque diminue ou disparaît.</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-5">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Un nuage de risque, un parapluie ouvert de 10 puis refermé à 6.">
+          <g transform="translate(220 540)">
+            <rect x="202" y="-238" width="24" height="100" fill="#9C6B5A" stroke="#1A1712" stroke-width="2"/>
+            <rect x="198" y="-246" width="32" height="10" rx="2" fill="#7E5446" stroke="#1A1712" stroke-width="2"/>
+            <circle class="smoke" cx="214" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:0s"/>
+            <circle class="smoke" cx="214" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-1.1s"/>
+            <circle class="smoke" cx="214" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-2.2s"/>
+            <path d="M0 -150 L0 -196 L86.7 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M86.7 -150 L86.7 -196 L173.4 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="89.7" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M173.3 -150 L173.3 -196 L260 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="176.3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <rect x="0" y="-150" width="260" height="150" fill="#EFE7D6" stroke="#1A1712" stroke-width="2"/>
+            <rect x="18" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="67.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="117" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="166.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="216" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="68" y="-142" width="124" height="25" rx="4" fill="#FFFDF8" stroke="#1A1712" stroke-width="1.5"/>
+            <text x="130" y="-124" text-anchor="middle" class="tt" font-size="15">L’Atelier</text>
+            <rect x="108" y="-62" width="44" height="62" fill="#8A6A4F" stroke="#1A1712" stroke-width="2"/>
+            <line x1="130" y1="-62" x2="130" y2="0" stroke="#1A1712" stroke-width="1.5"/>
+          </g>
+          <g style="transform-origin:350px 232px" data-canopy>
+            <path d="M150 232 Q150 129.4 350 118 Q550 129.4 550 232 Q525 214 500 232 Q475 214 450 232 Q425 214 400 232 Q375 214 350 232 Q325 214 300 232 Q275 214 250 232 Q225 214 200 232 Q175 214 150 232 Z" fill="#C8102E" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M350 118 Q300 169.3 300 232 M350 118 Q400 169.3 400 232 M350 118 Q230 149.9 200 232 M350 118 Q470 149.9 500 232" fill="none" stroke="#9E0B23" stroke-width="2"/>
+          </g>
+          <path d="M350 108 L350 118" stroke="#1A1712" stroke-width="4"/>
+          <path d="M350 232 L350 372 Q350 388 336 388 Q324 388 324 376" fill="none" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+          <text x="350" y="196" text-anchor="middle" class="tt" font-size="20" fill="#FFFFFF" data-provtxt style="opacity:0">Provision&nbsp;: 10</text>
+          <g data-rain style="opacity:0">
+            <line x1="262" y1="112" x2="258" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:0s"/>
+            <line x1="275" y1="112" x2="271" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.7s"/>
+            <line x1="288" y1="112" x2="284" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.4s"/>
+            <line x1="301" y1="112" x2="297" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.1s"/>
+            <line x1="314" y1="112" x2="310" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.8s"/>
+            <line x1="327" y1="112" x2="323" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.5s"/>
+            <line x1="340" y1="112" x2="336" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.2s"/>
+            <line x1="353" y1="112" x2="349" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.9s"/>
+            <line x1="366" y1="112" x2="362" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.6s"/>
+            <line x1="379" y1="112" x2="375" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.3s"/>
+            <line x1="392" y1="112" x2="388" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:0s"/>
+            <line x1="405" y1="112" x2="401" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.7s"/>
+            <line x1="418" y1="112" x2="414" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.4s"/>
+            <line x1="431" y1="112" x2="427" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.1s"/>
+            <line x1="444" y1="112" x2="440" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.8s"/>
+            <line x1="457" y1="112" x2="453" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.5s"/>
+          </g>
+          <g data-cloud>
+            <circle cx="282" cy="70" r="38" fill="#5E6670"/>
+            <circle cx="336" cy="46" r="50" fill="#5E6670"/>
+            <circle cx="400" cy="52" r="44" fill="#5E6670"/>
+            <circle cx="446" cy="76" r="32" fill="#5E6670"/>
+            <rect x="250" y="66" width="230" height="44" rx="22" fill="#5E6670"/>
+            <text x="364" y="96" text-anchor="middle" class="tl" font-size="15" fill="#FFFFFF">Réclamation client&nbsp;: 10&nbsp;?</text>
+          </g>
+          <g data-fx="pop" data-t="0.72 0.06">
+            <g>
+              <rect x="568.5" y="49.3" width="243" height="29.5" rx="14.75" fill="#FFFDF8" stroke="#8C95A1" stroke-width="2" class="sh"/>
+              <text x="690" y="68.9" text-anchor="middle" class="tl" font-size="13.5" fill="#1A1712">Le risque n’est plus que de 6</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.3 0.05">
+            <path d="M600 300 L820 300 L820 480 L809 472 L798 480 L787 472 L776 480 L765 472 L754 480 L743 472 L732 480 L721 472 L710 480 L699 472 L688 480 L677 472 L666 480 L655 472 L644 480 L633 472 L622 480 L611 472 L600 480 Z" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" stroke-linejoin="round" class="sh"/>
+            <text x="616" y="328" class="tl" font-size="11.5" fill="#6B6255" letter-spacing="1.2">COMPTE DE RÉSULTAT</text>
+            <line x1="616" y1="340" x2="804" y2="340" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <g data-fx="pop" data-t="0.34 0.05">
+              <text x="616" y="358" class="tl" font-size="14">Dotation</text>
+              <text x="616" y="376" class="tr" font-size="12.5" fill="#6B6255">aux provisions</text>
+              <text x="804" y="366" text-anchor="end" class="tn" font-size="20" fill="#C8102E">−10</text>
+            </g>
+            <g data-fx="pop" data-t="0.86 0.05">
+              <text x="616" y="414" class="tl" font-size="14">Reprise</text>
+              <text x="616" y="432" class="tr" font-size="12.5" fill="#6B6255">de provision</text>
+              <text x="804" y="422" text-anchor="end" class="tn" font-size="20" fill="#1F5FBF">+4</text>
+            </g>
+          </g>
+          <g>
+            <rect x="40" y="452" width="96" height="82" rx="10" fill="#6B7686" stroke="#1A1712" stroke-width="2.5"/>
+            <rect x="52" y="464" width="72" height="58" rx="6" fill="#7C8796" stroke="#4E5866" stroke-width="2"/>
+            <circle cx="88" cy="486.4" r="16.3" fill="#D5DAE1" stroke="#1A1712" stroke-width="2"/>
+            <circle cx="88" cy="486.4" r="4.8" fill="#1A1712"/>
+            <line x1="106" y1="502.8" x2="106" y2="517.6" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+            <rect x="48" y="534" width="16" height="8" fill="#1A1712"/>
+            <rect x="112" y="534" width="16" height="8" fill="#1A1712"/>
+          </g>
+          <g data-fx="pop" data-t="0.4 0.05">
+            <g>
+              <rect x="-4.5" y="413.5" width="185" height="29" rx="14.5" fill="#FFFDF8" class="sh"/>
+              <text x="88" y="432.7" text-anchor="middle" class="tl" font-size="13" fill="#335512">Trésorerie&nbsp;: 0&nbsp;€ sorti</text>
+            </g>
+          </g>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Un nuage de risque, un parapluie ouvert de 10 puis refermé à 6.">
+          <g data-fx="pop" data-t="0.3 0.05">
+            <path d="M40 8 L360 8 L360 140 L344 132 L328 140 L312 132 L296 140 L280 132 L264 140 L248 132 L232 140 L216 132 L200 140 L184 132 L168 140 L152 132 L136 140 L120 132 L104 140 L88 132 L72 140 L56 132 L40 140 Z" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" stroke-linejoin="round" class="sh"/>
+            <text x="56" y="36" class="tl" font-size="15" fill="#6B6255" letter-spacing="0.6">COMPTE DE RÉSULTAT</text>
+            <line x1="56" y1="48" x2="344" y2="48" stroke="#1A1712" stroke-width="1.5" stroke-dasharray="3 4"/>
+            <g data-fx="pop" data-t="0.34 0.05">
+              <text x="56" y="74" class="tl" font-size="16">Dotation</text>
+              <text x="56" y="94" class="tr" font-size="15" fill="#6B6255">aux provisions</text>
+              <text x="56" y="122" class="tn" font-size="22" fill="#C8102E">−10</text>
+            </g>
+            <g data-fx="pop" data-t="0.86 0.05">
+              <text x="220" y="74" class="tl" font-size="16">Reprise</text>
+              <text x="220" y="94" class="tr" font-size="15" fill="#6B6255">de provision</text>
+              <text x="220" y="122" class="tn" font-size="22" fill="#1F5FBF">+4</text>
+            </g>
+          </g>
+          <g transform="translate(0 150)">
+            <g data-rain style="opacity:0">
+              <line x1="18" y1="112" x2="14" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:0s"/>
+              <line x1="31" y1="112" x2="27" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.7s"/>
+              <line x1="44" y1="112" x2="40" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.4s"/>
+              <line x1="57" y1="112" x2="53" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.1s"/>
+              <line x1="70" y1="112" x2="66" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.8s"/>
+              <line x1="83" y1="112" x2="79" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.5s"/>
+              <line x1="96" y1="112" x2="92" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.2s"/>
+              <line x1="109" y1="112" x2="105" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.9s"/>
+              <line x1="122" y1="112" x2="118" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.6s"/>
+              <line x1="135" y1="112" x2="131" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.3s"/>
+              <line x1="148" y1="112" x2="144" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:0s"/>
+              <line x1="161" y1="112" x2="157" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.7s"/>
+              <line x1="174" y1="112" x2="170" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.4s"/>
+              <line x1="187" y1="112" x2="183" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.1s"/>
+              <line x1="200" y1="112" x2="196" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.8s"/>
+              <line x1="213" y1="112" x2="209" y2="128" stroke="#5E8FCC" stroke-width="3" stroke-linecap="round" class="rain" style="animation-delay:-0.5s"/>
+            </g>
+            <g data-cloud>
+              <circle cx="34" cy="70" r="38" fill="#5E6670"/>
+              <circle cx="88" cy="46" r="50" fill="#5E6670"/>
+              <circle cx="152" cy="52" r="44" fill="#5E6670"/>
+              <circle cx="198" cy="76" r="32" fill="#5E6670"/>
+              <rect x="2" y="66" width="230" height="44" rx="22" fill="#5E6670"/>
+              <text x="116" y="96" text-anchor="middle" class="tl" font-size="16" fill="#FFFFFF">Réclamation client&nbsp;: 10&nbsp;?</text>
+            </g>
+          </g>
+          <g transform="translate(16 612) scale(0.72)">
+            <rect x="178" y="-238" width="24" height="100" fill="#9C6B5A" stroke="#1A1712" stroke-width="2"/>
+            <rect x="174" y="-246" width="32" height="10" rx="2" fill="#7E5446" stroke="#1A1712" stroke-width="2"/>
+            <circle class="smoke" cx="190" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:0s"/>
+            <circle class="smoke" cx="190" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-1.1s"/>
+            <circle class="smoke" cx="190" cy="-262" r="12" fill="#ECE7DE" style="animation-delay:-2.2s"/>
+            <path d="M0 -150 L0 -196 L78.7 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M78.7 -150 L78.7 -196 L157.4 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="81.7" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <path d="M157.3 -150 L157.3 -196 L236 -150 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="160.3" y="-190" width="9" height="38" fill="#CFE3F1"/>
+            <rect x="0" y="-150" width="236" height="150" fill="#EFE7D6" stroke="#1A1712" stroke-width="2"/>
+            <rect x="18" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="61.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="105" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="148.5" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="192" y="-108" width="26" height="30" rx="2" fill="#CFE3F1" stroke="#1A1712" stroke-width="1.5"/>
+            <rect x="56" y="-145.6" width="124" height="30.4" rx="4" fill="#FFFDF8" stroke="#1A1712" stroke-width="1.5"/>
+            <text x="118" y="-122.2" text-anchor="middle" class="tt" font-size="21">L’Atelier</text>
+            <rect x="96" y="-62" width="44" height="62" fill="#8A6A4F" stroke="#1A1712" stroke-width="2"/>
+            <line x1="118" y1="-62" x2="118" y2="0" stroke="#1A1712" stroke-width="1.5"/>
+          </g>
+          <g style="transform-origin:110px 400px" data-canopy>
+            <path d="M0 400 Q0 331.6 110 324 Q220 331.6 220 400 Q206.3 390.1 192.5 400 Q178.8 390.1 165 400 Q151.3 390.1 137.5 400 Q123.8 390.1 110 400 Q96.3 390.1 82.5 400 Q68.8 390.1 55 400 Q41.3 390.1 27.5 400 Q13.8 390.1 0 400 Z" fill="#C8102E" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M110 324 Q82.5 358.2 82.5 400 M110 324 Q137.5 358.2 137.5 400 M110 324 Q44 345.3 27.5 400 M110 324 Q176 345.3 192.5 400" fill="none" stroke="#9E0B23" stroke-width="2"/>
+          </g>
+          <path d="M110 314 L110 324" stroke="#1A1712" stroke-width="4"/>
+          <path d="M110 400 L110 500 Q110 514 98 514 Q88 514 88 504" fill="none" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+          <text x="110" y="380" text-anchor="middle" class="tt" font-size="20" fill="#FFFFFF" data-provtxt style="opacity:0">Provision&nbsp;: 10</text>
+          <g data-fx="pop" data-t="0.72 0.06">
+            <g>
+              <rect x="92.5" y="272.5" width="267" height="31" rx="15.5" fill="#FFFDF8" stroke="#8C95A1" stroke-width="2" class="sh"/>
+              <text x="226" y="293.4" text-anchor="middle" class="tl" font-size="15" fill="#1A1712">Le risque n’est plus que de 6</text>
+            </g>
+          </g>
+          <g>
+            <rect x="304" y="548" width="70" height="56" rx="10" fill="#6B7686" stroke="#1A1712" stroke-width="2.5"/>
+            <rect x="316" y="560" width="46" height="32" rx="6" fill="#7C8796" stroke="#4E5866" stroke-width="2"/>
+            <circle cx="339" cy="571.5" r="11.9" fill="#D5DAE1" stroke="#1A1712" stroke-width="2"/>
+            <circle cx="339" cy="571.5" r="3.5" fill="#1A1712"/>
+            <line x1="344" y1="582.7" x2="344" y2="592.8" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+            <rect x="312" y="604" width="16" height="8" fill="#1A1712"/>
+            <rect x="350" y="604" width="16" height="8" fill="#1A1712"/>
+          </g>
+          <g data-fx="pop" data-t="0.4 0.05">
+            <g>
+              <rect x="189" y="504.5" width="202" height="31" rx="15.5" fill="#FFFDF8" class="sh"/>
+              <text x="290" y="525.4" text-anchor="middle" class="tl" font-size="15" fill="#335512">Trésorerie&nbsp;: 0&nbsp;€ sorti</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 6 · L’EBITDA -->
+    <section class="scene" data-scene="6" aria-label="L’EBITDA" style="--i:6">
+      <article class="cap" id="texte-6">
+        <div class="kick">6 · L’EBITDA</div>
+        <h2>La force du moteur</h2>
+        <p><span class="debut">Pour juger l’activité elle-même, on rajoute l’usure et les provisions au résultat d’exploitation&nbsp;: 64 + 20 + 10 − 4 = 90.</span> <span class="reste">C’est l’EBITDA&nbsp;: ce que l’activité dégage avant de penser à l’usure des machines et aux risques. Il sert à comparer des années, ou des entreprises entre elles.</span></p>
+        <details><summary>Définition comptable</summary><p>EBITDA (de l’anglais earnings before interest, taxes, depreciation and amortization)&nbsp;: indicateur de gestion qu’aucune norme comptable ne définit. Proche de l’excédent brut d’exploitation (EBE), sans s’y confondre.</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-6">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Un compteur&nbsp;: EBITDA 90 = 64 + 20 + 10 − 4.">
+          <path d="M154 266 A176 176 0 0 1 506 266" fill="none" stroke="#E3E6EB" stroke-width="30"/>
+          <path d="M154 266 A176 176 0 0 1 506 266" fill="none" stroke="#2E7D62" stroke-width="30" data-arc data-l="553" style="stroke-dasharray:553;stroke-dashoffset:553"/>
+          <line x1="136" y1="266" x2="128" y2="266" stroke="#1A1712" stroke-width="2"/>
+          <text x="190" y="271" text-anchor="middle" class="tn" font-size="13" fill="#6B6255">0</text>
+          <line x1="192.8" y1="128.8" x2="187.2" y2="123.2" stroke="#1A1712" stroke-width="2"/>
+          <text x="231" y="172" text-anchor="middle" class="tn" font-size="13" fill="#6B6255">30</text>
+          <line x1="330" y1="72" x2="330" y2="64" stroke="#1A1712" stroke-width="2"/>
+          <text x="330" y="131" text-anchor="middle" class="tn" font-size="13" fill="#6B6255">60</text>
+          <line x1="467.2" y1="128.8" x2="472.8" y2="123.2" stroke="#1A1712" stroke-width="2"/>
+          <text x="429" y="172" text-anchor="middle" class="tn" font-size="13" fill="#6B6255">90</text>
+          <line x1="524" y1="266" x2="532" y2="266" stroke="#1A1712" stroke-width="2"/>
+          <text x="470" y="271" text-anchor="middle" class="tn" font-size="13" fill="#6B6255">120</text>
+          <g data-needle style="transform-origin:330px 266px;transform:rotate(-90deg)">
+            <path d="M325 266 L330 106 L335 266 Z" fill="#C8102E"/>
+          </g>
+          <circle cx="330" cy="266" r="14" fill="#1A1712"/>
+          <text x="330" y="312" text-anchor="middle" class="tl" font-size="15" fill="#6B6255">EBITDA</text>
+          <text x="330" y="358" text-anchor="middle" class="tn" font-size="44" data-ebv>0</text>
+          <g data-fx="pop" data-t="0.06 0.06">
+            <g>
+              <rect x="14" y="414.8" width="233" height="30.5" rx="15.25" fill="#1A1712" class="sh"/>
+              <text x="130.5" y="435.2" text-anchor="middle" class="tl" font-size="14.5" fill="#FFFDF8">Résultat d’exploitation 64</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.3 0.06">
+            <g>
+              <rect x="257" y="414.8" width="106" height="30.5" rx="15.25" fill="#F3EEE3" stroke="#1A1712" stroke-width="1.5" class="sh"/>
+              <text x="310" y="435.2" text-anchor="middle" class="tl" font-size="14.5" fill="#1A1712">+ usure 20</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.48 0.06">
+            <g>
+              <rect x="373" y="414.8" width="138" height="30.5" rx="15.25" fill="#F3EEE3" stroke="#1A1712" stroke-width="1.5" class="sh"/>
+              <text x="442" y="435.2" text-anchor="middle" class="tl" font-size="14.5" fill="#1A1712">+ provision 10</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.64 0.06">
+            <g>
+              <rect x="521" y="414.8" width="114" height="30.5" rx="15.25" fill="#F3EEE3" stroke="#1A1712" stroke-width="1.5" class="sh"/>
+              <text x="578" y="435.2" text-anchor="middle" class="tl" font-size="14.5" fill="#1A1712">− reprise 4</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.8 0.06">
+            <g>
+              <rect x="645" y="414.8" width="58" height="30.5" rx="15.25" fill="#2E7D62" class="sh"/>
+              <text x="674" y="435.2" text-anchor="middle" class="tl" font-size="14.5" fill="#FFFFFF">= 90</text>
+            </g>
+          </g>
+          <g data-fx="slide" data-t="0.84 0.08" data-v="0 40">
+            <rect x="720" y="250" width="10" height="298" fill="#8C95A1"/>
+            <path d="M725 92 L808 234 L642 234 Z" fill="#FFFDF8" stroke="#C8102E" stroke-width="11" stroke-linejoin="round"/>
+            <text x="725" y="214" text-anchor="middle" class="tt" font-size="68">!</text>
+            <rect x="636" y="252" width="178" height="96" rx="8" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" class="sh"/>
+            <text x="725" y="276" text-anchor="middle" class="tl" font-size="13.5">Aucune loi ne fixe</text>
+            <text x="725" y="295" text-anchor="middle" class="tl" font-size="13.5">son calcul. Demandez</text>
+            <text x="725" y="314" text-anchor="middle" class="tl" font-size="13.5">toujours la formule</text>
+            <text x="725" y="333" text-anchor="middle" class="tl" font-size="13.5">utilisée.</text>
+          </g>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Un compteur&nbsp;: EBITDA 90 = 64 + 20 + 10 − 4.">
+          <path d="M50 214 A150 150 0 0 1 350 214" fill="none" stroke="#E3E6EB" stroke-width="26"/>
+          <path d="M50 214 A150 150 0 0 1 350 214" fill="none" stroke="#2E7D62" stroke-width="26" data-arc data-l="471" style="stroke-dasharray:471;stroke-dashoffset:471"/>
+          <line x1="34.4" y1="214" x2="26.4" y2="214" stroke="#1A1712" stroke-width="2"/>
+          <text x="81.2" y="219" text-anchor="middle" class="tn" font-size="15" fill="#6B6255">0</text>
+          <line x1="82.9" y1="96.9" x2="77.2" y2="91.2" stroke="#1A1712" stroke-width="2"/>
+          <text x="116" y="135" text-anchor="middle" class="tn" font-size="15" fill="#6B6255">30</text>
+          <line x1="200" y1="48.4" x2="200" y2="40.4" stroke="#1A1712" stroke-width="2"/>
+          <text x="200" y="100.2" text-anchor="middle" class="tn" font-size="15" fill="#6B6255">60</text>
+          <line x1="317.1" y1="96.9" x2="322.8" y2="91.2" stroke="#1A1712" stroke-width="2"/>
+          <text x="284" y="135" text-anchor="middle" class="tn" font-size="15" fill="#6B6255">90</text>
+          <line x1="365.6" y1="214" x2="373.6" y2="214" stroke="#1A1712" stroke-width="2"/>
+          <text x="318.8" y="219" text-anchor="middle" class="tn" font-size="15" fill="#6B6255">120</text>
+          <g data-needle style="transform-origin:200px 214px;transform:rotate(-90deg)">
+            <path d="M195 214 L200 80 L205 214 Z" fill="#C8102E"/>
+          </g>
+          <circle cx="200" cy="214" r="14" fill="#1A1712"/>
+          <text x="200" y="252" text-anchor="middle" class="tl" font-size="17" fill="#6B6255">EBITDA</text>
+          <text x="200" y="300" text-anchor="middle" class="tn" font-size="44" data-ebv>0</text>
+          <g data-fx="pop" data-t="0.06 0.06">
+            <g>
+              <rect x="79.5" y="314.5" width="241" height="31" rx="15.5" fill="#1A1712" class="sh"/>
+              <text x="200" y="335.4" text-anchor="middle" class="tl" font-size="15" fill="#FFFDF8">Résultat d’exploitation 64</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.3 0.06">
+            <g>
+              <rect x="69.5" y="354.5" width="109" height="31" rx="15.5" fill="#F3EEE3" stroke="#1A1712" stroke-width="1.5" class="sh"/>
+              <text x="124" y="375.4" text-anchor="middle" class="tl" font-size="15" fill="#1A1712">+ usure 20</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.48 0.06">
+            <g>
+              <rect x="188.5" y="354.5" width="142" height="31" rx="15.5" fill="#F3EEE3" stroke="#1A1712" stroke-width="1.5" class="sh"/>
+              <text x="259.5" y="375.4" text-anchor="middle" class="tl" font-size="15" fill="#1A1712">+ provision 10</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.64 0.06">
+            <g>
+              <rect x="107" y="394.5" width="117" height="31" rx="15.5" fill="#F3EEE3" stroke="#1A1712" stroke-width="1.5" class="sh"/>
+              <text x="165.5" y="415.4" text-anchor="middle" class="tl" font-size="15" fill="#1A1712">− reprise 4</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.8 0.06">
+            <g>
+              <rect x="234" y="394.5" width="59" height="31" rx="15.5" fill="#2E7D62" class="sh"/>
+              <text x="263.5" y="415.4" text-anchor="middle" class="tl" font-size="15" fill="#FFFFFF">= 90</text>
+            </g>
+          </g>
+          <g data-fx="slide" data-t="0.84 0.08" data-v="0 40">
+            <rect x="295" y="480" width="10" height="132" fill="#8C95A1"/>
+            <path d="M300 446 L348 524 L252 524 Z" fill="#FFFDF8" stroke="#C8102E" stroke-width="9" stroke-linejoin="round"/>
+            <text x="300" y="515" text-anchor="middle" class="tt" font-size="44">!</text>
+            <rect x="210" y="530" width="180" height="80" rx="8" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" class="sh"/>
+            <text x="300" y="549" text-anchor="middle" class="tl" font-size="15">Aucune loi ne fixe</text>
+            <text x="300" y="567" text-anchor="middle" class="tl" font-size="15">son calcul. Demandez</text>
+            <text x="300" y="585" text-anchor="middle" class="tl" font-size="15">toujours la formule</text>
+            <text x="300" y="603" text-anchor="middle" class="tl" font-size="15">utilisée.</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 7 · Résultat et trésorerie -->
+    <section class="scene" data-scene="7" aria-label="Résultat et trésorerie" style="--i:7">
+      <article class="cap" id="texte-7">
+        <div class="kick">7 · Résultat et trésorerie</div>
+        <h2>Un bénéfice n’est pas de l’argent en caisse</h2>
+        <p><span class="debut">Le résultat compte ce qui a été gagné&nbsp;; la trésorerie, l’argent réellement disponible.</span> <span class="reste">Une vente pas encore payée fait monter le résultat, pas la caisse. L’usure fait baisser le résultat, pas la caisse. Acheter une machine ou emprunter fait bouger la caisse, pas le résultat.</span></p>
+        <details><summary>Définition comptable</summary><p>Trésorerie&nbsp;: l’argent dont l’entreprise dispose (comptes bancaires, caisse, placements à court terme). Le tableau des flux de trésorerie explique le passage du résultat à la variation de trésorerie.</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-7">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Deux bocaux&nbsp;: le résultat et la caisse ne bougent pas avec les mêmes opérations.">
+          <text x="290" y="146" text-anchor="middle" class="tt" font-size="24">Résultat</text>
+          <text x="290" y="166" text-anchor="middle" class="tr" font-size="12.5" fill="#6B6255">ce qui est gagné</text>
+          <rect x="209" y="212" width="162" height="286" rx="4" fill="#2E7D62" data-o="b" data-jr style="transform:scaleY(0)"/>
+          <path d="M205 190 Q205 176 220 172 L360 172 Q375 176 375 190 L375 480 Q375 502 355 502 L225 502 Q205 502 205 480 Z" fill="#FFFFFF" fill-opacity=".25" stroke="#6B7686" stroke-width="3"/>
+          <path d="M219 200 L219 470" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/>
+          <text x="550" y="146" text-anchor="middle" class="tt" font-size="24">Caisse</text>
+          <text x="550" y="166" text-anchor="middle" class="tr" font-size="12.5" fill="#6B6255">l’argent disponible</text>
+          <rect x="469" y="212" width="162" height="286" rx="4" fill="#E8B931" data-o="b" data-jc style="transform:scaleY(0)"/>
+          <path d="M465 190 Q465 176 480 172 L620 172 Q635 176 635 190 L635 480 Q635 502 615 502 L485 502 Q465 502 465 480 Z" fill="#FFFFFF" fill-opacity=".25" stroke="#6B7686" stroke-width="3"/>
+          <path d="M479 200 L479 470" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/>
+          <text x="290" y="542" text-anchor="middle" class="tn" font-size="28" data-rv>0</text>
+          <text x="550" y="542" text-anchor="middle" class="tn" font-size="28" data-cv>100</text>
+          <g data-fx="win" data-t="0.08 0.22" style="opacity:0">
+            <g>
+              <rect x="192.5" y="34" width="355" height="48" rx="24" fill="#1A1712" class="sh"/>
+              <text x="370" y="64.5" text-anchor="middle" class="tl" font-size="18" fill="#FFFDF8">Une vente de 50, pas encore payée</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.1 0.16" style="opacity:0">
+            <g>
+              <rect x="66" y="311" width="68" height="38" rx="19" fill="#FFFDF8" stroke="#2E7D62" stroke-width="2" class="sh"/>
+              <text x="100" y="337.9" text-anchor="middle" class="tn" font-size="22" fill="#2E7D62">+50</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.1 0.16" style="opacity:0">
+            <g>
+              <rect x="657.5" y="315.3" width="169" height="29.5" rx="14.75" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="742" y="334.9" text-anchor="middle" class="tl" font-size="13.5" fill="#6B6255">0&nbsp;: pas encore payé</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.31 0.22" style="opacity:0">
+            <g>
+              <rect x="252" y="34" width="236" height="48" rx="24" fill="#1A1712" class="sh"/>
+              <text x="370" y="64.5" text-anchor="middle" class="tl" font-size="18" fill="#FFFDF8">La machine s’use&nbsp;: 20</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.4 0.16" style="opacity:0">
+            <g>
+              <rect x="66" y="311" width="68" height="38" rx="19" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="100" y="337.9" text-anchor="middle" class="tn" font-size="22" fill="#C8102E">−20</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.4 0.16" style="opacity:0">
+            <g>
+              <rect x="668.5" y="315.3" width="147" height="29.5" rx="14.75" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="742" y="334.9" text-anchor="middle" class="tl" font-size="13.5" fill="#6B6255">0&nbsp;: rien ne sort</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.53 0.22" style="opacity:0">
+            <g>
+              <rect x="222.5" y="34" width="295" height="48" rx="24" fill="#1A1712" class="sh"/>
+              <text x="370" y="64.5" text-anchor="middle" class="tl" font-size="18" fill="#FFFDF8">On achète une machine&nbsp;: 100</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.6 0.16" style="opacity:0">
+            <g>
+              <rect x="23" y="315.3" width="154" height="29.5" rx="14.75" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="100" y="334.9" text-anchor="middle" class="tl" font-size="13.5" fill="#6B6255">0&nbsp;: c’est un bien</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.6 0.16" style="opacity:0">
+            <g>
+              <rect x="701.5" y="311" width="81" height="38" rx="19" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="742" y="337.9" text-anchor="middle" class="tn" font-size="22" fill="#C8102E">−100</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.75 0.22" style="opacity:0">
+            <g>
+              <rect x="227.5" y="34" width="285" height="48" rx="24" fill="#1A1712" class="sh"/>
+              <text x="370" y="64.5" text-anchor="middle" class="tl" font-size="18" fill="#FFFDF8">On emprunte 60 à la banque</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.8 0.16" style="opacity:0">
+            <g>
+              <rect x="15.5" y="315.3" width="169" height="29.5" rx="14.75" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="100" y="334.9" text-anchor="middle" class="tl" font-size="13.5" fill="#6B6255">0&nbsp;: c’est une dette</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.8 0.16" style="opacity:0">
+            <g>
+              <rect x="708" y="311" width="68" height="38" rx="19" fill="#FFFDF8" stroke="#2E7D62" stroke-width="2" class="sh"/>
+              <text x="742" y="337.9" text-anchor="middle" class="tn" font-size="22" fill="#2E7D62">+60</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.1 0.14" style="opacity:0">
+            <g data-fx="arc" data-t="0.1 0.1" data-v="-80 200 60">
+              <rect x="350" y="92" width="44" height="54" rx="3" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+              <path d="M358 106 H386 M358 116 H386 M358 126 H378" stroke="#8C95A1" stroke-width="2"/>
+              <text x="372" y="140" text-anchor="middle" class="tn" font-size="11">50</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.33 0.14" style="opacity:0">
+            <g data-fx="fly" data-t="0.33 0.1" data-v="0 60">
+              <g>
+                <path d="M310 120 L309.7 123.5 L304.7 125.3 L303.5 127.8 L305.3 132.9 L302.9 135.3 L297.8 133.5 L295.3 134.7 L293.5 139.7 L290 140 L287.3 135.4 L284.7 134.7 L280 137.3 L277.1 135.3 L278 130 L276.5 127.8 L271.2 126.8 L270.3 123.5 L274.4 120 L274.6 117.3 L271.2 113.2 L272.7 110 L278 110 L280 108 L280 102.7 L283.2 101.2 L287.3 104.6 L290 104.4 L293.5 100.3 L296.8 101.2 L297.8 106.5 L300 108 L305.3 107.1 L307.3 110 L304.7 114.7 L305.4 117.3 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="290" cy="120" r="6.4" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.56 0.14" style="opacity:0">
+            <g data-fx="arc" data-t="0.56 0.12" data-v="172 206 60">
+              <g>
+                <circle cx="540" cy="300" r="14" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="540" cy="300" r="8.7" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+              <g>
+                <circle cx="556" cy="290" r="14" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="556" cy="290" r="8.7" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+              <g>
+                <circle cx="548" cy="312" r="14" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="548" cy="312" r="8.7" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.62 0.14" style="opacity:0">
+            <g transform="translate(676 548) scale(0.8)">
+              <path d="M-34 -30 L8 -30" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+              <path d="M6 -26 L18 -72 L134 -72 L146 -26 Z" fill="#3E7C6B" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="20" y="-84" width="112" height="13" rx="3" fill="#2C5E50" stroke="#1A1712" stroke-width="2"/>
+              <path d="M46 -66 L42 -32 M76 -66 L76 -32 M106 -66 L110 -32" stroke="#2C5E50" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="40" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="40" cy="-18" r="8" fill="#D5DAE1"/>
+              <circle cx="114" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="114" cy="-18" r="8" fill="#D5DAE1"/>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.78 0.14" style="opacity:0">
+            <g data-fx="arc" data-t="0.78 0.12" data-v="-190 100 50">
+              <g>
+                <circle cx="742" cy="190" r="14" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="742" cy="190" r="8.7" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+              <g>
+                <circle cx="758" cy="180" r="14" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="758" cy="180" r="8.7" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.96 0.2" style="opacity:0">
+            <g>
+              <rect x="181.5" y="34" width="477" height="48" rx="24" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" class="sh"/>
+              <text x="420" y="63.8" text-anchor="middle" class="tl" font-size="16" fill="#1A1712">Résultat 30, caisse 60&nbsp;: deux histoires différentes</text>
+            </g>
+          </g>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Deux bocaux&nbsp;: le résultat et la caisse ne bougent pas avec les mêmes opérations.">
+          <text x="105" y="176" text-anchor="middle" class="tt" font-size="23">Résultat</text>
+          <text x="105" y="196" text-anchor="middle" class="tr" font-size="15" fill="#6B6255">ce qui est gagné</text>
+          <rect x="34" y="242" width="142" height="240" rx="4" fill="#2E7D62" data-o="b" data-jr style="transform:scaleY(0)"/>
+          <path d="M30 220 Q30 206 45 202 L165 202 Q180 206 180 220 L180 464 Q180 486 160 486 L50 486 Q30 486 30 464 Z" fill="#FFFFFF" fill-opacity=".25" stroke="#6B7686" stroke-width="3"/>
+          <path d="M44 230 L44 454" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/>
+          <text x="295" y="176" text-anchor="middle" class="tt" font-size="23">Caisse</text>
+          <text x="295" y="196" text-anchor="middle" class="tr" font-size="15" fill="#6B6255">l’argent disponible</text>
+          <rect x="224" y="242" width="142" height="240" rx="4" fill="#E8B931" data-o="b" data-jc style="transform:scaleY(0)"/>
+          <path d="M220 220 Q220 206 235 202 L355 202 Q370 206 370 220 L370 464 Q370 486 350 486 L240 486 Q220 486 220 464 Z" fill="#FFFFFF" fill-opacity=".25" stroke="#6B7686" stroke-width="3"/>
+          <path d="M234 230 L234 454" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/>
+          <text x="105" y="522" text-anchor="middle" class="tn" font-size="28" data-rv>0</text>
+          <text x="295" y="522" text-anchor="middle" class="tn" font-size="28" data-cv>100</text>
+          <g data-fx="win" data-t="0.08 0.22" style="opacity:0">
+            <g>
+              <rect x="31.5" y="10.5" width="337" height="47" rx="23.5" fill="#1A1712" class="sh"/>
+              <text x="200" y="40.1" text-anchor="middle" class="tl" font-size="17" fill="#FFFDF8">Une vente de 50, pas encore payée</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.1 0.16" style="opacity:0">
+            <g>
+              <rect x="71" y="89" width="68" height="38" rx="19" fill="#FFFDF8" stroke="#2E7D62" stroke-width="2" class="sh"/>
+              <text x="105" y="115.9" text-anchor="middle" class="tn" font-size="22" fill="#2E7D62">+50</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.1 0.16" style="opacity:0">
+            <g>
+              <rect x="202.5" y="92.5" width="185" height="31" rx="15.5" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="295" y="113.4" text-anchor="middle" class="tl" font-size="15" fill="#6B6255">0&nbsp;: pas encore payé</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.31 0.22" style="opacity:0">
+            <g>
+              <rect x="88" y="10.5" width="224" height="47" rx="23.5" fill="#1A1712" class="sh"/>
+              <text x="200" y="40.1" text-anchor="middle" class="tl" font-size="17" fill="#FFFDF8">La machine s’use&nbsp;: 20</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.4 0.16" style="opacity:0">
+            <g>
+              <rect x="71" y="89" width="68" height="38" rx="19" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="105" y="115.9" text-anchor="middle" class="tn" font-size="22" fill="#C8102E">−20</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.4 0.16" style="opacity:0">
+            <g>
+              <rect x="215" y="92.5" width="160" height="31" rx="15.5" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="295" y="113.4" text-anchor="middle" class="tl" font-size="15" fill="#6B6255">0&nbsp;: rien ne sort</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.53 0.22" style="opacity:0">
+            <g>
+              <rect x="60" y="10.5" width="280" height="47" rx="23.5" fill="#1A1712" class="sh"/>
+              <text x="200" y="40.1" text-anchor="middle" class="tl" font-size="17" fill="#FFFDF8">On achète une machine&nbsp;: 100</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.6 0.16" style="opacity:0">
+            <g>
+              <rect x="21" y="92.5" width="168" height="31" rx="15.5" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="105" y="113.4" text-anchor="middle" class="tl" font-size="15" fill="#6B6255">0&nbsp;: c’est un bien</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.6 0.16" style="opacity:0">
+            <g>
+              <rect x="254.5" y="89" width="81" height="38" rx="19" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="295" y="115.9" text-anchor="middle" class="tn" font-size="22" fill="#C8102E">−100</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.75 0.22" style="opacity:0">
+            <g>
+              <rect x="64.5" y="10.5" width="271" height="47" rx="23.5" fill="#1A1712" class="sh"/>
+              <text x="200" y="40.1" text-anchor="middle" class="tl" font-size="17" fill="#FFFDF8">On emprunte 60 à la banque</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.8 0.16" style="opacity:0">
+            <g>
+              <rect x="12.5" y="92.5" width="185" height="31" rx="15.5" fill="#FFFDF8" stroke="#6B6255" stroke-width="2" class="sh"/>
+              <text x="105" y="113.4" text-anchor="middle" class="tl" font-size="15" fill="#6B6255">0&nbsp;: c’est une dette</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.8 0.16" style="opacity:0">
+            <g>
+              <rect x="261" y="89" width="68" height="38" rx="19" fill="#FFFDF8" stroke="#2E7D62" stroke-width="2" class="sh"/>
+              <text x="295" y="115.9" text-anchor="middle" class="tn" font-size="22" fill="#2E7D62">+60</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.1 0.14" style="opacity:0">
+            <g data-fx="arc" data-t="0.1 0.1" data-v="-95 200 50">
+              <rect x="178" y="128" width="44" height="54" rx="3" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+              <path d="M186 142 H214 M186 152 H214 M186 162 H206" stroke="#8C95A1" stroke-width="2"/>
+              <text x="200" y="176" text-anchor="middle" class="tn" font-size="15">50</text>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.33 0.14" style="opacity:0">
+            <g data-fx="fly" data-t="0.33 0.1" data-v="-80 110">
+              <g>
+                <path d="M208 150 L207.7 153.1 L203.2 154.8 L202.2 157 L203.8 161.6 L201.6 163.8 L197 162.2 L194.8 163.2 L193.1 167.7 L190 168 L187.6 163.8 L185.2 163.2 L181 165.6 L178.4 163.8 L179.2 159 L177.8 157 L173.1 156.2 L172.3 153.1 L176 150 L176.2 147.6 L173.1 143.8 L174.4 141 L179.2 141 L181 139.2 L181 134.4 L183.8 133.1 L187.6 136.2 L190 136 L193.1 132.3 L196.2 133.1 L197 137.8 L199 139.2 L203.8 138.4 L205.6 141 L203.2 145.2 L203.8 147.6 Z" fill="#8C95A1" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+                <circle cx="190" cy="150" r="5.8" fill="#FFFDF8" stroke="#1A1712" stroke-width="2"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.56 0.14" style="opacity:0">
+            <g data-fx="arc" data-t="0.56 0.12" data-v="30 246 50">
+              <g>
+                <circle cx="290" cy="330" r="13" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="290" cy="330" r="8.1" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+              <g>
+                <circle cx="304" cy="320" r="13" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="304" cy="320" r="8.1" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+              <g>
+                <circle cx="298" cy="342" r="13" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="298" cy="342" r="8.1" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.62 0.14" style="opacity:0">
+            <g transform="translate(270 612) scale(0.62)">
+              <path d="M-34 -30 L8 -30" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+              <path d="M6 -26 L18 -72 L134 -72 L146 -26 Z" fill="#3E7C6B" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="20" y="-84" width="112" height="13" rx="3" fill="#2C5E50" stroke="#1A1712" stroke-width="2"/>
+              <path d="M46 -66 L42 -32 M76 -66 L76 -32 M106 -66 L110 -32" stroke="#2C5E50" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="40" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="40" cy="-18" r="8" fill="#D5DAE1"/>
+              <circle cx="114" cy="-18" r="18" fill="#1A1712"/>
+              <circle cx="114" cy="-18" r="8" fill="#D5DAE1"/>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.78 0.14" style="opacity:0">
+            <g data-fx="arc" data-t="0.78 0.12" data-v="-86 196 40">
+              <g>
+                <circle cx="378" cy="150" r="13" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="378" cy="150" r="8.1" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+              <g>
+                <circle cx="390" cy="140" r="13" fill="#E8B931" stroke="#B8891A" stroke-width="2"/>
+                <circle cx="390" cy="140" r="8.1" fill="none" stroke="#C99A20" stroke-width="1.2"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="win" data-t="0.96 0.2" style="opacity:0">
+            <rect x="34" y="536" width="332" height="66" rx="22" fill="#FFFDF8" stroke="#1A1712" stroke-width="2" class="sh"/>
+            <text x="200" y="563" text-anchor="middle" class="tl" font-size="16">Résultat 30, caisse 60&nbsp;:</text>
+            <text x="200" y="586" text-anchor="middle" class="tl" font-size="16">deux histoires différentes</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 8 · Le partage -->
+    <section class="scene" data-scene="8" aria-label="Le partage" style="--i:8">
+      <article class="cap" id="texte-8">
+        <div class="kick">8 · Le partage</div>
+        <h2>Les fruits de l’année</h2>
+        <p><span class="debut">Le bénéfice, 50, appartient aux actionnaires.</span> <span class="reste">Leur assemblée décide du partage&nbsp;: 45 partent en dividende, payés avec la trésorerie. Les 5 qui restent sont mis en réserves&nbsp;: ils s’ajoutent aux capitaux propres, comme des racines qui s’épaississent, et servent à investir.</span></p>
+        <details><summary>Définition comptable</summary><p>Affectation du résultat&nbsp;: décidée par l’assemblée générale des actionnaires, entre distribution (dividendes), mise en réserves et report à nouveau.</p></details>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-8">Lire la suite</button>
+      </article>
+      <div class="art">
+        <svg class="paysage" viewBox="0 0 840 560" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Un arbre aux dix fruits&nbsp;: neuf partent en dividende, un reste et nourrit les racines.">
+          <rect x="90" y="440" width="420" height="110" rx="18" fill="#8A6B4A"/>
+          <rect x="90" y="440" width="420" height="10" fill="#6E9A57"/>
+          <g fill="none" stroke="#5A3E26" stroke-linecap="round">
+            <path d="M300 450 Q280 480 230 500" stroke-width="7"/>
+            <path d="M300 450 Q320 480 370 500" stroke-width="7"/>
+            <path d="M300 450 L300 530" stroke-width="6"/>
+            <path d="M250 496 Q220 510 190 512" stroke-width="3.5"/>
+            <path d="M350 496 Q380 510 410 512" stroke-width="3.5"/>
+          </g>
+          <g fill="none" stroke="#E8B931" stroke-linecap="round">
+            <path d="M230 500 Q180 520 138 522" stroke-width="5" data-fx="draw" data-t="0.74 0.1"/>
+            <path d="M370 500 Q420 520 462 522" stroke-width="5" data-fx="draw" data-t="0.76 0.1"/>
+            <path d="M300 530 L300 540" stroke-width="4" data-fx="draw" data-t="0.78 0.08"/>
+          </g>
+          <text x="300" y="480" text-anchor="middle" class="tl" font-size="13.5" fill="#FFFDF8">Racines&nbsp;: capitaux propres</text>
+          <text x="300" y="505.5" text-anchor="middle" class="tn" font-size="19.5" fill="#FFFDF8" data-fx="count" data-t=".8 .08" data-v="100 105 0">100</text>
+          <path d="M288 444 Q298 380 300 326 Q302 380 312 444 Z" fill="#7A5434" stroke="#5A3E26" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M300 326 L280 276 M300 326 L320 276" fill="none" stroke="#7A5434" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="300" cy="210" r="112" fill="#5E9B4E"/>
+          <circle cx="204" cy="240" r="70" fill="#6FAE5A"/>
+          <circle cx="396" cy="240" r="70" fill="#6FAE5A"/>
+          <circle cx="247" cy="146" r="72" fill="#6FAE5A"/>
+          <circle cx="353" cy="146" r="72" fill="#5E9B4E"/>
+          <circle cx="300" cy="104" r="62" fill="#7DB866"/>
+          <g data-fx="pop" data-t="0.12 0.06">
+            <g>
+              <rect x="162" y="10.5" width="276" height="31" rx="15.5" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="300" y="31.4" text-anchor="middle" class="tl" font-size="15" fill="#1A1712">Bénéfice&nbsp;: 50 = 10 fruits de 5</text>
+            </g>
+          </g>
+          <g data-fx="out" data-t="0.72 0.05">
+            <g data-fx="fly" data-t="0.62 0.08" data-v="0 272">
+              <g data-fx="grow" data-t="0.1 0.05">
+                <circle cx="298" cy="156" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                <path d="M298 144 Q300 138 305 137 Q303 143 298 144 Z" fill="#4E7F3A"/>
+                <circle cx="294" cy="152" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.68 0.06">
+            <g>
+              <rect x="88.5" y="382.5" width="127" height="31" rx="15.5" fill="#FFFDF8" stroke="#B8891A" stroke-width="2" class="sh"/>
+              <text x="152" y="403.4" text-anchor="middle" class="tl" font-size="15" fill="#8A6510">Réserves&nbsp;: 5</text>
+            </g>
+          </g>
+          <g data-fx="out" data-t="0.97 0.02">
+            <g data-fx="fly" data-t="0.86 0.11" data-v="440 0">
+              <rect x="560" y="512" width="186" height="16" rx="3" fill="#3E4C7A" stroke="#1A1712" stroke-width="2"/>
+              <path d="M746 528 L746 478 Q746 468 756 468 L790 468 L812 498 L812 528 Z" fill="#1F4E9A" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M758 476 L786 476 L802 498 L758 498 Z" fill="#CFE3F1"/>
+              <circle cx="600" cy="536" r="15" fill="#1A1712"/>
+              <circle cx="600" cy="536" r="6" fill="#D5DAE1"/>
+              <circle cx="700" cy="536" r="15" fill="#1A1712"/>
+              <circle cx="700" cy="536" r="6" fill="#D5DAE1"/>
+              <circle cx="786" cy="536" r="15" fill="#1A1712"/>
+              <circle cx="786" cy="536" r="6" fill="#D5DAE1"/>
+              <rect x="592" y="462" width="124" height="50" rx="3" fill="#B07B4F" stroke="#1A1712" stroke-width="2"/>
+              <path d="M592 478 H716 M592 496 H716" stroke="#8A5A35" stroke-width="2"/>
+              <g data-fx="arc" data-t="0.3 0.1" data-v="386 274 90">
+                <g data-fx="grow" data-t="0 0.05">
+                  <circle cx="226" cy="178" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M226 166 Q228 160 233 159 Q231 165 226 166 Z" fill="#4E7F3A"/>
+                  <circle cx="222" cy="174" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.3 0.1" data-v="370 328 90">
+                <g data-fx="grow" data-t="0 0.05">
+                  <circle cx="268" cy="124" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M268 112 Q270 106 275 105 Q273 111 268 112 Z" fill="#4E7F3A"/>
+                  <circle cx="264" cy="120" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.4 0.1" data-v="326 336 90">
+                <g data-fx="grow" data-t="0 0.05">
+                  <circle cx="338" cy="116" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M338 104 Q340 98 345 97 Q343 103 338 104 Z" fill="#4E7F3A"/>
+                  <circle cx="334" cy="112" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.4 0.1" data-v="312 264 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="378" cy="188" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M378 176 Q380 170 385 169 Q383 175 378 176 Z" fill="#4E7F3A"/>
+                  <circle cx="374" cy="184" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.4 0.1" data-v="319 230 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="306" cy="200" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M306 188 Q308 182 313 181 Q311 187 306 188 Z" fill="#4E7F3A"/>
+                  <circle cx="302" cy="196" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.5 0.1" data-v="407 182 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="244" cy="248" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M244 236 Q246 230 251 229 Q249 235 244 236 Z" fill="#4E7F3A"/>
+                  <circle cx="240" cy="244" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.5 0.1" data-v="319 172 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="358" cy="258" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M358 246 Q360 240 365 239 Q363 245 358 246 Z" fill="#4E7F3A"/>
+                  <circle cx="354" cy="254" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.5 0.1" data-v="446 180 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="192" cy="228" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M192 216 Q194 210 199 209 Q197 215 192 216 Z" fill="#4E7F3A"/>
+                  <circle cx="188" cy="224" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.6 0.1" data-v="246 168 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="418" cy="240" r="13" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M418 228 Q420 222 425 221 Q423 227 418 228 Z" fill="#4E7F3A"/>
+                  <circle cx="414" cy="236" r="3" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.28 0.05">
+            <g>
+              <rect x="546.5" y="340.8" width="243" height="30.5" rx="15.25" fill="#FFFDF8" stroke="#1F4E9A" stroke-width="2" class="sh"/>
+              <text x="668" y="361.2" text-anchor="middle" class="tl" font-size="14.5" fill="#1F4E9A">Actionnaires&nbsp;: dividende 45</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.62 0.05">
+            <text x="668" y="386" text-anchor="middle" class="tr" font-size="13" fill="#6B6255">payé avec la trésorerie</text>
+          </g>
+        </svg>
+        <svg class="portrait" viewBox="0 0 400 620" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Un arbre aux dix fruits&nbsp;: neuf partent en dividende, un reste et nourrit les racines.">
+          <rect x="82.4" y="350" width="235.2" height="64" rx="10.1" fill="#8A6B4A"/>
+          <rect x="82.4" y="350" width="235.2" height="5.6" fill="#6E9A57"/>
+          <g fill="none" stroke="#5A3E26" stroke-linecap="round">
+            <path d="M200 355.6 Q188.8 372.4 160.8 383.6" stroke-width="3.9"/>
+            <path d="M200 355.6 Q211.2 372.4 239.2 383.6" stroke-width="3.9"/>
+            <path d="M200 355.6 L200 400.4" stroke-width="3.4"/>
+            <path d="M172 381.4 Q155.2 389.2 138.4 390.3" stroke-width="2"/>
+            <path d="M228 381.4 Q244.8 389.2 261.6 390.3" stroke-width="2"/>
+          </g>
+          <g fill="none" stroke="#E8B931" stroke-linecap="round">
+            <path d="M160.8 383.6 Q132.8 394.8 109.3 395.9" stroke-width="2.8" data-fx="draw" data-t="0.74 0.1"/>
+            <path d="M239.2 383.6 Q267.2 394.8 290.7 395.9" stroke-width="2.8" data-fx="draw" data-t="0.76 0.1"/>
+            <path d="M200 400.4 L200 406" stroke-width="2.2" data-fx="draw" data-t="0.78 0.08"/>
+          </g>
+          <text x="200" y="372.4" text-anchor="middle" class="tl" font-size="15" fill="#FFFDF8">Racines&nbsp;: capitaux propres</text>
+          <text x="200" y="399.4" text-anchor="middle" class="tn" font-size="21" fill="#FFFDF8" data-fx="count" data-t=".8 .08" data-v="100 105 0">100</text>
+          <path d="M193.3 352.2 Q198.9 316.4 200 286.2 Q201.1 316.4 206.7 352.2 Z" fill="#7A5434" stroke="#5A3E26" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M200 286.2 L188.8 258.2 M200 286.2 L211.2 258.2" fill="none" stroke="#7A5434" stroke-width="3.9" stroke-linecap="round"/>
+          <circle cx="200" cy="221.2" r="62.7" fill="#5E9B4E"/>
+          <circle cx="146.2" cy="238" r="39.2" fill="#6FAE5A"/>
+          <circle cx="253.8" cy="238" r="39.2" fill="#6FAE5A"/>
+          <circle cx="170.3" cy="185.4" r="40.3" fill="#6FAE5A"/>
+          <circle cx="229.7" cy="185.4" r="40.3" fill="#5E9B4E"/>
+          <circle cx="200" cy="161.8" r="34.7" fill="#7DB866"/>
+          <g data-fx="pop" data-t="0.12 0.06">
+            <g>
+              <rect x="54" y="8" width="292" height="32" rx="16" fill="#FFFDF8" stroke="#C8102E" stroke-width="2" class="sh"/>
+              <text x="200" y="29.8" text-anchor="middle" class="tl" font-size="16" fill="#1A1712">Bénéfice&nbsp;: 50 = 10 fruits de 5</text>
+            </g>
+          </g>
+          <g data-fx="out" data-t="0.72 0.05">
+            <g data-fx="fly" data-t="0.62 0.08" data-v="0 148.8">
+              <g data-fx="grow" data-t="0.1 0.05">
+                <circle cx="198.9" cy="191" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                <path d="M198.9 180.8 Q200.6 175.7 204.9 174.9 Q203.2 180 198.9 180.8 Z" fill="#4E7F3A"/>
+                <circle cx="195.5" cy="187.6" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+              </g>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.68 0.06">
+            <g>
+              <rect x="9" y="300" width="134" height="32" rx="16" fill="#FFFDF8" stroke="#B8891A" stroke-width="2" class="sh"/>
+              <text x="76" y="321.8" text-anchor="middle" class="tl" font-size="16" fill="#8A6510">Réserves&nbsp;: 5</text>
+            </g>
+          </g>
+          <g data-fx="out" data-t="0.97 0.02">
+            <g data-fx="fly" data-t="0.86 0.11" data-v="440 0">
+              <rect x="144" y="573" width="186" height="16" rx="3" fill="#3E4C7A" stroke="#1A1712" stroke-width="2"/>
+              <path d="M330 589 L330 539 Q330 529 340 529 L374 529 L396 559 L396 589 Z" fill="#1F4E9A" stroke="#1A1712" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M342 537 L370 537 L386 559 L342 559 Z" fill="#CFE3F1"/>
+              <circle cx="184" cy="597" r="15" fill="#1A1712"/>
+              <circle cx="184" cy="597" r="6" fill="#D5DAE1"/>
+              <circle cx="284" cy="597" r="15" fill="#1A1712"/>
+              <circle cx="284" cy="597" r="6" fill="#D5DAE1"/>
+              <circle cx="370" cy="597" r="15" fill="#1A1712"/>
+              <circle cx="370" cy="597" r="6" fill="#D5DAE1"/>
+              <rect x="176" y="523" width="124" height="50" rx="3" fill="#B07B4F" stroke="#1A1712" stroke-width="2"/>
+              <path d="M176 539 H300 M176 557 H300" stroke="#8A5A35" stroke-width="2"/>
+              <g data-fx="arc" data-t="0.3 0.1" data-v="37.4 309.7 90">
+                <g data-fx="grow" data-t="0 0.05">
+                  <circle cx="158.6" cy="203.3" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M158.6 193.1 Q160.3 188 164.5 187.2 Q162.9 192.3 158.6 193.1 Z" fill="#4E7F3A"/>
+                  <circle cx="155.2" cy="199.9" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.3 0.1" data-v="39.9 340 90">
+                <g data-fx="grow" data-t="0 0.05">
+                  <circle cx="182.1" cy="173" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M182.1 162.8 Q183.8 157.7 188 156.9 Q186.4 162 182.1 162.8 Z" fill="#4E7F3A"/>
+                  <circle cx="178.7" cy="169.6" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.4 0.1" data-v="26.7 344.4 90">
+                <g data-fx="grow" data-t="0 0.05">
+                  <circle cx="221.3" cy="168.6" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M221.3 158.4 Q223 153.3 227.3 152.5 Q225.6 157.5 221.3 158.4 Z" fill="#4E7F3A"/>
+                  <circle cx="217.9" cy="165.2" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.4 0.1" data-v="30.3 304.1 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="243.7" cy="208.9" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M243.7 198.7 Q245.4 193.6 249.7 192.8 Q248 197.9 243.7 198.7 Z" fill="#4E7F3A"/>
+                  <circle cx="240.3" cy="205.5" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.4 0.1" data-v="5.6 275.4 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="203.4" cy="215.6" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M203.4 205.4 Q205.1 200.3 209.4 199.5 Q207.7 204.5 203.4 205.4 Z" fill="#4E7F3A"/>
+                  <circle cx="200" cy="212.2" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.5 0.1" data-v="66.4 248.5 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="168.6" cy="242.5" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M168.6 232.3 Q170.3 227.2 174.5 226.4 Q172.9 231.5 168.6 232.3 Z" fill="#4E7F3A"/>
+                  <circle cx="165.2" cy="239.1" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.5 0.1" data-v="28.5 242.9 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="232.5" cy="248.1" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M232.5 237.9 Q234.2 232.8 238.5 232 Q236.8 237.1 232.5 237.9 Z" fill="#4E7F3A"/>
+                  <circle cx="229.1" cy="244.7" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.5 0.1" data-v="82.5 237.7 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="139.5" cy="231.3" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M139.5 221.1 Q141.2 216 145.5 215.2 Q143.8 220.3 139.5 221.1 Z" fill="#4E7F3A"/>
+                  <circle cx="136.1" cy="227.9" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+              <g data-fx="arc" data-t="0.6 0.1" data-v="-18.1 231 90">
+                <g data-fx="grow" data-t="0.1 0.05">
+                  <circle cx="266.1" cy="238" r="11" fill="#C8102E" stroke="#8E0B21" stroke-width="1.5"/>
+                  <path d="M266.1 227.8 Q267.8 222.7 272.1 221.9 Q270.4 227 266.1 227.8 Z" fill="#4E7F3A"/>
+                  <circle cx="262.7" cy="234.6" r="2.6" fill="#FFFFFF" fill-opacity=".45"/>
+                </g>
+              </g>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.28 0.05">
+            <g>
+              <rect x="63.5" y="47.8" width="273" height="32.5" rx="16.25" fill="#FFFDF8" stroke="#1F4E9A" stroke-width="2" class="sh"/>
+              <text x="200" y="69.9" text-anchor="middle" class="tl" font-size="16.5" fill="#1F4E9A">Actionnaires&nbsp;: dividende 45</text>
+            </g>
+          </g>
+          <g data-fx="pop" data-t="0.62 0.05">
+            <text x="200" y="92" text-anchor="middle" class="tr" font-size="15" fill="#6B6255">payé avec la trésorerie</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 9 · Chez KUHN SAS -->
+    <section class="scene" data-scene="9" aria-label="Chez KUHN SAS" style="--i:9">
+      <article class="cap" id="texte-9">
+        <div class="kick">9 · Et chez KUHN SAS&nbsp;?</div>
+        <h2>Les mêmes lignes, en vrai</h2>
+        <p><span class="debut" data-gabarit="Voici les comptes {annee} de KUHN SAS (Saverne), tels que déposés, en millions d’euros.">Voici les comptes de KUHN SAS (Saverne), tels que déposés, en millions d’euros.</span> <span class="reste">Vous savez maintenant les lire. Chaque ligne renvoie à l’image qui l’explique&nbsp;: cliquez sur ↩ pour la revoir.</span></p>
+        <button type="button" class="lire-suite" aria-expanded="false" aria-controls="texte-9">Lire la suite</button>
+      </article>
+      <div class="art kart">
+        <div class="board" data-fx="rise" data-t="0 0.14">
+          <div class="bgrid">
+            <section>
+              <h3 data-gabarit="Compte de résultat {annee}">Compte de résultat</h3>
+              <ul class="bliste">
+                <li class="brow" data-champ="ventes"><span>Ventes</span><b><i data-fx="count" data-t="0.06 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="2" aria-label="Revoir l’image 2" title="Revoir l’image 2">↩ 2</button></li>
+                <li class="brow" data-champ="valeur_ajoutee"><span>Valeur ajoutée</span><b><i data-fx="count" data-t="0.1 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="3" aria-label="Revoir l’image 3" title="Revoir l’image 3">↩ 3</button></li>
+                <li class="brow" data-champ="ebitda"><span>EBITDA* <em><span data-gabarit="{marge_ebitda} % des ventes"></span></em></span><b><i data-fx="count" data-t="0.14 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="6" aria-label="Revoir l’image 6" title="Revoir l’image 6">↩ 6</button></li>
+                <li class="brow" data-champ="resultat_exploitation"><span>Résultat d’exploitation</span><b><i data-fx="count" data-t="0.18 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="2" aria-label="Revoir l’image 2" title="Revoir l’image 2">↩ 2</button></li>
+                <li class="brow" data-champ="resultat_net"><span>Résultat net</span><b><i data-fx="count" data-t="0.22 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="2" aria-label="Revoir l’image 2" title="Revoir l’image 2">↩ 2</button></li>
+                <li class="brow" data-champ="dividende"><span><span data-gabarit="Dividende versé en {verse_en}">Dividende versé</span> <em><span data-badge-estimation></span></em></span><b><span data-approx hidden>≈&nbsp;</span><i data-fx="count" data-t="0.26 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="8" aria-label="Revoir l’image 8" title="Revoir l’image 8">↩ 8</button></li>
+              </ul>
+            </section>
+            <section>
+              <h3 data-gabarit="Bilan au 31 décembre {annee}">Bilan au 31 décembre</h3>
+              <ul class="bliste">
+                <li class="brow" data-champ="capitaux_propres"><span>Capitaux propres</span><b><i data-fx="count" data-t="0.3 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="1" aria-label="Revoir l’image 1" title="Revoir l’image 1">↩ 1</button></li>
+                <li class="brow" data-champ="provisions"><span>Provisions</span><b><i data-fx="count" data-t="0.34 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="5" aria-label="Revoir l’image 5" title="Revoir l’image 5">↩ 5</button></li>
+                <li class="brow" data-champ="dettes"><span>Dettes</span><b><i data-fx="count" data-t="0.38 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="1" aria-label="Revoir l’image 1" title="Revoir l’image 1">↩ 1</button></li>
+                <li class="brow" data-champ="tresorerie"><span>Trésorerie</span><b><i data-fx="count" data-t="0.42 0.3" data-v="0 0 1">—</i>&nbsp;M€</b><button type="button" class="back" data-aller="7" aria-label="Revoir l’image 7" title="Revoir l’image 7">↩ 7</button></li>
+              </ul>
+            </section>
+          </div>
+          <p class="bnote"><span data-gabarit="* EBITDA calculé chaque année de la même façon : résultat d’exploitation + amortissements + dotations − reprises de provisions. Des chiffres bien plus bas circulent : ils laissent de côté les {transferts} M€ de frais refacturés (transferts de charges). Aucune norme ne tranche ; l’essentiel est de comparer des années calculées de la même manière. Source : comptes sociaux déposés de KUHN SAS"></span><span data-si-estime hidden data-gabarit=" ; dividende {verse_en} estimé, pas encore publié"></span>.</p>
+          <div class="blinks">
+            <a href="/actualites/2026/kuhn-resultats/#ou-va-l-argent">Où va l’argent, année par année →</a>
+            <a href="/actualites/2026/kuhn-resultats/#analyse">Lire l’analyse →</a>
+            <a href="/actualites/2026/affaire-2-6/">L’affaire des 2,6&nbsp;% →</a>
+            <button type="button" class="btn" data-action="debut">↺ Revoir depuis le début</button>
+          </div>
+        </div>
+        <div class="post p1">
+        </div>
+        <div class="post p2">
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- le convoi : tracteur neutre et andaineur -->
+  <div class="convoi" data-convoi aria-hidden="true">
+    <svg viewBox="0 0 440 152">
+      <g data-tbody data-amp=".6">
+        <path d="M196 104 L226 120" stroke="#1A1712" stroke-width="5" stroke-linecap="round"/>
+        <path d="M14 82 L196 92 L196 104 L14 94 Z" fill="#C8102E" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M20 84 L190 93" stroke="#E8475E" stroke-width="2.5"/>
+        <rect x="50" y="90" width="16" height="26" rx="3" fill="#9E0B23" stroke="#1A1712" stroke-width="2"/>
+        <rect x="142" y="95" width="16" height="22" rx="3" fill="#9E0B23" stroke="#1A1712" stroke-width="2"/>
+      </g>
+      <path d="M18 127 L16 146 M26 127 L24 146 M34 127 L32 146 M42 127 L40 146 M50 127 L48 146 M58 127 L56 146 M66 127 L64 146 M74 127 L72 146 M82 127 L80 146 M90 127 L88 146 M98 127 L96 146" stroke="#1A1712" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M110 127 L108 146 M118 127 L116 146 M126 127 L124 146 M134 127 L132 146 M142 127 L140 146 M150 127 L148 146 M158 127 L156 146 M166 127 L164 146 M174 127 L172 146 M182 127 L180 146 M190 127 L188 146" stroke="#1A1712" stroke-width="1.6" stroke-linecap="round"/>
+      <g transform="translate(58 122) scale(1 .3)">
+        <g data-wheel="1.4">
+          <circle cx="0" cy="0" r="46" fill="#9E0B23" fill-opacity=".18"/>
+          <line x1="0" y1="0" x2="46" y2="0" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="32.5" y2="32.5" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="0" y2="46" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="-32.5" y2="32.5" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="-46" y2="0" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="-32.5" y2="-32.5" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="0" y2="-46" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="32.5" y2="-32.5" stroke="#C8102E" stroke-width="7"/>
+          <circle cx="0" cy="0" r="46" fill="none" stroke="#1A1712" stroke-width="12" stroke-dasharray="5 9"/>
+          <circle cx="0" cy="0" r="12" fill="#9E0B23"/>
+        </g>
+      </g>
+      <g transform="translate(150 122) scale(1 .3)">
+        <g data-wheel="-1.4">
+          <circle cx="0" cy="0" r="46" fill="#9E0B23" fill-opacity=".18"/>
+          <line x1="0" y1="0" x2="46" y2="0" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="32.5" y2="32.5" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="0" y2="46" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="-32.5" y2="32.5" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="-46" y2="0" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="-32.5" y2="-32.5" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="0" y2="-46" stroke="#C8102E" stroke-width="7"/>
+          <line x1="0" y1="0" x2="32.5" y2="-32.5" stroke="#C8102E" stroke-width="7"/>
+          <circle cx="0" cy="0" r="46" fill="none" stroke="#1A1712" stroke-width="12" stroke-dasharray="5 9"/>
+          <circle cx="0" cy="0" r="12" fill="#9E0B23"/>
+        </g>
+      </g>
+      <g transform="translate(34 141)">
+        <g data-wheel="5.7">
+          <circle cx="0" cy="0" r="7" fill="#1A1712"/>
+          <circle cx="0" cy="0" r="3.5" fill="#9AA5B1"/>
+          <line x1="0" y1="0" x2="3.5" y2="0" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.7" y2="3" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.8" y2="-3" stroke="#1A1712" stroke-width="2"/>
+        </g>
+      </g>
+      <g transform="translate(82 141)">
+        <g data-wheel="5.7">
+          <circle cx="0" cy="0" r="7" fill="#1A1712"/>
+          <circle cx="0" cy="0" r="3.5" fill="#9AA5B1"/>
+          <line x1="0" y1="0" x2="3.5" y2="0" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.7" y2="3" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.8" y2="-3" stroke="#1A1712" stroke-width="2"/>
+        </g>
+      </g>
+      <g transform="translate(126 141)">
+        <g data-wheel="5.7">
+          <circle cx="0" cy="0" r="7" fill="#1A1712"/>
+          <circle cx="0" cy="0" r="3.5" fill="#9AA5B1"/>
+          <line x1="0" y1="0" x2="3.5" y2="0" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.7" y2="3" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.8" y2="-3" stroke="#1A1712" stroke-width="2"/>
+        </g>
+      </g>
+      <g transform="translate(174 141)">
+        <g data-wheel="5.7">
+          <circle cx="0" cy="0" r="7" fill="#1A1712"/>
+          <circle cx="0" cy="0" r="3.5" fill="#9AA5B1"/>
+          <line x1="0" y1="0" x2="3.5" y2="0" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.7" y2="3" stroke="#1A1712" stroke-width="2"/>
+          <line x1="0" y1="0" x2="-1.8" y2="-3" stroke="#1A1712" stroke-width="2"/>
+        </g>
+      </g>
+      <circle class="puff" cx="364" cy="16" r="7" fill="#D9D4CA" style="animation-delay:0s"/>
+      <circle class="puff" cx="364" cy="16" r="7" fill="#D9D4CA" style="animation-delay:-0.8s"/>
+      <circle class="puff" cx="364" cy="16" r="7" fill="#D9D4CA" style="animation-delay:-1.6s"/>
+      <g data-tbody data-amp="1.4">
+        <g transform="translate(210 0)">
+          <rect x="148" y="26" width="10" height="40" fill="#3A342C"/>
+          <rect x="145" y="21" width="16" height="7" rx="2" fill="#3A342C"/>
+          <rect x="68" y="92" width="138" height="20" fill="#2B2F35"/>
+          <path d="M112 64 L198 64 Q210 64 210 76 L210 104 L112 104 Z" fill="#3D434B" stroke="#1A1712" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="206" y="70" width="8" height="30" rx="2" fill="#3A342C"/>
+          <line x1="118" y1="76" x2="202" y2="76" stroke="#EFE6D2" stroke-width="3"/>
+          <rect x="28" y="78" width="92" height="24" fill="#3D434B" stroke="#1A1712" stroke-width="2.5"/>
+          <rect x="36" y="20" width="74" height="60" fill="#CFE3F1" fill-opacity=".85"/>
+          <circle cx="76" cy="46" r="10" fill="#3A342C"/>
+          <path d="M58 80 Q76 56 94 80 Z" fill="#3A342C"/>
+          <rect x="30" y="20" width="7" height="60" fill="#2B2F35"/>
+          <rect x="109" y="20" width="7" height="60" fill="#2B2F35"/>
+          <rect x="22" y="8" width="102" height="13" rx="3" fill="#EFE6D2" stroke="#1A1712" stroke-width="2"/>
+          <path d="M12 110 A50 50 0 0 1 112 110 L103 110 A41 41 0 0 0 21 110 Z" fill="#EFE6D2" stroke="#1A1712" stroke-width="2"/>
+          <rect x="10" y="112" width="12" height="10" rx="2" fill="#2B2F35"/>
+        </g>
+      </g>
+      <g transform="translate(272 108)">
+        <g data-wheel="1">
+          <circle cx="0" cy="0" r="40" fill="#1A1712"/>
+          <circle cx="0" cy="0" r="37" fill="none" stroke="#3A342C" stroke-width="6" stroke-dasharray="7 6"/>
+          <circle cx="0" cy="0" r="22.4" fill="#EFE6D2" stroke="#D9CDB2" stroke-width="2"/>
+          <line x1="0" y1="0" x2="20.8" y2="0" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="6.4" y2="19.8" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="-16.8" y2="12.2" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="-16.8" y2="-12.2" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="6.4" y2="-19.8" stroke="#B5A88C" stroke-width="3"/>
+          <circle cx="0" cy="0" r="8" fill="#3D434B"/>
+        </g>
+      </g>
+      <g transform="translate(386 124)">
+        <g data-wheel="1.67">
+          <circle cx="0" cy="0" r="24" fill="#1A1712"/>
+          <circle cx="0" cy="0" r="21" fill="none" stroke="#3A342C" stroke-width="6" stroke-dasharray="7 6"/>
+          <circle cx="0" cy="0" r="13.4" fill="#EFE6D2" stroke="#D9CDB2" stroke-width="2"/>
+          <line x1="0" y1="0" x2="12.5" y2="0" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="3.9" y2="11.9" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="-10.1" y2="7.3" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="-10.1" y2="-7.3" stroke="#B5A88C" stroke-width="3"/>
+          <line x1="0" y1="0" x2="3.9" y2="-11.9" stroke="#B5A88C" stroke-width="3"/>
+          <circle cx="0" cy="0" r="4.8" fill="#3D434B"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="lyr l-front" data-f="1.35" data-m="34"></div>
+  <div class="prog" data-prog></div>
+  <div class="top">
+    <div class="brand"><b data-compteur>0</b><span data-etiquette>Départ</span></div>
+    <nav class="dots" aria-label="Aller à une image" data-puces></nav>
+  </div>
+  <div class="hint" data-hint><span class="mouse"><i></i></span>Faites défiler</div>
+  <div class="ctl" role="group" aria-label="Lecture">
+    <button type="button" data-action="precedent" aria-label="Image précédente">←</button>
+    <button type="button" class="play" data-action="lecture" aria-pressed="false" aria-label="Lecture"><span aria-hidden="true" data-icone>▶</span><span class="lbl" aria-hidden="true" data-libelle>Lecture</span></button>
+    <button type="button" data-action="suivant" aria-label="Image suivante">→</button>
+    <span class="cnt" aria-hidden="true" data-compteur>0</span>
+  </div>
+</div>
+</div>
+</div>
+<script src="../_donnees/kuhn.js"></script>
+<script src="../_commun/outils.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

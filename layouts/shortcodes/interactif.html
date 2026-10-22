@@ -4,9 +4,11 @@
     nom             dossier de la page (obligatoire)
     titre           titre accessible de l'iframe (obligatoire)
     hauteur         « auto » (défaut : la hauteur du contenu) ou « ecran » (l'écran, la page défile elle-même)
-    pleine-largeur  « true » : l'article s'élargit à toute la largeur (pleine-largeur.js)
+    pleine-largeur  « true » : l'article s'élargit à toute la largeur (pleine-largeur.js) ;
+                    le texte autour garde une colonne lisible
     hauteur-min     hauteur minimale en px avant chargement (défaut 320)
   (pleine_largeur et hauteur_min sont acceptés aussi, pour Tina.)
+  La figure porte l'ancre #<nom> : /actualites/…/#ou-va-l-argent y mène.
 */ -}}
 {{- $nom := .Get "nom" -}}
 {{- $titre := .Get "titre" -}}
@@ -26,7 +28,24 @@
 {{- /* Données publiées + empreinte des fichiers de la page : l'URL change dès qu'un des deux change. */ -}}
 {{- $donnees := partialCached "kuhn/publier-donnees.html" . "publier" -}}
 {{- $contenu := slice $donnees.empreinte -}}
-{{- range slice "index.html" "style.css" "script.js" "../_commun/base.css" "../_commun/outils.js" -}}
+{{- /* tous les fichiers du dossier de la page, sous-dossiers compris (decors/, images/…) */ -}}
+{{- $fichiers := slice -}}
+{{- range os.ReadDir $dossier -}}
+  {{- if .IsDir -}}
+    {{- $sous := .Name -}}
+    {{- range os.ReadDir (printf "%s/%s" $dossier $sous) -}}
+      {{- if not .IsDir -}}{{- $fichiers = $fichiers | append (printf "%s/%s" $sous .Name) -}}{{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $fichiers = $fichiers | append .Name -}}
+  {{- end -}}
+{{- end -}}
+{{- /* plus les fichiers communs que la page charge (../_commun/…, ../_affaire/…), hors données */ -}}
+{{- range findRE `(?:href|src)="\.\./_[a-z]+/[^"?#]+\.(?:css|js)"` (readFile (printf "%s/index.html" $dossier)) -}}
+  {{- $chemin := replaceRE `^(?:href|src)="(.*)"$` "$1" . -}}
+  {{- if not (hasPrefix $chemin "../_donnees/") -}}{{- $fichiers = $fichiers | append $chemin -}}{{- end -}}
+{{- end -}}
+{{- range $fichiers -}}
   {{- $f := printf "%s/%s" $dossier . -}}
   {{- if fileExists $f -}}{{- $contenu = $contenu | append (readFile $f) -}}{{- end -}}
 {{- end -}}
@@ -38,7 +57,7 @@
 
 {{- $cadre := printf `<iframe class="interactif__cadre interactif__cadre--%s" src="%s?v=%d" title="%s" data-hauteur="%s" style="min-height:%dpx" loading="lazy"></iframe>`
     $hauteur (printf "/interactifs/%s/" $nom | relURL) $empreinte ($titre | htmlEscape) $hauteur $hmin -}}
-{{- $figure := printf `<figure class="interactif interactif--%s" data-interactif="%s">%s<noscript><p class="interactif__sans-js">Cette illustration interactive a besoin de JavaScript.</p></noscript></figure>` $hauteur $nom $cadre -}}
+{{- $figure := printf `<figure class="interactif interactif--%s" id="%s">%s<noscript><p class="interactif__sans-js">Cette illustration interactive a besoin de JavaScript.</p></noscript></figure>` $hauteur $nom $cadre -}}
 {{- if $pleine -}}
 <div class="full-width-post interactif-pleine-largeur">{{ $figure | safeHTML }}</div>
 {{- else -}}

@@ -145,6 +145,7 @@ const detailsTemplate = {
 // Ajouter ici chaque nouvelle page de static/interactifs/ et chaque tableau de data/kuhn/tableaux.yaml.
 const pagesInteractives = [
   { value: "_modele", label: "Modèle (exemple)" },
+  { value: "lire-les-comptes", label: "Lire les comptes en images (tutoriel, écran entier)" },
 ];
 
 const tableauxKuhn = [
