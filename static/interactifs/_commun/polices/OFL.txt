@@ -3,11 +3,17 @@ Polices auto-hébergées des pages interactives (sous-ensemble latin, fichiers @
   inter-tight.woff2          Inter Tight (variable)
   bricolage-grotesque.woff2  Bricolage Grotesque (variable, graisse et taille optique)
   ibm-plex-mono-500/600      IBM Plex Mono
+  space-grotesk.woff2        Space Grotesk (variable)
+  courier-prime-400/700      Courier Prime
+  caveat.woff2               Caveat (variable)
 
 Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
 Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight)
 Copyright 2022 The Bricolage Grotesque Project Authors (https://github.com/ateliertriay/bricolage)
 Copyright 2017 IBM Corp. All rights reserved.
+Copyright 2020 The Space Grotesk Project Authors (https://github.com/floriankarsten/space-grotesk)
+Copyright 2015 The Courier Prime Project Authors (https://github.com/quoteunquoteapps/CourierPrime).
+Copyright 2014 The Caveat Project Authors (https://github.com/googlefonts/caveat)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

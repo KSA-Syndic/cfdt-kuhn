@@ -1,0 +1,61 @@
+.ouverture { padding-top: 48px; padding-bottom: 56px; }
+
+.ouverture__tete {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ouverture__dossier {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.ouverture__enquete {
+  padding: 4px 10px;
+  border: 2px solid var(--jaune);
+  color: var(--jaune);
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.ouverture__source {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--craie-2);
+}
+
+.ouverture__titre {
+  margin: 0;
+  font-size: clamp(42px, 8vw, 88px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+
+.ouverture__chiffre {
+  margin: 0;
+  font-size: clamp(24px, 3.4vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ouverture__note {
+  margin-left: 62%;
+  margin-top: -40px;
+  transform: rotate(3deg);
+}
+
+/* Mobile : figure simplifiée, sans fil rouge ; la note se range sous la fiche. */
+@media (max-width: 760px) {
+  .ouverture { padding-top: 32px; padding-bottom: 36px; }
+  .ouverture .fil { display: none; }
+  .ouverture__note { margin-top: 0; transform: rotate(1.5deg); }
+}

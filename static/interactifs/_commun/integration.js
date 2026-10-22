@@ -40,7 +40,10 @@
       var d = document_();
       if (!d || !d.documentElement) return;
       var h = Math.ceil(d.documentElement.getBoundingClientRect().height);
-      if (h > 0 && iframe.style.height !== h + 'px') iframe.style.height = h + 'px';
+      if (h <= 0) return;
+      /* la hauteur minimale ne sert qu'à réserver la place avant le chargement */
+      if (iframe.style.minHeight) iframe.style.minHeight = '';
+      if (iframe.style.height !== h + 'px') iframe.style.height = h + 'px';
     }
 
     function auChargement() {

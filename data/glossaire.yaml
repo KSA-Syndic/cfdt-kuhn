@@ -39,11 +39,11 @@ resultat-exploitation-affaire:
 
 transferts-de-charges:
   terme: Transferts de charges
-  definition: "<b>Transferts de charges</b> : frais refacturés à d'autres sociétés, remboursés ou reclassés ({dernier.transferts|1} M€ en {dernier.annee}). Ce ne sont pas des provisions. La réforme comptable de 2025 (règlement ANC n° 2022-06) supprime cette catégorie."
+  definition: "<b>Transferts de charges</b> : frais refacturés à d'autres sociétés, remboursés ou reclassés ({dernier.transferts|1} M€ en {dernier.annee}). Ce ne sont pas des provisions. La réforme comptable de 2025 (règlement ANC n° 2022-06) supprime cette catégorie."
 
 frais-refactures:
   terme: Frais refacturés
-  definition: "En langage comptable, des <b>transferts de charges</b> : une écriture qui neutralise des frais refacturés à d'autres sociétés, remboursés ou reclassés ailleurs dans les comptes. Leur détail figure dans l'annexe. La réforme comptable applicable depuis 2025 (règlement ANC n° 2022-06) supprime cette catégorie."
+  definition: "En langage comptable, des <b>transferts de charges</b> : une écriture qui neutralise des frais refacturés à d'autres sociétés, remboursés ou reclassés ailleurs dans les comptes. Leur détail figure dans l'annexe. La réforme comptable applicable depuis 2025 (règlement ANC n° 2022-06) supprime cette catégorie."
 
 provision:
   terme: Provision
@@ -91,4 +91,4 @@ encours:
 
 pappers:
   terme: Pappers
-  definition: "<b>Pappers</b> : site qui republie les comptes déposés par les entreprises et calcule des indicateurs. Ses quatre marges d'EBITDA pour KUHN SAS ({d.affaire.pappers.2021.marge|1} / {d.affaire.pappers.2022.marge|1} / {d.affaire.pappers.2023.marge|1} / {d.affaire.pappers.2024.marge|1} %) ne se retrouvent qu'en retirant les transferts de charges à partir de 2023 seulement. Pappers ne documente pas ce changement, et aucune loi ne l'explique : la réforme du plan comptable qui supprime les transferts de charges (règlement ANC n° 2022-06) ne s'applique qu'aux comptes ouverts à partir de 2025."
+  definition: "<b>Pappers</b> : site qui republie les comptes déposés par les entreprises et calcule des indicateurs. Ses quatre marges d'EBITDA pour KUHN SAS ({d.affaire.pappers.2021.marge|1} / {d.affaire.pappers.2022.marge|1} / {d.affaire.pappers.2023.marge|1} / {d.affaire.pappers.2024.marge|1} %) ne se retrouvent qu'en retirant les transferts de charges à partir de 2023 seulement. Pappers ne documente pas ce changement, et aucune loi ne l'explique : la réforme du plan comptable qui supprime les transferts de charges (règlement ANC n° 2022-06) ne s'applique qu'aux comptes ouverts à partir de 2025."

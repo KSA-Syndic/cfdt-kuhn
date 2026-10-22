@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base target="_top">
+<meta name="robots" content="noindex">
+<title>Ouverture de l'enquête</title>
+<link rel="stylesheet" href="../_commun/base.css">
+<link rel="stylesheet" href="../_affaire/affaire.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Figure d'ouverture : le dossier de l'enquête, le chiffre qui circule et le fil rouge.
+     Le texte de l'article est dans content/actualites/2026/affaire-2-6.md. -->
+<main class="liege ouverture" id="tableau">
+  <svg class="fil" aria-hidden="true"><path class="fil__ombre" transform="translate(2 4)"></path><path class="fil__trait" pathLength="1"></path></svg>
+
+  <header class="ouverture__tete">
+    <div class="ouverture__dossier">
+      <span class="ouverture__enquete">ENQUÊTE</span>
+      <span class="ouverture__source" id="source"></span>
+    </div>
+    <h1 class="ouverture__titre" id="titre"></h1>
+  </header>
+
+  <div class="fiche" style="--ml: 6%; --rot: -2.4deg">
+    <span class="punaise" data-punaise="1" style="right: 26px"></span>
+    <div class="papier papier--dechire">
+      <div class="etiquette">Le chiffre qui circule</div>
+      <p class="ouverture__chiffre chiffre" id="chiffre"></p>
+    </div>
+  </div>
+
+  <div class="note ouverture__note" id="note">
+    <span class="punaise" data-punaise="2" style="left: 50%; margin-left: -11px"></span>
+    <span id="note-texte"></span>
+  </div>
+</main>
+<script src="../_donnees/kuhn.js"></script>
+<script src="../_commun/outils.js"></script>
+<script src="../_affaire/affaire.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

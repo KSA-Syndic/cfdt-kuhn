@@ -1,0 +1,14 @@
+.comparaison { display: flex; flex-direction: column; gap: 10px; }
+.comparaison__ligne {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+}
+.comparaison__annee { font-weight: 600; }
+.comparaison__barres { display: flex; flex-direction: column; gap: 3px; }
+.comparaison__barre { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+.comparaison__barre i { display: block; height: 12px; }
+.comparaison__barre--affiche i { background: var(--rouge-chiffre); }
+.comparaison__barre--calcule i { background: var(--bleu-chiffre); }

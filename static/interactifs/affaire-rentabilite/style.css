@@ -1,0 +1,4 @@
+.tuiles { display: flex; flex-wrap: wrap; gap: 14px; }
+.tuile { flex: 1 1 150px; padding: 14px; background: var(--papier-2); }
+.tuile__annee, .tuile__unite { font-size: 14px; color: #555555; }
+.tuile__valeur { font-size: 36px; font-weight: 700; font-variant-numeric: tabular-nums; }

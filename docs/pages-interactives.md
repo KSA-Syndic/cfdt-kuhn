@@ -164,3 +164,7 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
 - `data/kuhn/tableaux.yaml` : textes des colonnes et des lignes fixes (`trois-perimetres`, `ebitda-mesures`,
   `fiabilite`).
 - `data/kuhn/groupe.yaml` : `commandes` (variations publiées par Bucher) à compléter.
+- `content/actualites/2026/affaire-2-6.md` (« L'affaire des 2,6 % ») : l'article porte par nature sur
+  l'exercice désigné dans `data/kuhn/affaire.yaml` (2024, comparé à 2022) ; son texte et ses figures
+  `affaire-*` restent sur ces années. Seule exception à revérifier à chaque exercice (et quand le dividende
+  estimé est publié) : la conclusion « chaque année, 93 à 99 % du bénéfice partent en dividende ».

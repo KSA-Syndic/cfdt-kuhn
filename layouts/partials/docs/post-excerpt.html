@@ -1,5 +1,7 @@
-{{- /* Extrait pour listes d'articles (actualités, tags, etc.) */ -}}
-{{- if .Params.kuhnResultats -}}
+{{- /* Extrait pour listes d'articles (actualités, tags, etc.).
+       Une page qui intègre une page interactive ({{< interactif >}}) montre sa description :
+       son résumé automatique contiendrait l'iframe. */ -}}
+{{- if or .Params.kuhnResultats (strings.Contains .RawContent "{{< interactif") -}}
   {{- with .Description -}}<p>{{ . }}</p>{{- end -}}
 {{- else -}}
   {{- .Summary | truncate 256 -}}
