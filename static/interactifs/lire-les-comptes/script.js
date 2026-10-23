@@ -2,7 +2,8 @@
    Le défilement vertical de .hx fait avancer une caméra le long de dix scènes posées côte à côte.
    La scène 0 occupe une demi-unité de défilement, chaque scène suivante une unité :
    30 % de trajet, puis l'animation de la scène jusqu'à 85 %, puis un temps d'arrêt.
-   Les animations sont déclarées dans le dessin (index.html) : data-fx, data-t, data-v.
+   Les animations sont déclarées dans le dessin (index.html) : data-fx, data-t, data-v. Un effet marqué
+   data-attente ne joue qu'au coup de défilement qui suit l'arrêt de la caméra sur son image.
    Données : la scène 9 lit le DERNIER exercice de window.KuhnDonnees ; les montants de l'Atelier
    (scènes 0 à 8) sont un exemple fictif écrit dans les dessins.
    ?image=N (0 à 9) ouvre directement l'image N. */
@@ -153,7 +154,12 @@
       this.onUser = () => { this.tween = null; if (this.playing) this.setPlaying(false); };
       root.addEventListener('scroll', () => { if (this.unit) { this.target = root.scrollTop / this.unit; this.kick(); } }, { passive: true });
       root.addEventListener('wheel', this.onUser, { passive: true });
-      root.addEventListener('touchstart', this.onUser, { passive: true });
+      /* au doigt, seul un glissement interrompt la lecture : un simple appui sur un bouton (Pause, ←, →…)
+         ne doit pas l'arrêter avant que son propre clic ne s'exécute */
+      root.addEventListener('touchstart', (e) => {
+        this.appuiCommande = !!(e.target.closest && e.target.closest('button, a, summary, select, input'));
+      }, { passive: true });
+      root.addEventListener('touchmove', () => { if (!this.appuiCommande) this.onUser(); }, { passive: true });
       root.addEventListener('keydown', (e) => this.onKey(e));
       this.stage.addEventListener('pointermove', (e) => {
         if (!this.souris || e.pointerType !== 'mouse' || this.mobile) return;
@@ -223,7 +229,7 @@
       const nums = (s) => (s || '').trim().split(/\s+/).filter(Boolean).map(Number);
       const effets = (racine) => Array.from(racine.querySelectorAll('[data-fx]')).map((n) => {
         const t = nums(n.getAttribute('data-t'));
-        return { el: n, type: n.getAttribute('data-fx'), s: t[0] || 0, d: t[1] || 0, v: nums(n.getAttribute('data-v')), k: -1 };
+        return { el: n, type: n.getAttribute('data-fx'), s: t[0] || 0, d: t[1] || 0, v: nums(n.getAttribute('data-v')), k: -1, attente: n.hasAttribute('data-attente') };
       });
       this.layers = Array.from(this.stage.querySelectorAll('[data-f]')).map((el) => ({ el, f: +el.getAttribute('data-f'), m: +(el.getAttribute('data-m') || 0) }));
       this.scenes = Array.from(this.stage.querySelectorAll('[data-scene]')).map((el) => {
@@ -236,7 +242,8 @@
         const v = (racine) => ({ racine, fx: effets(racine) });
         const paysage = v(pays);
         const portrait = port === pays ? paysage : v(port);
-        return { el, i: +el.getAttribute('data-scene'), cap, art, paysage, portrait, v: paysage, fx: paysage.fx, p: -1, near: null, words: txt.split(/\s+/).filter(Boolean).length };
+        const attente = paysage.fx.some((e) => e.attente) || portrait.fx.some((e) => e.attente);
+        return { el, i: +el.getAttribute('data-scene'), cap, art, paysage, portrait, v: paysage, fx: paysage.fx, p: -1, near: null, attente, ouvert: false, pose: null, ka: 0, words: txt.split(/\s+/).filter(Boolean).length };
       });
       this.wheels = Array.from(this.stage.querySelectorAll('[data-wheel]')).map((el) => ({ el, k: +el.getAttribute('data-wheel') }));
       this.convoi = this.stage.querySelector('[data-convoi]');
@@ -393,11 +400,13 @@
       for (const s of this.scenes) {
         const d = s.i - cam, near = Math.abs(d) < .999;
         if (near !== s.near) { s.el.style.visibility = near ? 'visible' : 'hidden'; s.near = near; }
+        const attente = s.attente && this.attendre(s, c, near, dt);
         if (!near) continue;
         if (s.cap) s.cap.style.transform = 'translate3d(' + (d * .28 * W).toFixed(1) + 'px,0,0)';
         if (s.art) s.art.style.transform = 'translate3d(' + (d * .04 * W).toFixed(1) + 'px,0,0)';
         const p = s.i < c.i ? 1 : s.i > c.i ? 0 : c.a;
-        if (p !== s.p || this.force) { for (const e of s.fx) this.applyFx(e, p); s.p = p; }
+        if (p !== s.p || attente || this.force) { for (const e of s.fx) this.applyFx(e, e.attente ? s.ka : p, e.attente); s.p = p; }
+        if (attente && s.ka < 1) busy = true;
         const drv = this.drivers[s.i];
         if (drv && drv.call(this, s, p, dt)) busy = true;
       }
@@ -420,9 +429,26 @@
       return busy;
     }
 
+    /* data-attente : l'image arrêtée, ses éléments attendent le coup de défilement suivant, puis
+       apparaissent en 450 ms (s.ka, de 0 à 1). La lecture, les boutons et ?image=N ne les font pas attendre.
+       Renvoie true quand s.ka change. */
+    attendre(s, c, near, dt) {
+      if (s.i < c.i) s.ouvert = true;
+      else if (s.i > c.i) { s.ouvert = false; s.pose = null; }
+      else if (!s.ouvert && !c.travel) {
+        if (this.playing || this.tween || this.reduce || c.a > .5) s.ouvert = true;
+        else if (s.pose == null) { if (this.u === this.target) s.pose = this.target; }
+        else if (this.target > s.pose + 1e-3) s.ouvert = true;
+      }
+      const ka = !s.ouvert ? 0 : (!near || this.reduce) ? 1 : Math.min(1, s.ka + dt / 450);
+      if (ka === s.ka) return false;
+      s.ka = ka;
+      return true;
+    }
+
     /* ---------- effets déclarés dans le dessin (data-fx, data-t, data-v) ---------- */
-    applyFx(e, p) {
-      let k = e.d > 0 ? (p - e.s) / e.d : (p >= e.s ? 1 : 0);
+    applyFx(e, p, direct) {
+      let k = direct ? p : e.d > 0 ? (p - e.s) / e.d : (p >= e.s ? 1 : 0);
       k = k < 0 ? 0 : k > 1 ? 1 : k;
       if (k === e.k && !this.force) return;
       e.k = k;
@@ -512,8 +538,9 @@
         const tv = (tok.getAttribute('data-v') || '368 -36 70').split(/\s+/).map(Number);
         v.m = { yr: this.piece(s, '[data-yr]'), val: this.piece(s, '[data-val]'), bar: this.piece(s, '[data-bar]'), rust: this.piece(s, '[data-rust]'), tok, tv, badge: this.piece(s, '[data-badge]'), pills: Array.from(v.racine.querySelectorAll('[data-pill]')) };
       }
-      const m = v.m, yp = Math.max(0, Math.min(1, (p - .12) / .8)) * 5;
-      const n = p <= .12 ? 0 : Math.min(5, Math.floor(yp) + 1);
+      /* les années commencent un peu plus loin : le robot apparaît d'abord (data-attente) */
+      const m = v.m, yp = Math.max(0, Math.min(1, (p - .25) / .67)) * 5;
+      const n = p <= .25 ? 0 : Math.min(5, Math.floor(yp) + 1);
       const ph = yp >= 5 ? 1 : yp - Math.floor(yp);
       this.setText(m.yr, n ? 'Année ' + n : 'À l’achat');
       this.setText(m.val, String(Math.max(0, 100 - 20 * n)));
