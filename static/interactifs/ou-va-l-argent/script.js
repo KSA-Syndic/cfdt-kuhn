@@ -95,7 +95,15 @@
       PASTILLES.push(b);
     })(i);
   }
-  function aller(n) { etat.etape = n; etat.info = null; rendre(); }
+  function aller(n) {
+    etat.etape = n; etat.info = null; rendre();
+    /* mobile : la barre des étapes reste en bas de l'écran ; si l'on a défilé jusqu'à la cascade, on
+       remonte sur le texte de la nouvelle étape au lieu de laisser le lecteur le chercher */
+    var recit = document.querySelector('.recit');
+    if (O.media('(max-width: 640px)') && recit.getBoundingClientRect().top < 0) {
+      recit.scrollIntoView({ behavior: O.mouvementReduit() ? 'auto' : 'smooth', block: 'start' });
+    }
+  }
   $('prec').addEventListener('click', function () { aller(Math.max(1, etat.etape - 1)); });
   $('suiv').addEventListener('click', function () { aller(etat.etape === NB_ETAPES ? 1 : etat.etape + 1); });
   $('plus').addEventListener('click', function () { etat.detail = !etat.detail; rendre(); });

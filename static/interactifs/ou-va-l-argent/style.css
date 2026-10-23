@@ -180,7 +180,7 @@ a { color: var(--lien); }
 /* ---------- Mobile : lignes sur deux niveaux, liste déroulante, ← Étape n sur 6 → ---------- */
 @media (max-width: 640px) {
   :root { --grille: minmax(0, 1fr) auto 44px; }
-  .argent { padding-top: 20px; }
+  .argent { padding: 20px 16px 24px; }
   .argent__tete { gap: 12px; }
   .annees { display: none; }
   .annees-liste { display: block; }
@@ -202,7 +202,13 @@ a { color: var(--lien); }
   .info--ventes, .info--ligne { margin-right: 0; }
   .loupe__bulle { right: 0; width: 100%; }
 
-  .etapes { flex-wrap: nowrap; justify-content: space-between; }
+  /* la barre des étapes reste au bas de l'écran : pas besoin de redescendre pour passer à la suivante */
+  .etapes {
+    position: sticky; bottom: 0; z-index: 5; flex-wrap: nowrap; justify-content: space-between;
+    margin: 0 -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .96); box-shadow: 0 -6px 16px rgba(20, 23, 28, .08);
+  }
+  .recit { scroll-margin-top: 12px; }
   .etapes__liste { display: none; }
   .etapes__compteur { display: block; flex: 1 1 auto; text-align: center; font-size: 14px; font-weight: 600; color: var(--encre-2); }
   .etapes__suiv { min-width: var(--cible); padding: 0 14px; }
