@@ -81,7 +81,7 @@
       this.LEN = 1.05;
       this.END = this.START + (this.N - 1) + .3;
       this.u = 0; this.target = 0; this.raf = 0; this.last = 0; this.hold = 0; this.held = -1;
-      this.mx = 0; this.my = 0; this.tmx = 0; this.tmy = 0; this.lastCam = 0;
+      this.mx = 0; this.my = 0; this.tmx = 0; this.tmy = 0; this.lastCam = 0; this.depart = 0;
       this.sp = { beam: { x: 0, v: 0 }, needle: { x: 0, v: 0 } };
       this.cur = 0;
       this.playing = false;
@@ -247,6 +247,7 @@
       });
       this.wheels = Array.from(this.stage.querySelectorAll('[data-wheel]')).map((el) => ({ el, k: +el.getAttribute('data-wheel') }));
       this.convoi = this.stage.querySelector('[data-convoi]');
+      this.convoiSvg = this.convoi && this.convoi.querySelector('svg');
       this.caisses = Array.from(this.stage.querySelectorAll('[data-tbody]')).map((el) => ({ el, amp: +(el.getAttribute('data-amp') || 1.4) }));
       this.prog = this.stage.querySelector('[data-prog]');
       this.hint = this.stage.querySelector('[data-hint]');
@@ -411,11 +412,24 @@
         if (drv && drv.call(this, s, p, dt)) busy = true;
       }
       this.force = false;
-      for (const w of this.wheels) w.el.style.transform = 'rotate(' + (cam * 420 * w.k).toFixed(1) + 'deg)';
+      /* à la toute fin, le convoi attend un peu puis traverse toute la route et sort par la droite ;
+         dès qu'on remonte, il revient par la gauche */
+      let x = 0;
+      if (this.convoiSvg && !this.reduce && c.i === this.N - 1 && !c.travel && c.a >= 1) {
+        const dur = 2400 + W * .9, t = Math.max(0, this.depart - 1500), k = Math.min(1, t / dur);
+        x = k * k * W * 1.08;
+        if (k < 1) { this.depart += dt; busy = true; }
+      } else if (this.depart) {
+        this.depart = 0;
+        if (this.convoi) { this.convoi.style.animation = 'none'; void this.convoi.offsetWidth; this.convoi.style.animation = ''; }
+      }
+      if (this.convoiSvg) this.convoiSvg.style.transform = x ? 'translateX(' + x.toFixed(1) + 'px)' : '';
+      const roule = cam + x / W, bouge = moving || x > 0;
+      for (const w of this.wheels) w.el.style.transform = 'rotate(' + (roule * 420 * w.k).toFixed(1) + 'deg)';
       if (this.convoi) {
-        const m = moving ? '1' : '0';
+        const m = bouge ? '1' : '0';
         if (this.convoi.getAttribute('data-moving') !== m) this.convoi.setAttribute('data-moving', m);
-        for (const t of this.caisses) t.el.style.transform = 'translateY(' + (moving ? Math.sin(cam * 47) * t.amp : 0).toFixed(2) + 'px)';
+        for (const t of this.caisses) t.el.style.transform = 'translateY(' + (bouge ? Math.sin(roule * 47) * t.amp : 0).toFixed(2) + 'px)';
       }
       this.lastCam = cam;
       if (this.prog) this.prog.style.transform = 'scaleX(' + Math.min(1, this.u / this.END).toFixed(4) + ')';
