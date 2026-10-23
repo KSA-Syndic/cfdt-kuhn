@@ -97,12 +97,38 @@
   }
   function aller(n) {
     etat.etape = n; etat.info = null; rendre();
-    /* mobile : la barre des étapes reste en bas de l'écran ; si l'on a défilé jusqu'à la cascade, on
-       remonte sur le texte de la nouvelle étape au lieu de laisser le lecteur le chercher */
-    var recit = document.querySelector('.recit');
-    if (O.media('(max-width: 640px)') && recit.getBoundingClientRect().top < 0) {
-      recit.scrollIntoView({ behavior: O.mouvementReduit() ? 'auto' : 'smooth', block: 'start' });
-    }
+    centrer(nouveautes(n));
+  }
+
+  /** Ce qui apparaît à l'étape n : la ligne des ventes, leur partage, puis la loupe et les lignes du moment. */
+  function nouveautes(n) {
+    if (n === 1) return [document.querySelector('.ligne--ventes')];
+    if (n === 2) return [$('partage')];
+    var rangs = RANGS.filter(function (R) { return R.rang.classList.contains('lignes__rang--courant'); })
+      .map(function (R) { return R.rang; });
+    return n === 3 ? [$('entonnoir')].concat(rangs) : rangs;
+  }
+
+  /** Centre ces éléments dans la partie visible de l'écran, au-dessus de la barre des étapes (collée en
+      bas sur mobile) ; trop hauts, ils s'alignent en haut. Sur ordinateur, on ne bouge que s'ils sortent de
+      l'écran ; sur mobile, on centre à chaque étape. */
+  function centrer(els) {
+    var haut = Infinity, bas = -Infinity;
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      haut = Math.min(haut, r.top);
+      bas = Math.max(bas, r.bottom);
+    });
+    if (!isFinite(haut)) return;
+    var marge = 16;
+    var zoneBas = window.innerHeight;
+    var barre = document.querySelector('.etapes');
+    /* sa hauteur, pas sa position du moment : en bas de page, elle n'est pas encore collée */
+    if (getComputedStyle(barre).position === 'sticky') zoneBas -= barre.offsetHeight;
+    if (!O.media('(max-width: 640px)') && haut >= marge && bas <= zoneBas - marge) return;
+    var decalage = bas - haut <= zoneBas - 2 * marge ? (haut + bas) / 2 - zoneBas / 2 : haut - marge;
+    if (Math.abs(decalage) < 4) return;
+    window.scrollBy({ top: decalage, behavior: O.mouvementReduit() ? 'auto' : 'smooth' });
   }
   $('prec').addEventListener('click', function () { aller(Math.max(1, etat.etape - 1)); });
   $('suiv').addEventListener('click', function () { aller(etat.etape === NB_ETAPES ? 1 : etat.etape + 1); });
