@@ -399,6 +399,7 @@ body {
 .rain { animation: rain .9s linear infinite; }
 .roll { animation: roll 1.2s linear infinite; }
 .bob { animation: bob 4.2s ease-in-out infinite; }
+.etincelles { animation: etincelles .6s steps(2, jump-none) infinite; }
 
 /* ---------- Le convoi : tracteur neutre et andaineur rouge ---------- */
 
@@ -734,6 +735,7 @@ body {
 /* ---------- Animations en boucle ---------- */
 
 @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-14cqw); } }
+@keyframes etincelles { 0% { opacity: 1; } 100% { opacity: .25; } }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 @keyframes flow { to { stroke-dashoffset: -28; } }
 @keyframes smoke { 0% { transform: translate(0, 0) scale(.5); opacity: .85; } 100% { transform: translate(22px, -70px) scale(1.9); opacity: 0; } }
@@ -913,6 +915,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .l-clouds .cl,
   .bob,
+  .etincelles,
   .flow,
   .smoke,
   .rain,
