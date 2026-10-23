@@ -246,18 +246,6 @@ details[open] .chev { transform: rotate(90deg); }
 }
 .verdict h2 { font-size: clamp(34px, 4.6vw, 56px); font-weight: 700; line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
 .verdict__texte { max-width: 56ch; font-size: 20px; line-height: 1.6; color: var(--craie-3); }
-.verdict__liens { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-.bouton {
-  display: inline-flex;
-  align-items: center;
-  min-height: 48px;
-  padding: 0 22px;
-  border: 2px solid var(--craie-2);
-  color: var(--craie);
-  font-weight: 600;
-  text-decoration: none;
-}
-.bouton--plein { border-color: var(--jaune); background: var(--jaune); color: #1A1A1A; font-weight: 700; }
 .verdict__sources { font-size: 14px; color: var(--craie-2); }
 
 @media (hover: hover) {
@@ -274,7 +262,6 @@ details[open] .chev { transform: rotate(90deg); }
   .tete__chapo { font-size: 19px; }
   .ventes__ligne { grid-template-columns: 44px minmax(0, 1fr) 84px; font-size: 14px; }
   .tampon { font-size: 24px; padding: 8px 16px; }
-  .bouton { width: 100%; justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
