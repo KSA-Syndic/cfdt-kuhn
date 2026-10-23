@@ -536,10 +536,16 @@
       if (!v.m) {
         const tok = this.piece(s, '[data-tok]');
         const tv = (tok.getAttribute('data-v') || '368 -36 70').split(/\s+/).map(Number);
-        v.m = { yr: this.piece(s, '[data-yr]'), val: this.piece(s, '[data-val]'), bar: this.piece(s, '[data-bar]'), rust: this.piece(s, '[data-rust]'), tok, tv, badge: this.piece(s, '[data-badge]'), pills: Array.from(v.racine.querySelectorAll('[data-pill]')) };
+        const achat = this.piece(s, '[data-achat]');
+        v.m = { yr: this.piece(s, '[data-yr]'), val: this.piece(s, '[data-val]'), bar: this.piece(s, '[data-bar]'), rust: this.piece(s, '[data-rust]'), tok, tv,
+          achat, av: achat.getAttribute('data-v').split(/\s+/).map(Number), paye: this.piece(s, '[data-paye]'), zero: this.piece(s, '[data-zero]'), pills: Array.from(v.racine.querySelectorAll('[data-pill]')) };
       }
+      /* l'achat : les 100 sortent du coffre et filent vers le robot avant la première année */
+      const m = v.m, ka = Math.max(0, Math.min(1, (p - .08) / .12)), ta = this.easeIO(ka);
+      m.achat.style.opacity = ka > 0 && ka < 1 ? Math.min(1, ka * 8, (1 - ka) * 5).toFixed(3) : 0;
+      m.achat.style.transform = 'translate(' + (ta * m.av[0]).toFixed(1) + 'px,' + (ta * m.av[1] - Math.sin(Math.PI * ta) * m.av[2]).toFixed(1) + 'px)';
       /* les années commencent un peu plus loin : le robot apparaît d'abord (data-attente) */
-      const m = v.m, yp = Math.max(0, Math.min(1, (p - .25) / .67)) * 5;
+      const yp = Math.max(0, Math.min(1, (p - .25) / .67)) * 5;
       const n = p <= .25 ? 0 : Math.min(5, Math.floor(yp) + 1);
       const ph = yp >= 5 ? 1 : yp - Math.floor(yp);
       this.setText(m.yr, n ? 'Année ' + n : 'À l’achat');
@@ -551,26 +557,20 @@
       const t = live ? this.easeIO(ph / .7) : 0;
       m.tok.style.opacity = live ? Math.sin(Math.PI * Math.min(1, ph / .7)).toFixed(3) : 0;
       m.tok.style.transform = 'translate(' + (t * m.tv[0]).toFixed(1) + 'px,' + (t * m.tv[1] - Math.sin(Math.PI * t) * m.tv[2]).toFixed(1) + 'px)';
-      m.badge.style.transform = 'scale(' + (1 + (n >= 1 ? .14 * Math.max(0, 1 - Math.abs(ph - .3) / .2) : 0)).toFixed(3) + ')';
+      m.paye.style.opacity = n ? 0 : 1;
+      m.zero.style.opacity = n ? 1 : 0;
       return false;
     }
 
-    /* 5 · le nuage arrive, le parapluie s'ouvre, puis se replie en partie */
+    /* 5 · le nuage arrive, le parapluie s'ouvre ; le verdict (data-fx dans le nuage) ramène le risque à 6,
+       le nuage rapetisse, la pluie faiblit et le parapluie se replie en partie */
     drvUmbrella(s, p) {
       const v = s.v;
-      if (!v.u) {
-        const cloud = this.piece(s, '[data-cloud]');
-        /* course du nuage : entrée, sortie, montée (data-v ; le portrait sort moins loin pour rester dans le cadre) */
-        const cv = (cloud.getAttribute('data-v') || '460 300 40').split(/\s+/).map(Number);
-        v.u ={ cloud, cv, rain: this.piece(s, '[data-rain]'), can: this.piece(s, '[data-canopy]'), txt: this.piece(s, '[data-provtxt]') };
-      }
+      if (!v.u) v.u = { cloud: this.piece(s, '[data-cloud]'), rain: this.piece(s, '[data-rain]'), can: this.piece(s, '[data-canopy]'), txt: this.piece(s, '[data-provtxt]') };
       const u = v.u, c = (x) => Math.max(0, Math.min(1, x));
-      const kin = this.easeO(c(p / .22)), kout = this.easeIO(c((p - .6) / .2));
-      u.cloud.style.transform = 'translate(' + ((1 - kin) * u.cv[0] + kout * u.cv[1]).toFixed(1) + 'px,' + (-kout * u.cv[2]).toFixed(1) + 'px) scale(' + (1 - .25 * kout).toFixed(3) + ')';
-      u.cloud.style.opacity = (1 - .5 * kout).toFixed(3);
-      const heavy = c((p - .18) / .06) * (1 - c((p - .6) / .1));
-      u.rain.style.opacity = (heavy + (p > .6 && p < .78 ? .3 : 0)).toFixed(3);
-      u.rain.style.transform = 'translateX(' + (kout * u.cv[1]).toFixed(1) + 'px)';
+      const kin = this.easeO(c(p / .22)), small = this.easeIO(c((p - .74) / .1));
+      u.cloud.style.transform = 'translateX(' + ((1 - kin) * 460).toFixed(1) + 'px) scale(' + (1 - .15 * small).toFixed(3) + ')';
+      u.rain.style.opacity = (c((p - .18) / .06) * (1 - .6 * small)).toFixed(3);
       const open = this.easeO(c((p - .25) / .1)), fold = this.easeIO(c((p - .8) / .1));
       u.can.style.transform = 'scaleX(' + (.1 + .9 * open - .3 * fold).toFixed(3) + ')';
       u.txt.style.opacity = open.toFixed(3);
