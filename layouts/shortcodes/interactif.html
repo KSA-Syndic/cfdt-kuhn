@@ -14,10 +14,7 @@
 {{- $titre := .Get "titre" -}}
 {{- if not $nom -}}{{- errorf "interactif : paramètre « nom » manquant (%s)" .Position -}}{{- end -}}
 {{- if not $titre -}}{{- errorf "interactif « %s » : paramètre « titre » obligatoire (%s)" $nom .Position -}}{{- end -}}
-{{- $dossier := printf "static/interactifs/%s" $nom -}}
-{{- if not (fileExists (printf "%s/index.html" $dossier)) -}}
-  {{- errorf "interactif : %s/index.html introuvable (%s)" $dossier .Position -}}
-{{- end -}}
+{{- $url := partial "kuhn/url-interactif.html" (dict "nom" $nom "position" .Position) -}}
 {{- $hauteur := .Get "hauteur" | default "auto" -}}
 {{- if not (in (slice "auto" "ecran") $hauteur) -}}
   {{- errorf "interactif « %s » : hauteur « %s » inconnue (auto ou ecran) (%s)" $nom $hauteur .Position -}}
@@ -25,38 +22,12 @@
 {{- $pleine := in (slice "true" true) (or (.Get "pleine-largeur") (.Get "pleine_largeur")) -}}
 {{- $hmin := int (or (.Get "hauteur-min") (.Get "hauteur_min") 320) -}}
 
-{{- /* Données publiées + empreinte des fichiers de la page : l'URL change dès qu'un des deux change. */ -}}
-{{- $donnees := partialCached "kuhn/publier-donnees.html" . "publier" -}}
-{{- $contenu := slice $donnees.empreinte -}}
-{{- /* tous les fichiers du dossier de la page, sous-dossiers compris (decors/, images/…) */ -}}
-{{- $fichiers := slice -}}
-{{- range os.ReadDir $dossier -}}
-  {{- if .IsDir -}}
-    {{- $sous := .Name -}}
-    {{- range os.ReadDir (printf "%s/%s" $dossier $sous) -}}
-      {{- if not .IsDir -}}{{- $fichiers = $fichiers | append (printf "%s/%s" $sous .Name) -}}{{- end -}}
-    {{- end -}}
-  {{- else -}}
-    {{- $fichiers = $fichiers | append .Name -}}
-  {{- end -}}
-{{- end -}}
-{{- /* plus les fichiers communs que la page charge (../_commun/…, ../_analyse/…), hors données */ -}}
-{{- range findRE `(?:href|src)="\.\./_[a-z]+/[^"?#]+\.(?:css|js)"` (readFile (printf "%s/index.html" $dossier)) -}}
-  {{- $chemin := replaceRE `^(?:href|src)="(.*)"$` "$1" . -}}
-  {{- if not (hasPrefix $chemin "../_donnees/") -}}{{- $fichiers = $fichiers | append $chemin -}}{{- end -}}
-{{- end -}}
-{{- range $fichiers -}}
-  {{- $f := printf "%s/%s" $dossier . -}}
-  {{- if fileExists $f -}}{{- $contenu = $contenu | append (readFile $f) -}}{{- end -}}
-{{- end -}}
-{{- $empreinte := delimit $contenu "|" | hash.FNV32a -}}
-
 {{- /* integration.js (et pleine-largeur.js) sont chargés une seule fois par docs/inject/body.html */ -}}
 {{- .Page.Store.Set "interactif" true -}}
 {{- if $pleine -}}{{- .Page.Store.Set "interactif-pleine-largeur" true -}}{{- end -}}
 
-{{- $cadre := printf `<iframe class="interactif__cadre interactif__cadre--%s" src="%s?v=%d" title="%s" data-hauteur="%s" style="min-height:%dpx" loading="lazy"></iframe>`
-    $hauteur (printf "/interactifs/%s/" $nom | relURL) $empreinte ($titre | htmlEscape) $hauteur $hmin -}}
+{{- $cadre := printf `<iframe class="interactif__cadre interactif__cadre--%s" src="%s" title="%s" data-hauteur="%s" style="min-height:%dpx" loading="lazy"></iframe>`
+    $hauteur $url ($titre | htmlEscape) $hauteur $hmin -}}
 {{- $figure := printf `<figure class="interactif interactif--%s" id="%s">%s<noscript><p class="interactif__sans-js">Cette illustration interactive a besoin de JavaScript.</p></noscript></figure>` $hauteur $nom $cadre -}}
 {{- if $pleine -}}
 <div class="full-width-post interactif-pleine-largeur">{{ $figure | safeHTML }}</div>

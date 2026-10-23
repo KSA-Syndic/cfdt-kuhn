@@ -210,17 +210,18 @@ const tableauKuhnTemplate = {
   ],
 };
 
-// Lien vers une page, en bulle-nuage animée (layouts/shortcodes/bulle-lien.html)
+// Bulle mouvante : ouvre une page interactive en plein écran, ou mène à une page (layouts/shortcodes/bulle-lien.html)
 const bulleLienTemplate = {
   name: "bulle_lien",
-  label: "Bulle-lien (nuage animé)",
+  label: "Bulle-lien (plein écran ou lien)",
   match: {
     start: "{{<",
     end: ">}}",
     name: "bulle-lien",
   },
   fields: [
-    { name: "href", label: "Page visée (lien vers le .md)", type: "string", required: true },
+    { name: "nom", label: "Page interactive à ouvrir en plein écran", type: "string", options: pagesInteractives },
+    { name: "href", label: "Page visée sans plein écran (lien vers le .md)", type: "string" },
     { name: "titre", label: "Titre", type: "string", required: true },
     { name: "texte", label: "Phrase sous le titre", type: "string" },
     {

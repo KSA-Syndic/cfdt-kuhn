@@ -7,6 +7,9 @@
 <script src="{{ $p.glossaire }}?v={{ $p.empreinte }}" defer></script>
 <script src="{{ "interactifs/_commun/integration.js" | relURL }}?v={{ readFile "static/interactifs/_commun/integration.js" | hash.FNV32a }}" defer></script>
 {{- end }}
+{{- if .Store.Get "bulle-plein-ecran" }}
+<script src="{{ "interactifs/_commun/plein-ecran.js" | relURL }}?v={{ readFile "static/interactifs/_commun/plein-ecran.js" | hash.FNV32a }}" defer></script>
+{{- end }}
 {{- if .Store.Get "interactif-pleine-largeur" }}
 <script src="{{ "interactifs/_commun/pleine-largeur.js" | relURL }}?v={{ readFile "static/interactifs/_commun/pleine-largeur.js" | hash.FNV32a }}"></script>
 {{- end }}

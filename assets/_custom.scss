@@ -387,9 +387,9 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   margin: 0.25rem 0.25rem 0.25rem 0;
 }
 
-// ---------- Bulles-liens en nuage : {{< bulle-lien >}} ----------
+// ---------- Bulles-liens : {{< bulle-lien >}} ----------
 // Le dessin, au contour qui ondule (border-radius animé), flotte sur deux halos qui se déforment à
-// contretemps et sur cinq « bosses » qui respirent : le tout dessine un nuage vivant.
+// contretemps. Avec nom="…", un clic l'agrandit en plein écran (plein-ecran.js, voir plus bas).
 
 .bulle-lien {
   --bulle-teinte: #cde2f5;
@@ -424,13 +424,13 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   --bulle-teinte-2: #eef3fa;
 }
 
-.bulle-lien__nuage {
+.bulle-lien__forme {
   position: relative;
   display: block;
   width: 13.5rem;
   max-width: 100%;
   aspect-ratio: 4 / 3;
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
 }
 
 .bulle-lien__halo {
@@ -450,27 +450,11 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   animation-direction: reverse;
 }
 
-// les bosses du nuage, posées sur le haut et les côtés
-.bulle-lien__bosse {
-  position: absolute;
-  width: 34%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--bulle-teinte);
-  animation: bulle-respire 6s ease-in-out infinite;
-
-  &:nth-of-type(1) { left: -8%; top: 30%; width: 30%; animation-delay: -1s; }
-  &:nth-of-type(2) { left: 10%; top: -16%; animation-delay: -3s; animation-duration: 7s; }
-  &:nth-of-type(3) { left: 38%; top: -24%; width: 40%; animation-delay: -5s; }
-  &:nth-of-type(4) { right: 6%; top: -12%; width: 30%; animation-delay: -2s; animation-duration: 8s; }
-  &:nth-of-type(5) { right: -8%; top: 32%; width: 28%; animation-delay: -4s; }
-}
-
 .bulle-lien__image {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%;
   box-shadow: 0 0.5rem 1.5rem rgba(20, 23, 28, 0.12);
   animation: bulle-morphe-doux 12s ease-in-out infinite;
   transition: transform 0.4s ease;
@@ -517,6 +501,21 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   text-decoration: underline;
 }
 
+// une bulle seule, hors paragraphe (page qui la présente) : en grand, centrée
+.markdown > .bulle-lien {
+  display: flex;
+  width: 100%;
+  margin: 1.5rem 0;
+
+  .bulle-lien__forme {
+    width: 26rem;
+  }
+
+  .bulle-lien__titre {
+    font-size: 1.375rem;
+  }
+}
+
 @keyframes bulle-morphe {
   0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
   25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
@@ -530,12 +529,7 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   66% { border-radius: 42% 58% 56% 44% / 56% 48% 52% 44%; }
 }
 
-@keyframes bulle-respire {
-  0%, 100% { transform: scale(0.92) translateY(0); }
-  50% { transform: scale(1.08) translateY(-3%); }
-}
-
-// mobile : une bulle par ligne, le dessin à gauche du texte
+// mobile : le dessin à gauche du texte (une bulle seule garde son grand dessin au-dessus)
 @media screen and (max-width: 40rem) {
   .bulle-lien {
     flex-direction: row;
@@ -547,22 +541,123 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
     text-align: left;
   }
 
-  .bulle-lien__nuage {
+  .bulle-lien__forme {
     flex: none;
     width: 8.5rem;
-    margin: 0.75rem 0 0 0.5rem;
+    margin: 0.5rem 0 0 0.5rem;
   }
 
   .bulle-lien__action {
     align-self: flex-start;
   }
+
+  .markdown > .bulle-lien {
+    flex-direction: column;
+    text-align: center;
+
+    .bulle-lien__forme {
+      width: 82%; // les halos débordent de 10 % : ils restent dans l'écran
+      margin: 0.75rem auto 0;
+    }
+
+    .bulle-lien__action {
+      align-self: center;
+    }
+  }
+}
+
+// ---------- Plein écran : une bulle-lien agrandie (static/interactifs/_commun/plein-ecran.js) ----------
+
+html.plein-ecran-actif {
+  overflow: hidden;
+}
+
+.plein-ecran {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background: var(--body-background);
+}
+
+.plein-ecran--anime {
+  transition: clip-path 0.6s var(--full-width-post-ease);
+}
+
+.plein-ecran__barre {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: #{"env(safe-area-inset-top) max(0.5rem, env(safe-area-inset-right)) 0 max(1rem, env(safe-area-inset-left))"};
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.plein-ecran__titre {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.plein-ecran__fermer {
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--gray-100);
+  }
+}
+
+.plein-ecran__corps {
+  position: relative;
+  flex: 1;
+}
+
+.plein-ecran__page,
+.plein-ecran__apercu {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+// le dessin de la bulle couvre la fenêtre le temps que la page se charge
+.plein-ecran__apercu {
+  pointer-events: none;
+  transition: opacity 0.4s ease 0.1s;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.plein-ecran--charge .plein-ecran__apercu {
+  opacity: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bulle-lien__halo,
-  .bulle-lien__bosse,
   .bulle-lien__image {
     animation: none;
+    transition: none;
+  }
+
+  .plein-ecran--anime,
+  .plein-ecran__apercu {
     transition: none;
   }
 }

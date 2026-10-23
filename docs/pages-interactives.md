@@ -29,13 +29,15 @@ layouts/partials/kuhn/
 layouts/shortcodes/
   interactif.html   {{< interactif … >}}
   tableau-kuhn.html {{< tableau-kuhn … >}}
-  bulle-lien.html   {{< bulle-lien … >}} (lien en bulle-nuage animée ; dessins dans layouts/partials/bulle-lien/)
+  bulle-lien.html   {{< bulle-lien … >}} (bulle mouvante : page en plein écran ou lien ; dessins dans
+                    layouts/partials/bulle-lien/)
+layouts/partials/kuhn/url-interactif.html  adresse d'une page autonome avec son empreinte (?v=…)
 
 static/interactifs/
   _modele/          dossier à copier pour créer une page
-  _commun/          base.css, outils.js, integration.js, pleine-largeur.js, polices/ (OFL)
+  _commun/          base.css, outils.js, integration.js, pleine-largeur.js, plein-ecran.js, polices/ (OFL)
   <nom>/            une page : index.html, style.css, script.js, images/…
-                    lire-les-comptes (tutoriel, écran entier), ou-va-l-argent (tableau dynamique),
+                    lire-les-comptes (tutoriel) et ou-va-l-argent (tableau dynamique), ouvertes en plein écran,
                     affaire-2-6 (l'enquête), analyse-* (graphiques de l'article Résultats, _analyse/ commun)
   (_donnees/kuhn.js et glossaire.js : produits par Hugo, jamais écrits à la main)
 ```
@@ -74,11 +76,19 @@ Dans les `.md` :
 
 - un terme du glossaire s'écrit comme un lien natif : `[EBITDA](#def-ebitda)` → bulle au clic ;
 - un tableau de chiffres : `{{< tableau-kuhn "rentabilite" >}}` (voir section 6) ;
-- un lien mis en avant vers une autre page, en bulle-nuage animée :
-  `{{< bulle-lien href="/actualites/2026/lire-les-comptes.md" titre="…" texte="…" dessin="comptes" >}}`.
-  `dessin` choisit l'illustration (`comptes`, `tableau` : `layouts/partials/bulle-lien/<dessin>.html`,
-  un SVG 240 × 180 ; en ajouter un = ajouter un fichier). Plusieurs bulles écrites l'une sous l'autre
-  s'alignent côte à côte (une par ligne sur mobile). Les animations s'arrêtent en mouvement réduit.
+- **une page interactive qui vit en plein écran** (tutoriel, tableau dynamique) ne s'intègre pas en iframe
+  au milieu du texte : on montre une **bulle mouvante** qui l'agrandit en plein écran au clic
+  (`static/interactifs/_commun/plein-ecran.js`) :
+  `{{< bulle-lien nom="lire-les-comptes" href="/actualites/2026/lire-les-comptes.md" titre="…" texte="…" dessin="comptes" >}}`.
+  - `nom` : la page ouverte en plein écran ; `href` (facultatif) : la page ouverte sans JavaScript, ou,
+    sans `nom`, la page visée par un simple lien ;
+  - `dessin` choisit l'illustration (`comptes`, `tableau` : `layouts/partials/bulle-lien/<dessin>.html`,
+    un SVG 240 × 180 ; en ajouter un = ajouter un fichier) ;
+  - plusieurs bulles écrites l'une sous l'autre s'alignent côte à côte ; une bulle seule s'affiche en grand
+    (c'est ainsi que l'article d'une page plein écran la présente) ;
+  - la fenêtre se ferme par « Fermer », Échap ou le bouton Retour ; l'adresse `…/#voir-<nom>` l'ouvre
+    directement (lien à utiliser depuis une autre page) ; la requête de l'article (`?image=3`) est transmise ;
+  - les animations s'arrêtent en mouvement réduit.
 
 ## 3. Contrat d'une page autonome
 

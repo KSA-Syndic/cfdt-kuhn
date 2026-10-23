@@ -12,8 +12,8 @@ bookToc: false
 
 Ce que disent les comptes déposés de KUHN SAS, en cinq constats. Chaque constat tient en une phrase et un graphique ; la méthode, les chiffres année par année et les sources sont rangés dans les blocs dépliables. Les termes soulignés en pointillé s'expliquent d'un clic.
 
-{{< bulle-lien href="/actualites/2026/lire-les-comptes.md" titre="Lire les comptes en images" texte="Bilan, compte de résultat, EBITDA, dividende : les mots des comptes expliqués en neuf images." dessin="comptes" >}}
-{{< bulle-lien href="/actualites/2026/ou-va-l-argent.md" titre="Les résultats en tableau dynamique" texte="Choisissez un exercice et suivez, ligne par ligne, où va l'argent de l'année." dessin="tableau" >}}
+{{< bulle-lien nom="lire-les-comptes" href="/actualites/2026/lire-les-comptes.md" titre="Lire les comptes en images" texte="Bilan, compte de résultat, EBITDA, dividende : les mots des comptes expliqués en neuf images." dessin="comptes" >}}
+{{< bulle-lien nom="ou-va-l-argent" href="/actualites/2026/ou-va-l-argent.md" titre="Les résultats en tableau dynamique" texte="Choisissez un exercice et suivez, ligne par ligne, où va l'argent de l'année." dessin="tableau" >}}
 
 > [!NOTE]
 > **En bref**

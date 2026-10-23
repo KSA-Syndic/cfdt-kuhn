@@ -8,6 +8,8 @@ tags: ["résultats", "dividende", "EBITDA"]
 bookToc: false
 ---
 
-{{< interactif nom="ou-va-l-argent" titre="Où va l'argent d'une année ? Les résultats de KUHN SAS en tableau dynamique" pleine_largeur="true" >}}
+Choisissez un exercice, puis avancez étape par étape : des ventes de KUHN SAS à ce qui revient aux fournisseurs, aux salariés, à l'État, aux provisions et, pour finir, à l'actionnaire.
+
+{{< bulle-lien nom="ou-va-l-argent" titre="Où va l'argent d'une année ?" texte="Le tableau dynamique des résultats de KUHN SAS, en plein écran." dessin="tableau" >}}
 
 Pour l'analyse complète, constat par constat, lisez [Résultats 2016–2024](/actualites/2026/kuhn-resultats.md). Pour apprendre à lire ces lignes, suivez [Lire les comptes en images](/actualites/2026/lire-les-comptes.md).

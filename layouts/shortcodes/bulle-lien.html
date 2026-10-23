@@ -1,31 +1,42 @@
 {{- /*
-  {{< bulle-lien href="/actualites/2026/lire-les-comptes.md" titre="Lire les comptes en images" texte="…" dessin="comptes" >}}
-  Lien vers une page, en forme de bulle-nuage : le dessin, au contour qui ondule, flotte sur des halos qui
-  respirent. Plusieurs bulles écrites l'une sous l'autre s'alignent côte à côte (une colonne sur mobile).
-    href    page visée (lien Markdown vers le .md, ou URL)          obligatoire
-    titre   titre de la bulle                                       obligatoire
+  {{< bulle-lien nom="lire-les-comptes" titre="Lire les comptes en images" texte="…" dessin="comptes" >}}
+  Une bulle mouvante (le dessin, au contour qui ondule, sur deux halos qui se déforment à contretemps).
+    nom     page interactive static/interactifs/<nom>/ : un clic l'agrandit en plein écran, par-dessus
+            l'article (static/interactifs/_commun/plein-ecran.js)
+    href    page visée par le lien (lien Markdown vers le .md, ou URL) : sans nom, la bulle mène à cette
+            page ; avec nom, c'est la page ouverte sans JavaScript (par défaut, la page interactive seule)
+    titre   titre de la bulle                                              obligatoire
     texte   une phrase sous le titre
     dessin  dessin de layouts/partials/bulle-lien/<dessin>.html : comptes, tableau
+  Il faut nom ou href. Plusieurs bulles écrites l'une sous l'autre s'alignent côte à côte (une colonne
+  sur mobile) ; une bulle seule (paragraphe à elle seule) s'affiche en grand.
 */ -}}
 {{- $titre := .Get "titre" -}}
-{{- if not (.Get "href") -}}{{- errorf "bulle-lien : paramètre « href » manquant (%s)" .Position -}}{{- end -}}
+{{- $nom := .Get "nom" -}}
 {{- if not $titre -}}{{- errorf "bulle-lien : paramètre « titre » manquant (%s)" .Position -}}{{- end -}}
-{{- $href := partial "docs/links/portable-link" (dict "Page" .Page "Destination" (.Get "href")) -}}
+{{- if not (or $nom (.Get "href")) -}}{{- errorf "bulle-lien : il faut « nom » ou « href » (%s)" .Position -}}{{- end -}}
+{{- $url := "" -}}
+{{- if $nom -}}
+  {{- $url = partial "kuhn/url-interactif.html" (dict "nom" $nom "position" .Position) -}}
+  {{- .Page.Store.Set "bulle-plein-ecran" true -}}
+{{- end -}}
+{{- $href := $url -}}
+{{- with .Get "href" -}}{{- $href = partial "docs/links/portable-link" (dict "Page" $.Page "Destination" .) -}}{{- end -}}
 {{- $dessin := .Get "dessin" | default "comptes" -}}
 {{- $gabarit := printf "bulle-lien/%s.html" $dessin -}}
 {{- if not (templates.Exists (printf "partials/%s" $gabarit)) -}}
   {{- errorf "bulle-lien : dessin « %s » inconnu (layouts/partials/bulle-lien/) (%s)" $dessin .Position -}}
 {{- end -}}
-<a class="bulle-lien bulle-lien--{{ $dessin }}" href="{{ $href | safeURL }}">
-<span class="bulle-lien__nuage" aria-hidden="true">
+<a class="bulle-lien bulle-lien--{{ $dessin }}" href="{{ $href | safeURL }}"
+{{- with $url }} data-plein-ecran="{{ . }}" data-nom="{{ $nom }}" data-titre="{{ $titre }}" aria-haspopup="dialog"{{ end }}>
+<span class="bulle-lien__forme" aria-hidden="true">
 <span class="bulle-lien__halo"></span><span class="bulle-lien__halo bulle-lien__halo--2"></span>
-<span class="bulle-lien__bosse"></span><span class="bulle-lien__bosse"></span><span class="bulle-lien__bosse"></span><span class="bulle-lien__bosse"></span><span class="bulle-lien__bosse"></span>
 <span class="bulle-lien__image">{{ partial $gabarit . }}</span>
 </span>
 <span class="bulle-lien__texte">
 <span class="bulle-lien__titre">{{ $titre | markdownify }}</span>
 {{- with .Get "texte" }}<span class="bulle-lien__resume">{{ . | markdownify }}</span>{{ end }}
-<span class="bulle-lien__action">Ouvrir&nbsp;→</span>
+<span class="bulle-lien__action">{{ if $url }}Ouvrir en plein écran{{ else }}Ouvrir{{ end }}&nbsp;→</span>
 </span>
 </a>
 {{- /* pas d'espace après : les bulles voisines restent sur la même ligne */ -}}

@@ -1,0 +1,40 @@
+{{- /*
+  kuhn/url-interactif.html — adresse d'une page autonome static/interactifs/<nom>/, avec son empreinte :
+  « /interactifs/<nom>/?v=<empreinte> ». L'empreinte change dès que la page, un fichier commun qu'elle
+  charge ou les données changent : le cache du navigateur ne sert jamais une version périmée.
+  Publie aussi les fichiers de données (kuhn/publier-donnees.html).
+  Appel : {{ $url := partial "kuhn/url-interactif.html" (dict "nom" "ou-va-l-argent" "position" .Position) }}
+  (utilisé par les shortcodes interactif et bulle-lien)
+*/ -}}
+{{- $nom := .nom -}}
+{{- $dossier := printf "static/interactifs/%s" $nom -}}
+{{- if not (fileExists (printf "%s/index.html" $dossier)) -}}
+  {{- errorf "page interactive : %s/index.html introuvable (%s)" $dossier .position -}}
+{{- end -}}
+
+{{- /* Données publiées + empreinte des fichiers de la page : l'URL change dès qu'un des deux change. */ -}}
+{{- $donnees := partialCached "kuhn/publier-donnees.html" . "publier" -}}
+{{- $contenu := slice $donnees.empreinte -}}
+{{- /* tous les fichiers du dossier de la page, sous-dossiers compris (decors/, images/…) */ -}}
+{{- $fichiers := slice -}}
+{{- range os.ReadDir $dossier -}}
+  {{- if .IsDir -}}
+    {{- $sous := .Name -}}
+    {{- range os.ReadDir (printf "%s/%s" $dossier $sous) -}}
+      {{- if not .IsDir -}}{{- $fichiers = $fichiers | append (printf "%s/%s" $sous .Name) -}}{{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $fichiers = $fichiers | append .Name -}}
+  {{- end -}}
+{{- end -}}
+{{- /* plus les fichiers communs que la page charge (../_commun/…, ../_analyse/…), hors données */ -}}
+{{- range findRE `(?:href|src)="\.\./_[a-z]+/[^"?#]+\.(?:css|js)"` (readFile (printf "%s/index.html" $dossier)) -}}
+  {{- $chemin := replaceRE `^(?:href|src)="(.*)"$` "$1" . -}}
+  {{- if not (hasPrefix $chemin "../_donnees/") -}}{{- $fichiers = $fichiers | append $chemin -}}{{- end -}}
+{{- end -}}
+{{- range $fichiers -}}
+  {{- $f := printf "%s/%s" $dossier . -}}
+  {{- if fileExists $f -}}{{- $contenu = $contenu | append (readFile $f) -}}{{- end -}}
+{{- end -}}
+{{- $empreinte := delimit $contenu "|" | hash.FNV32a -}}
+{{- return printf "%s?v=%d" (printf "/interactifs/%s/" $nom | relURL) $empreinte -}}
