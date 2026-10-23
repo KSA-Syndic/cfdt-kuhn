@@ -430,13 +430,13 @@
     }
 
     /* data-attente : l'image arrêtée, ses éléments attendent le coup de défilement suivant, puis
-       apparaissent en 450 ms (s.ka, de 0 à 1). La lecture, les boutons et ?image=N ne les font pas attendre.
-       Renvoie true quand s.ka change. */
+       apparaissent en 450 ms (s.ka, de 0 à 1). La lecture, les boutons et ?image=N ne les font pas attendre,
+       ni un arrêt au-delà du premier quart de l'image (elle a déjà commencé). Renvoie true quand s.ka change. */
     attendre(s, c, near, dt) {
       if (s.i < c.i) s.ouvert = true;
       else if (s.i > c.i) { s.ouvert = false; s.pose = null; }
       else if (!s.ouvert && !c.travel) {
-        if (this.playing || this.tween || this.reduce || c.a > .5) s.ouvert = true;
+        if (this.playing || this.tween || this.reduce || c.a > .25) s.ouvert = true;
         else if (s.pose == null) { if (this.u === this.target) s.pose = this.target; }
         else if (this.target > s.pose + 1e-3) s.ouvert = true;
       }

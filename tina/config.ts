@@ -152,7 +152,7 @@ const pagesInteractives = [
   { value: "analyse-provisions", label: "Résultats : graphique de l'effet des provisions" },
   { value: "analyse-dividende", label: "Résultats : graphique du bénéfice et du dividende" },
   { value: "analyse-secteur", label: "Résultats : le secteur (onglets)" },
-  { value: "affaire-2-6", label: "L'affaire des 2,6 % (enquête, pleine largeur)" },
+  { value: "affaire-2-6", label: "L'affaire des 2,6 % (enquête)" },
 ];
 
 const tableauxKuhn = [
@@ -231,6 +231,7 @@ const bulleLienTemplate = {
       options: [
         { value: "comptes", label: "Paysage et convoi (lire les comptes)" },
         { value: "tableau", label: "Tableau dynamique" },
+        { value: "enquete", label: "Tableau de liège (l'enquête des 2,6 %)" },
       ],
     },
   ],

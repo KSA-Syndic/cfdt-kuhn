@@ -1,5 +1,6 @@
-# « L'affaire des 2,6 % » (content/actualites/2026/affaire-2-6.md) porte, par nature, sur un exercice
-# précis : ses figures lisent l'exercice désigné ICI, une seule fois, et non le dernier exercice.
+# « L'affaire des 2,6 % » (static/interactifs/affaire-2-6/, ouverte en plein écran depuis l'article
+# Résultats) porte, par nature, sur un exercice précis : ses figures lisent l'exercice désigné ICI, une
+# seule fois, et non le dernier exercice.
 
 annee: 2024        # exercice examiné (le « 2,6 % »)
 comparaison: 2022  # exercice de référence (le « 9 % »)

@@ -3,7 +3,8 @@
    écran, par-dessus l'article : la fenêtre part du dessin de la bulle et s'ouvre jusqu'aux bords.
    - « Fermer », Échap ou le bouton Retour du navigateur la referment (elle se rétracte dans la bulle) ;
    - l'adresse #voir-<nom> ouvre directement la page en plein écran (lien partageable), et la requête de
-     l'article est transmise à la page (?image=3) ;
+     l'article est transmise à la page (?image=3) ; un lien #voir-<autre> suivi depuis la page ouverte
+     (même article) passe d'une page plein écran à l'autre ;
    - Ctrl/Cmd + clic ou clic du milieu ouvrent le lien normalement (nouvel onglet).
    Styles : assets/_custom.scss (« Plein écran »). */
 (function (w, doc) {
@@ -128,13 +129,18 @@
     if (ouvert && !(w.history.state && w.history.state.pleinEcran)) fermer(true);
   });
 
-  /* #voir-<nom> : ouverture directe */
+  /* #voir-<nom> : ouverture directe, au chargement ou quand l'ancre change (la page déjà ouverte, s'il y en
+     a une autre, se referme d'abord) */
   function depuisAdresse() {
     var h = w.location.hash;
-    if (h.indexOf(PREFIXE) !== 0) return;
+    if (h.indexOf(PREFIXE) !== 0 || ouvert) return;
     var bulle = doc.querySelector('a[data-plein-ecran][data-nom="' + h.slice(PREFIXE.length).replace(/[^a-z0-9-]/g, '') + '"]');
     if (bulle) ouvrir(bulle, true);
   }
+  w.addEventListener('hashchange', function () {
+    if (ouvert && w.location.hash !== PREFIXE + ouvert.nom) fermer(true);
+    depuisAdresse();
+  });
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', depuisAdresse);
   else depuisAdresse();
 })(window, document);

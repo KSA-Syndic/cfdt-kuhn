@@ -424,6 +424,11 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   --bulle-teinte-2: #eef3fa;
 }
 
+.bulle-lien--enquete {
+  --bulle-teinte: #cfe0dc;
+  --bulle-teinte-2: #f7eeb8;
+}
+
 .bulle-lien__forme {
   position: relative;
   display: block;

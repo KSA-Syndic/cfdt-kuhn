@@ -1,19 +1,24 @@
 ---
 title: "Résultats 2016–2024"
-description: "Des ateliers au dividende : les flux de valeur du groupe KUHN, au-delà du seul EBITDA."
+description: "Des ateliers au dividende : les flux de valeur du groupe KUHN, au-delà du seul EBITDA. Avec le tutoriel pour lire les comptes, le tableau dynamique des résultats et l'enquête sur le chiffre d'EBITDA qui circule."
 date: "2026-06-23T21:00:00+02:00"
 draft: false
 type: "docs"
-tags: ["résultats", "dividende", "bénéfices", "EBITDA", "bilan"]
+tags: ["résultats", "dividende", "bénéfices", "EBITDA", "bilan", "provisions", "comptes", "tutoriel"]
 bookToc: false
+aliases:
+  - /actualites/2026/lire-les-comptes/
+  - /actualites/2026/ou-va-l-argent/
+  - /actualites/2026/affaire-2-6/
 ---
 
 ## Résultats 2016–2024 : l'analyse {#analyse}
 
 Ce que disent les comptes déposés de KUHN SAS, en cinq constats. Chaque constat tient en une phrase et un graphique ; la méthode, les chiffres année par année et les sources sont rangés dans les blocs dépliables. Les termes soulignés en pointillé s'expliquent d'un clic.
 
-{{< bulle-lien nom="lire-les-comptes" href="/actualites/2026/lire-les-comptes.md" titre="Lire les comptes en images" texte="Bilan, compte de résultat, EBITDA, dividende : les mots des comptes expliqués en neuf images." dessin="comptes" >}}
-{{< bulle-lien nom="ou-va-l-argent" href="/actualites/2026/ou-va-l-argent.md" titre="Les résultats en tableau dynamique" texte="Choisissez un exercice et suivez, ligne par ligne, où va l'argent de l'année." dessin="tableau" >}}
+Pour apprendre d'abord à lire un bilan et un compte de résultat, suivez une année de l'Atelier, une petite entreprise imaginaire, avant de retrouver les mêmes lignes dans les comptes de KUHN SAS.
+
+{{< bulle-lien nom="lire-les-comptes" titre="Lire les comptes en images" texte="Bilan, compte de résultat, EBITDA, dividende : les mots des comptes expliqués en neuf images. Faites défiler, ou appuyez sur Lecture." dessin="comptes" >}}
 
 > [!NOTE]
 > **En bref**
@@ -43,7 +48,9 @@ Le chiffre d'affaires de KUHN SAS culmine à 979 M€ en 2023, puis revient à 
 {{< interactif nom="analyse-rentabilite" titre="Marge d'EBITDA de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
 > [!WARNING]
-> Des chiffres d'EBITDA bien plus bas circulent : environ 20 M€, soit 2,6 % des ventes en 2024 (c'est aussi ce qu'affiche Pappers). Ils laissent de côté les [transferts de charges](#def-transferts-de-charges). Aucune norme ne définit l'EBITDA et les deux conventions existent, mais comparer 2022 (frais comptés, 9 %) à 2024 (frais retirés, 2,6 %) mélange deux méthodes. Le fossé s'explique dans le bloc ci-dessous.
+> Des chiffres d'EBITDA bien plus bas circulent : environ 20 M€, soit 2,6 % des ventes en 2024 (c'est aussi ce qu'affiche Pappers). Ils laissent de côté les [transferts de charges](#def-transferts-de-charges). Aucune norme ne définit l'EBITDA et les deux conventions existent, mais comparer 2022 (frais comptés, 9 %) à 2024 (frais retirés, 2,6 %) mélange deux méthodes. Le fossé s'explique dans le bloc ci-dessous, et l'enquête le reprend pièce par pièce.
+
+{{< bulle-lien nom="affaire-2-6" titre="L'affaire des 2,6 %" texte="« L'argent que dégage KUHN s'est effondré. » Enquête sur un chiffre qui mélange deux façons de compter." dessin="enquete" >}}
 
 {{< details title="D'où vient le fossé entre les chiffres d'EBITDA ?" >}}
 {{< tableau-kuhn "ebitda-mesures" >}}
@@ -83,6 +90,10 @@ Chaque année, la quasi-totalité du bénéfice remonte à KUHN Group SAS, puis 
 
 {{< interactif nom="analyse-dividende" titre="Bénéfice et dividende de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
+Le dividende n'est que la dernière étape. Le tableau dynamique reprend une année entière : des ventes à ce qui revient aux fournisseurs, aux salariés, à l'État, aux provisions et, pour finir, à l'actionnaire.
+
+{{< bulle-lien nom="ou-va-l-argent" titre="Où va l'argent d'une année ?" texte="Choisissez un exercice et avancez étape par étape, des ventes au dividende." dessin="tableau" >}}
+
 {{< details title="Comment le dividende est reconstitué" >}}
 Les comptes ne publient pas le dividende. On le retrouve par la variation des réserves : bénéfice de l'année précédente moins la hausse des réserves. Le calcul tombe juste à l'euro près sur un montant rond par action (1 218 000 actions), et il concorde avec les dividendes reçus déclarés par KUHN Group SAS.
 
@@ -117,5 +128,3 @@ En indexant chaque groupe à 100 sur son année record, les quatre trajectoires 
 ### Fiabilité des chiffres {#fiabilite}
 
 {{< tableau-kuhn "fiabilite" >}}
-
-Pour aller plus loin : [Lire les comptes en images](/actualites/2026/lire-les-comptes.md), le tutoriel pour apprendre à lire un bilan et un compte de résultat, [Où va l'argent d'une année ?](/actualites/2026/ou-va-l-argent.md), les résultats en tableau dynamique, et [L'affaire des 2,6 %](/actualites/2026/affaire-2-6.md), l'enquête sur le chiffre d'EBITDA qui circule.
