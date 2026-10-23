@@ -79,6 +79,9 @@ html.interactif-integre.interactif-auto, html.interactif-integre.interactif-auto
 }
 .bulle__fermer:focus-visible { outline-color: #FFFFFF; }
 
+/* définition insérée sous le paragraphe (data-place="note") */
+.note-def { padding: 12px 14px; background: var(--fond-2); font-size: 15px; line-height: 1.55; }
+
 /* ---------- Badge « estimation » (KuhnOutils.badgeEstimation) ---------- */
 .badge-estimation {
   display: inline-block; padding: 2px 9px; border-radius: 999px;

@@ -8,6 +8,10 @@ comparaison: 2022  # exercice de référence (le « 9 % »)
 # (2020 omis pour la lisibilité, comme dans la maquette validée).
 recalcul: [2018, 2019, 2021, 2022, 2023, 2024]
 
+# Exercices d'avant le boom dont la marge d'EBITDA rejoint celle de l'exercice examiné
+# (« c'est 7,9 % : le niveau de 2018–2019 »).
+niveau_comparable: [2018, 2019]
+
 # Marges d'EBITDA de KUHN SAS affichées par Pappers (en % des ventes), et les montants cités.
 # Source publique : pages Pappers de KUHN SAS. Elles ne se retrouvent qu'en retirant les transferts de
 # charges à partir de 2023 seulement (voir l'article).

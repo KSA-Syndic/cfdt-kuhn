@@ -153,13 +153,7 @@ const pagesInteractives = [
   { value: "analyse-provisions", label: "Résultats : graphique de l'effet des provisions" },
   { value: "analyse-dividende", label: "Résultats : graphique du bénéfice et du dividende" },
   { value: "analyse-secteur", label: "Résultats : le secteur (onglets)" },
-  { value: "affaire-ouverture", label: "L'affaire des 2,6 % : ouverture" },
-  { value: "affaire-ventes", label: "L'affaire des 2,6 % : pièce n° 1, les ventes" },
-  { value: "affaire-rentabilite", label: "L'affaire des 2,6 % : pièce n° 2, la marge d'exploitation" },
-  { value: "affaire-ligne", label: "L'affaire des 2,6 % : pièce n° 3, la ligne qui mélange" },
-  { value: "affaire-methodes", label: "L'affaire des 2,6 % : pièce n° 4, deux méthodes" },
-  { value: "affaire-recalcul", label: "L'affaire des 2,6 % : pièce n° 5, recalculé" },
-  { value: "affaire-verdict", label: "L'affaire des 2,6 % : conclusion" },
+  { value: "affaire-2-6", label: "L'affaire des 2,6 % (enquête, pleine largeur)" },
 ];
 
 const tableauxKuhn = [

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base target="_top">
+<meta name="robots" content="noindex">
+<title>L'affaire des 2,6 %</title>
+<link rel="stylesheet" href="../_commun/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  « L'affaire des 2,6 % » : le tableau de liège de l'enquête (maquette .maquettes/PisteE.dc.html).
+  Les textes sont des gabarits : les {cle} sont remplis par script.js à partir de KuhnDonnees,
+  pour l'exercice désigné une seule fois dans data/kuhn/affaire.yaml.
+-->
+<main class="liege" id="tableau" data-gabarit>
+  <svg class="fil" aria-hidden="true"><path class="fil__ombre" transform="translate(2 4)"></path><path class="fil__trait" pathLength="1"></path></svg>
+
+  <header class="tete">
+    <div class="tete__dossier">
+      <span class="tete__enquete">ENQUÊTE</span>
+      <span class="tete__source">Comptes déposés de KUHN SAS, {pappers_de}–{annee}</span>
+    </div>
+    <h1 class="tete__titre">L'affaire des {marge_affichee} %</h1>
+    <p class="tete__chapo">« L'argent que dégage KUHN s'est effondré. » Le chiffre circule&nbsp;: {marge_comparaison} % des ventes en {comparaison}, {marge_affichee} % en {annee}. Divisé par {rapport_mots} en {ecart_mots} ans&nbsp;? Nous avons vérifié, pièce par pièce.</p>
+  </header>
+
+  <div class="fiche" style="--ml: 6%; --rot: -2.4deg">
+    <span class="punaise" data-punaise="1" style="right: 26px"></span>
+    <div class="papier papier--dechire">
+      <div class="etiquette">Le chiffre qui circule</div>
+      <div class="papier__chiffre chiffre">{ebitda_comparaison} M€ en {comparaison} → {ebitda_affiche} M€ en {annee}</div>
+      <p class="papier__texte">C'est l'<button type="button" class="terme" data-def="ebitda-calcul" data-place="note">EBITDA</button> affiché pour KUHN SAS&nbsp;: l'argent que dégage l'activité avant l'usure des machines et les provisions.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-left: 62%; --rot: 3deg; margin-top: -40px">Ventes {variation_ventes} %… et l'argent dégagé divisé par {rapport} ??</div>
+
+  <div class="fiche" style="--ml: 40%; --rot: 1.8deg">
+    <span class="punaise" data-punaise="2" style="left: 26px"></span>
+    <article class="papier">
+      <div class="etiquette">Pièce n° 1</div>
+      <h2>Les ventes n'ont baissé «&nbsp;que&nbsp;» de {baisse_ventes} %</h2>
+      <div class="ventes" id="ventes" role="img"></div>
+      <p>{ventes_prec} M€ de ventes en {annee_prec}, {ventes} M€ en {annee}. Une vraie baisse, la même que chez tous les fabricants de machines agricoles. Mais quand les ventes reculent de {baisse_ventes} %, l'argent dégagé peut-il être divisé par {rapport_mots}&nbsp;? C'est possible, mais rare. Creusons.</p>
+      <details>
+        <summary><svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l4 4-4 4"></path></svg><span>Examiner la pièce</span></summary>
+        <p class="detail">Chiffre d'affaires net de KUHN SAS (comptes sociaux déposés), ventes aux autres sociétés du groupe comprises. John Deere, AGCO et CNH ont connu le même reflux en {annee}–{annee_suiv}.</p>
+      </details>
+    </article>
+  </div>
+
+  <div class="fiche" style="--ml: 2%; --rot: -1.6deg">
+    <span class="punaise" data-punaise="3" style="right: 40px"></span>
+    <article class="papier">
+      <div class="etiquette">Pièce n° 2</div>
+      <h2>Ce que rapporte le métier tient le coup</h2>
+      <div class="tuiles" id="tuiles"></div>
+      <p>Le <button type="button" class="terme" data-def="resultat-exploitation-affaire" data-place="note">résultat d'exploitation</button>, ce que rapporte le métier une fois tout payé, reste à {marge_exploitation} % des ventes. En cas d'effondrement, il aurait plongé lui aussi. Une petite partie vient de <button type="button" class="terme" data-def="provisions-affaire" data-place="note">provisions relâchées</button> ({effet_provisions} M€ en {annee}), mais on est loin d'une chute.</p>
+      <details>
+        <summary><svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l4 4-4 4"></path></svg><span>Examiner la pièce</span></summary>
+        <p class="detail">Résultat d'exploitation&nbsp;: {rex_prec} M€ en {annee_prec} et {rex} M€ en {annee}, rapporté au chiffre d'affaires de chaque année (comptes sociaux déposés).</p>
+      </details>
+    </article>
+  </div>
+
+  <div class="fiche" style="--ml: 46%; --rot: 2.4deg">
+    <span class="punaise" data-punaise="4" style="left: 60px"></span>
+    <article class="papier">
+      <div class="etiquette">Pièce n° 3</div>
+      <h2>Une ligne des comptes mélange deux choses</h2>
+      <div class="ligne" role="img" aria-label="{ligne_total} M€ = {ligne_provisions} M€ de provisions relâchées + {ligne_frais} M€ de frais refacturés">
+        <div class="ligne__barre">
+          <div class="ligne__part ligne__part--provisions" id="part-provisions">Provisions relâchées · {ligne_provisions}</div>
+          <div class="ligne__part ligne__part--frais" id="part-frais">Frais refacturés · {ligne_frais}</div>
+        </div>
+        <div class="ligne__total">Total de la ligne&nbsp;: {ligne_total} M€ en {annee}</div>
+      </div>
+      <p>Dans les comptes, une même ligne de {ligne_total} M€ additionne des provisions relâchées ({ligne_provisions} M€) et des <button type="button" class="terme" data-def="frais-refactures" data-place="note">frais refacturés</button> à d'autres sociétés du groupe ({ligne_frais} M€). Ces frais refacturés ne sont pas des provisions&nbsp;: c'est le plus souvent de l'argent qui rentre.</p>
+      <details>
+        <summary><svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l4 4-4 4"></path></svg><span>Examiner la pièce</span></summary>
+        <p class="detail">Ligne «&nbsp;reprises sur amortissements et provisions, transferts de charges&nbsp;» du compte de résultat&nbsp;: {ligne_total} M€. Le tableau des provisions annexé aux comptes donne les reprises d'exploitation&nbsp;: {ligne_provisions} M€. Le reste, {ligne_frais} M€, est déclaré en transferts de charges.</p>
+      </details>
+    </article>
+  </div>
+
+  <div class="note" style="margin-left: 8%; --rot: -4deg; margin-top: -30px">{ligne_total} = {ligne_provisions} + {ligne_frais}&nbsp;! Ce ne sont pas que des provisions…</div>
+
+  <div class="fiche" style="--ml: 10%; --rot: -2deg">
+    <span class="punaise" data-punaise="5" style="right: 70px"></span>
+    <article class="papier">
+      <div class="etiquette">Pièce n° 4</div>
+      <h2>Deux façons de compter, mélangées</h2>
+      <div class="comparaison" id="comparaison" role="img">
+        <div class="legende-graphique">
+          <span><i class="pastille pastille--affiche"></i>Chiffre affiché (Pappers)</span>
+          <span><i class="pastille pastille--calcule"></i>Calculé de la même façon chaque année</span>
+        </div>
+      </div>
+      <p>Il n'existe pas de calcul officiel de l'<button type="button" class="terme" data-def="ebitda-norme" data-place="note">EBITDA</button>&nbsp;: on peut compter ces frais refacturés dans l'activité, ou les laisser de côté. Les deux se défendent. Le piège, c'est de mélanger&nbsp;: le {marge_comparaison} % de {comparaison} les compte, le {marge_affichee} % de {annee} les retire. Résultat&nbsp;: {transferts_arrondis} M€ disparaissent d'un coup, sans que l'activité y soit pour rien. C'est le cas des chiffres affichés par <button type="button" class="terme" data-def="pappers" data-place="note">Pappers</button>, repris par ceux qui circulent.</p>
+      <details>
+        <summary><svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l4 4-4 4"></path></svg><span>Examiner la pièce</span></summary>
+        <div class="detail">
+          <p>Trois mesures possibles pour {annee}&nbsp;:</p>
+          <ul>
+            <li>EBE comptable strict&nbsp;: {ebe} M€ ({marge_ebe} %), sans les frais refacturés ni les autres produits et charges&nbsp;;</li>
+            <li>EBITDA affiché depuis {pappers_rupture}&nbsp;: {ebitda_affiche} M€ ({marge_affichee_1} %), sans les frais refacturés&nbsp;;</li>
+            <li>EBITDA calculé comme en {pappers_de}–{comparaison}&nbsp;: {ebitda} M€ ({marge_ebitda} %).</li>
+          </ul>
+          <p>Entre {ebitda_affiche} et {ebitda} M€, l'écart correspond exactement aux {ligne_frais} M€ de transferts de charges.</p>
+        </div>
+      </details>
+    </article>
+  </div>
+
+  <div class="note" style="margin-left: 66%; --rot: 2.5deg; margin-top: -30px">Deux méthodes mélangées → ce n'est pas l'activité&nbsp;!</div>
+
+  <div class="fiche" style="--ml: 38%; --rot: 1.4deg">
+    <span class="punaise" data-punaise="6" style="left: 34px"></span>
+    <article class="papier">
+      <div class="etiquette">Pièce n° 5</div>
+      <h2>Recalculé de la même façon chaque année</h2>
+      <div class="colonnes" id="colonnes" role="img"></div>
+      <div class="colonnes__annees" id="colonnes-annees" aria-hidden="true"></div>
+      <p>Calculé chaque année de la même façon, l'argent dégagé passe de {ebitda_comparaison_calcule} M€ en {comparaison} à {ebitda} M€ en {annee}&nbsp;: une baisse {baisse_mots}. Rapporté aux ventes, c'est {marge_ebitda} % en {annee}&nbsp;: le niveau de {niveau_de}–{niveau_a}, d'avant le boom.</p>
+      <details>
+        <summary><svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3l4 4-4 4"></path></svg><span>Examiner la pièce</span></summary>
+        <p class="detail">EBITDA = résultat d'exploitation + amortissements + dotations aux provisions d'exploitation − reprises de provisions d'exploitation (tableau des provisions). Les transferts de charges restent inclus, comme dans le calcul affiché pour {pappers_de}–{comparaison}.{omises}</p>
+      </details>
+    </article>
+  </div>
+
+  <section class="verdict" aria-labelledby="verdict">
+    <div class="verdict__tampon">
+      <span class="punaise" data-punaise="7"></span>
+      <div class="tampon" id="tampon" role="img" aria-label="Tampon : affaire classée">AFFAIRE CLASSÉE</div>
+    </div>
+    <h2 id="verdict">L'argent dégagé a baissé {baisse_mots}. Il ne s'est pas effondré.</h2>
+    <p class="verdict__texte">Le {marge_affichee} % mélange deux façons de compter. La baisse réelle reste à surveiller&nbsp;: au sommet du cycle, l'activité dégageait davantage. Et une autre question demeure&nbsp;: chaque année, {distribution_min} à {distribution_max} % du bénéfice partent en dividende.</p>
+    <nav class="verdict__liens" aria-label="Suite de la lecture">
+      <a class="bouton bouton--plein" href="/actualites/2026/ou-va-l-argent/">Voir où va l'argent d'une année →</a>
+      <a class="bouton" href="/actualites/2026/kuhn-resultats/">Lire l'analyse détaillée</a>
+      <a class="bouton" href="/actualites/2026/lire-les-comptes/">Apprendre à lire les comptes en images</a>
+    </nav>
+    <p class="verdict__sources">Sources&nbsp;: comptes sociaux déposés de KUHN SAS (compte de résultat, tableau des provisions)&nbsp;; calculs à méthode constante.</p>
+  </section>
+</main>
+<script src="../_donnees/kuhn.js"></script>
+<script src="../_commun/outils.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

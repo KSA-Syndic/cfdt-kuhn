@@ -1,7 +1,8 @@
 /* Outils communs des pages interactives (window.KuhnOutils).
    Chargé après ../_donnees/kuhn.js et avant le script de la page :
-   nombres à la française, mouvement réduit, écran tactile, gabarits de texte, badge « estimation »,
-   bulles du glossaire (<button class="terme" data-def="…">), liens d'ancre internes. */
+   nombres à la française, mouvement réduit, écran tactile, gabarits de texte (remplir), badge « estimation »,
+   bulles du glossaire (<button class="terme" data-def="…">, ou data-place="note" pour une note sous le
+   paragraphe), liens d'ancre internes. */
 (function (w, doc) {
   'use strict';
 
@@ -45,6 +46,22 @@
       .replace(/ ([:;!?»])/g, NBSP + '$1')
       .replace(/« /g, '«' + NBSP)
       .replace(/≈ /g, '≈' + NBSP);
+  }
+
+  /** Remplit les gabarits écrits dans le HTML : dans chaque élément [data-gabarit] de racine, les {cle}
+      des textes et de l'attribut aria-label reçoivent valeurs[cle]. Les balises internes (termes du
+      glossaire, <b>…) sont conservées. */
+  function remplir(racine, valeurs) {
+    var blocs = Array.prototype.slice.call(racine.querySelectorAll('[data-gabarit]'));
+    if (racine.hasAttribute && racine.hasAttribute('data-gabarit')) blocs.unshift(racine);
+    blocs.forEach(function (n) {
+      var aria = n.getAttribute('aria-label');
+      if (aria && aria.indexOf('{') >= 0) n.setAttribute('aria-label', gabarit(aria, valeurs));
+      var it = doc.createTreeWalker(n, 4 /* NodeFilter.SHOW_TEXT */);
+      for (var t = it.nextNode(); t; t = it.nextNode()) {
+        if (t.nodeValue.indexOf('{') >= 0) t.nodeValue = gabarit(t.nodeValue, valeurs);
+      }
+    });
   }
 
   /* ---------- Environnement ---------- */
@@ -122,13 +139,21 @@
     if (!e) { if (w.console) console.warn('Glossaire : terme inconnu « ' + id + ' »'); return; }
     fermer(false);
     courant = btn;
-    bulle = el('div', { class: 'bulle', id: 'bulle-glossaire', role: 'tooltip' }, [
-      el('button', { type: 'button', class: 'bulle__fermer', 'aria-label': 'Fermer la définition', text: '×', onclick: function () { fermer(true); } }),
-      el('div', { html: /^<b>/.test(e.definition) ? e.definition : '<b>' + e.terme + '</b>' + NBSP + ': ' + e.definition })
-    ]);
-    doc.body.appendChild(bulle);
+    var texte = /^<b>/.test(e.definition) ? e.definition : '<b>' + e.terme + '</b>' + NBSP + ': ' + e.definition;
     btn.setAttribute('aria-expanded', 'true');
     btn.setAttribute('aria-describedby', 'bulle-glossaire');
+    /* data-place="note" : la définition s'insère sous le paragraphe, dans le fil du texte */
+    if (btn.getAttribute('data-place') === 'note') {
+      bulle = el('div', { class: 'note-def', id: 'bulle-glossaire', role: 'note', html: texte });
+      var bloc = btn.closest('p, li') || btn;
+      bloc.parentNode.insertBefore(bulle, bloc.nextSibling);
+      return;
+    }
+    bulle = el('div', { class: 'bulle', id: 'bulle-glossaire', role: 'tooltip' }, [
+      el('button', { type: 'button', class: 'bulle__fermer', 'aria-label': 'Fermer la définition', text: '×', onclick: function () { fermer(true); } }),
+      el('div', { html: texte })
+    ]);
+    doc.body.appendChild(bulle);
     placer(btn);
   }
 
@@ -153,7 +178,7 @@
       chargerGlossaire(function () { ouvrir(t); });
       return;
     }
-    if (bulle && !bulle.contains(e.target)) fermer(false);
+    if (bulle && !bulle.contains(e.target) && bulle.className === 'bulle') fermer(false);
 
     /* Liens d'ancre internes : <base target="_top"> les enverrait vers la page parente. */
     var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
@@ -168,7 +193,7 @@
   doc.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && bulle) fermer(true);
   });
-  w.addEventListener('resize', function () { if (bulle && courant) placer(courant); });
+  w.addEventListener('resize', function () { if (bulle && courant && bulle.className === 'bulle') placer(courant); });
 
   w.KuhnOutils = {
     nombre: nombre,
@@ -176,6 +201,7 @@
     meuros: meuros,
     pct: pct,
     gabarit: gabarit,
+    remplir: remplir,
     mouvementReduit: mouvementReduit,
     tactile: tactile,
     parametre: parametre,

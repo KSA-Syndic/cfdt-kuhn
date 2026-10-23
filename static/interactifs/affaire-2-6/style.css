@@ -1,0 +1,285 @@
+/* « L'affaire des 2,6 % » : le tableau de liège de l'enquête (maquette .maquettes/PisteE.dc.html).
+   Fiches punaisées, notes manuscrites, fil rouge d'une punaise à l'autre, tampon final.
+   Polices OFL : ../_commun/polices/OFL.txt. */
+
+@font-face { font-family: "Space Grotesk"; src: url("../_commun/polices/space-grotesk.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Courier Prime"; src: url("../_commun/polices/courier-prime-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Courier Prime"; src: url("../_commun/polices/courier-prime-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Caveat"; src: url("../_commun/polices/caveat.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+
+:root {
+  --liege: #12302F;
+  --craie: #E6EFEC;
+  --craie-2: #A9C3BE;
+  --craie-3: #D5E3E0;
+  --papier: #FBFBF8;
+  --papier-2: #F1F1EC;
+  --papier-trait: #ECECE6;
+  --encre-papier: #1A1A1A;
+  --rouge-fil: #D9483B;
+  --rouge-piece: #8A2A1F;
+  --rouge-chiffre: #C0392B;
+  --rouge-tampon: #E0574A;
+  --bleu-chiffre: #2F6F9F;
+  --bleu-pale: #9DB3C4;
+  --jaune: #F2C14E;
+  --post-it: #F7E37A;
+  --police: "Space Grotesk", system-ui, sans-serif;
+  --mono: "Courier Prime", ui-monospace, monospace;
+  --main: "Caveat", cursive;
+}
+
+html { background: var(--liege); }
+body {
+  overflow-x: hidden;
+  background: var(--liege) radial-gradient(rgba(255, 255, 255, .05) 1px, transparent 1.5px) 0 0 / 22px 22px;
+  color: var(--craie);
+  font-family: var(--police);
+  line-height: normal;
+}
+:where(a, button, summary):focus-visible { outline: 3px solid var(--jaune); outline-offset: 3px; }
+h1, h2, p, ul { margin: 0; }
+
+/* ---------- Le tableau de liège ---------- */
+.liege {
+  position: relative;
+  max-width: 1180px; /* 1100 px de contenu + les marges intérieures, comme la maquette */
+  margin: 0 auto;
+  padding: 90px clamp(16px, 4vw, 40px) 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ---------- En-tête du dossier ---------- */
+.tete { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 18px; max-width: 760px; }
+.tete__dossier { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.tete__enquete {
+  padding: 4px 10px;
+  border: 2px solid var(--jaune);
+  color: var(--jaune);
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+.tete__source { font-family: var(--mono); font-size: 15px; color: var(--craie-2); }
+.tete__titre { font-size: clamp(46px, 7vw, 88px); font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.tete__chapo { font-size: 21px; line-height: 1.6; color: var(--craie-3); }
+
+/* ---------- Fiche punaisée ---------- */
+.fiche {
+  position: relative;
+  z-index: 2;
+  width: min(560px, 100%);
+  margin-left: var(--ml, 0);
+  transform: rotate(var(--rot, 0deg));
+  transition: transform .3s ease;
+}
+.papier {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px;
+  background: var(--papier);
+  color: var(--encre-papier);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+}
+.papier h2 { font-size: 28px; font-weight: 700; line-height: 1.15; }
+.papier p { font-size: 18px; line-height: 1.6; }
+/* le chiffre qui circule : bord inférieur déchiré */
+.papier--dechire {
+  gap: 8px;
+  padding: 24px 24px 30px;
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 96% 100%, 91% 95%, 85% 100%, 79% 95%, 72% 100%, 66% 95%, 60% 100%, 53% 95%, 47% 100%, 41% 95%, 34% 100%, 28% 95%, 22% 100%, 15% 95%, 9% 100%, 4% 95%, 0 100%);
+}
+.papier__chiffre { font-size: clamp(26px, 3.4vw, 34px); font-weight: 700; line-height: 1.2; }
+.papier .papier__texte { font-size: 17px; line-height: 1.55; color: #333333; }
+.etiquette {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--rouge-piece);
+  text-transform: uppercase;
+}
+.punaise {
+  position: absolute;
+  top: -11px;
+  z-index: 3;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, #FF8A7A, #C0392B 55%, #7E1F14);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .45);
+}
+
+/* termes du glossaire et leur définition, insérée sous le paragraphe */
+.terme { font-weight: 600; border-bottom: 2px dotted var(--rouge-chiffre); }
+.terme[aria-expanded="true"] { background: #FDECEA; }
+.note-def { background: var(--papier-2); color: #2A2A2A; }
+
+/* « Examiner la pièce » */
+details { border-top: 1px dashed #BBBBBB; padding-top: 4px; }
+summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--rouge-piece);
+  cursor: pointer;
+  list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+.chev { flex: none; transition: transform .2s ease; }
+details[open] .chev { transform: rotate(90deg); }
+.detail { display: flex; flex-direction: column; gap: 8px; padding: 4px 0 6px 24px; font-size: 15.5px; line-height: 1.55; color: #2A2A2A; }
+.papier .detail p, .detail { font-size: 15.5px; line-height: 1.55; }
+.detail ul { padding-left: 20px; }
+
+/* ---------- Note manuscrite ---------- */
+.note {
+  position: relative;
+  z-index: 2;
+  width: min(262px, 70%);
+  padding: 14px 16px;
+  background: var(--post-it);
+  color: #2B2410;
+  font-family: var(--main);
+  font-size: 24px;
+  line-height: 1.15;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, .3);
+  transform: rotate(var(--rot, 0deg));
+}
+
+/* ---------- Fil rouge (script.js le trace d'une punaise à l'autre) ---------- */
+.fil { position: absolute; left: 0; top: 0; z-index: 1; overflow: visible; pointer-events: none; }
+.fil__ombre { fill: none; stroke: rgba(0, 0, 0, .35); stroke-width: 3; }
+.fil__trait { fill: none; stroke: var(--rouge-fil); stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fil--trace .fil__trait { animation: tracer 2.4s ease-out both; }
+@keyframes tracer { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* ---------- Pièce n° 1 : les ventes ---------- */
+.ventes { display: flex; flex-direction: column; gap: 8px; }
+.ventes__ligne { display: grid; grid-template-columns: 52px minmax(0, 1fr) 96px; gap: 10px; align-items: center; font-size: 15px; }
+.ventes__annee { font-weight: 600; }
+.ventes__fond { height: 18px; background: var(--papier-trait); }
+.ventes__barre { height: 100%; background: var(--bleu-pale); }
+.ventes__barre--examinee { background: var(--bleu-chiffre); }
+.ventes__valeur { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------- Pièce n° 2 : les tuiles ---------- */
+.tuiles { display: flex; flex-wrap: wrap; gap: 14px; }
+.tuile { flex: 1 1 178px; padding: 14px; background: var(--papier-2); }
+.tuile__annee, .tuile__unite { font-size: 14px; color: #555555; }
+.tuile__valeur { font-size: 36px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ---------- Pièce n° 3 : la ligne des comptes ---------- */
+.ligne { display: flex; flex-direction: column; gap: 6px; }
+.ligne__barre { display: flex; min-height: 46px; font-size: 14px; font-weight: 700; color: #FFFFFF; }
+.ligne__part { display: flex; align-items: center; padding: 0 10px; }
+.ligne__part--provisions { background: var(--bleu-chiffre); }
+.ligne__part--frais { background: var(--rouge-chiffre); }
+.ligne__total { font-size: 14px; color: #555555; }
+
+/* ---------- Pièce n° 4 : deux façons de compter ---------- */
+.comparaison { display: flex; flex-direction: column; gap: 10px; }
+.comparaison__ligne { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 10px; align-items: center; font-size: 14px; }
+.comparaison__annee { font-weight: 600; }
+.comparaison__barres { display: flex; flex-direction: column; gap: 3px; }
+.comparaison__barre { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+.comparaison__barre i { display: block; height: 12px; }
+.comparaison__barre--affiche i, .pastille--affiche { background: var(--rouge-chiffre); }
+.comparaison__barre--calcule i, .pastille--calcule { background: var(--bleu-chiffre); }
+.legende-graphique { order: 99; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13.5px; color: #444444; }
+.legende-graphique span { display: flex; align-items: center; gap: 6px; }
+.pastille { display: inline-block; width: 12px; height: 12px; }
+
+/* ---------- Pièce n° 5 : recalculé chaque année ---------- */
+.colonnes {
+  display: grid;
+  grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr));
+  gap: 8px;
+  align-items: end;
+  height: 170px;
+  border-bottom: 1px solid #BBBBBB;
+}
+.colonnes__col { height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 3px; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.colonnes__barre { width: 70%; background: var(--bleu-pale); }
+.colonnes__barre--examinee { background: var(--bleu-chiffre); }
+.colonnes__annees { display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); gap: 8px; text-align: center; font-size: 12.5px; color: #555555; }
+
+/* ---------- Verdict : le tampon ---------- */
+.verdict {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  text-align: center;
+}
+.verdict__tampon { position: relative; padding-top: 6px; }
+.verdict__tampon .punaise { left: 50%; margin-left: -11px; top: -8px; }
+.tampon {
+  padding: 10px 22px;
+  border: 4px solid var(--rouge-tampon);
+  color: var(--rouge-tampon);
+  font-family: var(--mono);
+  font-size: clamp(26px, 3.4vw, 34px);
+  font-weight: 700;
+  letter-spacing: .14em;
+  white-space: nowrap;
+  transform: rotate(-8deg);
+}
+.tampon--attente { opacity: 0; transform: rotate(-8deg) scale(1.7); }
+.tampon--frappe { animation: frappe .5s cubic-bezier(.2, 1.4, .4, 1) both; }
+@keyframes frappe {
+  0% { opacity: 0; transform: rotate(-8deg) scale(1.7); }
+  60% { opacity: 1; transform: rotate(-8deg) scale(.95); }
+  100% { opacity: 1; transform: rotate(-8deg) scale(1); }
+}
+.verdict h2 { font-size: clamp(34px, 4.6vw, 56px); font-weight: 700; line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+.verdict__texte { max-width: 56ch; font-size: 20px; line-height: 1.6; color: var(--craie-3); }
+.verdict__liens { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 2px solid var(--craie-2);
+  color: var(--craie);
+  font-weight: 600;
+  text-decoration: none;
+}
+.bouton--plein { border-color: var(--jaune); background: var(--jaune); color: #1A1A1A; font-weight: 700; }
+.verdict__sources { font-size: 14px; color: var(--craie-2); }
+
+@media (hover: hover) {
+  .fiche:hover { transform: rotate(0deg); }
+}
+
+@media (max-width: 760px) {
+  .liege { padding-top: 56px; padding-bottom: 90px; gap: 44px; }
+  .fiche { margin-left: 0; transform: rotate(calc(var(--rot, 0deg) * .4)); }
+  .note { margin-left: 0 !important; }
+  .papier { padding: 22px 18px; }
+  .papier h2 { font-size: 24px; }
+  .papier p { font-size: 17px; }
+  .tete__chapo { font-size: 19px; }
+  .ventes__ligne { grid-template-columns: 44px minmax(0, 1fr) 84px; font-size: 14px; }
+  .tampon { font-size: 24px; padding: 8px 16px; }
+  .bouton { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fiche, .chev { transition: none; }
+  .fiche:hover { transform: rotate(var(--rot, 0deg)); }
+  .fil__trait, .fil--trace .fil__trait { animation: none; stroke-dashoffset: 0; }
+  .tampon--attente, .tampon--frappe { opacity: 1; transform: rotate(-8deg); animation: none; }
+}
