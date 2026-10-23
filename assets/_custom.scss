@@ -386,3 +386,183 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   min-height: 44px;
   margin: 0.25rem 0.25rem 0.25rem 0;
 }
+
+// ---------- Bulles-liens en nuage : {{< bulle-lien >}} ----------
+// Le dessin, au contour qui ondule (border-radius animé), flotte sur deux halos qui se déforment à
+// contretemps et sur cinq « bosses » qui respirent : le tout dessine un nuage vivant.
+
+.bulle-lien {
+  --bulle-teinte: #cde2f5;
+  --bulle-teinte-2: #e9f2fb;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-sizing: border-box;
+  width: calc(50% - 0.75rem);
+  min-width: 15rem;
+  margin: 1rem 0.75rem 1rem 0;
+  padding: 0.5rem 0.75rem 1rem;
+  vertical-align: top;
+  text-align: center;
+  color: var(--body-font-color);
+  text-decoration: none;
+  border-radius: 1.5rem;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
+  }
+}
+
+.bulle-lien--tableau {
+  --bulle-teinte: #fbe0dc;
+  --bulle-teinte-2: #eef3fa;
+}
+
+.bulle-lien__nuage {
+  position: relative;
+  display: block;
+  width: 13.5rem;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-top: 1.25rem;
+}
+
+.bulle-lien__halo {
+  position: absolute;
+  inset: -8% -6%;
+  background: linear-gradient(135deg, var(--bulle-teinte), var(--bulle-teinte-2));
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: bulle-morphe 8s ease-in-out infinite;
+}
+
+.bulle-lien__halo--2 {
+  inset: -4% -10% -6%;
+  opacity: 0.6;
+  background: linear-gradient(315deg, var(--bulle-teinte), var(--bulle-teinte-2));
+  border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+  animation-duration: 10s;
+  animation-direction: reverse;
+}
+
+// les bosses du nuage, posées sur le haut et les côtés
+.bulle-lien__bosse {
+  position: absolute;
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--bulle-teinte);
+  animation: bulle-respire 6s ease-in-out infinite;
+
+  &:nth-of-type(1) { left: -8%; top: 30%; width: 30%; animation-delay: -1s; }
+  &:nth-of-type(2) { left: 10%; top: -16%; animation-delay: -3s; animation-duration: 7s; }
+  &:nth-of-type(3) { left: 38%; top: -24%; width: 40%; animation-delay: -5s; }
+  &:nth-of-type(4) { right: 6%; top: -12%; width: 30%; animation-delay: -2s; animation-duration: 8s; }
+  &:nth-of-type(5) { right: -8%; top: 32%; width: 28%; animation-delay: -4s; }
+}
+
+.bulle-lien__image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  box-shadow: 0 0.5rem 1.5rem rgba(20, 23, 28, 0.12);
+  animation: bulle-morphe-doux 12s ease-in-out infinite;
+  transition: transform 0.4s ease;
+
+  .bulle-lien__dessin {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bulle-lien:hover .bulle-lien__image,
+.bulle-lien:focus-visible .bulle-lien__image {
+  transform: scale(1.04);
+}
+
+.bulle-lien__texte {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bulle-lien__titre {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.bulle-lien__resume {
+  font-size: var(--font-size-smaller);
+  line-height: 1.45;
+  color: var(--gray-600, #495057);
+}
+
+.bulle-lien__action {
+  align-self: center;
+  margin-top: 0.25rem;
+  color: var(--color-link);
+  font-weight: 600;
+}
+
+.bulle-lien:hover .bulle-lien__action,
+.bulle-lien:focus-visible .bulle-lien__action {
+  text-decoration: underline;
+}
+
+@keyframes bulle-morphe {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 50% 60% 30% 60% / 30% 40% 70% 50%; }
+  75% { border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%; }
+}
+
+@keyframes bulle-morphe-doux {
+  0%, 100% { border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%; }
+  33% { border-radius: 56% 44% 52% 48% / 44% 56% 46% 54%; }
+  66% { border-radius: 42% 58% 56% 44% / 56% 48% 52% 44%; }
+}
+
+@keyframes bulle-respire {
+  0%, 100% { transform: scale(0.92) translateY(0); }
+  50% { transform: scale(1.08) translateY(-3%); }
+}
+
+// mobile : une bulle par ligne, le dessin à gauche du texte
+@media screen and (max-width: 40rem) {
+  .bulle-lien {
+    flex-direction: row;
+    gap: 1.25rem;
+    width: 100%;
+    min-width: 0;
+    margin: 0.75rem 0;
+    padding: 0.5rem 0.25rem;
+    text-align: left;
+  }
+
+  .bulle-lien__nuage {
+    flex: none;
+    width: 8.5rem;
+    margin: 0.75rem 0 0 0.5rem;
+  }
+
+  .bulle-lien__action {
+    align-self: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bulle-lien__halo,
+  .bulle-lien__bosse,
+  .bulle-lien__image {
+    animation: none;
+    transition: none;
+  }
+}

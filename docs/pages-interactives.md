@@ -29,11 +29,14 @@ layouts/partials/kuhn/
 layouts/shortcodes/
   interactif.html   {{< interactif … >}}
   tableau-kuhn.html {{< tableau-kuhn … >}}
+  bulle-lien.html   {{< bulle-lien … >}} (lien en bulle-nuage animée ; dessins dans layouts/partials/bulle-lien/)
 
 static/interactifs/
   _modele/          dossier à copier pour créer une page
   _commun/          base.css, outils.js, integration.js, pleine-largeur.js, polices/ (OFL)
   <nom>/            une page : index.html, style.css, script.js, images/…
+                    lire-les-comptes (tutoriel, écran entier), ou-va-l-argent (tableau dynamique),
+                    affaire-2-6 (l'enquête), analyse-* (graphiques de l'article Résultats, _analyse/ commun)
   (_donnees/kuhn.js et glossaire.js : produits par Hugo, jamais écrits à la main)
 ```
 
@@ -70,7 +73,12 @@ des fichiers secondaires (`style.css`, `script.js`).
 Dans les `.md` :
 
 - un terme du glossaire s'écrit comme un lien natif : `[EBITDA](#def-ebitda)` → bulle au clic ;
-- un tableau de chiffres : `{{< tableau-kuhn "rentabilite" >}}` (voir section 6).
+- un tableau de chiffres : `{{< tableau-kuhn "rentabilite" >}}` (voir section 6) ;
+- un lien mis en avant vers une autre page, en bulle-nuage animée :
+  `{{< bulle-lien href="/actualites/2026/lire-les-comptes.md" titre="…" texte="…" dessin="comptes" >}}`.
+  `dessin` choisit l'illustration (`comptes`, `tableau` : `layouts/partials/bulle-lien/<dessin>.html`,
+  un SVG 240 × 180 ; en ajouter un = ajouter un fichier). Plusieurs bulles écrites l'une sous l'autre
+  s'alignent côte à côte (une par ligne sur mobile). Les animations s'arrêtent en mouvement réduit.
 
 ## 3. Contrat d'une page autonome
 
@@ -85,10 +93,12 @@ Dans les `.md` :
 4. **Mobile d'abord** : tester à 360, 390, 768, 1280 et 1440 px ; cibles tactiles d'au moins 44 px ;
    `prefers-reduced-motion` respecté ; aucun effet au survol sous `(hover: none)`.
 5. **Contenu** : français simple ; **aucun chiffre ni aucune année en dur** (section 4) ; termes du
-   glossaire en `<button class="terme" data-def="ebitda">EBITDA</button>`.
+   glossaire en `<button class="terme" data-def="ebitda">EBITDA</button>` (bulle flottante) ou, avec
+   `data-place="note"`, une définition insérée sous le paragraphe (`.note-def`, à styler par la page).
 6. Les ancres internes (`<a href="#section">`) défilent dans la page (géré par `outils.js`).
 
 `KuhnOutils` (outils.js) : `nombre(v, déc)`, `signe(v, déc)`, `meuros`, `pct`, `gabarit(texte, valeurs)`,
+`remplir(racine, valeurs)` (remplit les `{cle}` écrits dans le HTML des éléments `[data-gabarit]`),
 `mouvementReduit()`, `tactile()`, `parametre(nom)`, `el(balise, attributs, enfants)`,
 `badgeEstimation(est)`, `donnees.annees()`, `donnees.dernier()`, `donnees.ex(année)`, `donnees.filiales(année)`.
 
@@ -96,8 +106,9 @@ Dans les `.md` :
 
 - Aucune année ni plage d'années écrite en dur dans une page : tout se déduit de
   `KuhnDonnees.meta.annees` et `KuhnDonnees.meta.dernierExercice`.
-- Les textes qui contiennent des chiffres sont des **gabarits** remplis par les données
-  (`KuhnOutils.gabarit("En {annee}, … {ventes} M€", {…})`).
+- Les textes qui contiennent des chiffres sont des **gabarits** remplis par les données :
+  `KuhnOutils.gabarit("En {annee}, … {ventes} M€", {…})` dans le script, ou, pour un long texte,
+  directement dans le HTML (`<p data-gabarit>En {annee}, …</p>`) rempli par `KuhnOutils.remplir`.
 - Les remarques qui comparent des années sont **calculées** : l'année se choisit par une règle (pic, creux,
   dernier exercice…) lue dans `KuhnDonnees.meta.extremes`, puis la valeur se lit dans les données.
 - Un chiffre estimé affiche automatiquement le badge « estimation » (`*_estime: true` → `badgeEstimation`).
@@ -183,7 +194,10 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
   - le secteur : « entre 70 et 75 en 2025 » ;
   - points de vigilance : −26 % entre 2022 et 2024, 9,6 % / 12,0 % / 11,7 %, 93 à 99 %.
   Les badges, cartes, tableaux et graphiques de cet article se mettent à jour tout seuls.
-- `content/actualites/2026/affaire-2-6.md` (« L'affaire des 2,6 % ») : l'article porte par nature sur
-  l'exercice désigné dans `data/kuhn/affaire.yaml` (2024, comparé à 2022) ; son texte et ses figures
-  `affaire-*` restent sur ces années. Seule exception à revérifier à chaque exercice (et quand le dividende
-  estimé est publié) : la conclusion « chaque année, 93 à 99 % du bénéfice partent en dividende ».
+- « L'affaire des 2,6 % » (`static/interactifs/affaire-2-6/`, page entière intégrée par
+  `content/actualites/2026/affaire-2-6.md`) : ses textes sont des gabarits qui lisent l'exercice désigné
+  dans `data/kuhn/affaire.yaml` (2024, comparé à 2022) ; ils ne bougent pas avec un nouvel exercice, sauf
+  la conclusion « chaque année, 93 à 99 % du bénéfice partent en dividende », recalculée sur les dividendes
+  publiés. Restent à relire : la `description` du `.md` (9 %, 2,6 %, 2022, 2024), le « niveau de
+  2018–2019 » (`niveau_comparable` dans `affaire.yaml`) et les phrases d'auteur de la page (« John Deere,
+  AGCO et CNH ont connu le même reflux », « avant le boom »).

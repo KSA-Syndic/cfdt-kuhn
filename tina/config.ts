@@ -146,8 +146,7 @@ const detailsTemplate = {
 const pagesInteractives = [
   { value: "_modele", label: "Modèle (exemple)" },
   { value: "lire-les-comptes", label: "Lire les comptes en images (tutoriel, écran entier)" },
-  { value: "intro-usine", label: "Résultats : intro animée de l'usine" },
-  { value: "ou-va-l-argent", label: "Résultats : où va l'argent d'une année ?" },
+  { value: "ou-va-l-argent", label: "Où va l'argent d'une année ? (tableau dynamique)" },
   { value: "analyse-activite", label: "Résultats : graphique du chiffre d'affaires" },
   { value: "analyse-rentabilite", label: "Résultats : graphique de la marge d'EBITDA" },
   { value: "analyse-provisions", label: "Résultats : graphique de l'effet des provisions" },
@@ -211,6 +210,31 @@ const tableauKuhnTemplate = {
   ],
 };
 
+// Lien vers une page, en bulle-nuage animée (layouts/shortcodes/bulle-lien.html)
+const bulleLienTemplate = {
+  name: "bulle_lien",
+  label: "Bulle-lien (nuage animé)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "bulle-lien",
+  },
+  fields: [
+    { name: "href", label: "Page visée (lien vers le .md)", type: "string", required: true },
+    { name: "titre", label: "Titre", type: "string", required: true },
+    { name: "texte", label: "Phrase sous le titre", type: "string" },
+    {
+      name: "dessin",
+      label: "Dessin",
+      type: "string",
+      options: [
+        { value: "comptes", label: "Paysage et convoi (lire les comptes)" },
+        { value: "tableau", label: "Tableau dynamique" },
+      ],
+    },
+  ],
+};
+
 // Liste complète des templates pour le body
 // pdfModalBtnTemplate et buttonTemplate sont déjà dans innerTemplates
 const shortcodeTemplates = [
@@ -224,6 +248,7 @@ const shortcodeTemplates = [
   buttonTemplate,
   interactifTemplate,
   tableauKuhnTemplate,
+  bulleLienTemplate,
 ];
 
 // Champ body avec shortcodes

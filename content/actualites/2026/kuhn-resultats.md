@@ -8,13 +8,12 @@ tags: ["résultats", "dividende", "bénéfices", "EBITDA", "bilan"]
 bookToc: false
 ---
 
-{{< interactif nom="intro-usine" titre="Le voyage d'un euro : de l'atelier au dividende" pleine_largeur="true" hauteur_min="900" >}}
-
-{{< interactif nom="ou-va-l-argent" titre="Où va l'argent d'une année ?" pleine_largeur="true" >}}
-
 ## Résultats 2016–2024 : l'analyse {#analyse}
 
 Ce que disent les comptes déposés de KUHN SAS, en cinq constats. Chaque constat tient en une phrase et un graphique ; la méthode, les chiffres année par année et les sources sont rangés dans les blocs dépliables. Les termes soulignés en pointillé s'expliquent d'un clic.
+
+{{< bulle-lien href="/actualites/2026/lire-les-comptes.md" titre="Lire les comptes en images" texte="Bilan, compte de résultat, EBITDA, dividende : les mots des comptes expliqués en neuf images." dessin="comptes" >}}
+{{< bulle-lien href="/actualites/2026/ou-va-l-argent.md" titre="Les résultats en tableau dynamique" texte="Choisissez un exercice et suivez, ligne par ligne, où va l'argent de l'année." dessin="tableau" >}}
 
 > [!NOTE]
 > **En bref**
@@ -119,7 +118,4 @@ En indexant chaque groupe à 100 sur son année record, les quatre trajectoires 
 
 {{< tableau-kuhn "fiabilite" >}}
 
-{{< button href="#ou-va-l-argent" text="Revoir le récit animé" >}}
-{{< button href="#analyse" text="Haut de l'analyse" >}}
-
-Pour aller plus loin : [Lire les comptes en images](/actualites/2026/lire-les-comptes.md), le tutoriel pour apprendre à lire un bilan et un compte de résultat, et [L'affaire des 2,6 %](/actualites/2026/affaire-2-6.md), l'enquête sur le chiffre d'EBITDA qui circule.
+Pour aller plus loin : [Lire les comptes en images](/actualites/2026/lire-les-comptes.md), le tutoriel pour apprendre à lire un bilan et un compte de résultat, [Où va l'argent d'une année ?](/actualites/2026/ou-va-l-argent.md), les résultats en tableau dynamique, et [L'affaire des 2,6 %](/actualites/2026/affaire-2-6.md), l'enquête sur le chiffre d'EBITDA qui circule.
