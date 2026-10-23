@@ -310,16 +310,13 @@
     $('compteur').textContent = g('Étape {n} sur {t}', { n: s, t: NB_ETAPES });
     var suiv = $('suiv');
     var dernierPas = s === NB_ETAPES;
-    var etroit = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+    var etroit = O.media('(max-width: 640px)');
     suiv.textContent = etroit ? (dernierPas ? '↺' : '→') : (dernierPas ? 'Recommencer' : 'Étape suivante →');
     suiv.setAttribute('aria-label', dernierPas ? 'Recommencer' : 'Étape suivante');
 
     precedent = { annee: y, etape: s };
   }
 
-  if (window.matchMedia) {
-    var mq = window.matchMedia('(max-width: 640px)');
-    if (mq.addEventListener) mq.addEventListener('change', rendre); else mq.addListener(rendre);
-  }
+  O.suivreMedia('(max-width: 640px)', rendre);
   rendre();
 })();

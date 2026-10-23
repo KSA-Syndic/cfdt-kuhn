@@ -40,7 +40,7 @@
     {{- $fichiers = $fichiers | append .Name -}}
   {{- end -}}
 {{- end -}}
-{{- /* plus les fichiers communs que la page charge (../_commun/…, ../_affaire/…), hors données */ -}}
+{{- /* plus les fichiers communs que la page charge (../_commun/…, ../_analyse/…), hors données */ -}}
 {{- range findRE `(?:href|src)="\.\./_[a-z]+/[^"?#]+\.(?:css|js)"` (readFile (printf "%s/index.html" $dossier)) -}}
   {{- $chemin := replaceRE `^(?:href|src)="(.*)"$` "$1" . -}}
   {{- if not (hasPrefix $chemin "../_donnees/") -}}{{- $fichiers = $fichiers | append $chemin -}}{{- end -}}

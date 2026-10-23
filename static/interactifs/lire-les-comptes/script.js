@@ -65,8 +65,6 @@
      2. Le tutoriel
      ==================================================================================== */
 
-  const media = (q) => window.matchMedia ? window.matchMedia(q) : null;
-
   class Tutoriel {
     constructor(root) {
       this.root = root;
@@ -92,17 +90,15 @@
       this.stage.style.setProperty('--n', this.N);
 
       /* mouvement réduit : coupures franches ; parallaxe de la souris seulement avec une souris */
-      const mr = media('(prefers-reduced-motion: reduce)');
-      const tactile = media('(hover: none)');
       const regler = () => {
-        this.reduce = !!(mr && mr.matches);
-        this.souris = !this.reduce && !(tactile && tactile.matches);
+        this.reduce = O.mouvementReduit();
+        this.souris = !this.reduce && !O.tactile();
         if (!this.souris) { this.tmx = this.tmy = this.mx = this.my = 0; }
         this.force = true;
         this.kick();
       };
       regler();
-      [mr, tactile].forEach((m) => { if (m && m.addEventListener) m.addEventListener('change', regler); });
+      O.suivreMedia(['(prefers-reduced-motion: reduce)', '(hover: none)'], regler);
 
       this.construireInterface();
       this.ecouter();

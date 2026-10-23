@@ -69,6 +69,15 @@
   function media(q) { return !!(w.matchMedia && w.matchMedia(q).matches); }
   function mouvementReduit() { return media('(prefers-reduced-motion: reduce)'); }
   function tactile() { return media('(hover: none)'); }
+  /** Rappelle fonction quand l'une des requêtes média change (largeur, mouvement réduit, écran tactile…). */
+  function suivreMedia(requetes, fonction) {
+    if (!w.matchMedia) return;
+    [].concat(requetes).forEach(function (q) {
+      var m = w.matchMedia(q);
+      if (m.addEventListener) m.addEventListener('change', fonction);
+      else if (m.addListener) m.addListener(fonction);
+    });
+  }
   function parametre(nom) {
     try { return new URLSearchParams(w.location.search).get(nom); } catch (e) { return null; }
   }
@@ -202,6 +211,8 @@
     pct: pct,
     gabarit: gabarit,
     remplir: remplir,
+    media: media,
+    suivreMedia: suivreMedia,
     mouvementReduit: mouvementReduit,
     tactile: tactile,
     parametre: parametre,
