@@ -74,10 +74,13 @@
       this.track = root.querySelector('[data-track]');
       this.LABELS = Array.from(this.stage.querySelectorAll('[data-scene]')).map((el) => el.getAttribute('aria-label'));
       this.N = this.LABELS.length;
-      this.T = .3;
-      this.DONE = .85;
-      this.LEN = 1.4;
-      this.END = .5 + (this.N - 1) + .3;
+      /* Une scène = LEN hauteurs d'écran de défilement : trajet de la caméra (0 → T), animation (T → DONE),
+         courte pause (DONE → 1). Le départ (0 → START) est bref : le premier coup de molette fait déjà rouler. */
+      this.START = .06;
+      this.T = .28;
+      this.DONE = .92;
+      this.LEN = 1.05;
+      this.END = this.START + (this.N - 1) + .3;
       this.u = 0; this.target = 0; this.raf = 0; this.last = 0; this.hold = 0; this.held = -1;
       this.mx = 0; this.my = 0; this.tmx = 0; this.tmy = 0; this.lastCam = 0;
       this.sp = { beam: { x: 0, v: 0 }, needle: { x: 0, v: 0 } };
@@ -291,13 +294,13 @@
 
     /* ---------- position de la caméra ---------- */
     camAt(u) {
-      if (u < .5) return { cam: 0, i: 0, a: Math.max(0, u / .5), travel: false };
-      const v = u - .5, i = Math.min(this.N - 1, Math.floor(v) + 1), f = v - (i - 1);
+      if (u < this.START) return { cam: 0, i: 0, a: Math.max(0, u / this.START), travel: false };
+      const v = u - this.START, i = Math.min(this.N - 1, Math.floor(v) + 1), f = v - (i - 1);
       if (f < this.T) return { cam: i - 1 + this.easeIO(f / this.T), i, a: 0, travel: true };
       return { cam: i, i, a: Math.min(1, (f - this.T) / (this.DONE - this.T)), travel: false };
     }
 
-    doneAt(j) { return j <= 0 ? 0 : Math.min(this.END, .5 + (j - 1) + this.DONE + .02); }
+    doneAt(j) { return j <= 0 ? 0 : Math.min(this.END, this.START + (j - 1) + this.DONE + .02); }
 
     /* ---------- navigation ---------- */
     kick() { if (!this.raf && typeof requestAnimationFrame !== 'undefined') this.raf = requestAnimationFrame(this.tick); }
@@ -369,7 +372,7 @@
       } else if (this.playing) busy = this.autoStep(dt);
       if (this.reduce || this.tween) this.u = this.target;
       else {
-        this.u += (this.target - this.u) * (1 - Math.pow(.86, dt / 16.7));
+        this.u += (this.target - this.u) * (1 - Math.pow(.8, dt / 16.7));
         if (Math.abs(this.target - this.u) < 2e-4) this.u = this.target; else busy = true;
       }
       const km = 1 - Math.pow(.92, dt / 16.7);

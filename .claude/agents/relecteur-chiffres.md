@@ -29,7 +29,7 @@ Dans les `.md`, les chiffres et années du texte d'auteur sont permis, mais doiv
 
 - **Sources publiques uniquement :** comptes déposés, rapports de Bucher Industries, communiqués de groupes cotés. Signaler toute donnée qui ne se rattache pas à `data/kuhn/` ou à une source publique citée.
 - **Aucune donnée interne de la direction**, ni étiquette « interne », ni allusion (ex. « y compris en interne », « y compris dans l'entreprise »). Seule exception : une mention brève et générique « des chiffres (d'EBITDA) bien plus bas circulent », sans citer de document.
-- **Pas d'amalgame sur KUHN :** KUHN fabrique des machines agricoles attelées (charrues, faucheuses, andaineurs, presses, épandeurs, semoirs…), **pas de tracteurs**. Dans le texte comme dans les dessins (SVG, CSS) : un tracteur n'apparaît que neutre (sans marque, jamais rouge) et attelé à une machine de type KUHN, rouge ; pas de logo KUHN ; aucune bannière ni texte justificatif. L'Atelier n'a ni logo ni couleur de marque.
+- **Pas d'amalgame sur KUHN :** KUHN fabrique des machines agricoles attelées (charrues, faucheuses, andaineurs, presses, épandeurs, semoirs…), **pas de tracteurs**. Dans le texte comme dans les dessins (SVG, CSS) : un tracteur n'apparaît que neutre (sans marque, jamais rouge) et attelé à une machine de type KUHN, rouge ; pas de logo KUHN ; aucune bannière ni texte justificatif. L'Atelier n'a pas de logo ; toutes les machines dessinées, Atelier compris, sont rouges comme KUHN (jamais grises ni vertes).
 - **Texte :** aucune mention de mise à jour datée ; le texte validé des maquettes (`.maquettes/*.dc.html`) doit être recopié tel quel, aux exceptions ci-dessus près — signaler les écarts non justifiés.
 
 ## 4. Langue et typographie
