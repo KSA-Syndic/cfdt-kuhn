@@ -26,9 +26,15 @@
     {{- else -}}
       {{- $parts := split (printf (printf "%%.%df" $dec) $r) "." -}}
       {{- $ent := index $parts 0 -}}
-      {{- if gt (len $ent) 3 -}}
-        {{- $ent = printf "%s %s" (substr $ent 0 (sub (len $ent) 3)) (substr $ent -3) -}}
+      {{- /* groupes de trois chiffres, séparés par une espace fine insécable */ -}}
+      {{- $groupes := "" -}}
+      {{- range seq 6 -}}
+        {{- if gt (len $ent) 3 -}}
+          {{- $groupes = printf " %s%s" (substr $ent -3) $groupes -}}
+          {{- $ent = substr $ent 0 (sub (len $ent) 3) -}}
+        {{- end -}}
       {{- end -}}
+      {{- $ent = printf "%s%s" $ent $groupes -}}
       {{- $res = $ent -}}
       {{- if gt $dec 0 -}}{{- $res = printf "%s,%s" $ent (index $parts 1) -}}{{- end -}}
       {{- if and (lt $x 0.0) (gt $r 0.0) -}}

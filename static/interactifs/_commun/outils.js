@@ -124,7 +124,7 @@
     courant = btn;
     bulle = el('div', { class: 'bulle', id: 'bulle-glossaire', role: 'tooltip' }, [
       el('button', { type: 'button', class: 'bulle__fermer', 'aria-label': 'Fermer la définition', text: '×', onclick: function () { fermer(true); } }),
-      el('div', { html: /<b>/.test(e.definition) ? e.definition : '<b>' + e.terme + '</b>' + NBSP + ': ' + e.definition })
+      el('div', { html: /^<b>/.test(e.definition) ? e.definition : '<b>' + e.terme + '</b>' + NBSP + ': ' + e.definition })
     ]);
     doc.body.appendChild(bulle);
     btn.setAttribute('aria-expanded', 'true');

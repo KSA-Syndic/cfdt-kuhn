@@ -33,6 +33,8 @@
       n.textContent = O.gabarit(n.getAttribute('data-gabarit'), valeurs);
     });
     racine.querySelectorAll('[data-si-estime]').forEach((n) => { n.hidden = !estime; });
+    /* la phrase sur les transferts de charges n'a de sens que s'il y en a (la réforme ANC 2022-06 les supprime à partir de 2025) */
+    racine.querySelectorAll('[data-si-transferts]').forEach((n) => { n.hidden = !(e.transferts > 0.05); });
 
     /* lignes chiffrées : le compteur animé (data-fx="count") part de 0 et monte jusqu'à la valeur */
     racine.querySelectorAll('[data-champ]').forEach((ligne) => {
@@ -530,14 +532,19 @@
     /* 5 · le nuage arrive, le parapluie s'ouvre, puis se replie en partie */
     drvUmbrella(s, p) {
       const v = s.v;
-      if (!v.u) v.u = { cloud: this.piece(s, '[data-cloud]'), rain: this.piece(s, '[data-rain]'), can: this.piece(s, '[data-canopy]'), txt: this.piece(s, '[data-provtxt]') };
+      if (!v.u) {
+        const cloud = this.piece(s, '[data-cloud]');
+        /* course du nuage : entrée, sortie, montée (data-v ; le portrait sort moins loin pour rester dans le cadre) */
+        const cv = (cloud.getAttribute('data-v') || '460 300 40').split(/\s+/).map(Number);
+        v.u ={ cloud, cv, rain: this.piece(s, '[data-rain]'), can: this.piece(s, '[data-canopy]'), txt: this.piece(s, '[data-provtxt]') };
+      }
       const u = v.u, c = (x) => Math.max(0, Math.min(1, x));
       const kin = this.easeO(c(p / .22)), kout = this.easeIO(c((p - .6) / .2));
-      u.cloud.style.transform = 'translate(' + ((1 - kin) * 460 + kout * 300).toFixed(1) + 'px,' + (-kout * 40).toFixed(1) + 'px) scale(' + (1 - .25 * kout).toFixed(3) + ')';
+      u.cloud.style.transform = 'translate(' + ((1 - kin) * u.cv[0] + kout * u.cv[1]).toFixed(1) + 'px,' + (-kout * u.cv[2]).toFixed(1) + 'px) scale(' + (1 - .25 * kout).toFixed(3) + ')';
       u.cloud.style.opacity = (1 - .5 * kout).toFixed(3);
       const heavy = c((p - .18) / .06) * (1 - c((p - .6) / .1));
       u.rain.style.opacity = (heavy + (p > .6 && p < .78 ? .3 : 0)).toFixed(3);
-      u.rain.style.transform = 'translateX(' + (kout * 300).toFixed(1) + 'px)';
+      u.rain.style.transform = 'translateX(' + (kout * u.cv[1]).toFixed(1) + 'px)';
       const open = this.easeO(c((p - .25) / .1)), fold = this.easeIO(c((p - .8) / .1));
       u.can.style.transform = 'scaleX(' + (.1 + .9 * open - .3 * fold).toFixed(3) + ')';
       u.txt.style.opacity = open.toFixed(3);

@@ -1,7 +1,7 @@
 {{- /* Extrait pour listes d'articles (actualités, tags, etc.).
        Une page qui intègre une page interactive ({{< interactif >}}) montre sa description :
        son résumé automatique contiendrait l'iframe. */ -}}
-{{- if strings.Contains .RawContent "{{< interactif" -}}
+{{- if findRE `\{\{[<%]\s*interactif\s` .RawContent 1 -}}
   {{- with .Description -}}<p>{{ . }}</p>{{- end -}}
 {{- else -}}
   {{- .Summary | truncate 256 -}}

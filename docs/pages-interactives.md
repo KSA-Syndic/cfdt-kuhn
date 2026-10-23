@@ -52,8 +52,8 @@ taux de distribution, marges, variations, extrêmes…) ne sont écrites **qu'un
 | `nom` | obligatoire | dossier `static/interactifs/<nom>/` |
 | `titre` | obligatoire | titre accessible de l'iframe |
 | `hauteur` | `auto` (défaut) ou `ecran` | `auto` : l'iframe prend exactement la hauteur du contenu ; `ecran` : l'écran entier sous l'en-tête, la page défile elle-même |
-| `pleine-largeur` | `true` | l'article s'élargit à toute la largeur (comme le menu de hugo-book) |
-| `hauteur-min` | px, défaut `320` | hauteur réservée avant le chargement |
+| `pleine_largeur` (ou `pleine-largeur`) | `true` | l'article s'élargit à toute la largeur (comme le menu de hugo-book) ; le texte autour garde une colonne lisible |
+| `hauteur_min` (ou `hauteur-min`) | px, défaut `320` | hauteur réservée avant le chargement |
 
 Le shortcode produit une `<iframe>` vers `/interactifs/<nom>/?v=<empreinte>` (l'empreinte change dès
 que la page ou les données changent), publie les fichiers de données et fait charger **une seule fois**
@@ -136,7 +136,8 @@ horizontalement sur mobile. Leurs colonnes suivent les exercices disponibles.
 1. Ajouter le bloc de l'année dans `data/kuhn/sas.yaml`, à partir des comptes déposés (même champs,
    montants en M€ à six décimales, code DGFiP en commentaire), puis les autres fichiers concernés :
    `filiales.yaml` (nouveau bloc), `groupe.yaml` et `concurrents.yaml` (rapports annuels),
-   `dividendes.yaml` (voir 2).
+   `dividendes.yaml` (voir 2). Si le capital change, mettre à jour le nombre d'actions dans `reglages.yaml`
+   (le contrôle « dividende rond par action » le signalera).
 2. Dans `dividendes.yaml`, ajouter l'exercice avec `{ estime: true, methode: taux-moyen, sur: 4 }` tant
    que le dividende n'est pas publié ; remplacer l'estimation de l'exercice précédent par son
    `montant` réel dès qu'il est connu (comptes de l'année suivante).
@@ -150,7 +151,8 @@ horizontalement sur mobile. Leurs colonnes suivent les exercices disponibles.
 exercices ouverts à partir de 2025, supprime les transferts de charges (ligne FP) et change la définition du
 chiffre d'affaires. Pour 2025, `reprises_et_transferts` ne contiendra plus de transferts : l'EBITDA « à méthode
 constante » et la valeur ajoutée ne seront plus directement comparables aux années précédentes. Le signaler
-dans les textes (et, si besoin, adapter les formules de `donnees.html` en le documentant ici).
+dans les textes (et, si besoin, adapter les formules de `donnees.html` en le documentant ici). La phrase de la scène 9 de
+« Lire les comptes en images » sur les transferts de charges se masque d'elle-même quand ils sont nuls.
 
 ## 8. À relire à chaque nouvel exercice
 
@@ -176,7 +178,7 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
     42,3 / 30,8 M€) ; stock de provisions 18,7 M€ (2016), 39,6 M€ (2023), 35,8 M€ (2024), « une première
     depuis 2019 » ;
   - constat 4 : « 93 à 99 % » (titre compris), 1 218 000 actions ;
-  - constat 5 : 7 à 13 M€, 37 à 63 M€, encours de 61,5 M€ fin 2024 ; « Filiale par filiale (exercice 2024) » ;
+  - constat 5 : 7 à 13 M€, 37 à 63 M€, encours de 61,5 M€ fin 2024 ;
     Blanchard et Artec ;
   - le secteur : « entre 70 et 75 en 2025 » ;
   - points de vigilance : −26 % entre 2022 et 2024, 9,6 % / 12,0 % / 11,7 %, 93 à 99 %.

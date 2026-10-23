@@ -10,4 +10,6 @@ bookToc: false
 
 Suivez une année de l'Atelier, une petite entreprise imaginaire : en neuf images, apprenez à lire un bilan et un compte de résultat, puis retrouvez les mêmes lignes dans les comptes de KUHN SAS.
 
-{{< interactif nom="lire-les-comptes" titre="Lire les comptes en images : tutoriel" hauteur="ecran" pleine-largeur="true" >}}
+{{< interactif nom="lire-les-comptes" titre="Lire les comptes en images : tutoriel" hauteur="ecran" pleine_largeur="true" >}}
+
+Pour aller plus loin : [Résultats 2016–2024](/actualites/2026/kuhn-resultats.md), où va l'argent d'une année chez KUHN SAS, et [L'affaire des 2,6 %](/actualites/2026/affaire-2-6.md), l'enquête sur le chiffre d'EBITDA qui circule.

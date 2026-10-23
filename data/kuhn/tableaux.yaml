@@ -46,7 +46,7 @@ trois-perimetres:
   colonnes:
     - { titre: "Périmètre" }
     - { titre: "{#}", num: true }
-    - { titre: "Ce que c'est" }
+    - { titre: "Ce que c'est", large: true }
   lignes:
     - ["KUHN Group", "{d.groupe.exercices.#.ca_eur|0|n.c.} M€", "Groupe mondial consolidé, ventes internes éliminées (Bucher, {d.groupe.exercices.#.ca_chf|0|n.c.} M CHF convertis)."]
     - ["KUHN SAS", "{x.ventes|0} M€", "Société de Saverne seule, ventes aux filiales comprises."]
@@ -157,5 +157,5 @@ flux-filiales:
       valeur: "{p.dividende|1} M€"
       detail: "Exercice {#} · {m.dividendesVerses.min|0} à {m.dividendesVerses.max|0} M€ par an depuis {m.dividendesVerses.de}"
     - titre: "Prêts en cours aux filiales suivies"
-      valeur: "{fx.totaux.prets|1} M€"
-      detail: "Au 31 décembre {#} ({fp.totaux.prets|1} M€ fin {p.annee})"
+      valeur: "{fx.totaux.prets|1m|n.c.}"
+      detail: "Au 31 décembre {#} ({fp.totaux.prets|1m|n.c.} fin {p.annee})"

@@ -8,9 +8,9 @@ tags: ["résultats", "dividende", "bénéfices", "EBITDA", "bilan"]
 bookToc: false
 ---
 
-{{< interactif nom="intro-usine" titre="Le voyage d’un euro : de l’atelier au dividende" pleine-largeur="true" hauteur-min="900" >}}
+{{< interactif nom="intro-usine" titre="Le voyage d'un euro : de l'atelier au dividende" pleine_largeur="true" hauteur_min="900" >}}
 
-{{< interactif nom="ou-va-l-argent" titre="Où va l'argent d'une année ?" pleine-largeur="true" >}}
+{{< interactif nom="ou-va-l-argent" titre="Où va l'argent d'une année ?" pleine_largeur="true" >}}
 
 ## Résultats 2016–2024 : l'analyse {#analyse}
 
@@ -29,7 +29,7 @@ Le chiffre d'affaires de KUHN SAS culmine à 979 M€ en 2023, puis revient à 
 
 {{< tableau-kuhn "badges-activite" >}}
 
-{{< interactif nom="analyse-activite" titre="Chiffre d'affaires de KUHN SAS, exercice par exercice" hauteur-min="220" >}}
+{{< interactif nom="analyse-activite" titre="Chiffre d'affaires de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
 {{< details title="Trois chiffres d'affaires à ne pas confondre" >}}
 {{< tableau-kuhn "trois-perimetres" >}}
@@ -41,12 +41,12 @@ Le chiffre d'affaires de KUHN SAS culmine à 979 M€ en 2023, puis revient à 
 
 {{< tableau-kuhn "badges-rentabilite" >}}
 
-{{< interactif nom="analyse-rentabilite" titre="Marge d'EBITDA de KUHN SAS, exercice par exercice" hauteur-min="220" >}}
+{{< interactif nom="analyse-rentabilite" titre="Marge d'EBITDA de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
 > [!WARNING]
 > Des chiffres d'EBITDA bien plus bas circulent : environ 20 M€, soit 2,6 % des ventes en 2024 (c'est aussi ce qu'affiche Pappers). Ils laissent de côté les [transferts de charges](#def-transferts-de-charges). Aucune norme ne définit l'EBITDA et les deux conventions existent, mais comparer 2022 (frais comptés, 9 %) à 2024 (frais retirés, 2,6 %) mélange deux méthodes. Le fossé s'explique dans le bloc ci-dessous.
 
-{{< details title="D'où vient le fossé entre les chiffres d'EBITDA ?" >}}
+{{< details title="D'où vient le fossé entre les chiffres d'EBITDA ?" >}}
 {{< tableau-kuhn "ebitda-mesures" >}}
 
 Entre 20,6 et 62,9 M€, l'écart (42,3 M€) correspond exactement aux transferts de charges : des frais refacturés à d'autres sociétés, remboursés ou reclassés. Quand il s'agit de refacturations, les retrancher revient à compter les frais sans les remboursements qui les compensent. Leur détail figure dans l'annexe des comptes.
@@ -66,9 +66,9 @@ De 2018 à 2023, KUHN met de côté au moins autant qu'elle ne reprend : les [p
 
 {{< tableau-kuhn "badges-provisions" >}}
 
-{{< interactif nom="analyse-provisions" titre="Effet net des provisions sur le résultat de KUHN SAS, exercice par exercice" hauteur-min="240" >}}
+{{< interactif nom="analyse-provisions" titre="Effet net des provisions sur le résultat de KUHN SAS, exercice par exercice" hauteur_min="240" >}}
 
-{{< details title="Pourquoi la ligne « 77,5 M€ de reprises » est trompeuse" >}}
+{{< details title="Pourquoi la ligne « 77,5 M€ de reprises » est trompeuse" >}}
 Le compte de résultat regroupe sur une seule ligne « reprises sur provisions et transferts de charges ». En 2024, elle se décompose en 35,2 M€ de reprises de provisions et 42,3 M€ de transferts de charges. Seules les reprises sont des écritures sans entrée d'argent, et elles se comparent aux dotations de l'année (30,8 M€).
 {{< /details >}}
 
@@ -82,7 +82,7 @@ Chaque année, la quasi-totalité du bénéfice remonte à KUHN Group SAS, puis 
 
 {{< tableau-kuhn "badges-dividende" >}}
 
-{{< interactif nom="analyse-dividende" titre="Bénéfice et dividende de KUHN SAS, exercice par exercice" hauteur-min="220" >}}
+{{< interactif nom="analyse-dividende" titre="Bénéfice et dividende de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
 {{< details title="Comment le dividende est reconstitué" >}}
 Les comptes ne publient pas le dividende. On le retrouve par la variation des réserves : bénéfice de l'année précédente moins la hausse des réserves. Le calcul tombe juste à l'euro près sur un montant rond par action (1 218 000 actions), et il concorde avec les dividendes reçus déclarés par KUHN Group SAS.
@@ -96,7 +96,7 @@ KUHN SAS encaisse 7 à 13 M€ de dividendes par an de ses filiales suivies et 
 
 {{< tableau-kuhn "flux-filiales" >}}
 
-{{< details title="Filiale par filiale (exercice 2024)" >}}
+{{< details title="Filiale par filiale" >}}
 {{< tableau-kuhn "filiales" >}}
 
 Blanchard n'a jamais versé de dividende depuis son rachat (2008) ; Artec n'en verse plus depuis 2022 : il faut d'abord un bénéfice distribuable.
@@ -106,7 +106,7 @@ Blanchard n'a jamais versé de dividende depuis son rachat (2008) ; Artec n'en 
 
 En indexant chaque groupe à 100 sur son année record, les quatre trajectoires se retrouvent entre 70 et 75 en 2025.
 
-{{< interactif nom="analyse-secteur" titre="KUHN Group et ses concurrents : chiffre d'affaires, indice et marge" hauteur-min="260" >}}
+{{< interactif nom="analyse-secteur" titre="KUHN Group et ses concurrents : chiffre d'affaires, indice et marge" hauteur_min="260" >}}
 
 ### Points de vigilance {#vigilance}
 

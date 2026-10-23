@@ -172,7 +172,7 @@
 {{- $filiales := dict -}}
 {{- range $cle, $bloc := $src.filiales -}}
   {{- $liste := slice -}}
-  {{- $tv := 0.0 -}}{{- $td := 0.0 -}}{{- $tp := 0.0 -}}{{- $complet := true -}}
+  {{- $tv := 0.0 -}}{{- $td := 0.0 -}}{{- $tp := 0.0 -}}{{- $complet := true -}}{{- $nbPrets := 0 -}}
   {{- range $nom, $f := $bloc -}}
     {{- /* nombres en float (un montant entier du YAML fausserait le tri), null conservé */ -}}
     {{- $ligne := dict "nom" $nom -}}
@@ -182,11 +182,13 @@
     {{- $liste = $liste | append $ligne -}}
     {{- with $f.ventes -}}{{- $tv = add $tv (float .) -}}{{- end -}}
     {{- if eq $f.dividende nil -}}{{- $complet = false -}}{{- else -}}{{- $td = add $td (float $f.dividende) -}}{{- end -}}
-    {{- with $f.pret -}}{{- $tp = add $tp (float .) -}}{{- end -}}
+    {{- if ne $f.pret nil -}}{{- $tp = add $tp (float $f.pret) -}}{{- $nbPrets = add $nbPrets 1 -}}{{- end -}}
   {{- end -}}
+  {{- /* aucun encours connu (ex. 2021) : total absent, affiché « n.c. », plutôt qu'un faux zéro */ -}}
+  {{- $prets := cond (gt $nbPrets 0) $tp nil -}}
   {{- $filiales = merge $filiales (dict $cle (dict
       "liste" (sort $liste "ventes" "desc")
-      "totaux" (dict "ventes" $tv "dividendes" $td "prets" $tp "dividendes_complets" $complet)
+      "totaux" (dict "ventes" $tv "dividendes" $td "prets" $prets "dividendes_complets" $complet)
   )) -}}
 {{- end -}}
 

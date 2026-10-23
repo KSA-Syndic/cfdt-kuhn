@@ -378,3 +378,11 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   line-height: 1;
   cursor: pointer;
 }
+
+// Boutons {{< button >}} : cible tactile d'au moins 44 px et un peu d'air quand ils s'empilent sur mobile
+.markdown a.book-btn[href] {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+}

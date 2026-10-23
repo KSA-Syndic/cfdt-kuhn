@@ -609,7 +609,11 @@ body {
 
 /* ---------- Scène 9 : le tableau des comptes de KUHN SAS ---------- */
 
-.kart { left: 36cqw; }
+/* le tableau commence sous la barre du haut (compteur et puces), à la hauteur du panneau de texte */
+.kart {
+  left: 36cqw;
+  top: clamp(58px, 9cqh, 96px);
+}
 
 .board {
   position: absolute;

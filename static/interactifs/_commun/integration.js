@@ -15,6 +15,28 @@
     doc.documentElement.style.setProperty('--interactif-entete', px + 'px');
   }
 
+  /* ---------- Ancre de la page (#ou-va-l-argent, #analyse…) ----------
+     Les iframes au-dessus de la cible grandissent après le saut à l'ancre et la repoussent vers le bas :
+     on les charge tout de suite et on revient sur la cible à chaque changement de hauteur, tant que
+     le lecteur n'a pas lui-même défilé (et au plus quelques secondes). */
+
+  var ancre = null;
+  (function () {
+    var h = w.location.hash;
+    if (!h || h.length < 2 || /^#def-/.test(h)) return;
+    try { ancre = doc.getElementById(decodeURIComponent(h.slice(1))); } catch (e) { ancre = null; }
+    if (!ancre) return;
+    var lacher = function () { ancre = null; };
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (t) {
+      w.addEventListener(t, lacher, { once: true, passive: true });
+    });
+    setTimeout(lacher, 8000);
+  })();
+
+  function suivreAncre() {
+    if (ancre) ancre.scrollIntoView({ block: 'start' });
+  }
+
   /* ---------- Requête de la page transmise à l'iframe ---------- */
 
   function transmettreRequete(iframe) {
@@ -43,7 +65,10 @@
       if (h <= 0) return;
       /* la hauteur minimale ne sert qu'à réserver la place avant le chargement */
       if (iframe.style.minHeight) iframe.style.minHeight = '';
-      if (iframe.style.height !== h + 'px') iframe.style.height = h + 'px';
+      if (iframe.style.height !== h + 'px') {
+        iframe.style.height = h + 'px';
+        suivreAncre();
+      }
     }
 
     function auChargement() {
@@ -63,6 +88,8 @@
       mesurer();
     }
 
+    /* au-dessus de l'ancre, l'iframe se charge tout de suite (sa hauteur finale compte pour le saut) */
+    if (ancre && (iframe.compareDocumentPosition(ancre) & Node.DOCUMENT_POSITION_FOLLOWING)) iframe.loading = 'eager';
     transmettreRequete(iframe);
     iframe.addEventListener('load', auChargement);
     var d = document_();
@@ -102,7 +129,7 @@
     x.textContent = '×';
     x.addEventListener('click', function () { fermer(true); });
     var corps = doc.createElement('div');
-    corps.innerHTML = /<b>/.test(e.definition) ? e.definition : '<b>' + e.terme + '</b> : ' + e.definition;
+    corps.innerHTML = /^<b>/.test(e.definition) ? e.definition : '<b>' + e.terme + '</b> : ' + e.definition;
     bulle.appendChild(x);
     bulle.appendChild(corps);
     doc.body.appendChild(bulle);
@@ -161,6 +188,9 @@
 
   function demarrer() {
     majEntete();
+    /* l'en-tête n'a sa hauteur définitive qu'une fois les polices et la feuille de style chargées */
+    w.addEventListener('load', function () { majEntete(); suivreAncre(); });
+    if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(majEntete);
     Array.prototype.forEach.call(doc.querySelectorAll('iframe.interactif__cadre'), brancher);
     preparerTermes();
   }
