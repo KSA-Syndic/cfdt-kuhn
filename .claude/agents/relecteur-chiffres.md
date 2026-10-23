@@ -37,6 +37,7 @@ Dans les `.md`, les chiffres et années du texte d'auteur sont permis, mais doiv
 - Français simple : phrases courtes, jargon expliqué (glossaire `data/glossaire.yaml`).
 - Espace insécable (ou fine insécable) avant « ; : ! ? » et avant « % » et « € » ; guillemets « » ; signe moins « − » pour les nombres négatifs ; nombres au format `fr-FR` (virgule décimale, espace pour les milliers) ; « M€ », « Md$ », « M CHF ».
 - Cohérence des termes d'une page à l'autre (EBITDA, valeur ajoutée, transferts de charges, provisions…).
+- Aucune marque de texte généré (détail dans `CLAUDE.md`, « Écrire comme un militant, pas comme une IA ») : tiret cadratin « — » ou double tiret « -- » en incise ou après un intitulé (permis seuls : « — » pour une valeur absente, « – » dans une plage, syntaxe Mermaid), tournures toutes faites (« Il ne s'agit pas de… mais de… », « Il est essentiel de noter », « En résumé », « Le résultat ? … »), triplets systématiques, gras ou emoji à chaque ligne, schéma « **Intitulé** — texte » en série. Rechercher `—` et ` -- ` dans le texte visible.
 
 ## 5. Rapport
 
