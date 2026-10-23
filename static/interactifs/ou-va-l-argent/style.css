@@ -185,9 +185,26 @@ a { color: var(--lien); }
   .annees { display: none; }
   .annees-liste { display: block; }
   .argent__corps { gap: 24px; }
-  .recit { max-width: none; }
-  .recit__grand { font-size: 52px; }
-  .recit__texte { min-height: 7.75em; }
+  /* le récit, compacté, reste en haut de l'écran : les barres de la cascade défilent au centre, entre lui
+     et la barre des étapes collée en bas */
+  .recit {
+    position: sticky; top: 0; z-index: 30; max-width: none; flex-basis: 100%; /* au-dessus de la loupe (20) */
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;
+    grid-template-areas: "etape plus" "titre chiffre" "texte texte" "detail detail";
+    gap: 2px 12px; margin: 0 -16px; padding: 10px 16px 12px;
+    background: rgba(255, 255, 255, .97); box-shadow: 0 6px 16px rgba(20, 23, 28, .08);
+  }
+  .recit__etape { grid-area: etape; font-size: 12px; }
+  .recit__titre { grid-area: titre; font-size: 20px; line-height: 1.2; }
+  .recit__chiffre { grid-area: chiffre; gap: 4px; justify-content: flex-end; flex-wrap: nowrap; }
+  .recit__grand { font-size: 30px; }
+  .recit__unite { font-size: 14px; }
+  .recit__texte { grid-area: texte; min-height: 4.35em; margin-top: 4px; font-size: 14.5px; line-height: 1.45; }
+  .recit__plus { grid-area: plus; justify-self: end; min-width: var(--cible); justify-content: center; padding: 0 10px; margin: -6px 0; }
+  .recit__plus #plus-libelle {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  .recit__detail { grid-area: detail; max-height: 35vh; overflow: auto; margin-top: 6px; font-size: 13.5px; }
 
   .ligne, .lignes__ligne {
     grid-template-areas: "libelle valeur info" "piste piste piste";
@@ -204,7 +221,7 @@ a { color: var(--lien); }
 
   /* la barre des étapes reste au bas de l'écran : pas besoin de redescendre pour passer à la suivante */
   .etapes {
-    position: sticky; bottom: 0; z-index: 5; flex-wrap: nowrap; justify-content: space-between;
+    position: sticky; bottom: 0; z-index: 30; flex-wrap: nowrap; justify-content: space-between;
     margin: 0 -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
     background: rgba(255, 255, 255, .96); box-shadow: 0 -6px 16px rgba(20, 23, 28, .08);
   }

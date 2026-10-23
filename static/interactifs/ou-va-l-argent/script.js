@@ -109,8 +109,8 @@
     return n === 3 ? [$('entonnoir')].concat(rangs) : rangs;
   }
 
-  /** Centre ces éléments dans la partie visible de l'écran, au-dessus de la barre des étapes (collée en
-      bas sur mobile) ; trop hauts, ils s'alignent en haut. Sur ordinateur, on ne bouge que s'ils sortent de
+  /** Centre ces éléments dans la partie visible de l'écran, entre le récit (collé en haut sur mobile) et
+      la barre des étapes (collée en bas) ; trop hauts, ils s'alignent en haut de cette zone. Sur ordinateur, on ne bouge que s'ils sortent de
       l'écran ; sur mobile, on centre à chaque étape. */
   function centrer(els) {
     var haut = Infinity, bas = -Infinity;
@@ -121,12 +121,16 @@
     });
     if (!isFinite(haut)) return;
     var marge = 16;
-    var zoneBas = window.innerHeight;
-    var barre = document.querySelector('.etapes');
-    /* sa hauteur, pas sa position du moment : en bas de page, elle n'est pas encore collée */
+    var zoneHaut = 0, zoneBas = window.innerHeight;
+    /* mobile : le récit collé en haut et la barre des étapes collée en bas bornent la zone visible
+       (leur hauteur, pas leur position du moment : elles ne sont pas toujours déjà collées) */
+    var recit = document.querySelector('.recit'), barre = document.querySelector('.etapes');
+    if (getComputedStyle(recit).position === 'sticky') zoneHaut = recit.offsetHeight;
     if (getComputedStyle(barre).position === 'sticky') zoneBas -= barre.offsetHeight;
-    if (!O.media('(max-width: 640px)') && haut >= marge && bas <= zoneBas - marge) return;
-    var decalage = bas - haut <= zoneBas - 2 * marge ? (haut + bas) / 2 - zoneBas / 2 : haut - marge;
+    if (!O.media('(max-width: 640px)') && haut >= zoneHaut + marge && bas <= zoneBas - marge) return;
+    var decalage = bas - haut <= zoneBas - zoneHaut - 2 * marge
+      ? (haut + bas) / 2 - (zoneHaut + zoneBas) / 2
+      : haut - zoneHaut - marge;
     if (Math.abs(decalage) < 4) return;
     window.scrollBy({ top: decalage, behavior: O.mouvementReduit() ? 'auto' : 'smooth' });
   }
