@@ -720,8 +720,6 @@ body {
   font-weight: 600;
 }
 
-.blinks a { color: var(--h-lien); }
-
 /* ---------- Survol : seulement avec une souris ---------- */
 
 @media (hover: hover) {
@@ -906,8 +904,6 @@ body {
   .brow b { font-size: 15px; }
   .back { min-height: 44px; }
   .bnote { font-size: 13.5px; }
-  .blinks { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .blinks a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 
 /* ---------- Mouvement réduit : coupures franches, rien ne tourne en boucle ---------- */

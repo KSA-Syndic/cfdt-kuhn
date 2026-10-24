@@ -491,7 +491,8 @@
         }
         case 'spin': st.transform = 'rotate(' + (this.easeIO(k) * (v[0] || 360)).toFixed(1) + 'deg)'; break;
         case 'count': {
-          const n = v[0] + (v[1] - v[0]) * this.easeO(k);
+          /* sur mobile, le chiffre s'affiche tout de suite : un compteur à moitié monté passerait pour une erreur */
+          const n = this.mobile ? v[1] : v[0] + (v[1] - v[0]) * this.easeO(k);
           const t = O.nombre(n, v[2] || 0);
           if (e.el.textContent !== t) e.el.textContent = t;
           break;
