@@ -139,6 +139,15 @@
   $('plus').addEventListener('click', function () { etat.detail = !etat.detail; rendre(); });
   $('ventes-info').addEventListener('click', function () { etat.info = etat.info === 'top' ? null : 'top'; rendre(); });
   $('loupe').addEventListener('click', function () { etat.info = etat.info === 'zoom' ? null : 'zoom'; rendre(); });
+  /* la bulle de la loupe se ferme d'un clic ailleurs ou avec Échap */
+  document.addEventListener('click', function (e) {
+    if (etat.info !== 'zoom' || $('loupe').contains(e.target) || $('loupe-bulle').contains(e.target)) return;
+    etat.info = null; rendre();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || etat.info !== 'zoom') return;
+    etat.info = null; rendre();
+  });
 
   /* affiche ou masque un panneau ; il apparaît en fondu quand il s'ouvre */
   function montrer(el, visible) {
@@ -297,7 +306,6 @@
     bouton.style.left = 'min(' + ((aPct + 100) / 2) + '%, 100% - 22px)';
     bouton.setAttribute('aria-expanded', String(zoomOuvert));
     bouton.setAttribute('aria-label', zoomTexte);
-    bouton.title = zoomTexte;
     montrer($('loupe-bulle'), zoomOuvert);
     $('loupe-bulle').textContent = zoomTexte;
 

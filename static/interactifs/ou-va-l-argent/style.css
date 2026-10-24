@@ -125,7 +125,8 @@ a { color: var(--lien); }
 }
 .entonnoir--cache { transform: scaleY(.2); }
 .entonnoir__zone { position: relative; height: 54px; }
-.entonnoir__zone svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* > : le pictogramme de la loupe est aussi un svg, il ne doit pas s'étirer sur le bouton */
+.entonnoir__zone > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .loupe {
   position: absolute; top: 18px; transform: translate(-50%, -50%);
   width: 44px; height: 44px; padding: 0; border: 0; background: transparent;
