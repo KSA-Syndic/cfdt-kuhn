@@ -75,7 +75,7 @@ Fais une demande d'absence sur Kelio en sélectionnant `Grève` et `Date à date
 
 {{< details title="Voir schéma récapitulatif" >}}
 ## Schéma recapitulatif
-{{< mermaid >}}
+```mermaid
 flowchart TD
 %% === Styles ===
 classDef decision fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,color:#000;
@@ -140,7 +140,7 @@ classDef success fill:#E3F2FD,stroke:#1E88E5,stroke-width:2px,color:#000;
     class Z blocked
     class K success
 
-{{< /mermaid >}}
+```
 {{< /details >}}
 
 {{< hint type="success" >}}

@@ -5,7 +5,7 @@ date: "2026-06-23T21:00:00+02:00"
 draft: false
 type: "docs"
 tags: ["résultats", "dividende", "bénéfices", "EBITDA", "bilan", "provisions", "comptes", "tutoriel"]
-bookToc: true
+bookToC: true
 aliases:
   - /actualites/2026/lire-les-comptes/
   - /actualites/2026/ou-va-l-argent/
@@ -20,12 +20,13 @@ Pour apprendre d'abord à lire un bilan et un compte de résultat, suivez une an
 
 {{< bulle-lien nom="lire-les-comptes" titre="Lire les comptes en images" texte="Bilan, compte de résultat, EBITDA, dividende : les mots des comptes expliqués en neuf images. Faites défiler, ou appuyez sur Lecture." dessin="comptes" >}}
 
-> [!NOTE]
-> **En bref**
->
-> - L'activité a suivi le super-cycle agricole : pic en 2023, puis −18 % en 2024, comme tout le secteur.
-> - La rentabilité a reculé sans s'effondrer : marge d'[EBITDA](#def-ebitda) de 9,2 % à 7,9 % à méthode constante.
-> - Le dividende absorbe 93 à 99 % du bénéfice chaque année.
+{{< hint type="note" >}}
+**En bref**
+
+- L'activité a suivi le super-cycle agricole : pic en 2023, puis −18 % en 2024, comme tout le secteur.
+- La rentabilité a reculé sans s'effondrer : marge d'[EBITDA](#def-ebitda) de 9,2 % à 7,9 % à méthode constante.
+- Le dividende absorbe 93 à 99 % du bénéfice chaque année.
+{{< /hint >}}
 
 ### 1. L'activité a suivi le cycle {#activite}
 
@@ -47,8 +48,9 @@ Le chiffre d'affaires de KUHN SAS culmine à 979 M€ en 2023, puis revient à 
 
 {{< interactif nom="analyse-rentabilite" titre="Marge d'EBITDA de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
-> [!WARNING]
-> Un EBITDA bien plus bas circule : environ 20 M€ en 2024, soit 2,6 % des ventes. C'est le calcul de la communication officielle de KUHN, et celui de Pappers : il laisse de côté les [transferts de charges](#def-transferts-de-charges). Or aucune norme ne définit l'EBITDA. Sur les mêmes comptes 2024, Le Journal des Entreprises trouve 1,6 %, Societe.com 2,3 %, la méthode constante 7,9 %. Comparer ce 2,6 % au 9 % de 2022, compté avec les transferts, mélange deux méthodes. Bucher, propriétaire de KUHN, calcule la marge d'exploitation du groupe de la même façon chaque année : 11,7 % en 2022, 8,0 % en 2024. Elle a baissé, elle n'a pas été divisée par 3,5. Le bloc ci-dessous détaille le fossé, l'enquête le reprend pièce par pièce.
+{{< hint type="warning" >}}
+Un EBITDA bien plus bas circule : environ 20 M€ en 2024, soit 2,6 % des ventes. C'est le calcul de la communication officielle de KUHN, et celui de Pappers : il laisse de côté les [transferts de charges](#def-transferts-de-charges). Or aucune norme ne définit l'EBITDA. Sur les mêmes comptes 2024, Le Journal des Entreprises trouve 1,6 %, Societe.com 2,3 %, la méthode constante 7,9 %. Comparer ce 2,6 % au 9 % de 2022, compté avec les transferts, mélange deux méthodes. Bucher, propriétaire de KUHN, calcule la marge d'exploitation du groupe de la même façon chaque année : 11,7 % en 2022, 8,0 % en 2024. Elle a baissé, elle n'a pas été divisée par 3,5. Le bloc ci-dessous détaille le fossé, l'enquête le reprend pièce par pièce.
+{{< /hint >}}
 
 {{< bulle-lien nom="affaire-2-6" titre="L'affaire des 2,6 %" texte="« L'argent que dégage KUHN s'est effondré. » Enquête sur un chiffre qui mélange deux façons de compter." dessin="enquete" >}}
 
@@ -120,10 +122,11 @@ En indexant chaque groupe à 100 sur son année record, les quatre trajectoires 
 
 ### Points de vigilance {#vigilance}
 
-> [!IMPORTANT]
-> 1. L'activité dégage moins d'argent qu'au sommet du cycle (EBITDA −26 % entre 2022 et 2024), et 2024 commence à puiser dans les provisions.
-> 2. Le poids des salaires remonte quand les ventes baissent : 9,6 % du CA en 2022, 12,0 % en 2024 (11,7 % en 2016).
-> 3. Distribuer 93 à 99 % du bénéfice laisse peu de réserve pour absorber un retournement durable.
+{{< hint type="important" >}}
+1. L'activité dégage moins d'argent qu'au sommet du cycle (EBITDA −26 % entre 2022 et 2024), et 2024 commence à puiser dans les provisions.
+2. Le poids des salaires remonte quand les ventes baissent : 9,6 % du CA en 2022, 12,0 % en 2024 (11,7 % en 2016).
+3. Distribuer 93 à 99 % du bénéfice laisse peu de réserve pour absorber un retournement durable.
+{{< /hint >}}
 
 ### Fiabilité des chiffres {#fiabilite}
 

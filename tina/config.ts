@@ -48,18 +48,8 @@ const htmlTemplate = {
   ],
 };
 
-const mermaidTemplate = {
-  name: "mermaid",
-  label: "Diagramme Mermaid",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "mermaid",
-  },
-  fields: [
-    { name: "children", label: "Code Mermaid", type: "string", ui: { component: "textarea" } },
-  ],
-};
+// Pas de template Mermaid : Tina n'enregistre pas un « children » en texte brut.
+// Un diagramme s'écrit en bloc de code de langage « mermaid » (render-codeblock-mermaid du thème).
 
 const pdfModalBtnTemplate = {
   name: "pdf_modal_btn",
@@ -89,55 +79,6 @@ const buttonTemplate = {
   fields: [
     { name: "href", label: "Lien (URL)", type: "string", required: true },
     { name: "text", label: "Texte du bouton", type: "string", required: true },
-  ],
-};
-
-// Template Hint (encarts colorés) - peut contenir des shortcodes (ou pas)
-const hintTemplate = {
-  name: "hint",
-  label: "Encart coloré (Hint)",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "hint",
-  },
-  fields: [
-    {
-      name: "type",
-      label: "Type",
-      type: "string",
-      required: true,
-      options: [
-        { value: "info", label: "ℹ️ Info (bleu)" },
-        { value: "warning", label: "⚠️ Attention (jaune)" },
-        { value: "success", label: "💡 Succès/Astuce (vert)" },
-        { value: "danger", label: "🚨 Danger (rouge)" },
-      ],
-    },
-    {
-      name: "children",
-      label: "Contenu",
-      type: "rich-text",
-    },
-  ],
-};
-
-// Template Details (accordéon) - peut contenir des shortcodes (ou pas)
-const detailsTemplate = {
-  name: "details",
-  label: "Accordéon (Details)",
-  match: {
-    start: "{{<",
-    end: ">}}",
-    name: "details",
-  },
-  fields: [
-    { name: "title", label: "Titre (visible)", type: "string", required: true },
-    {
-      name: "children",
-      label: "Contenu (caché)",
-      type: "rich-text",
-    },
   ],
 };
 
@@ -237,21 +178,76 @@ const bulleLienTemplate = {
   ],
 };
 
-// Liste complète des templates pour le body
-// pdfModalBtnTemplate et buttonTemplate sont déjà dans innerTemplates
-const shortcodeTemplates = [
-  hintTemplate,
-  detailsTemplate,
+// Templates utilisables à l'intérieur des conteneurs (hint, details) : tous sauf les conteneurs eux-mêmes
+const innerTemplates = [
   imageTemplate,
   iframeTemplate,
   htmlTemplate,
-  mermaidTemplate,
   pdfModalBtnTemplate,
   buttonTemplate,
   interactifTemplate,
   tableauKuhnTemplate,
   bulleLienTemplate,
 ];
+
+// Template Hint (encarts colorés) - peut contenir des shortcodes
+// note, tip, important et caution reprennent les couleurs des encadrés > [!NOTE] du thème
+const hintTemplate = {
+  name: "hint",
+  label: "Encart coloré (Hint)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "hint",
+  },
+  fields: [
+    {
+      name: "type",
+      label: "Type",
+      type: "string",
+      required: true,
+      options: [
+        { value: "info", label: "ℹ️ Info (bleu)" },
+        { value: "note", label: "📝 Note (bleu)" },
+        { value: "warning", label: "⚠️ Attention (jaune)" },
+        { value: "success", label: "💡 Succès/Astuce (vert)" },
+        { value: "tip", label: "✅ Conseil (vert)" },
+        { value: "important", label: "❗ Important (violet)" },
+        { value: "danger", label: "🚨 Danger (rouge)" },
+        { value: "caution", label: "🛑 Prudence (rouge)" },
+      ],
+    },
+    {
+      name: "children",
+      label: "Contenu",
+      type: "rich-text",
+      templates: innerTemplates,
+    },
+  ],
+};
+
+// Template Details (accordéon) - peut contenir des shortcodes, encarts compris
+const detailsTemplate = {
+  name: "details",
+  label: "Accordéon (Details)",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "details",
+  },
+  fields: [
+    { name: "title", label: "Titre (visible)", type: "string", required: true },
+    {
+      name: "children",
+      label: "Contenu (caché)",
+      type: "rich-text",
+      templates: [hintTemplate, ...innerTemplates],
+    },
+  ],
+};
+
+// Liste complète des templates pour le body
+const shortcodeTemplates = [hintTemplate, detailsTemplate, ...innerTemplates];
 
 // Champ body avec shortcodes
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

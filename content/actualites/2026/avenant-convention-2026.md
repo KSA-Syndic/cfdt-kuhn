@@ -4,7 +4,7 @@ draft: false
 title: "Salaires barème 2026"
 type: "posts"
 tags: ["salaire", "métallurgie", "convention", "avenant"]
-bookToc: false
+bookToC: false
 ---
 
 # Métallurgie : la convention en bref
@@ -15,11 +15,11 @@ Depuis le 1ᵉʳ janvier 2024, toute la métallurgie française (environ 1,5 mil
 
 Un **avenant du 20 février 2026** revalorise cette grille de **+0,9 % en moyenne** (effet au 1ᵉʳ janvier 2026), après une année 2025 sans accord. Les planchers vont désormais de **~21 980 €** à **~68 450 €** brut par an (base 35 h).
 
-{{< hint info >}}
+{{< hint type="info" >}}
 **À noter** — Le SMIC ayant été relevé à **1 867 €/mois** au 1ᵉʳ juin 2026, il dépasse les deux plus bas échelons de la grille : pour ces emplois, c'est donc **le SMIC qui s'applique** comme salaire minimum réel.
 {{< /hint >}}
 
 
-{{< hint success >}}
+{{< hint type="success" >}}
 Pour tout savoir sur tes droits minima en métallurgie (salaires, primes, repos, ...), consulte la page dédiée : [Convention collective de la métallurgie (CCNM)](/droits/convention-collective-metallurgie)
 {{< /hint >}}
