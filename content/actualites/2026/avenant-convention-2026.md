@@ -4,6 +4,7 @@ draft: false
 title: "Salaires barème 2026"
 type: "posts"
 tags: ["salaire", "métallurgie", "convention", "avenant"]
+bookToc: false
 ---
 
 # Métallurgie : la convention en bref

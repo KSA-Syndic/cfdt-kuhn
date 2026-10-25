@@ -5,7 +5,7 @@ date: "2026-06-23T21:00:00+02:00"
 draft: false
 type: "docs"
 tags: ["résultats", "dividende", "bénéfices", "EBITDA", "bilan", "provisions", "comptes", "tutoriel"]
-bookToc: false
+bookToc: true
 aliases:
   - /actualites/2026/lire-les-comptes/
   - /actualites/2026/ou-va-l-argent/
@@ -57,13 +57,13 @@ Le chiffre d'affaires de KUHN SAS culmine à 979 M€ en 2023, puis revient à 
 
 Entre 20,6 et 62,9 M€, l'écart (42,3 M€) correspond exactement aux transferts de charges : des frais refacturés à d'autres sociétés, remboursés ou reclassés. Quand il s'agit de refacturations, les retrancher revient à compter les frais sans les remboursements qui les compensent. Leur détail figure dans l'annexe des comptes.
 
-Le plan comptable définit l'excédent brut d'exploitation (article 842-1) et range les transferts de charges après lui ; l'EBITDA, lui, n'est défini par aucune norme. Aucun changement de loi n'explique la rupture de 2023 dans les chiffres affichés par Pappers : la réforme du plan comptable qui supprime les transferts de charges (règlement ANC n° 2022-06) ne s'applique qu'aux comptes ouverts à partir de 2025.
+Le plan comptable définit l'[excédent brut d'exploitation](#def-ebe) (article 842-1) et range les transferts de charges après lui ; l'EBITDA, lui, n'est défini par aucune norme. Aucun changement de loi n'explique la rupture de 2023 dans les chiffres affichés par Pappers : la réforme du plan comptable qui supprime les transferts de charges (règlement ANC n° 2022-06) ne s'applique qu'aux comptes ouverts à partir de 2025.
 
 **Année par année**
 
 {{< tableau-kuhn "ebitda-par-annee" >}}
 
-**Méthode constante** : résultat d'exploitation + amortissements + dotations nettes des reprises de provisions. Les transferts de charges y restent : ils font partie du résultat d'exploitation, et seules les reprises de provisions sont retirées. **Pappers** compte de la même façon jusqu'en 2022, puis retire les transferts de charges à partir de 2023. **EBE strict** : valeur ajoutée − impôts et taxes − charges de personnel ; il laisse lui aussi de côté les transferts de charges et donne un plancher.
+**Méthode constante** : résultat d'exploitation + amortissements + dotations nettes des reprises de provisions. Les transferts de charges y restent : ils font partie du résultat d'exploitation, et seules les reprises de provisions sont retirées. **Pappers** compte de la même façon jusqu'en 2022, puis retire les transferts de charges à partir de 2023. **[EBE strict](#def-ebe)** : valeur ajoutée + subventions d'exploitation − impôts et taxes − charges de personnel ; il laisse lui aussi de côté les transferts de charges et donne un plancher.
 {{< /details >}}
 
 ### 3. Les provisions : le coussin commence à être relâché {#provisions}
