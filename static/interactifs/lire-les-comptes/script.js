@@ -613,8 +613,8 @@
     drvJars(s, p) {
       const v = s.v;
       if (!v.j) v.j = { r: this.piece(s, '[data-jr]'), c: this.piece(s, '[data-jc]'), rv: this.piece(s, '[data-rv]'), cv: this.piece(s, '[data-cv]') };
-      const res = this.seg(p, [[.14, .26, 0, 50], [.36, .48, 50, 30]], 0);
-      const cai = this.seg(p, [[.58, .7, 100, 0], [.8, .92, 0, 60]], 100);
+      const cai = this.seg(p, [[.14, .26, 100, 0], [.36, .48, 0, 60]], 100);
+      const res = this.seg(p, [[.58, .7, 0, 50], [.8, .92, 50, 30]], 0);
       v.j.r.style.transform = 'scaleY(' + (res / 120).toFixed(3) + ')';
       v.j.c.style.transform = 'scaleY(' + (cai / 120).toFixed(3) + ')';
       this.setText(v.j.rv, String(Math.round(res)));
