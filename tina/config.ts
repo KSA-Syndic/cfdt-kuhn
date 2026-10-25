@@ -327,6 +327,17 @@ export default defineConfig({
     },
   },
 
+  // Recherche de l'admin : index construit au déploiement (tinacms build) et envoyé à TinaCloud.
+  // Clé : TinaCloud > projet > Tokens > Search, en secret GitHub TINA_SEARCH_TOKEN (et dans .env en local).
+  search: {
+    tina: {
+      indexerToken: process.env.TINA_SEARCH_TOKEN,
+      stopwordLanguages: ["fra"],
+    },
+    indexBatchSize: 100,
+    maxSearchIndexFieldLength: 100,
+  },
+
   schema: {
     collections: [
       // === 0. ACCUEIL ===
