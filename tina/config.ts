@@ -17,6 +17,8 @@ const imageTemplate = {
     { name: "src", label: "Image", type: "image", required: true },
     { name: "alt", label: "Texte alternatif", type: "string" },
     { name: "title", label: "Titre", type: "string" },
+    { name: "class", label: "Taille", type: "string", options: [{ value: "book-image--narrow", label: "Réduite (zoom au clic)" }] },
+    { name: "loading", label: "Chargement", type: "string", options: [{ value: "lazy", label: "Différé (au défilement)" }] },
   ],
 };
 
