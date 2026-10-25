@@ -387,6 +387,20 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   margin: 0.25rem 0.25rem 0.25rem 0;
 }
 
+// Cartes posées directement dans {{% columns %}}, sans liste : Tina ne sait pas garder une carte
+// dans un élément de liste. Même disposition que la version liste du thème (côte à côte, retour à la ligne).
+.markdown .book-columns:has(> .book-card) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  > .book-card {
+    flex: 1 1;
+    height: auto;
+    margin: 0;
+  }
+}
+
 // ---------- Bulles-liens : {{< bulle-lien >}} ----------
 // Le dessin, au contour qui ondule (border-radius animé), flotte sur deux halos qui se déforment à
 // contretemps. Avec nom="…", un clic l'agrandit en plein écran (plein-ecran.js, voir plus bas).

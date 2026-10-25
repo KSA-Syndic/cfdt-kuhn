@@ -5,15 +5,13 @@ title: "Accueil"
 bookToC: false
 ---
 
-<div class="book-hero">
-
+{{% hero %}}
 ![Logo CFDT KUHN](/uploads/images/logos/cfdt-kuhn-historique.png)
 
 # Bienvenue sur le site du syndicat CFDT KUHN
 
 Ce site est dédié à tous les salarié·es de l'entreprise KUHN, syndiqué·es ou non, qui souhaitent s'informer, s'engager ou simplement mieux comprendre leurs droits et la vie de l'entreprise.
-
-</div>
+{{% /hero %}}
 
 ## Pourquoi ce site ?
 
@@ -27,32 +25,31 @@ Informer, accompagner, défendre : la CFDT KUHN met à disposition ce site pour 
 ## Que trouve-t-on ici ?
 
 {{% columns %}}
+{{< card >}}
+#### **Actualités**
 
-- {{<card>}}
-  #### **Actualités**
-  Dernières infos sur la vie de l'entreprise, les négociations, les actions syndicales.
-  {{</card>}}
+Dernières infos sur la vie de l'entreprise, les négociations, les actions syndicales.
+{{< /card >}}
 
-- {{<card>}}
-  #### **Vos droits**
-  Explications sur le droit du travail, les accords d'entreprise, la protection sociale.
-  {{</card>}}
+{{< card >}}
+#### **Vos droits**
 
+Explications sur le droit du travail, les accords d'entreprise, la protection sociale.
+{{< /card >}}
 {{% /columns %}}
 
-
 {{% columns %}}
+{{< card >}}
+#### **Documents utiles**
 
-- {{<card>}}
-  #### **Documents utiles**
-  Accords, tracts, comptes-rendus, formulaires à télécharger.
-  {{</card>}}
+Accords, tracts, comptes-rendus, formulaires à télécharger.
+{{< /card >}}
 
-- {{<card>}}
-  #### **Contacts & Permanences**
-  Comment joindre vos élu·es, prendre rendez-vous, poser une question.
-  {{</card>}}
+{{< card >}}
+#### **Contacts & Permanences**
 
+Comment joindre vos élu·es, prendre rendez-vous, poser une question.
+{{< /card >}}
 {{% /columns %}}
 
 > La CFDT KUHN, un syndicat d'entreprise à votre écoute, pour avancer ensemble !

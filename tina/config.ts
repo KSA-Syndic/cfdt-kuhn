@@ -261,6 +261,56 @@ const bodyFieldWithShortcodes: any = {
   templates: shortcodeTemplates,
 };
 
+// === PAGE D'ACCUEIL : cartes en colonnes ===
+// Les cartes se posent directement dans les colonnes, sans liste à puces : Tina colle sur une seule
+// ligne une carte placée dans un élément de liste (titre et texte fusionnés).
+const cardTemplate = {
+  name: "card",
+  label: "Carte",
+  match: {
+    start: "{{<",
+    end: ">}}",
+    name: "card",
+  },
+  fields: [
+    { name: "href", label: "Lien (facultatif, toute la carte devient cliquable)", type: "string" },
+    { name: "children", label: "Contenu", type: "rich-text" },
+  ],
+};
+
+const columnsTemplate = {
+  name: "columns",
+  label: "Colonnes de cartes",
+  match: {
+    start: "{{%",
+    end: "%}}",
+    name: "columns",
+  },
+  fields: [
+    { name: "children", label: "Cartes (côte à côte)", type: "rich-text", templates: [cardTemplate] },
+  ],
+};
+
+// Bloc d'ouverture (layouts/shortcodes/hero.html) : remplace un <div class="book-hero"> brut, verrouillé dans Tina
+const heroTemplate = {
+  name: "hero",
+  label: "Bloc d'ouverture (logo, grand titre, présentation)",
+  match: {
+    start: "{{%",
+    end: "%}}",
+    name: "hero",
+  },
+  fields: [
+    { name: "children", label: "Contenu", type: "rich-text", templates: innerTemplates },
+  ],
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const bodyFieldAccueil: any = {
+  ...bodyFieldWithShortcodes,
+  templates: [heroTemplate, columnsTemplate, cardTemplate, ...shortcodeTemplates],
+};
+
 export default defineConfig({
   branch,
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
@@ -279,6 +329,30 @@ export default defineConfig({
 
   schema: {
     collections: [
+      // === 0. ACCUEIL ===
+      {
+        name: "page_accueil",
+        label: "Accueil",
+        path: "content",
+        format: "md",
+        match: {
+          include: "_index",
+        },
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          { type: "string", name: "title", label: "Titre", isTitle: true, required: true },
+          // pas de case « Brouillon » : cochée par erreur, elle retirerait la page d'accueil du site
+          { type: "datetime", name: "date", label: "Date" },
+          { type: "boolean", name: "bookToC", label: "Afficher table des matières latérale" },
+          bodyFieldAccueil,
+        ],
+      },
+
       // === 1. ACTUALITÉS ===
       {
         name: "mon_actualite",
