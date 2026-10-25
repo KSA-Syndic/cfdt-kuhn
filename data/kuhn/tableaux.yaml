@@ -63,8 +63,8 @@ ebitda-mesures:
     - { titre: "% des ventes", num: true }
     - { titre: "Ce qu'il laisse de côté" }
   lignes:
-    - ["EBE comptable strict", "{x.ebe|1} M€", "{x.marge_ebe|1} %", "Transferts de charges, autres produits et charges"]
-    - ["EBITDA « bas » (chiffres qui circulent, Pappers)", "{x.ebitda_sans_transferts|1} M€", "{x.marge_ebitda_sans_transferts|1} %", "Transferts de charges"]
+    - ["EBE comptable strict (Societe.com)", "{x.ebe|1} M€", "{x.marge_ebe|1} %", "Transferts de charges, autres produits et charges"]
+    - ["EBITDA « bas » (communication de KUHN, Pappers)", "{x.ebitda_sans_transferts|1} M€", "{x.marge_ebitda_sans_transferts|1} %", "Transferts de charges"]
     - ["EBITDA à méthode constante", "{x.ebitda|1} M€", "{x.marge_ebitda|1} %", "Rien : seules les provisions sont neutralisées"]
 
 ebitda-par-annee:
