@@ -194,7 +194,7 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
   - « En bref » : pic de 2023, −18 %, marge d'EBITDA 9,2 % → 7,9 %, dividende 93 à 99 % ;
   - constat 1 : 979 M€ en 2023, 799 M€ en 2024 ; commandes du groupe « dès 2022 » ;
   - constat 2 : 9,2 % (2021) → 7,9 % (2024), niveau de 2018–2019, marge d'exploitation « autour de 7 % » ;
-    l'encadré et le bloc « D'où vient le fossé » (20 M€, 2,6 %, 42,3 M€, 20,6 / 62,9 M€ ; Societe.com 18,6 M€ et 2,3 %, Altarès 12,4 M€ et
+    l'encadré et le bloc « D'où vient le fossé » (20 M€, 2,6 %, 42,3 M€, 20,6 / 62,9 M€ ; Societe.com 2,3 %, Le Journal des Entreprises
     1,6 % ; marges Bucher du groupe 11,7 % en 2022 et 8,0 % en 2024) portent sur l'exercice
     de `affaire.yaml`, à laisser tels quels, sauf la phrase sur la « rupture de 2023 » et la réforme qui
     « ne s'applique qu'aux comptes ouverts à partir de 2025 », à revoir avec les comptes 2025 (section 7) ;
