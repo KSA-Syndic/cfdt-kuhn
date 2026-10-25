@@ -4,6 +4,7 @@ draft: false
 title: "Mobilisation 18 sept"
 type: "posts"
 tags: ["grève", "budget", "austérité", "retraite", "salaire", "franchise", "férié", "congé"]
+bookToc: false
 ---
 
 {{< image src="/uploads/images/actus/greve.jpg" alt="Grève !" title="Grève !" loading="lazy" >}}
