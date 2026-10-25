@@ -7,7 +7,7 @@ tags: ["droits", "télétravail", "KUHN", "organisation du travail"]
 bookToC: true
 ---
 
-{{< image src="/uploads/images/droits/télétravail-productif.jpg" alt="Télétravail productif" title="Télétravail" loading="lazy" class="book-image--narrow" >}}
+{{< image src="/uploads/images/droits/teletravail-productif.jpg" alt="Télétravail productif" title="Télétravail" loading="lazy" class="book-image--narrow" >}}
 
 {{< hint type="info" >}}
 Le télétravail est encadré par les articles L. 1222-9 et suivants du Code du travail. Chez KUHN, c'est la charte du télétravail occasionnel (UES KUHN / KUHN MGM) qui s'applique depuis le 1ᵉʳ octobre 2022. Tu la trouves sur l'intranet, rubrique RH.
