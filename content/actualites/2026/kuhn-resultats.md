@@ -49,7 +49,7 @@ Le chiffre d'affaires de KUHN SAS culmine à 979 M€ en 2023, puis revient à 
 {{< interactif nom="analyse-rentabilite" titre="Marge d'EBITDA de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
 {{< hint type="warning" >}}
-Un EBITDA bien plus bas circule : environ 20 M€ en 2024, soit 2,6 % des ventes. C'est le calcul de la communication officielle de KUHN, et celui de Pappers : il laisse de côté les [transferts de charges](#def-transferts-de-charges). Or aucune norme ne définit l'EBITDA. Sur les mêmes comptes 2024, Le Journal des Entreprises trouve 1,6 %, Societe.com 2,3 %, la méthode constante 7,9 %. Comparer ce 2,6 % au 9 % de 2022, compté avec les transferts, mélange deux méthodes. Bucher, propriétaire de KUHN, calcule la marge d'exploitation du groupe de la même façon chaque année : 11,7 % en 2022, 8,0 % en 2024. Elle a baissé, elle n'a pas été divisée par 3,5. Le bloc ci-dessous détaille le fossé, l'enquête le reprend pièce par pièce.
+Un EBITDA bien plus bas circule : environ 20 M€ en 2024, soit 2,6 % des ventes. Ce calcul, celui de la communication de KUHN et de Pappers, laisse de côté les [transferts de charges](#def-transferts-de-charges). Le comparer aux 9 % de 2022, comptés avec eux, mélange deux méthodes. Le bloc ci-dessous et l'enquête expliquent l'écart.
 {{< /hint >}}
 
 {{< bulle-lien nom="affaire-2-6" titre="L'affaire des 2,6 %" texte="« L'argent que dégage KUHN s'est effondré. » Enquête sur un chiffre qui mélange deux façons de compter." dessin="enquete" >}}

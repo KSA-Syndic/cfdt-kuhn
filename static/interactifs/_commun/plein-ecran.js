@@ -61,7 +61,8 @@
     var fermerBtn = el('button', 'plein-ecran__fermer', 'Fermer ✕');
     fermerBtn.type = 'button';
     fermerBtn.setAttribute('aria-label', 'Fermer le plein écran');
-    fermerBtn.addEventListener('click', function () { fermer(false); });
+    // detail vaut 0 quand le bouton est actionné au clavier
+    fermerBtn.addEventListener('click', function (e) { fermer(false, e.detail === 0); });
     barre.appendChild(el('span', 'plein-ecran__titre', titre));
     barre.appendChild(fermerBtn);
 
@@ -94,7 +95,9 @@
     fermerBtn.focus();
   }
 
-  function fermer(depuisHistorique) {
+  /* auClavier : la bulle reprend le focus avec son anneau ; à la souris ou par le bouton Retour, sans anneau
+     (jusqu'à ce qu'elle perde le focus) */
+  function fermer(depuisHistorique, auClavier) {
     if (!ouvert) return;
     var o = ouvert;
     ouvert = null;
@@ -110,7 +113,11 @@
       o.cadre.addEventListener('transitionend', retirer, { once: true });
       setTimeout(retirer, 900); // au cas où la transition n'aurait pas lieu
     }
-    o.bulle.focus({ preventScroll: true });
+    if (!auClavier) {
+      o.bulle.classList.add('bulle-lien--sans-anneau');
+      o.bulle.addEventListener('blur', function () { o.bulle.classList.remove('bulle-lien--sans-anneau'); }, { once: true });
+    }
+    o.bulle.focus({ preventScroll: true, focusVisible: !!auClavier });
     if (depuisHistorique) return;
     if (o.depuisAdresse) w.history.replaceState(null, '', w.location.pathname + w.location.search);
     else w.history.back();
@@ -123,7 +130,7 @@
     ouvrir(bulle, false);
   });
   doc.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && ouvert) fermer(false);
+    if (e.key === 'Escape' && ouvert) fermer(false, true);
   });
   w.addEventListener('popstate', function () {
     if (ouvert && !(w.history.state && w.history.state.pleinEcran)) fermer(true);

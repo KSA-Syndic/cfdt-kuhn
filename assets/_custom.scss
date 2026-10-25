@@ -418,6 +418,11 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   &:focus-visible {
     text-decoration: none;
   }
+
+  // l'anneau de focus suit le dessin (voir plus bas), pas le rectangle du lien
+  &:focus {
+    outline: none;
+  }
 }
 
 .bulle-lien--tableau {
@@ -473,8 +478,13 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
 }
 
 .bulle-lien:hover .bulle-lien__image,
-.bulle-lien:focus-visible .bulle-lien__image {
+.bulle-lien:focus-visible:not(.bulle-lien--sans-anneau) .bulle-lien__image {
   transform: scale(1.04);
+}
+
+// au retour du plein écran par la souris, la bulle a le focus sans anneau (plein-ecran.js)
+.bulle-lien:focus-visible:not(.bulle-lien--sans-anneau) .bulle-lien__image {
+  box-shadow: 0 0 0 3px var(--color-link), 0 0.5rem 1.5rem rgba(20, 23, 28, 0.12);
 }
 
 // au-dessus des halos, qui débordent de la forme et passeraient sinon devant le texte
@@ -506,7 +516,7 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
 }
 
 .bulle-lien:hover .bulle-lien__action,
-.bulle-lien:focus-visible .bulle-lien__action {
+.bulle-lien:focus-visible:not(.bulle-lien--sans-anneau) .bulle-lien__action {
   text-decoration: underline;
 }
 
