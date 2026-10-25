@@ -1,15 +1,23 @@
 ---
-title: "Résultats 2016–2024"
-description: "Des ateliers au dividende : les flux de valeur du groupe KUHN, au-delà du seul EBITDA. Avec le tutoriel pour lire les comptes, le tableau dynamique des résultats et l'enquête sur le chiffre d'EBITDA qui circule."
-date: "2026-06-23T21:00:00+02:00"
-draft: false
-type: "docs"
-tags: ["résultats", "dividende", "bénéfices", "EBITDA", "bilan", "provisions", "comptes", "tutoriel"]
-bookToC: true
+description: "Des ateliers au dividende\_: les flux de valeur du groupe KUHN, au-delà du seul EBITDA. Avec le tutoriel pour lire les comptes, le tableau dynamique des résultats et l'enquête sur le chiffre d'EBITDA qui circule."
 aliases:
   - /actualites/2026/lire-les-comptes/
   - /actualites/2026/ou-va-l-argent/
   - /actualites/2026/affaire-2-6/
+title: Résultats 2016–2024
+date: 2026-10-25T03:57:26.293Z
+draft: false
+bookToC: true
+type: docs
+tags:
+  - résultats
+  - dividende
+  - bénéfices
+  - EBITDA
+  - bilan
+  - provisions
+  - comptes
+  - tutoriel
 ---
 
 ## Résultats 2016–2024 : l'analyse {#analyse}
@@ -23,9 +31,9 @@ Pour apprendre d'abord à lire un bilan et un compte de résultat, suivez une an
 {{< hint type="note" >}}
 **En bref**
 
-- L'activité a suivi le super-cycle agricole : pic en 2023, puis −18 % en 2024, comme tout le secteur.
-- La rentabilité a reculé sans s'effondrer : marge d'[EBITDA](#def-ebitda) de 9,2 % à 7,9 % à méthode constante.
-- Le dividende absorbe 93 à 99 % du bénéfice chaque année.
+* L'activité a suivi le super-cycle agricole : pic en 2023, puis −18 % en 2024, comme tout le secteur.
+* La rentabilité a reculé sans s'effondrer : marge d'[EBITDA](#def-ebitda) de 9,2 % à 7,9 % à méthode constante.
+* Le dividende absorbe 93 à 99 % du bénéfice chaque année.
 {{< /hint >}}
 
 ### 1. L'activité a suivi le cycle {#activite}
