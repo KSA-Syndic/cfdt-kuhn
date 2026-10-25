@@ -7,7 +7,7 @@ bookToC: false
 
 <div class="book-hero">
 
-![Logo CFDT KUHN](/uploads/images/logos/cfdt-kuhn.png)
+![Logo CFDT KUHN](/uploads/images/logos/cfdt-kuhn-historique.png)
 
 # Bienvenue sur le site du syndicat CFDT KUHN
 
