@@ -92,9 +92,9 @@ jobs:
         run: |
           if command -v npx &> /dev/null && [ -f tina/config.ts ] || [ -f tina/config.js ]; then
             echo "Building TinaCMS admin..."
-            # --skip-cloud-checks : ne pas bloquer le déploiement quand TinaCloud n'a pas encore réindexé
-            # un schéma modifié (tina/tina-lock.json, poussé avec la modification, fait foi).
-            npx tinacms build --skip-cloud-checks
+            # Sans --skip-cloud-checks : le déploiement s'arrête si TinaCloud ne suit plus le dépôt
+            # (schéma non réindexé, webhook ou application GitHub perdus).
+            npx tinacms build
           else
             echo "Warning: TinaCMS not configured. Skipping build."
           fi
