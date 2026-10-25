@@ -198,8 +198,10 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
     1,6 % ; marges Bucher du groupe 11,7 % en 2022 et 8,0 % en 2024) portent sur l'exercice
     de `affaire.yaml`, à laisser tels quels, sauf la phrase sur la « rupture de 2023 » et la réforme qui
     « ne s'applique qu'aux comptes ouverts à partir de 2025 », à revoir avec les comptes 2025 (section 7) ;
-  - constat 3 : « de 2018 à 2023 », 14,5 M€ en 2021, +4,4 M€ en 2024 ; bloc « 77,5 M€ de reprises » (35,2 /
-    42,3 / 30,8 M€) ; stock de provisions 18,7 M€ (2016), 39,6 M€ (2023), 35,8 M€ (2024), « une première
+    la légende sous « Année par année » date le changement de calcul de Pappers (« jusqu'en 2022 »,
+    « à partir de 2023 ») d'après `affaire.yaml` ;
+  - constat 3 : « de 2018 à 2023 », 14,5 M€ en 2021, +4,4 M€ en 2024 ; bloc « 77,5 M€ de reprises » (77,5 /
+    35,2 / 42,3 / 30,8 / 4,4 M€) ; stock de provisions 18,7 M€ (2016), 39,6 M€ (2023), 35,8 M€ (2024), « une première
     depuis 2019 » ;
   - constat 4 : « 93 à 99 % » (titre compris), 1 218 000 actions ;
   - constat 5 : 7 à 13 M€, 37 à 63 M€, encours de 61,5 M€ fin 2024 ;

@@ -63,7 +63,7 @@ Le plan comptable définit l'excédent brut d'exploitation (article 842-1) et ra
 
 {{< tableau-kuhn "ebitda-par-annee" >}}
 
-**Méthode constante** : résultat d'exploitation + amortissements + dotations nettes des reprises de provisions. **EBE strict** : valeur ajoutée − impôts et taxes − charges de personnel ; il laisse de côté les transferts de charges et donne un plancher.
+**Méthode constante** : résultat d'exploitation + amortissements + dotations nettes des reprises de provisions. Les transferts de charges y restent : ils font partie du résultat d'exploitation, et seules les reprises de provisions sont retirées. **Pappers** compte de la même façon jusqu'en 2022, puis retire les transferts de charges à partir de 2023. **EBE strict** : valeur ajoutée − impôts et taxes − charges de personnel ; il laisse lui aussi de côté les transferts de charges et donne un plancher.
 {{< /details >}}
 
 ### 3. Les provisions : le coussin commence à être relâché {#provisions}
@@ -75,7 +75,7 @@ De 2018 à 2023, KUHN met de côté au moins autant qu'elle ne reprend : les [p
 {{< interactif nom="analyse-provisions" titre="Effet net des provisions sur le résultat de KUHN SAS, exercice par exercice" hauteur_min="240" >}}
 
 {{< details title="Pourquoi la ligne « 77,5 M€ de reprises » est trompeuse" >}}
-Le compte de résultat regroupe sur une seule ligne « reprises sur provisions et transferts de charges ». En 2024, elle se décompose en 35,2 M€ de reprises de provisions et 42,3 M€ de transferts de charges. Seules les reprises sont des écritures sans entrée d'argent, et elles se comparent aux dotations de l'année (30,8 M€).
+En 2024, le compte de résultat affiche 77,5 M€ sur une seule ligne, « reprises sur provisions et transferts de charges ». Lu tel quel, on croirait que KUHN a relâché 77,5 M€ de provisions, plus du double de ce qu'elle a mis de côté dans l'année. La ligne additionne en fait deux choses : 35,2 M€ de reprises de provisions et 42,3 M€ de transferts de charges. Seules les reprises sont des écritures sans entrée d'argent. Face aux 30,8 M€ de dotations de l'année, elles soutiennent le résultat de 4,4 M€.
 {{< /details >}}
 
 {{< details title="Le stock de provisions au bilan" >}}
