@@ -189,12 +189,18 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
 - `data/kuhn/tableaux.yaml` : textes des colonnes et des lignes fixes (`trois-perimetres`, `ebitda-mesures`,
   `fiabilite`).
 - `data/kuhn/groupe.yaml` : `commandes` (variations publiées par Bucher) à compléter.
-- `content/actualites/2026/kuhn-resultats.md` (« Résultats 2016–2024 ») : le titre (`title`) et l'intertitre
-  « Résultats 2016–2024 : l'analyse », puis le texte de l'analyse, qui cite des chiffres et des années :
-  - « En bref » : pic de 2023, −18 %, marge d'EBITDA 9,2 % → 7,9 %, dividende 93 à 99 % ;
-  - constat 1 : 979 M€ en 2023, 799 M€ en 2024 ; commandes du groupe « dès 2022 » ;
+- `content/actualites/2026/kuhn-resultats.md` (« Crise sans précédent », vraiment ?) : le titre (`title`) et l'intertitre
+  « Ce que disent les comptes 2016–2024 », puis le texte de l'analyse, qui cite des
+  chiffres et des années :
+  - l'introduction : « 2,60 € » sur 100 € de ventes en 2024, « 9 » en 2022, « depuis 2016 » ;
+  - « En bref » : pic de 2023, −18 %, 2,6 %, 55,3 M€ « troisième meilleur résultat depuis 2014 », marge d'EBITDA
+    9,2 % → 7,9 %, dividende 93 à 99 %, commandes 2009 (−40 %) ;
+  - constat 1 : 979 M€ en 2023, 799 M€ en 2024 ; commandes du groupe « dès 2022 », −42 % entre 2021 et 2024 ;
+    799 M€ « plus que n'importe quelle année avant 2021 » (597 M€ en 2016) ;
   - constat 2 : 9,2 % (2021) → 7,9 % (2024), niveau de 2018–2019, marge d'exploitation « autour de 7 % » ;
-    l'encadré et le bloc « D'où vient le fossé » (20 M€, 2,6 %, 9 % en 2022 ; 42,3 M€, 20,6 / 62,9 M€) portent sur l'exercice
+    bénéfice net 65,4 M€ (2023) et 55,3 M€ (2024), « seules 2022 et 2023 ont fait mieux » ;
+    les deux premiers paragraphes (« L'argument des 2,6 % », titre compris : 20 M€, 2,6 %, 9 % en 2022, 42,3 M€,
+    « avant 2025 ») et le bloc « D'où vient le fossé » (20,6 / 62,9 M€) portent sur l'exercice
     de `affaire.yaml`, à laisser tels quels, sauf la phrase sur la « rupture de 2023 » et la réforme qui
     « ne s'applique qu'aux comptes ouverts à partir de 2025 », à revoir avec les comptes 2025 (section 7) ;
     la légende sous « Année par année » date le changement de calcul de Pappers (« jusqu'en 2022 »,
@@ -202,11 +208,18 @@ Textes d'auteur qui citent des chiffres ou des années (ils ne se mettent pas à
   - constat 3 : « de 2018 à 2023 », 14,5 M€ en 2021, +4,4 M€ en 2024 ; bloc « 77,5 M€ de reprises » (77,5 /
     35,2 / 42,3 / 30,8 / 4,4 M€) ; stock de provisions 18,7 M€ (2016), 39,6 M€ (2023), 35,8 M€ (2024), « une première
     depuis 2019 » ;
-  - constat 4 : « 93 à 99 % » (titre compris), 1 218 000 actions ;
+  - constat 4 : « 93 à 99 % » (titre compris), 1 218 000 actions ; dividende versé en 2024 (63,3 M€), salaires et
+    cotisations 2024 (95,6 M€), « 66 € pour 100 € », dividende 2024 estimé « autour de 53 M€ » ;
   - constat 5 : 7 à 13 M€, 37 à 63 M€, encours de 61,5 M€ fin 2024 ;
     Blanchard et Artec ;
+  - « Sans précédent ? Il suffit de remonter à 2009 » : chiffres Bucher de 2009 (sources dans le bloc dépliable), −42 %,
+    « dix-sept ans » ;
   - le secteur : « entre 70 et 75 en 2025 » ;
-  - points de vigilance : −26 % entre 2022 et 2024, 9,6 % / 12,0 % / 11,7 %, 93 à 99 %.
+  - « 2025–2026 : la chute s'est arrêtée » : chiffres des communiqués Bucher (2025, neuf mois 2026, effectif
+    moyen) ; à réécrire quand les comptes 2025 de KUHN SAS entrent dans `sas.yaml` ;
+  - points de vigilance : −26 % entre 2022 et 2024, 9,6 % / 12,0 % / 11,7 %, 93 à 99 % ;
+  - « Pourquoi ce discours de crise ? » : 2,6 %, « troisième meilleur depuis 2014 », 93 %, questions sur les dividendes
+    2025 et 2026 et sur les 4 % d'effectif.
   Les badges, cartes, tableaux et graphiques de cet article se mettent à jour tout seuls.
 - « L'affaire des 2,6 % » (`static/interactifs/affaire-2-6/`, ouverte en plein écran par sa bulle dans
   `content/actualites/2026/kuhn-resultats.md`) : ses textes sont des gabarits qui lisent l'exercice désigné
