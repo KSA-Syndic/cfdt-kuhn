@@ -33,7 +33,7 @@ La date n'est pas choisie au hasard. Le budget de l'État se discute en ce momen
 
 ## Et chez KUHN ?
 
-Négocier les salaires, ça se passe aussi chez nous. Et quand on entend parler de crise, mieux vaut regarder les comptes publics de l'entreprise avant de se serrer la ceinture. On l'a fait pour toi dans notre article [« Crise sans précédent », vraiment ?](/actualites/2026/kuhn-resultats/)
+Négocier les salaires, ça se passe aussi chez nous. Et quand on nous parle de crise, on garde un réflexe : vérifier. Les chiffres ne mentent pas, mais on choisit toujours lesquels on montre. Toute l'enquête est dans notre article [« Crise sans précédent », vraiment ?](/actualites/2026/kuhn-resultats/)
 
 ## Où manifester ?
 
