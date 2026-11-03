@@ -9,7 +9,7 @@ tags: ["droits", "grève", "congés"]
 {{< image src="/uploads/images/droits/droit-greve.jpg" alt="Le droit de grève - manifestation de la CFDT Bretagne" title="Le droit de grève - manifestation de la CFDT Bretagne" loading="lazy" >}}
 
 {{< hint type="info" >}}
-Ce guide explique simplement le droit de grève et comment se déclarer à KUHN.
+Ce guide explique simplement le droit de grève et comment se déclarer chez KUHN.
 {{< /hint >}}
 
 ## Quand et comment faire grève ?
@@ -58,7 +58,7 @@ La grève peut durer **le temps que tu souhaites** : une journée, une heure, ou
 
 L'employeur déduit le temps de grève du salaire, même pour les forfaits jours. Exemple : 1h de grève = 1/7e d'une journée (base 35h/semaine).
 
-## Comment se déclarer en grève à KUHN ?
+## Comment se déclarer en grève chez KUHN ?
 
 1. **Préviens le syndicat** ([contact](/contact))
 2. **Préviens ton employeur** (manager)

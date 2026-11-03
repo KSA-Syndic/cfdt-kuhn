@@ -119,7 +119,7 @@ La CCNM prévoit surtout des majorations d'expérience dans le minimum conventio
 * **Congés payés** : base 5 semaines.
   * KUHN non-cadres : +1j (5 ans), +2j (14 ans), +3j (19 ans)
   * KUHN cadres : +2j (30 ans + 1 an d'ancienneté), +3j (35 ans + 2 ans d'ancienneté)
-* **Nuit à KUHN** :
+* **Nuit chez KUHN** :
   * poste de nuit : **+20 %** entre 20h et 6h (si au moins 2 h) + repos compensateur sous conditions
   * poste matin/après-midi : **+15 %** entre 20h et 6h
 
