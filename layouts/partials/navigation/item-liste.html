@@ -1,0 +1,19 @@
+{{- /* Une page dans une liste (actualités, Droits, Outils, mots-clés) : la date pour une actualité,
+       le titre en lien, un court extrait. Se place dans un <ul class="liste-pages">.
+       Paramètres : Page ; Niveau (niveau du titre, 3 par défaut) ; AvecRubrique (affiche
+       « Actualités », « Droits »… pour les listes qui mélangent les rubriques). */ -}}
+{{- $page := .Page -}}
+{{- $niveau := default 3 .Niveau -}}
+{{- $rubrique := partial "navigation/rubrique.html" $page -}}
+{{- $chrono := and $rubrique $rubrique.Params.chronologique -}}
+<li class="liste-pages__item">
+  {{- if or $chrono (and .AvecRubrique $rubrique) }}
+  <p class="liste-pages__haut">
+    {{- if and .AvecRubrique $rubrique }}<span class="liste-pages__rubrique">{{ partial "docs/title" $rubrique }}</span>{{ if $chrono }}<span aria-hidden="true"> · </span>{{ end }}{{ end }}
+    {{- if $chrono }}{{ partial "navigation/date.html" $page }}{{ end -}}
+  </p>
+  {{- end }}
+  <h{{ $niveau }} class="liste-pages__titre"><a href="{{ $page.RelPermalink }}">{{ partial "docs/title" $page }}</a></h{{ $niveau }}>
+  {{- partial "docs/post-excerpt" $page -}}
+</li>
+{{- /**/ -}}

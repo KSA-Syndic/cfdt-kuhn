@@ -1,0 +1,18 @@
+{{- /* Page d'une rubrique non datée (Droits, Outils) : le texte d'accueil de son _index, puis la
+       liste de ses pages (navigation/item-liste.html), dans l'ordre du menu. Le thème n'affichait
+       qu'une page vide. */ -}}
+{{ define "main" }}
+<article class="markdown book-article">
+  <h1>{{ partial "docs/title" . }}</h1>
+  {{- .Content -}}
+</article>
+{{- with partial "navigation/pages-rubrique.html" . }}
+<ul class="liste-pages">
+  {{- range . }}
+  {{ partial "navigation/item-liste.html" (dict "Page" . "Niveau" 2) }}
+  {{- end }}
+</ul>
+{{- end }}
+{{ end }}
+
+{{ define "toc-container" }}{{ end }}

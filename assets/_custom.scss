@@ -401,6 +401,23 @@ html.full-width-post-expanded .book-page:has(.interactif-pleine-largeur) .book-a
   }
 }
 
+// Carte dont le titre est un lien : le lien s'étend à toute la carte (accueil). Le paramètre
+// href="…" de la carte ne convient pas quand elle a un titre : son lien engloberait l'ancre « # »
+// du titre, et le navigateur casse deux liens imbriqués.
+.markdown .book-card:has(.markdown-inner > :first-child a[href]:not(.anchor)) {
+  position: relative;
+
+  &:hover {
+    background: var(--gray-100);
+  }
+
+  .markdown-inner > :first-child a[href]:not(.anchor)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}
+
 // ---------- Bulles-liens : {{< bulle-lien >}} ----------
 // Le dessin, au contour qui ondule (border-radius animé), flotte sur deux halos qui se déforment à
 // contretemps. Avec nom="…", un clic l'agrandit en plein écran (plein-ecran.js, voir plus bas).
@@ -693,4 +710,242 @@ html.plein-ecran-actif {
   .plein-ecran__apercu {
     transition: none;
   }
+}
+
+// ---------- Navigation : menu par rubrique, en-tête de page, bas de page (layouts/partials/navigation/) ----------
+
+// Menu latéral : un bloc par rubrique, son titre en petites capitales au-dessus de ses pages
+.book-menu .menu-site {
+  > li {
+    margin-bottom: $padding-8;
+  }
+
+  .menu-site__rubrique {
+    margin-top: $padding-16;
+    padding-top: $padding-8;
+    border-top: 1px solid var(--gray-200);
+
+    > ul {
+      padding-inline-start: 0;
+    }
+
+    ul a {
+      padding: 0.35em 0 0.35em 0.75em;
+      border-inline-start: 2px solid var(--gray-200);
+    }
+
+    ul a.active {
+      border-inline-start-color: var(--color-link);
+      font-weight: 600;
+    }
+  }
+
+  // rubrique de la page ouverte : son titre prend la couleur des liens actifs
+  .menu-site__rubrique--ici > .menu-site__titre {
+    color: var(--color-link);
+  }
+
+  .menu-site__titre {
+    font-size: var(--font-size-smallest);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  // année des actualités : simple repère, les articles de l'année en dessous
+  .menu-site__annee {
+    > span {
+      display: block;
+      margin-top: $padding-4;
+      font-size: var(--font-size-smallest);
+      opacity: 0.7;
+    }
+
+    > ul {
+      padding-inline-start: 0;
+    }
+  }
+
+  .menu-site__plus {
+    font-style: italic;
+  }
+
+  .menu-site__rubrique + .menu-site__page {
+    margin-top: $padding-16;
+    padding-top: $padding-8;
+    border-top: 1px solid var(--gray-200);
+  }
+}
+
+// En-tête de page : « Actualités · 25 octobre 2026 » au-dessus du titre
+.entete-page {
+  margin-bottom: $padding-16;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  .entete-page__rubrique {
+    margin: 0 0 $padding-4;
+    font-size: var(--font-size-smaller);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    time {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+  }
+
+  .entete-page__mots {
+    margin: 0;
+  }
+}
+
+// Bas de page : article d'avant à gauche, article d'après à droite
+.voisins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "avant apres";
+  gap: $padding-16;
+  align-items: start;
+  margin-top: $padding-16 * 2;
+  padding-top: $padding-16;
+  border-top: 1px solid var(--gray-200);
+
+  a.voisins__lien {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15em;
+    text-align: start;
+    margin: 0;
+    padding: $padding-8;
+    border-radius: var(--border-radius);
+    min-height: 44px;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--gray-100);
+    }
+  }
+
+  a.voisins__lien--avant {
+    grid-area: avant;
+    justify-self: start;
+  }
+
+  a.voisins__lien--apres {
+    grid-area: apres;
+    justify-self: end;
+    text-align: end;
+    align-items: flex-end;
+  }
+
+  .voisins__sens {
+    font-size: var(--font-size-smallest);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .voisins__titre {
+    font-weight: 600;
+  }
+
+  .voisins__date {
+    color: var(--body-font-color);
+    opacity: 0.7;
+  }
+
+}
+
+// Liste des actualités : une seule année visible, celle de l'ancre (#annee-2025) ou la plus récente
+.actus-annees:has(.actus-annee:target) .actus-annee:not(:target),
+.actus-annees:not(:has(.actus-annee:target)) .actus-annee:not(:first-child) {
+  display: none;
+}
+
+.actus-annee {
+  scroll-margin-top: $padding-16;
+}
+
+.actus-annee__titre {
+  margin: $padding-16 * 2 0 $padding-16;
+  padding-bottom: $padding-4;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+// sous la liste : « ← 2025 » à gauche, « 2027 → » à droite
+.actus-annee__nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "avant apres";
+  gap: $padding-16;
+  margin-top: $padding-16 * 2;
+}
+
+a.actus-annee__lien {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 $padding-16;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--gray-100);
+    text-decoration: none;
+  }
+}
+
+.actus-annee__lien--avant {
+  grid-area: avant;
+  justify-self: start;
+}
+
+.actus-annee__lien--apres {
+  grid-area: apres;
+  justify-self: end;
+}
+
+// ---------- Listes de pages : layouts/partials/navigation/item-liste.html ----------
+// Actualités, Droits, Outils, mots-clés : titre en lien, extrait, un trait entre deux pages
+.liste-pages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.liste-pages__item {
+  padding: $padding-16 0;
+  border-bottom: 1px solid var(--gray-200);
+
+  > p {
+    margin: $padding-4 0 0;
+    line-height: 1.6;
+  }
+}
+
+.liste-pages__haut {
+  margin: 0 0 $padding-4;
+  font-size: var(--font-size-smaller);
+  opacity: 0.75;
+}
+
+.liste-pages__rubrique {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.liste-pages__titre {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
 }

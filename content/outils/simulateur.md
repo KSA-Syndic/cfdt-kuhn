@@ -1,5 +1,5 @@
 ---
-title: Simulateur de rémunération
+title: "Simulateur de salaire minimum"
 date: 2026-01-25T01:00:00.000Z
 draft: false
 bookToC: false

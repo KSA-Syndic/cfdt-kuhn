@@ -1,8 +1,9 @@
-{{- /* Extrait pour listes d'articles (actualités, tags, etc.).
-       Une page qui intègre une page interactive ({{< interactif >}}) montre sa description :
-       son résumé automatique contiendrait l'iframe. */ -}}
-{{- if findRE `\{\{[<%]\s*interactif\s` .RawContent 1 -}}
-  {{- with .Description -}}<p>{{ . }}</p>{{- end -}}
-{{- else -}}
-  {{- .Summary | truncate 256 -}}
+{{- /* Extrait pour listes d'articles (actualités, tags, etc.) : la description si l'article en a
+       une, sinon le début du texte, en texte simple (sans titres, encadrés ni images). Une page qui intègre une
+       page interactive ({{< interactif >}}) n'a que sa description : son résumé contiendrait l'iframe. */ -}}
+{{- if .Description -}}
+  <p>{{ .Description }}</p>
+{{- else if not (findRE `\{\{[<%]\s*interactif\s` .RawContent 1) -}}
+  {{- $texte := .Summary | replaceRE `(?s)<h[1-6][^>]*>.*?</h[1-6]>` " " | replaceRE `</(p|li|div|blockquote)>` "$0 " -}}
+  {{- with $texte | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace }}<p>{{ . | truncate 256 }}</p>{{ end -}}
 {{- end -}}

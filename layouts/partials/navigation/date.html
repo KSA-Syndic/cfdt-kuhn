@@ -1,0 +1,3 @@
+{{- /* Date d'une page dans une balise <time> : « 25 octobre 2026 » (BookDateFormat). */ -}}
+<time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "docs/date" (dict "Date" .Date "Format" site.Params.BookDateFormat) }}</time>
+{{- /**/ -}}

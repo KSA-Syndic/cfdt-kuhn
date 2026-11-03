@@ -1,0 +1,5 @@
+{{- /* Rubrique d'une page : sa section de premier niveau (Actualités, Droits, Outils).
+       Rien pour l'accueil ni pour les pages seules (Documents, Contact). */ -}}
+{{- $rubrique := false -}}
+{{- with .FirstSection }}{{ if not .IsHome }}{{ $rubrique = . }}{{ end }}{{ end -}}
+{{- return $rubrique -}}

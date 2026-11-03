@@ -1,0 +1,22 @@
+{{- /* En-tête d'une page : la rubrique où l'on se trouve (lien vers sa liste), la date pour une
+       actualité, puis le titre. Les fiches droits et les outils n'avaient pas de titre affiché. */ -}}
+{{- $rubrique := partial "navigation/rubrique.html" . -}}
+<header class="entete-page">
+  {{- with $rubrique }}
+  <p class="entete-page__rubrique">
+    <a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a>
+    {{- if .Params.chronologique }}<span aria-hidden="true"> · </span>{{ partial "navigation/date.html" $ }}{{ end }}
+  </p>
+  {{- end }}
+  <h1>{{ partial "docs/title" . }}</h1>
+  {{- if and $rubrique $rubrique.Params.chronologique }}
+  {{- range $taxonomie, $_ := site.Taxonomies }}
+  {{- with $termes := $.GetTerms $taxonomie }}
+  <p class="entete-page__mots text-small">
+    {{- range $n, $terme := $termes }}{{ if $n }}, {{ end }}<a href="{{ $terme.RelPermalink }}">{{ $terme.Title }}</a>{{ end -}}
+  </p>
+  {{- end }}
+  {{- end }}
+  {{- end }}
+</header>
+{{- /**/ -}}

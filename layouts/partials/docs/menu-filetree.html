@@ -1,0 +1,58 @@
+{{- /* Menu latéral par rubrique (remplace l'arborescence du thème).
+       Chaque rubrique a un titre qui mène à sa page (liste des actualités, des fiches droits…).
+       Une rubrique chronologique (actualites/_index.md) ne montre que les articles de sa dernière
+       année, du plus récent au plus ancien ; les années d'avant se parcourent sur sa page, où le
+       lien « Années précédentes » mène directement. Les pages seules (Documents, Contact) viennent
+       ensuite. */ -}}
+{{- $courante := . -}}
+<ul class="menu-site">
+  <li class="menu-site__page"><a href="{{ site.Home.RelPermalink }}"{{ if .IsHome }} class="active" aria-current="page"{{ end }}>Accueil</a></li>
+  {{- range where site.Home.Pages "Params.bookHidden" "ne" true }}
+  {{- if .IsSection }}
+  {{- $rubrique := . }}
+  {{- $chrono := .Params.chronologique }}
+  {{- $pages := partial "navigation/pages-rubrique.html" . }}
+  {{- $annee := "" }}
+  {{- $anneePrecedente := "" }}
+  {{- if $chrono }}
+    {{- $annees := $pages.GroupByDate "2006" }}
+    {{- $pages = slice }}
+    {{- with $annees }}
+      {{- $annee = (index . 0).Key }}
+      {{- $pages = (index . 0).Pages }}
+      {{- if gt (len .) 1 }}{{ $anneePrecedente = (index . 1).Key }}{{ end }}
+    {{- end }}
+  {{- end }}
+  <li class="menu-site__rubrique{{ if or (eq $courante .) (.IsAncestor $courante) }} menu-site__rubrique--ici{{ end }}">
+    <a href="{{ .RelPermalink }}" class="menu-site__titre{{ if eq $courante . }} active{{ end }}"{{ if eq $courante . }} aria-current="page"{{ end }}>{{ partial "docs/title" . }}</a>
+    <ul>
+      {{- if $chrono }}
+      {{- with $annee }}
+      <li class="menu-site__annee">
+        <span>{{ . }}</span>
+        <ul>
+          {{- range $pages }}
+          {{- template "menu-site-lien" (dict "Page" . "Courante" $courante) }}
+          {{- end }}
+        </ul>
+      </li>
+      {{- end }}
+      {{- with $anneePrecedente }}
+      <li><a href="{{ $rubrique.RelPermalink }}#annee-{{ . }}" class="menu-site__plus">Années précédentes</a></li>
+      {{- end }}
+      {{- else }}
+      {{- range $pages }}
+      {{- template "menu-site-lien" (dict "Page" . "Courante" $courante) }}
+      {{- end }}
+      {{- end }}
+    </ul>
+  </li>
+  {{- else if and .IsPage .Content }}
+  <li class="menu-site__page"><a href="{{ .RelPermalink }}"{{ if eq $courante . }} class="active" aria-current="page"{{ end }}>{{ partial "docs/title" . }}</a></li>
+  {{- end }}
+  {{- end }}
+</ul>
+
+{{- define "menu-site-lien" }}
+      <li><a href="{{ .Page.RelPermalink }}"{{ if eq .Courante .Page }} class="active" aria-current="page"{{ end }}>{{ partial "docs/title" .Page }}</a></li>
+{{- end -}}

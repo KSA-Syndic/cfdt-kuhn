@@ -1,7 +1,7 @@
 ---
 date: "2025-11-07T22:23:28+01:00"
 draft: false
-title: "Grève"
+title: "Droit de grève"
 type: "docs"
 tags: ["droits", "grève", "congés"]
 ---

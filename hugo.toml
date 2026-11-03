@@ -1,5 +1,6 @@
 baseURL = "https://cfdt-kuhn.fr/"
 languageCode = 'fr-FR'
+defaultContentLanguage = 'fr' # dates et libellés du thème en français
 title = 'KUHN'
 theme = ['hugo-book']
 enableInlineShortcodes = true
@@ -23,6 +24,8 @@ enableEmoji = true
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
   # Theme will print warning if page referenced in markdown does not exists.
   BookPortableLinks = true
+  # Dates des actualités : « 25 octobre 2026 »
+  BookDateFormat = '2 January 2006'
 
 [markup.goldmark.renderer]
   unsafe = true # requis par le HTML brut de quelques pages (accueil, documents, convention collective)

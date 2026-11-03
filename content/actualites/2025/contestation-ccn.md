@@ -1,5 +1,5 @@
 ---
-title: Contestation CCNM
+title: "Primes et salaire minimum : la CFDT au tribunal"
 date: 2025-11-12T23:10:03.515Z
 draft: false
 type: posts

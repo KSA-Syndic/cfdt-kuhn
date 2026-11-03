@@ -1,5 +1,5 @@
 ---
-title: Assistant IA
+title: "Assistant IA sur la convention"
 date: 2025-12-13T01:00:00.000Z
 draft: false
 bookToC: false

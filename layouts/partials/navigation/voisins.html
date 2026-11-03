@@ -1,0 +1,31 @@
+{{- /* Bas de page : l'article d'avant et celui d'après dans la même rubrique, jamais d'une
+       rubrique à l'autre ni vers une page de liste. Dans une rubrique
+       chronologique, la gauche va vers le passé (« Plus ancien ») et la droite vers le présent
+       (« Plus récent »), avec la date de chaque article. */ -}}
+{{- $page := . -}}
+{{- with partial "navigation/rubrique.html" . }}{{ if $page.IsPage }}
+{{- $rubrique := . -}}
+{{- $chrono := .Params.chronologique -}}
+{{- $pages := partial "navigation/pages-rubrique.html" . -}}
+{{- $i := -1 }}{{ range $n, $p := $pages }}{{ if eq $p $page }}{{ $i = $n }}{{ end }}{{ end -}}
+{{- if ge $i 0 }}
+{{- $avant := false }}{{ if gt $i 0 }}{{ $avant = index $pages (sub $i 1) }}{{ end -}}
+{{- $apres := false }}{{ if lt (add $i 1) (len $pages) }}{{ $apres = index $pages (add $i 1) }}{{ end -}}
+<nav class="voisins" aria-label="Autres pages de la rubrique {{ partial "docs/title" $rubrique }}">
+  {{- with $avant }}
+  <a class="voisins__lien voisins__lien--avant" href="{{ .RelPermalink }}" rel="prev">
+    <span class="voisins__sens"><span aria-hidden="true">← </span>{{ if $chrono }}Plus ancien{{ else }}Précédent{{ end }}</span>
+    <span class="voisins__titre">{{ partial "docs/title" . }}</span>
+    {{- if $chrono }}<span class="voisins__date">{{ partial "navigation/date.html" . }}</span>{{ end }}
+  </a>
+  {{- end }}
+  {{- with $apres }}
+  <a class="voisins__lien voisins__lien--apres" href="{{ .RelPermalink }}" rel="next">
+    <span class="voisins__sens">{{ if $chrono }}Plus récent{{ else }}Suivant{{ end }}<span aria-hidden="true"> →</span></span>
+    <span class="voisins__titre">{{ partial "docs/title" . }}</span>
+    {{- if $chrono }}<span class="voisins__date">{{ partial "navigation/date.html" . }}</span>{{ end }}
+  </a>
+  {{- end }}
+</nav>
+{{- end }}
+{{- end }}{{ end -}}

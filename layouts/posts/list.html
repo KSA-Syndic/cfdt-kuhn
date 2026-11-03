@@ -1,29 +1,36 @@
+{{- /* Liste des actualités, une année à la fois : la plus récente s'affiche d'abord, les boutons
+       « ← 2025 » et « 2027 → » sous la liste passent d'une année à l'autre (ancres #annee-…, voir
+       .actus-annees dans _custom.scss). Sans :has, le navigateur montre toutes les années à la suite. */ -}}
 {{ define "main" }}
-  {{ range sort .Paginator.Pages }}
-  <article class="book-post markdown">
-    <h2>
-      <a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a>
-    </h2>
-    <div class="book-post-container flex gap">
-      <div>
-        {{ partial "docs/post-meta" . }}
-        <div class="book-post-content markdown-inner">
-          {{- partial "docs/post-excerpt" . -}}
-        </div>
-      </div>
-      {{- $thumbnail := default "thumbnail.*" .Params.BookPostThumbnail -}}
-      {{- with or (.Resources.GetMatch $thumbnail) (resources.GetMatch $thumbnail) -}}
-      <div class="book-post-thumbnail">
-        <img src="{{ .RelPermalink }}" alt="{{ partial "docs/text/i18n" "Thumbnail" }}" />
-      </div>
-      {{- end -}}
-    </div>
-  </article>
-  {{ end }}
+  <header class="markdown">
+    <h1>{{ partial "docs/title" . }}</h1>
+    {{- .Content -}}
+  </header>
+  {{- $annees := (partial "navigation/pages-rubrique.html" .).GroupByDate "2006" }}
+  <div class="actus-annees">
+  {{- range $i, $groupe := $annees }}
+  <section class="actus-annee" id="annee-{{ .Key }}" aria-labelledby="annee-{{ .Key }}-titre">
+    <h2 class="actus-annee__titre" id="annee-{{ .Key }}-titre">{{ .Key }}</h2>
+    <ul class="liste-pages">
+      {{- range .Pages }}
+      {{ partial "navigation/item-liste.html" (dict "Page" .) }}
+      {{- end }}
+    </ul>
+    {{- if gt (len $annees) 1 }}
+    <nav class="actus-annee__nav" aria-label="Changer d'année">
+      {{- if lt (add $i 1) (len $annees) }}{{ with (index $annees (add $i 1)).Key }}
+      <a class="actus-annee__lien actus-annee__lien--avant" href="#annee-{{ . }}" aria-label="Actualités de {{ . }}"><span aria-hidden="true">← </span>{{ . }}</a>
+      {{- end }}{{ end }}
+      {{- if gt $i 0 }}{{ with (index $annees (sub $i 1)).Key }}
+      <a class="actus-annee__lien actus-annee__lien--apres" href="#annee-{{ . }}" aria-label="Actualités de {{ . }}">{{ . }}<span aria-hidden="true"> →</span></a>
+      {{- end }}{{ end }}
+    </nav>
+    {{- end }}
+  </section>
+  {{- end }}
+  </div>
 {{ end }}
 
 {{ define "toc-container" }}{{ end }}
 
-{{ define "footer" }}
-  {{ partial "docs/pagination.html" . }}
-{{ end }}
+{{ define "footer" }}{{ end }}

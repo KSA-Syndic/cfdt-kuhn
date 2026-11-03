@@ -1,0 +1,6 @@
+{{- /* Pages d'une rubrique dans l'ordre de lecture : de la plus ancienne à la plus récente si la
+       rubrique est chronologique (chronologique: true dans son _index.md), sinon l'ordre du thème
+       (poids, puis date). Le menu, les flèches et la page de la rubrique partent de cette liste. */ -}}
+{{- $pages := where .RegularPages "Params.bookHidden" "ne" true -}}
+{{- if .Params.chronologique }}{{ $pages = $pages.ByDate }}{{ end -}}
+{{- return $pages -}}

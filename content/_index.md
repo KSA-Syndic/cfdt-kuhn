@@ -26,13 +26,13 @@ Informer, accompagner, défendre : la CFDT KUHN met à disposition ce site pour 
 
 {{% columns %}}
 {{< card >}}
-#### **Actualités**
+#### **[Actualités](/actualites/)**
 
 Dernières infos sur la vie de l'entreprise, les négociations, les actions syndicales.
 {{< /card >}}
 
 {{< card >}}
-#### **Vos droits**
+#### **[Vos droits](/droits/)**
 
 Explications sur le droit du travail, les accords d'entreprise, la protection sociale.
 {{< /card >}}
@@ -40,13 +40,13 @@ Explications sur le droit du travail, les accords d'entreprise, la protection so
 
 {{% columns %}}
 {{< card >}}
-#### **Documents utiles**
+#### **[Documents utiles](/documents/)**
 
 Accords, tracts, comptes-rendus, formulaires à télécharger.
 {{< /card >}}
 
 {{< card >}}
-#### **Contacts & Permanences**
+#### **[Contacts & Permanences](/contact/)**
 
 Comment joindre vos élu·es, prendre rendez-vous, poser une question.
 {{< /card >}}
