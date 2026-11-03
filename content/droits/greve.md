@@ -73,6 +73,10 @@ Fais une demande d'absence sur Kelio en sélectionnant `Grève` et `Date à date
 
 Fais une demande d'absence sur Kelio en sélectionnant `Grève` et `Date à date heure à heure`.
 
+{{< hint type="info" >}}
+Rappel : dans Kelio, tu choisis bien le motif `Grève`. Ta fiche de paie, elle, ne doit jamais mentionner la grève ([article R3243-4 du Code du travail](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000018487282)) : la retenue y apparaît sous un intitulé neutre, du type « absence non rémunérée ».
+{{< /hint >}}
+
 {{< details title="Voir schéma récapitulatif" >}}
 ## Schéma recapitulatif
 ```mermaid
