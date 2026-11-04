@@ -13,7 +13,7 @@ Depuis le 1ᵉʳ janvier 2024, toute la métallurgie française (environ 1,5 mil
 
 ## La mise à jour 2026
 
-Un avenant du 20 février 2026 revalorise cette grille de **0,9 % en moyenne**, avec effet au 1ᵉʳ janvier 2026. En 2025, il n'y avait pas eu d'accord. Les minimums vont désormais d'environ 21 980 € à 68 450 € brut par an (base 3 h).
+Un avenant du 20 février 2026 revalorise cette grille de **0,9 % en moyenne**, avec effet au 1ᵉʳ janvier 2026. En 2025, il n'y avait pas eu d'accord. Les minimums vont désormais d'environ 21 980 € à 68 450 € brut par an (base 35 h).
 
 {{< hint type="info" >}}
 Le Smic est passé à 1 867 € par mois le 1ᵉʳ juin 2026. Il dépasse désormais les deux premiers niveaux de la grille : pour ces emplois, **c'est le Smic qui s'applique** comme salaire minimum.
