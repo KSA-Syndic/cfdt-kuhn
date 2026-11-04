@@ -64,6 +64,9 @@ function initPdfCanvases() {
     const pagecountEl = document.getElementById('pdf-pagecount-' + id);
     const prevBtn     = document.getElementById('pdf-prev-' + id);
     const nextBtn     = document.getElementById('pdf-next-' + id);
+    const zoomOutBtn  = document.getElementById('pdf-zoomout-' + id);
+    const zoomInBtn   = document.getElementById('pdf-zoomin-' + id);
+    const zoomResetBtn = document.getElementById('pdf-zoomreset-' + id);
 
     let pdfDoc = null;
     let pageRendering = false;
@@ -134,6 +137,9 @@ function initPdfCanvases() {
             if (pagecountEl) pagecountEl.textContent = pdfDoc.numPages;
             if (prevBtn)     prevBtn.disabled        = num <= 1;
             if (nextBtn)     nextBtn.disabled        = num >= pdfDoc.numPages;
+            if (zoomResetBtn) zoomResetBtn.textContent = Math.round(userScale * 100) + ' %';
+            if (zoomOutBtn)  zoomOutBtn.disabled     = userScale <= minUserScale;
+            if (zoomInBtn)   zoomInBtn.disabled      = userScale >= maxUserScale;
 
             if (pageNumPending !== null) {
               renderPage(pageNumPending);
@@ -265,6 +271,30 @@ function initPdfCanvases() {
       }
     });
 
+    // --- BOUTONS + / − : zoom autour du centre de la zone affichée ---
+    const zoomStep = 1.25;
+    function zoomFromButton(newScale) {
+      if (!pdfDoc) return;
+      const parent = canvas.parentElement;
+      const cw = canvas.offsetWidth, ch = canvas.offsetHeight;
+      if (parent && cw && ch) {
+        zoomCenter = {
+          x: Math.min(1, (parent.scrollLeft + parent.clientWidth / 2) / cw),
+          y: Math.min(1, (parent.scrollTop + parent.clientHeight / 2) / ch)
+        };
+      }
+      userScale = Math.max(minUserScale, Math.min(maxUserScale, newScale));
+      if (pageRendering) {
+        pageNumPending = pageNum;
+      } else {
+        renderPage(pageNum);
+      }
+    }
+
+    if (zoomInBtn)    zoomInBtn.onclick    = () => zoomFromButton(userScale * zoomStep);
+    if (zoomOutBtn)   zoomOutBtn.onclick   = () => zoomFromButton(userScale / zoomStep);
+    if (zoomResetBtn) zoomResetBtn.onclick = () => zoomFromButton(1);
+
     // NAVIGATION
     function goToPage(n) {
       if (n < 1 || n > pdfDoc.numPages) return;
@@ -280,6 +310,19 @@ function initPdfCanvases() {
 
     if (prevBtn) prevBtn.onclick = () => goToPage(pageNum - 1);
     if (nextBtn) nextBtn.onclick = () => goToPage(pageNum + 1);
+
+    // --- FLÈCHES ← → DU CLAVIER : page précédente / suivante (lecteur en fenêtre seulement) ---
+    if (prevBtn || nextBtn) {
+      const keyHandler = e => {
+        // lecteur fermé : la fenêtre a été retirée de la page
+        if (!canvas.isConnected) { document.removeEventListener('keydown', keyHandler); return; }
+        if (!pdfDoc || e.ctrlKey || e.metaKey || e.altKey) return;
+        if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable]')) return;
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); goToPage(pageNum - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); goToPage(pageNum + 1); }
+      };
+      document.addEventListener('keydown', keyHandler);
+    }
 
     // Load PDF
     if (loading) loading.style.display = 'flex';

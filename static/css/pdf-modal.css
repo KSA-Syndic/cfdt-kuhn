@@ -90,7 +90,29 @@
   font-size: 1.1em;
   font-family: inherit;
 }
+/* Zoom (− 100 % +) à gauche, pages (← 3 / 12 →) à droite */
+.pdf-modal-zoom,
+.pdf-modal-pages {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.pdf-modal-footer {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.pdf-modal-footer button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pdf-modal-footer .pdf-modal-zoom-niveau {
+  border-color: transparent;
+  min-width: 4.2em;
+  font-variant-numeric: tabular-nums;
+}
 .pdf-modal-footer button {
+  min-width: 2.2em;
+  min-height: 2.2em;
   background-color: transparent;
   border: 1px solid var(--color-link, #2d6cdf);
   color: var(--color-link, #2d6cdf);

@@ -17,11 +17,18 @@
       {{ partial "pdf-embed-content.html" (dict "url" $url "page" $page "id" $id) }}
     </div>
     <div class="pdf-modal-footer">
-      <button id="pdf-prev-{{ $id }}">←</button>
-      <span>
-        <span id="pdf-pagenum-{{ $id }}"></span> / <span id="pdf-pagecount-{{ $id }}"></span>
-      </span>
-      <button id="pdf-next-{{ $id }}">→</button>
+      <div class="pdf-modal-zoom" role="group" aria-label="Zoom">
+        <button id="pdf-zoomout-{{ $id }}" aria-label="Zoom arrière">−</button>
+        <button id="pdf-zoomreset-{{ $id }}" class="pdf-modal-zoom-niveau" title="Revenir à la largeur de la fenêtre" aria-label="Revenir à la largeur de la fenêtre">100 %</button>
+        <button id="pdf-zoomin-{{ $id }}" aria-label="Zoom avant">+</button>
+      </div>
+      <div class="pdf-modal-pages" role="group" aria-label="Pages">
+        <button id="pdf-prev-{{ $id }}" aria-label="Page précédente">←</button>
+        <span>
+          <span id="pdf-pagenum-{{ $id }}"></span> / <span id="pdf-pagecount-{{ $id }}"></span>
+        </span>
+        <button id="pdf-next-{{ $id }}" aria-label="Page suivante">→</button>
+      </div>
     </div>
   </div>
 </div>
