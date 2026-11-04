@@ -7,7 +7,7 @@ tags: ["grève", "manifestation", "salaire", "budget", "industrie", "intersyndic
 bookToC: false
 ---
 
-{{< image src="/uploads/images/actus/optimisation-sociale-cfdt.jpg" alt="Affiche de la CFDT : « Optimisation fiscale », avec le mot « fiscale » barré et remplacé par « sociale »" title="Optimisation sociale" loading="lazy" >}}
+{{< image src="/uploads/images/actus/optimisation-sociale-cfdt.jpg" alt="Affiche de la CFDT : « Optimisation fiscale », avec le mot « fiscale » barré et remplacé par « sociale »" title="Optimisation sociale" loading="lazy" class="book-image--narrow" >}}
 
 {{< hint type="info" >}}
 **Jeudi 5 novembre 2026, grève et manifestations dans toute la France**
