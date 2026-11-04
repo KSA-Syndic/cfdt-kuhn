@@ -20,13 +20,13 @@ tags:
   - tutoriel
 ---
 
-## Ce que disent les comptes 2016–2024 {#analyse}
-
 Tu l'as sans doute entendu : KUHN traverserait une crise comme on n'en a pas vu depuis des décennies. Alors il faut se serrer la ceinture, partout.
 
-Pour le prouver, un chiffre circule. Sur 100 € de ventes en 2024, il ne resterait à l'entreprise que 2,60 € une fois payés les achats, les frais et les salaires. En 2022, il en restait 9. Dit comme ça, ça fait peur. Ce chiffre a un nom : l'[EBITDA](#def-ebitda), un indicateur courant pour mesurer ce que rapporte l'activité, avant l'usure des machines, les intérêts et les impôts.
+Pour le prouver, un chiffre circule. Sur 100 € de ventes en 2024, il ne resterait à l'entreprise que **2,60 €** une fois payés les achats, les frais et les salaires. En 2022, il en restait 9. Dit comme ça, ça fait peur. Ce chiffre a un nom : l'[EBITDA](#def-ebitda), un indicateur courant pour mesurer ce que rapporte l'activité, avant l'usure des machines, les intérêts et les impôts.
 
 Mais est-ce vrai ? Les comptes de KUHN sont publics, tout le monde peut les lire. On les a épluchés, année après année, depuis 2016. Suis le fil avec nous : ce qui s'est vendu, ce qu'il reste vraiment une fois tout payé, ce que touche l'actionnaire. Et pour finir : a-t-on vraiment jamais vu pire, chez KUHN ou ailleurs ?
+
+## Ce que disent les comptes 2016–2024 {#analyse}
 
 Pas besoin d'être comptable. Les mots soulignés s'expliquent d'un clic, et les détails sont rangés dans les blocs qui se déplient. Pour apprendre à lire des comptes pas à pas, suis d'abord une année de l'Atelier, une petite entreprise imaginaire.
 
@@ -45,7 +45,7 @@ Pas besoin d'être comptable. Les mots soulignés s'expliquent d'un clic, et les
 
 Le chiffre d'affaires de KUHN SAS culmine à 979 M€ en 2023, puis revient à 799 M€ en 2024. Les commandes du groupe, publiées par Bucher, avaient décroché dès 2022 : −42 % entre 2021 et 2024.
 
-Le recul est brutal, mais il part d'un sommet. Avec 799 M€, KUHN SAS vend encore plus que n'importe quelle année avant 2021 (597 M€ en 2016).
+Le recul est brutal, mais il part d'un sommet. Avec 799 M€, **KUHN SAS vend encore plus que n'importe quelle année avant 2021** (597 M€ en 2016).
 
 {{< tableau-kuhn "badges-activite" >}}
 
@@ -59,9 +59,9 @@ Le recul est brutal, mais il part d'un sommet. Avec 799 M€, KUHN SAS vend enc
 
 Revenons à cet [EBITDA](#def-ebitda) de 2,60 € sur 100 € de ventes : environ 20 M€ en 2024 pour KUHN SAS, soit 2,6 % des ventes, contre 9 % en 2022. À première vue, un effondrement.
 
-Sauf que ces deux chiffres ne sont pas comptés de la même façon. Celui de 2024, repris aussi par Pappers, laisse de côté les [transferts de charges](#def-transferts-de-charges) : 42,3 M€ de frais refacturés à d'autres sociétés, remboursés ou reclassés. Celui de 2022 les inclut. On compare donc une année où les frais sont comptés sans leurs remboursements à une année où ils l'étaient avec. Aucune règle comptable n'impose ce changement avant 2025.
+Sauf que **ces deux chiffres ne sont pas comptés de la même façon**. Celui de 2024, repris aussi par Pappers, laisse de côté les [transferts de charges](#def-transferts-de-charges) : 42,3 M€ de frais refacturés à d'autres sociétés, remboursés ou reclassés. Celui de 2022 les inclut. On compare donc une année où les frais sont comptés sans leurs remboursements à une année où ils l'étaient avec. Aucune règle comptable n'impose ce changement avant 2025.
 
-Calculée de la même façon chaque année, la marge d'EBITDA passe de 9,2 % (2021) à 7,9 % (2024). C'est une baisse, un retour au niveau de 2018–2019, pas un effondrement. La marge d'exploitation tient autour de 7 %, et le bénéfice net suit : 65,4 M€ en 2023, 55,3 M€ en 2024. Depuis 2014, seules 2022 et 2023 ont fait mieux.
+Calculée de la même façon chaque année, la marge d'EBITDA passe de 9,2 % (2021) à 7,9 % (2024). C'est une baisse, un retour au niveau de 2018–2019, **pas un effondrement**. La marge d'exploitation tient autour de 7 %, et le bénéfice net suit : 65,4 M€ en 2023, 55,3 M€ en 2024. Depuis 2014, seules 2022 et 2023 ont fait mieux.
 
 {{< tableau-kuhn "badges-rentabilite" >}}
 
@@ -107,7 +107,7 @@ Si l'argent manquait vraiment, le dividende serait le premier à baisser. Ce n'e
 
 {{< interactif nom="analyse-dividende" titre="Bénéfice et dividende de KUHN SAS, exercice par exercice" hauteur_min="220" >}}
 
-En 2024, en pleine chute des ventes, KUHN SAS verse 63,3 M€ de dividende sur son bénéfice 2023. La même année, ses salaires et cotisations sociales lui coûtent 95,6 M€. Pour 100 € dépensés pour les salariés, 66 € sont donc partis chez l'actionnaire. Le dividende versé en 2025 sur le bénéfice 2024 n'est pas encore publié : s'il suit la règle des années passées, il tourne autour de 53 M€.
+En 2024, en pleine chute des ventes, KUHN SAS verse 63,3 M€ de dividende sur son bénéfice 2023. La même année, ses salaires et cotisations sociales lui coûtent 95,6 M€. **Pour 100 € dépensés pour les salariés, 66 € sont donc partis chez l'actionnaire.** Le dividende versé en 2025 sur le bénéfice 2024 n'est pas encore publié : s'il suit la règle des années passées, il tourne autour de 53 M€.
 
 Le dividende n'est que la dernière étape. Le tableau dynamique reprend une année entière : des ventes à ce qui revient aux fournisseurs, aux salariés, à l'État, aux provisions et, pour finir, à l'actionnaire.
 
@@ -133,7 +133,7 @@ Blanchard n'a jamais versé de dividende depuis son rachat (2008) ; Artec n'en 
 
 ### Sans précédent ? Il suffit de remonter à 2009 {#2009}
 
-Pour trouver pire, pas besoin de remonter loin. En 2009, la crise financière frappe aussi le machinisme agricole. Selon Bucher, les commandes du groupe KUHN chutent de 40 % en une seule année : les agriculteurs gèlent leurs achats, des commandes de 2008 sont annulées et les concessionnaires ont des stocks pleins. Les ventes reculent de 14 %, et encore, grâce à deux rachats qui les soutiennent.
+Pour trouver pire, pas besoin de remonter loin. En 2009, la crise financière frappe aussi le machinisme agricole. Selon Bucher, les commandes du groupe KUHN chutent de **40 % en une seule année** : les agriculteurs gèlent leurs achats, des commandes de 2008 sont annulées et les concessionnaires ont des stocks pleins. Les ventes reculent de 14 %, et encore, grâce à deux rachats qui les soutiennent.
 
 Cette fois, la baisse des commandes est du même ordre (−42 %), mais étalée sur trois ans, de 2021 à 2024. Le choc de 2009 était plus brutal, et il date de dix-sept ans. Dans les deux cas, l'activité du groupe KUHN est restée bénéficiaire.
 
@@ -155,7 +155,7 @@ En 2025, les ventes du groupe baissent encore (1 053 millions de francs suiss
 
 Sur les neuf premiers mois de 2026, les ventes se maintiennent au niveau de 2025 à taux de change constants. Les commandes reculent de 5 %, après une saison de précommandes 2025 très forte, avec la sécheresse en Europe et un marché brésilien en panne. Le carnet de commandes est pourtant plus garni qu'un an plus tôt (+7 % à change constant). Bucher titre son communiqué d'octobre « stabilisation de la demande » et prévoit pour l'année des ventes stables, avec une marge un peu plus basse qu'en 2025.
 
-Pas de rebond, donc, mais plus de chute. Et un détail du même communiqué : le groupe KUHN emploie en moyenne 5 495 équivalents temps plein sur neuf mois, contre 5 283 un an plus tôt (+4 %). Où ces postes ont-ils été créés ? La question mérite d'être posée.
+**Pas de rebond, donc, mais plus de chute.** Et un détail du même communiqué : le groupe KUHN emploie en moyenne 5 495 équivalents temps plein sur neuf mois, contre 5 283 un an plus tôt (+4 %). Où ces postes ont-ils été créés ? La question mérite d'être posée.
 
 {{< details title="Sources pour 2025 et 2026" >}}
 Rapport annuel 2025 de Bucher Industries ; communiqués du [30 juillet 2026](https://www.bucherindustries.com/en/media-detail/recovery-in-demand-hampered-by-political-uncertainties) (premier semestre) et du [27 octobre 2026](https://www.bucherindustries.com/en/media-detail/third-quarter-2026-stabilisation-of-demand) (neuf mois). Montants en francs suisses, tels que publiés.
@@ -175,7 +175,7 @@ Rapport annuel 2025 de Bucher Industries ; communiqués du [30 juillet 2026](ht
 
 Tout dépend du point de comparaison. Mesurée depuis le sommet de 2023, la baisse est spectaculaire. Mesurée sur dix ans, KUHN SAS vend toujours plus qu'avant 2021 et son bénéfice reste dans le haut de la série. Prendre le pic comme référence, et l'appuyer sur un EBITDA à 2,6 % calculé autrement que les années d'avant, donne l'image la plus sombre possible. Pourquoi ce choix ?
 
-Un discours de crise a des effets connus : il rend les économies plus faciles à faire passer et il refroidit les demandes, sur les salaires comme sur l'emploi. La prudence quand les commandes baissent, on peut l'entendre. Mais les efforts pèsent d'abord sur les salariés, alors que la part de l'actionnaire n'est jamais descendue sous 93 % du bénéfice, jusqu'aux derniers comptes publiés.
+Un discours de crise a des effets connus : il rend les économies plus faciles à faire passer et il refroidit les demandes, sur les salaires comme sur l'emploi. La prudence quand les commandes baissent, on peut l'entendre. Mais les efforts pèsent d'abord sur les salariés, alors que **la part de l'actionnaire n'est jamais descendue sous 93 % du bénéfice**, jusqu'aux derniers comptes publiés.
 
 Les questions que nous posons à la direction :
 
